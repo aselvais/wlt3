@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wlt3/libs/Themedata.dart';
 
 class Drawerwlt extends StatelessWidget
 {
@@ -12,11 +13,11 @@ class Drawerwlt extends StatelessWidget
             child: Text('WLT',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color(0xFFFFFFFF),
+                color: Themedata.selectedItemColor,
                 fontSize: 30,
               )
             ),
-            decoration: BoxDecoration(color: Color(0xFF000055)),
+            decoration: BoxDecoration(color: Themedata.blue),
           ),
           ListTile(
             title: Text('Item 1'),

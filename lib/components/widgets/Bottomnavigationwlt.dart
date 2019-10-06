@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:wlt3/libs/Themedata.dart';
 
 class Bottomnavigationwlt extends StatelessWidget
 {
-  Color backgroundColor = Color(0xFF000055);
-  Color selectedItemColor = Color(0xFFFFFFFF);
-  Color unselectedItemColor = Color(0x55FFFFFF);
+  Color backgroundColor = Themedata.blue;
+  Color selectedItemColor = Themedata.selectedItemColor;
+  Color unselectedItemColor = Themedata.unselectedItemColor;
 
   @override
   BottomNavigationBar build(BuildContext context) {
