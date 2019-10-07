@@ -6,10 +6,7 @@ class ListAbstract extends StatelessWidget
   ListView build(BuildContext context) {
     return ListView(
         children: List.generate(96, (index) {
-            if (index == 0)
-              return Image.network('http://www.winloseortie.com/wp-content/themes/pogon/images/WLT-Logo.jpg');
-            else
-              return Center(child: Text('> Item #$index <',style: Theme.of(context).textTheme.headline,));
+            return Center(child: Text('> Item #$index <'));
         }),
     );
   }

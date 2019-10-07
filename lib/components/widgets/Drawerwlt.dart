@@ -10,23 +10,20 @@ class Drawerwlt extends StatelessWidget
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text('WLT',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Themedata.selectedItemColor,
-                fontSize: 30,
-              )
+            child: Image.network('http://www.winloseortie.com/wp-content/themes/pogon/images/WLT-Logo.jpg'),
+            decoration: BoxDecoration(
+              color: Themedata.white,
+              border: Border(
+                  bottom: BorderSide(
+                    color: Themedata.grey,
+                    width: 1.0
+                  )
+              ),
             ),
-            decoration: BoxDecoration(color: Themedata.blue),
           ),
-          ListTile(
-            title: Text('Item 1'),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Text('Item 2'),
-            onTap: () {},
-          ),
+          ListTile(title: Text('Feedback'),onTap: () { Navigator.pushNamed(context, '/feedback'); },),
+          ListTile(title: Text('Profile'), onTap: () { Navigator.pushNamed(context, '/profile'); },),
+          ListTile(title: Text('Log out'), onTap: () { Navigator.pushNamed(context, '/'); },),
         ],
       ),
     );

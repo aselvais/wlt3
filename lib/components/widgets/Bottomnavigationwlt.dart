@@ -7,24 +7,21 @@ class Bottomnavigationwlt extends StatelessWidget
   void onItemTapped(context, int index) {
     // Games
     if (index == 0) {
-      print('Games');
-      //Navigator.pushNamed(context, '/second');
       Navigator.pushNamed(context, '/games');
     }
     // Standing
     if (index == 1) {
-      print('Standing');
       Navigator.pushNamed(context, '/standing');
     }
     // Leagues
     if (index == 2) {
-      print('Leagues');
-
+      Navigator.pushNamed(context, '/leagues');
     }
     // Favorite
     if (index == 3) {
-      print('Favorite');
+      Navigator.pushNamed(context, '/favorites');
     }
+    
   }
 
   @override
@@ -32,6 +29,7 @@ class Bottomnavigationwlt extends StatelessWidget
     return new BottomNavigationBar(
       selectedItemColor: Themedata.selectedItemColor,
       unselectedItemColor: Themedata.unselectedItemColor,
+      //currentIndex: _selectedIndex,
       onTap: (index) => onItemTapped(context, index),
       items: [
         new BottomNavigationBarItem(

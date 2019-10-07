@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wlt3/components/lists/ColorList.dart';
-import 'package:wlt3/components/lists/ListAbstract.dart';
+import 'package:wlt3/components/screens/MyCatalog.dart';
 import 'package:wlt3/components/widgets/Bottomnavigationwlt.dart';
 import 'package:wlt3/components/widgets/Drawerwlt.dart';
 import 'package:wlt3/components/widgets/Topmenubar.dart';
@@ -12,7 +11,8 @@ class HomeScreen extends StatelessWidget {
     return new Scaffold(
           drawer: new Drawerwlt(),
           appBar: new Topmenubar(),
-          body: ListAbstract(),
+          // body: ListAbstract(),
+          body: MyCatalog(),
           bottomNavigationBar: new Bottomnavigationwlt()
     );
     
