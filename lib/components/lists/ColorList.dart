@@ -6,14 +6,15 @@ class ColorList extends StatelessWidget {
   ListView build(BuildContext context) {
     Map<String, Color> mycolors = Themedata.getAllColors();
     List<Widget> kids = [];
+    int i = 136;
     mycolors.forEach((final String key, final Color value) {
+      i++;
       kids.add(DecoratedBox(
           decoration: BoxDecoration(color: value),
-          child: Center(child: Text(key, style: TextStyle( height: 2, letterSpacing: 2, color: Themedata.white)))
-        ));
-      kids.add(DecoratedBox(
-          decoration: BoxDecoration(color: value),
-          child: Center(child: Text(key, style: TextStyle( height: 2, letterSpacing: 2, color: Themedata.black)))
+          child: Column(children: <Widget>[
+            Text(i.toString() + ' : ' + key, style: TextStyle( height: 2, letterSpacing: 2, color: Themedata.white)),
+            Text(i.toString() + ' : ' + key, style: TextStyle( height: 2, letterSpacing: 2, color: Themedata.black))
+          ],)
         ));
     });
     return ListView(children: kids);
