@@ -9,18 +9,11 @@ class CatalogModel {
     'Recursion',
     'Sprint',
     'Heisenbug',
-    'Spaghetti',
-    'Hydra Code',
-    'Off-By-One',
-    'Scope',
-    'Callback',
-    'Closure',
-    'Automata',
-    'Bit Shift',
-    'Currying',
   ];
 
-  ItemModel getById(int id) => ItemModel(id, _itemNames[id % _itemNames.length]);
+  ItemModel getById(int id) { 
+    return ItemModel(id, _itemNames[id % _itemNames.length]);
+  }
 
   ItemModel getByPosition(int position) {
     return getById(position);

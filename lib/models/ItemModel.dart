@@ -12,9 +12,13 @@ class ItemModel {
   ItemModel(this.id, this.name) : color = Colors.primaries[id % Colors.primaries.length];
 
   @override
-  int get hashCode => id;
+  int get hashCode { 
+    return id;
+  }
 
   @override
-  bool operator ==(Object other) => other is ItemModel && other.id == id;
+  bool operator ==(Object other) { 
+    return other is ItemModel && other.id == id; 
+  }
   
 }

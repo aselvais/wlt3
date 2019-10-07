@@ -9,9 +9,13 @@ class CartModel extends ChangeNotifier {
 
   CartModel(this._catalog, CartModel previous) : assert(_catalog != null), _itemIds = previous?._itemIds ?? [];
 
-  List<ItemModel> get items => _itemIds.map((id) => _catalog.getById(id)).toList();
+  List<ItemModel> get items { 
+    return _itemIds.map((id) => _catalog.getById(id)).toList(); 
+  }
 
-  int get totalPrice => items.fold(0, (total, current) => total + current.price);
+  int get totalPrice { 
+    return items.fold(0, (total, current) => total + current.price); 
+  }
 
   void add(ItemModel item) {
     _itemIds.add(item.id);
