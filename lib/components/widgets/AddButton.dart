@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/models/CartModel.dart';
-import 'package:wlt3/models/CatalogModel.dart';
+import 'package:wlt3/models/ItemModel.dart';
 
 class AddButton extends StatelessWidget {
 
-  final Item item;
+  final ItemModel item;
 
   const AddButton({Key key, @required this.item}) : super(key: key);
 
