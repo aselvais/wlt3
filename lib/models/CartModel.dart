@@ -13,7 +13,7 @@ class CartModel extends ChangeNotifier {
     return _itemIds.map((id) => _catalog.getById(id)).toList(); 
   }
 
-  int get totalPrice { 
+  int get totalPrice {
     return items.fold(0, (total, current) => total + current.price); 
   }
 

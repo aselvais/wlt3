@@ -5,7 +5,7 @@ import 'package:wlt3/components/lists/ListAbstract.dart';
 import 'package:wlt3/components/screens/FeedbackScreen.dart';
 import 'package:wlt3/components/screens/HomeScreen.dart';
 import 'package:wlt3/components/screens/LoginScreen.dart';
-import 'package:wlt3/components/screens/MyCatalog.dart';
+import 'package:wlt3/components/screens/CatalogScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/CartModel.dart';
 import 'package:wlt3/models/CatalogModel.dart';
@@ -31,7 +31,7 @@ class RouterScreen extends StatelessWidget {
           '/home': (context) => new HomeScreen(),
           '/standing': (context) => new ColorList(),
           '/leagues': (context) => new ListAbstract(),
-          '/favorites': (context) => new MyCatalog(),
+          '/favorites': (context) => new CatalogScreen(),
           '/feedback': (context) => new FeedbackScreen(),
           '/profile': (context) => new FeedbackScreen(),
           '/logout': (context) => new FeedbackScreen(),
