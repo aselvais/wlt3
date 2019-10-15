@@ -23,7 +23,7 @@ class Drawerwlt extends StatelessWidget
           ),
           ListTile(title: Text('Feedback'),onTap: () { Navigator.pushNamed(context, '/feedback'); },),
           ListTile(title: Text('Profile'), onTap: () { Navigator.pushNamed(context, '/profile'); },),
-          ListTile(title: Text('Log out'), onTap: () { Navigator.pushNamed(context, '/'); },),
+          ListTile(title: Text('Log out'), onTap: () {  Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName)); },),
         ],
       ),
     );

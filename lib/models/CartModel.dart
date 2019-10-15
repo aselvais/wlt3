@@ -6,6 +6,7 @@ class CartModel extends ChangeNotifier {
 
   final CatalogModel _catalog;
   final List<int> _itemIds;
+  int _idx = 0;
 
   CartModel(this._catalog, CartModel previous) : assert(_catalog != null), _itemIds = previous?._itemIds ?? [];
 
@@ -15,6 +16,15 @@ class CartModel extends ChangeNotifier {
 
   int get totalPrice { 
     return items.fold(0, (total, current) => total + current.price); 
+  }
+
+  int get idx { 
+    return _idx;
+  }
+
+  set idx(v) {
+    _idx = v;
+    notifyListeners();
   }
 
   void add(ItemModel item) {
