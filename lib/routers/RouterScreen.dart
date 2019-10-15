@@ -18,7 +18,7 @@ class RouterScreen extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-          //Provider(builder: (context) => LeaguesModel()),
+          Provider(builder: (context) => LeaguesModel()),
           Provider(builder: (context) => CatalogModel()),
           ChangeNotifierProxyProvider<CatalogModel, CartModel>( 
             builder: (context, catalog, previousCart) => CartModel(catalog, previousCart) 
