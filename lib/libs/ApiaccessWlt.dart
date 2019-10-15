@@ -5,7 +5,7 @@ class ApiaccessWlt extends ApiaccessAbstract
 {
   String baseurl = 'https://us-central1-wlt3-66c9a.cloudfunctions.net/';
   
-  Future<http.Response> fetchPost() {
+  Future<http.Response> getLeagues() {
     return http.get( baseurl + 'league');
   }
 
