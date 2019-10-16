@@ -8,7 +8,9 @@ class ListAbstract extends StatelessWidget {
 
   void onItemTapped(context) {
     final _list = Provider.of<LeaguesModel>(context);
-    _idx++;
+    _idx++;    
+    _list.loadData();
+    /*
     _list.addToList({
           "id": "162",
           "name": "BELGIAN KINGS " + _idx.toString() + " !!!",
@@ -17,6 +19,7 @@ class ListAbstract extends StatelessWidget {
           "androidAppURL":"https://play.google.com/store/apps/details?id=com.winloseortie",
           "iosAppURL": ""
         });
+    */
   }
 
   getFlatButton(context)
@@ -30,18 +33,24 @@ class ListAbstract extends StatelessWidget {
   }
 
   @override
-  ListView build(BuildContext context) {
+  Widget build(BuildContext context) {
+    final _list = Provider.of<LeaguesModel>(context);
     List<Widget> wl = new List();
     wl.add(getFlatButton(context));
-    final _list = Provider.of<LeaguesModel>(context);
-    _list.list.forEach(
-      (f) => wl.add(
-        Center(
-          child: Text(f["name"], 
-          style: TextStyle(color: Colors.black, fontSize: 16.0))
+    if (_list.loading == true)
+    {
+      return Center(child:CircularProgressIndicator());
+    } else {
+      _list.list.forEach(
+        (f) => wl.add(
+          Center(
+            child: Text(f.name, style: TextStyle(color: Colors.black, fontSize: 16.0))
+          )
         )
-      )
-    );
-    return ListView(children: wl,);
+      );
+      return ListView(children: wl,);
+    }
+
+
   }
 }
