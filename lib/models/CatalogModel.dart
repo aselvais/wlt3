@@ -1,6 +1,8 @@
+import 'package:provider/provider.dart';
 import 'package:wlt3/models/ItemModel.dart';
 
-class CatalogModel {
+class CatalogModel extends ChangeNotifierProvider 
+{
 
   static const _itemNames = [
     'Code Smell',

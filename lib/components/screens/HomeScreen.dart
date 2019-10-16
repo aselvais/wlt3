@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cart = Provider.of<CartModel>(context);
+    final cart = Provider.of<CartModel>(context);
 
     return new Scaffold(
           drawer: new Drawerwlt(),

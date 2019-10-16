@@ -1,5 +1,8 @@
 
-class LeaguesModel {
+import 'package:flutter/material.dart';
+
+class LeaguesModel extends ChangeNotifier
+{
   List<Map<String, String>> _list = [
     {
       "id": "162",
@@ -173,6 +176,12 @@ class LeaguesModel {
   
   get list {
     return _list;
+  }
+
+  addToList(o)
+  {
+    _list.add(o);
+    notifyListeners();
   }
 
 }

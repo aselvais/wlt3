@@ -8,21 +8,16 @@ import 'package:wlt3/components/screens/LoginScreen.dart';
 import 'package:wlt3/components/screens/CatalogScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/CartModel.dart';
-import 'package:wlt3/models/CatalogModel.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
 
 class RouterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
       providers: [
-          Provider(builder: (context) => LeaguesModel()),
-          Provider(builder: (context) => CatalogModel()),
-          ChangeNotifierProxyProvider<CatalogModel, CartModel>( 
-            builder: (context, catalog, previousCart) => CartModel(catalog, previousCart) 
-          ),
+          ChangeNotifierProvider<LeaguesModel>(builder: (context) => LeaguesModel()),
+          ChangeNotifierProvider<CartModel>(builder: (context) => CartModel()),
       ],
       child: MaterialApp(
         title: 'Win Lose or Tie',

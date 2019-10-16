@@ -7,26 +7,8 @@ class Bottomnavigationwlt extends StatelessWidget
 {
 
   void onItemTapped(context, int index) {
-    var cart = Provider.of<CartModel>(context);
+    final cart = Provider.of<CartModel>(context);
     cart.idx = index;
-    /*
-    // Games
-    if (index == 0) {
-      //Navigator.pushNamed(context, '/games');
-    }
-    // Standing
-    if (index == 1) {
-      //Navigator.pushNamed(context, '/standing');
-    }
-    // Leagues
-    if (index == 2) {
-      //Navigator.pushNamed(context, '/leagues');
-    }
-    // Favorite
-    if (index == 3) {
-      //Navigator.pushNamed(context, '/favorites');
-    }
-    */
   }
 
   @override
