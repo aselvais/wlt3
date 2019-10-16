@@ -5,7 +5,18 @@ class ColorList extends StatelessWidget {
   @override
   ListView build(BuildContext context) {
     Map<String, Color> mycolors = Themedata.getAllColors();
-    List<Widget> kids = [];
+    List<Widget> kids = [
+      FlatButton(
+        child: Text('< back',style: TextStyle(fontSize: 25.0),),
+        color: Colors.blue,
+        textColor: Colors.white,
+        disabledColor: Colors.grey,
+        disabledTextColor: Colors.black,
+        padding: EdgeInsets.all(8.0),
+        splashColor: Colors.blueAccent,
+        onPressed: () { Navigator.pushNamed(context, '/home'); },        
+      )
+    ];
     int i = 136;
     mycolors.forEach((final String key, final Color value) {
       i++;

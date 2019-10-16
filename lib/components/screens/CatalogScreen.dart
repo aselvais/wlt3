@@ -8,8 +8,25 @@ class CatalogScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(child: SizedBox(height: 12)),
-          SliverList( delegate: SliverChildBuilderDelegate((context, index) => ListItem(index)),),
+          //_MyAppBar(),
+          SliverToBoxAdapter(
+            child: 
+            FlatButton(
+                child: Text('< back',style: TextStyle(fontSize: 40.0),),
+                color: Colors.blue,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                padding: EdgeInsets.all(8.0),
+                splashColor: Colors.blueAccent,
+                onPressed: () { Navigator.pop(context); },
+          ),
+            // SizedBox(height: 12),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+                (context, index) => ListItem(index)),
+          ),
         ],
       ),
     );

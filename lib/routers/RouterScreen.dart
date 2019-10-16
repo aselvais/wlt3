@@ -9,6 +9,7 @@ import 'package:wlt3/components/screens/CatalogScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/CartModel.dart';
 import 'package:wlt3/models/CatalogModel.dart';
+import 'package:wlt3/models/LeaguesModel.dart';
 
 class RouterScreen extends StatelessWidget {
 
@@ -17,9 +18,10 @@ class RouterScreen extends StatelessWidget {
 
     return MultiProvider(
       providers: [
+          Provider(builder: (context) => LeaguesModel()),
           Provider(builder: (context) => CatalogModel()),
-          ChangeNotifierProxyProvider<CatalogModel, CartModel>(
-              builder: (context, catalog, previousCart) => CartModel(catalog, previousCart)
+          ChangeNotifierProxyProvider<CatalogModel, CartModel>( 
+            builder: (context, catalog, previousCart) => CartModel(catalog, previousCart) 
           ),
       ],
       child: MaterialApp(
