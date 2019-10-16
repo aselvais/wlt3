@@ -5,7 +5,7 @@ import 'package:wlt3/components/lists/ListAbstract.dart';
 import 'package:wlt3/components/widgets/Bottomnavigationwlt.dart';
 import 'package:wlt3/components/widgets/Drawerwlt.dart';
 import 'package:wlt3/components/widgets/Topmenubar.dart';
-import 'package:wlt3/models/CartModel.dart';
+import 'package:wlt3/models/BottombarModel.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartModel>(context);
+    final cart = Provider.of<BottombarModel>(context);
 
     return new Scaffold(
           drawer: new Drawerwlt(),

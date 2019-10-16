@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class CartModel extends ChangeNotifier {
+class BottombarModel extends ChangeNotifier {
   int _idx = 0;
 
   int get idx { 

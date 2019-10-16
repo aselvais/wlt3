@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/libs/Themedata.dart';
-import 'package:wlt3/models/CartModel.dart';
+import 'package:wlt3/models/BottombarModel.dart';
 
 class Bottomnavigationwlt extends StatelessWidget
 {
 
   void onItemTapped(context, int index) {
-    final cart = Provider.of<CartModel>(context);
+    final cart = Provider.of<BottombarModel>(context);
     cart.idx = index;
   }
 
   @override
   BottomNavigationBar build(BuildContext context) {
-    var cart = Provider.of<CartModel>(context);
+    var cart = Provider.of<BottombarModel>(context);
 
     return new BottomNavigationBar(
       selectedItemColor: Themedata.selectedItemColor,

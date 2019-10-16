@@ -5,9 +5,8 @@ import 'package:wlt3/components/lists/ListAbstract.dart';
 import 'package:wlt3/components/screens/FeedbackScreen.dart';
 import 'package:wlt3/components/screens/HomeScreen.dart';
 import 'package:wlt3/components/screens/LoginScreen.dart';
-import 'package:wlt3/components/screens/CatalogScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
-import 'package:wlt3/models/CartModel.dart';
+import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
 
 class RouterScreen extends StatelessWidget {
@@ -17,7 +16,7 @@ class RouterScreen extends StatelessWidget {
     return MultiProvider(
       providers: [
           ChangeNotifierProvider<LeaguesModel>(builder: (context) => LeaguesModel()),
-          ChangeNotifierProvider<CartModel>(builder: (context) => CartModel()),
+          ChangeNotifierProvider<BottombarModel>(builder: (context) => BottombarModel()),
       ],
       child: MaterialApp(
         title: 'Win Lose or Tie',
@@ -28,7 +27,7 @@ class RouterScreen extends StatelessWidget {
           '/home': (context) => new HomeScreen(),
           '/standing': (context) => new ColorList(),
           '/leagues': (context) => new ListAbstract(),
-          '/favorites': (context) => new CatalogScreen(),
+          '/favorites': (context) => new ListAbstract(),
           '/feedback': (context) => new FeedbackScreen(),
           '/profile': (context) => new FeedbackScreen(),
           '/logout': (context) => new FeedbackScreen(),
