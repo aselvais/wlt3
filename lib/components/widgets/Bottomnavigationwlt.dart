@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/BottombarModel.dart';
+import 'package:wlt3/models/LeaguesModel.dart';
 
 class Bottomnavigationwlt extends StatelessWidget
 {
@@ -9,6 +10,11 @@ class Bottomnavigationwlt extends StatelessWidget
   void onItemTapped(context, int index) {
     final cart = Provider.of<BottombarModel>(context);
     cart.idx = index;
+    if (index == 2) // Leagues
+    {
+      final _list = Provider.of<LeaguesModel>(context);
+      _list.loadData();
+    }
   }
 
   @override

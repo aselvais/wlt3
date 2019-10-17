@@ -37,11 +37,14 @@ class LeaguesModel extends ChangeNotifier
 
   loadData()
   {
-    this.loading = true;
-    _api.getLeagues()
-      .then((dt) => _replaceList(dt) )
-      .catchError((e) => throw Exception(e))
-      .whenComplete(() => notifyListeners() );
+    if (_list.length == 0)
+    {
+      this.loading = true;
+      _api.getLeagues()
+        .then((dt) => _replaceList(dt) )
+        .catchError((e) => throw Exception(e))
+        .whenComplete(() => notifyListeners() );
+    }
   }
 
 }

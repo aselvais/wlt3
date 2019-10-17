@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/components/lists/ColorList.dart';
 import 'package:wlt3/components/lists/ListAbstract.dart';
+import 'package:wlt3/components/screens/FavoritesScreen.dart';
+import 'package:wlt3/components/screens/GamesScreen.dart';
+import 'package:wlt3/components/screens/LeaguesScreen.dart';
+import 'package:wlt3/components/screens/StandingsScreen.dart';
 import 'package:wlt3/components/widgets/Bottomnavigationwlt.dart';
 import 'package:wlt3/components/widgets/Drawerwlt.dart';
 import 'package:wlt3/components/widgets/Topmenubar.dart';
@@ -10,10 +14,10 @@ import 'package:wlt3/models/BottombarModel.dart';
 class HomeScreen extends StatelessWidget {
 
   final List<Widget> _children = [
-    ListAbstract(),
-    ColorList(), // Container(color: Colors.white),
-    Container(color: Colors.deepOrange),
-    Container(color: Colors.green)
+    GamesScreen(),
+    StandingsScreen(),
+    LeaguesScreen(),
+    FavoritesScreen()
   ];
 
   @override
