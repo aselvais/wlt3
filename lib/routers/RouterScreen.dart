@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wlt3/components/lists/ColorList.dart';
-import 'package:wlt3/components/lists/ListAbstract.dart';
 import 'package:wlt3/components/screens/FeedbackScreen.dart';
 import 'package:wlt3/components/screens/HomeScreen.dart';
 import 'package:wlt3/components/screens/LoginScreen.dart';
