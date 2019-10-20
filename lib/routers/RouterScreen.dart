@@ -4,6 +4,7 @@ import 'package:wlt3/components/screens/FeedbackScreen.dart';
 import 'package:wlt3/components/screens/HomeScreen.dart';
 import 'package:wlt3/components/screens/LoginScreen.dart';
 import 'package:wlt3/components/screens/ProfileScreen.dart';
+import 'package:wlt3/components/screens/SeasonsScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
@@ -27,9 +28,9 @@ class RouterScreen extends StatelessWidget {
         routes: {
           '/': (context) => new LoginScreen(),
           '/home': (context) => new HomeScreen(),
-          // '/standing': (context) => new ColorList(),
-          // '/leagues': (context) => new ListAbstract(),
-          // '/favorites': (context) => new ListAbstract(),
+          '/seasons': (context) => SeasonsScreen(),
+          // '/leagues': (context) => new ListLeagues(),
+          // '/favorites': (context) => new ListLeagues(),
           '/feedback': (context) => new FeedbackScreen(),
           '/profile': (context) => new ProfileScreen(),
           // '/logout': (context) => new FeedbackScreen(),

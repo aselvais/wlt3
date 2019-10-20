@@ -8,13 +8,24 @@ class LeaguesModel extends ChangeNotifier
   ApiaccessWlt _api = new ApiaccessWlt();  
   List<League> _list = new List();
   bool _loading = false;
+  int _selectedId = -1;
 
   get list {
     return _list;
   }
 
+  get selectedId {
+    return _selectedId;
+  }
+
   get loading {
     return _loading;
+  }
+  
+  set selectedId(int v)
+  {
+    _selectedId = v;
+    notifyListeners();
   }
 
   set loading(bool v)

@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wlt3/models/League.dart';
+import 'package:wlt3/models/LeaguesModel.dart';
+
+class ListLeagues extends StatelessWidget {
+
+  Widget getButton(BuildContext context, League f)
+  {
+    final _list = Provider.of<LeaguesModel>(context);
+    bool isSelected = false;
+    if (_list.selectedId == f.id) isSelected = true;
+    return Row(
+      children: <Widget>[
+        Expanded(
+          flex: 1,
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Image.network(f.imageUrl, width: 100, height: 100),
+          ),
+        ),
+        Expanded(
+          flex: 8,
+          child: Text(f.name, textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 18.0)),
+        ),
+        Expanded(
+          flex: 1,
+          child: Icon(
+              Icons.check,
+              color: (isSelected) ? Colors.black : Colors.white,
+              size: 24.0,
+            ),
+        ),
+      ],
+    );
+  }
+
+  onTapElement(BuildContext context, int id)
+  {
+    final _list = Provider.of<LeaguesModel>(context);
+    _list.selectedId = id;
+    Navigator.pushNamed(context, '/seasons');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final _list = Provider.of<LeaguesModel>(context);
+
+    List<Widget> wl = new List();
+    if (_list.loading == true)
+    {
+      return Center(child:CircularProgressIndicator());
+    } else {
+      _list.list.forEach(
+        (League f) => wl.add(
+          InkWell(
+            child: Container(
+              height: 60, 
+              child: getButton(context, f),
+            ),
+            onTap: () => onTapElement(context, f.id),
+          )
+        )
+      );
+      return ListView(children: wl,);
+    }
+
+
+  }
+}
