@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/models/League.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
+import 'package:wlt3/models/SeasonsModel.dart';
 
 class ListLeagues extends StatelessWidget {
 
@@ -38,7 +39,9 @@ class ListLeagues extends StatelessWidget {
   onTapElement(BuildContext context, int id)
   {
     final _list = Provider.of<LeaguesModel>(context);
+    final _list2 = Provider.of<SeasonsModel>(context);
     _list.selectedId = id;
+    _list2.loadData(id);
     Navigator.pushNamed(context, '/seasons');
   }
 

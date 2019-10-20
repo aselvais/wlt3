@@ -8,6 +8,7 @@ import 'package:wlt3/components/screens/SeasonsScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
+import 'package:wlt3/models/SeasonsModel.dart';
 
 class RouterScreen extends StatelessWidget {
 
@@ -16,6 +17,7 @@ class RouterScreen extends StatelessWidget {
     return MultiProvider(
       providers: [
           ChangeNotifierProvider<LeaguesModel>(builder: (context) => LeaguesModel()),
+          ChangeNotifierProvider<SeasonsModel>(builder: (context) => SeasonsModel()),
           ChangeNotifierProvider<BottombarModel>(builder: (context) => BottombarModel()),
       ],
       child: MaterialApp(

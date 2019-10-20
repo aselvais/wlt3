@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wlt3/models/League.dart';
-import 'package:wlt3/models/LeaguesModel.dart';
+import 'package:wlt3/models/Season.dart';
+import 'package:wlt3/models/SeasonsModel.dart';
 
 class ListSeasons extends StatelessWidget {
 
-  Widget getButton(BuildContext context, League f)
+  Widget getButton(BuildContext context, Season f)
   {
-    final _list = Provider.of<LeaguesModel>(context);
+    final _list = Provider.of<SeasonsModel>(context);
     bool isSelected = false;
     if (_list.selectedId == f.id) isSelected = true;
     return Row(
       children: <Widget>[
-        Expanded(
-          flex: 1,
-          child: FittedBox(
-            fit: BoxFit.contain,
-            child: Image.network(f.imageUrl, width: 100, height: 100),
-          ),
-        ),
         Expanded(
           flex: 8,
           child: Text(f.name, textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 18.0)),
@@ -39,7 +32,7 @@ class ListSeasons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _list = Provider.of<LeaguesModel>(context);
+    final _list = Provider.of<SeasonsModel>(context);
 
     List<Widget> wl = new List();
     if (_list.loading == true)
@@ -47,7 +40,7 @@ class ListSeasons extends StatelessWidget {
       return Center(child:CircularProgressIndicator());
     } else {
       _list.list.forEach(
-        (League f) => wl.add(
+        (Season f) => wl.add(
           InkWell(
             child: Container(
               height: 60, 
