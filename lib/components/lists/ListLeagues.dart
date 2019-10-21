@@ -36,12 +36,13 @@ class ListLeagues extends StatelessWidget {
     );
   }
 
-  onTapElement(BuildContext context, int id)
+  onTapElement(BuildContext context, League item)
   {
     final _list = Provider.of<LeaguesModel>(context);
     final _list2 = Provider.of<SeasonsModel>(context);
-    _list.selectedId = id;
-    _list2.loadData(id);
+    _list.selectedId = item.id;
+    _list.selectedModel = item;
+    _list2.loadData(item.id);
     Navigator.pushNamed(context, '/seasons');
   }
 
@@ -61,7 +62,7 @@ class ListLeagues extends StatelessWidget {
               height: 60, 
               child: getButton(context, f),
             ),
-            onTap: () => onTapElement(context, f.id),
+            onTap: () => onTapElement(context, f),
           )
         )
       );

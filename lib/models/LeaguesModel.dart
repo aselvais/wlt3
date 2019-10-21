@@ -9,6 +9,7 @@ class LeaguesModel extends ChangeNotifier
   List<League> _list = new List();
   bool _loading = false;
   int _selectedId = -1;
+  League _selectedModel;
 
   get list {
     return _list;
@@ -18,6 +19,10 @@ class LeaguesModel extends ChangeNotifier
     return _selectedId;
   }
 
+  get selectedModel {
+    return _selectedModel;
+  }
+
   get loading {
     return _loading;
   }
@@ -25,6 +30,12 @@ class LeaguesModel extends ChangeNotifier
   set selectedId(int v)
   {
     _selectedId = v;
+    notifyListeners();
+  }
+  
+  set selectedModel(League v)
+  {
+    _selectedModel = v;
     notifyListeners();
   }
 

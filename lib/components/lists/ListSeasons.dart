@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
 
@@ -28,7 +29,14 @@ class ListSeasons extends StatelessWidget {
     );
   }
 
-
+  onTapElement(BuildContext context, int id)
+  {
+    final _list = Provider.of<SeasonsModel>(context);
+    final _list2 = Provider.of<DivisionsModel>(context);
+    _list.selectedId = id;
+    _list2.loadData(id);
+    Navigator.pushNamed(context, '/divisions');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +54,7 @@ class ListSeasons extends StatelessWidget {
               height: 60, 
               child: getButton(context, f),
             ),
-            onTap: () => _list.selectedId = f.id,
+            onTap: () => onTapElement(context, f.id),
           )
         )
       );
