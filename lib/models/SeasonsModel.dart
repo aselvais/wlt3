@@ -9,6 +9,7 @@ class SeasonsModel extends ChangeNotifier
   List<Season> _list = new List();
   bool _loading = false;
   int _selectedId = -1;
+  Season _selectedModel;
 
   get list {
     return _list;
@@ -21,6 +22,16 @@ class SeasonsModel extends ChangeNotifier
   get loading {
     return _loading;
   }
+
+  get selectedModel {
+    return _selectedModel;
+  }
+
+  set selectedModel(Season v)
+  {
+    _selectedModel = v;
+    notifyListeners();
+  }  
   
   set selectedId(int v)
   {

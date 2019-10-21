@@ -29,12 +29,13 @@ class ListSeasons extends StatelessWidget {
     );
   }
 
-  onTapElement(BuildContext context, int id)
+  onTapElement(BuildContext context, Season model)
   {
     final _list = Provider.of<SeasonsModel>(context);
     final _list2 = Provider.of<DivisionsModel>(context);
-    _list.selectedId = id;
-    _list2.loadData(id);
+    _list.selectedId = model.id;
+    _list.selectedModel = model;
+    _list2.loadData(model.id);
     Navigator.pushNamed(context, '/divisions');
   }
 
@@ -54,7 +55,7 @@ class ListSeasons extends StatelessWidget {
               height: 60, 
               child: getButton(context, f),
             ),
-            onTap: () => onTapElement(context, f.id),
+            onTap: () => onTapElement(context, f),
           )
         )
       );

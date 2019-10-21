@@ -44,5 +44,24 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-  
+
+
+  Future<List<Division>> getGames(String date, int seasonId,  int divisionId) async {
+    // https://us-central1-wlt3-66c9a.cloudfunctions.net/gametoday/?date=2018-06-23&seasonId=259&divisionId=4052
+    final response = await http.get(baseurl + 
+          'gametoday?date=' + date +
+          'seasonId=' + seasonId.toString() +
+          'divisionId=' + divisionId.toString()
+          );
+    if (response.statusCode == 200) {
+      List<dynamic> djson = json.decode(response.body);
+      List<Division> toret = new List();
+      djson.forEach((json) => toret.add(Division.fromJson(json)));
+      return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+
 }

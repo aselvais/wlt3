@@ -9,6 +9,7 @@ class DivisionsModel extends ChangeNotifier
   List<Division> _list = new List();
   bool _loading = false;
   int _selectedId = -1;
+  Division _selectedModel;
 
   get list {
     return _list;
@@ -20,6 +21,16 @@ class DivisionsModel extends ChangeNotifier
 
   get loading {
     return _loading;
+  }
+
+  get selectedModel {
+    return _selectedModel;
+  }
+
+  set selectedModel(Division v)
+  {
+    _selectedModel = v;
+    notifyListeners();
   }
   
   set selectedId(int v)

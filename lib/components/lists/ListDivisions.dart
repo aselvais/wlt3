@@ -29,12 +29,12 @@ class ListDivisions extends StatelessWidget {
     );
   }
 
-  onTapElement(BuildContext context, int id)
+  onTapElement(BuildContext context, Division model)
   {
-    print(id);
     final _list = Provider.of<DivisionsModel>(context);
     final _list2 = Provider.of<BottombarModel>(context);
-    _list.selectedId = id;
+    _list.selectedId = model.id;
+    _list.selectedModel = model;
     _list2.idx = 0;
      Navigator.popUntil(context, ModalRoute.withName('/home'));
   }
@@ -55,7 +55,7 @@ class ListDivisions extends StatelessWidget {
               height: 60, 
               child: getButton(context, f),
             ),
-            onTap: () => onTapElement(context, f.id),
+            onTap: () => onTapElement(context, f),
           )
         )
       );

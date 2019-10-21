@@ -1,0 +1,58 @@
+[
+  {
+    "id": 731257,
+    "type": "final",
+    "arena": {
+      "name": "Rolph Road Public School (east diamond)",
+      "longitude": -79.3659595,
+      "latitude": 43.6998525,
+      "address": "31 Rolph Rd, East York, ON M4G 3M5"
+    },
+    "time": "9:00 AM",
+    "info": {
+      "team1": {
+        "teamId": 35457,
+        "teamName": "EAGLE BEAVER - FOREST",
+        "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=iPN_Eagle_Beaver.jpg",
+        "score": null,
+        "news": false,
+        "tweets": true,
+        "home": false,
+        "win": 0,
+        "lose": 0,
+        "draw": 0,
+        "shootoutLoss": 0,
+        "enableSol": false,
+        "streak": null,
+        "positionElementInStandings": null
+      },
+      "team2": {
+        "teamId": 35462,
+        "teamName": "SINGER KWINTER - GOLD",
+        "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=pVl_Singer Kwinter.png",
+        "score": null,
+        "news": false,
+        "tweets": true,
+        "home": true,
+        "win": 0,
+        "lose": 0,
+        "draw": 0,
+        "shootoutLoss": 0,
+        "enableSol": false,
+        "streak": null,
+        "positionElementInStandings": null
+      }
+    },
+    "divisionId": 4052,
+    "divisionName": "Junior Rookieball",
+    "dateTime": "2018-06-23 09:00:00",
+    "leagueName": "Leaside Baseball Association",
+    "leagueTimezone": "+0500",
+    "leagueShortName": "Leaside Baseball Association",
+    "status": "SEMI FINALS",
+    "seasonName": "2018",
+    "seasonPlayOff": false,
+    "shareUrl": "http://www.winloseortie.com",
+    "linkStreamVideo": null
+  }
+]
