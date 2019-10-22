@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/Division.dart';
+import 'package:wlt3/models/GamesModel.dart';
+import 'package:wlt3/models/SeasonsModel.dart';
 
 class ListDivisions extends StatelessWidget {
 
@@ -31,11 +33,15 @@ class ListDivisions extends StatelessWidget {
 
   onTapElement(BuildContext context, Division model)
   {
-    final _list = Provider.of<DivisionsModel>(context);
-    final _list2 = Provider.of<BottombarModel>(context);
-    _list.selectedId = model.id;
-    _list.selectedModel = model;
-    _list2.idx = 0;
+    final divisions = Provider.of<DivisionsModel>(context);
+    final bottomModel = Provider.of<BottombarModel>(context);
+    final games = Provider.of<GamesModel>(context);
+    
+    final seasons = Provider.of<SeasonsModel>(context);
+    divisions.selectedId = model.id;
+    divisions.selectedModel = model;
+    games.loadData('2018-06-20', seasons.selectedModel.id, divisions.selectedModel.id);
+    bottomModel.idx = 0;
      Navigator.popUntil(context, ModalRoute.withName('/home'));
   }
 

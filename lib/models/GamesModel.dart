@@ -1,15 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ApiaccessWlt.dart';
-import 'package:wlt3/models/Division.dart';
+import 'package:wlt3/models/Game.dart';
 
 class GamesModel extends ChangeNotifier
 {
   ApiaccessWlt _api = new ApiaccessWlt();  
-  List<Division> _list = new List();
+  List<Game> _list = new List();
   bool _loading = false;
   int _selectedId = -1;
-  Division _selectedModel;
+  Game _selectedModel;
 
   get list {
     return _list;
@@ -27,7 +27,7 @@ class GamesModel extends ChangeNotifier
     return _selectedModel;
   }
 
-  set selectedModel(Division v)
+  set selectedModel(Game v)
   {
     _selectedModel = v;
     notifyListeners();
@@ -51,17 +51,17 @@ class GamesModel extends ChangeNotifier
     notifyListeners();
   }
 
-  _replaceList(List<Division> o)
+  _replaceList(List<Game> o)
   {
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }
 
-  loadData(int seasonId)
+  loadData(String date, int seasonId, int divisionId)
   {
     this.loading = true;
     _list = new List();
-    _api.getDivisions(seasonId)
+    _api.getGames(date, seasonId, divisionId)
       .then((dt) => _replaceList(dt) )
       .catchError((e) => throw Exception(e))
       .whenComplete(() => notifyListeners() );

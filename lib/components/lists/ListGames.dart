@@ -1,47 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wlt3/models/DivisionsModel.dart';
-import 'package:wlt3/models/Season.dart';
-import 'package:wlt3/models/SeasonsModel.dart';
+import 'package:wlt3/models/Game.dart';
+import 'package:wlt3/models/GamesModel.dart';
 
 class ListGames extends StatelessWidget {
 
-  Widget getButton(BuildContext context, Season f)
+  Widget getButton(BuildContext context, Game f)
   {
-    final _list = Provider.of<SeasonsModel>(context);
-    bool isSelected = false;
-    if (_list.selectedId == f.id) isSelected = true;
-    return Row(
+    return 
+    Column(
       children: <Widget>[
-        Expanded(
-          flex: 8,
-          child: Text(f.name, textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 18.0)),
-        ),
-        Expanded(
-          flex: 1,
-          child: Icon(
-              Icons.check,
-              color: (isSelected) ? Colors.black : Colors.white,
-              size: 24.0,
+        Row(
+          children: <Widget>[
+            Expanded(
+              flex: 6,
+              child: Text(
+                f.info.team1.teamName + " (" + f.info.team1.score.toString() + ")\n" + 
+                f.info.team2.teamName + " (" + f.info.team2.score.toString() + ")\n", 
+                textAlign: TextAlign.left, style: TextStyle(color: Colors.black, fontSize: 14.0)
+                ),
             ),
+            Expanded(
+              flex: 4,
+              child: Text(
+                f.dateTime + "\n" +
+                f.arena.name + "\n" +
+                f.status,
+                style: TextStyle(color: Colors.black, fontSize: 13.0)
+                )
+            ),
+          ],
         ),
+        Row(children: <Widget>[
+          Expanded(
+            flex: 10,
+            child: Text(
+              f.leagueShortName.toUpperCase() + "\n" + 
+              f.seasonName.toUpperCase() + " | " + f.divisionName.toUpperCase()
+            ),
+            )
+        ],)       
       ],
     );
   }
 
-  onTapElement(BuildContext context, Season model)
+  onTapElement(BuildContext context, Game model)
   {
-    final _list = Provider.of<SeasonsModel>(context);
-    final _list2 = Provider.of<DivisionsModel>(context);
+    final _list = Provider.of<GamesModel>(context);
     _list.selectedId = model.id;
     _list.selectedModel = model;
-    _list2.loadData(model.id);
-    Navigator.pushNamed(context, '/divisions');
+    Navigator.pushNamed(context, '/gamedetail');
   }
 
   @override
   Widget build(BuildContext context) {
-    final _list = Provider.of<SeasonsModel>(context);
+    
+    final _list = Provider.of<GamesModel>(context);
 
     List<Widget> wl = new List();
     if (_list.loading == true)
@@ -49,10 +63,13 @@ class ListGames extends StatelessWidget {
       return Center(child:CircularProgressIndicator());
     } else {
       _list.list.forEach(
-        (Season f) => wl.add(
+        (Game f) => wl.add(
           InkWell(
             child: Container(
-              height: 60, 
+              margin: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(10.0),
+              // height: 100, 
+              color: Colors.amber[600],
               child: getButton(context, f),
             ),
             onTap: () => onTapElement(context, f),

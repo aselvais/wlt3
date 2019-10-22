@@ -39,12 +39,13 @@ class Game {
   });
 
   factory Game.fromJson(Map<String, dynamic> json) {
+    
     return Game(
       id: json['id'],
       type: json['type'],
-      arena: json['arena'],
+      arena: Arena.fromJson(json['arena']),
       time: json['time'],
-      info: json['info'],
+      info: Gameinfo.fromJson(json['info']),
       divisionId: json['divisionId'],
       divisionName: json['divisionName'],
       dateTime: json['dateTime'],

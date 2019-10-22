@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:wlt3/libs/ApiaccessAbstract.dart';
 import 'package:wlt3/models/Division.dart';
+import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/League.dart';
 import 'package:wlt3/models/Season.dart';
 
@@ -46,17 +47,20 @@ class ApiaccessWlt extends ApiaccessAbstract {
   }
 
 
-  Future<List<Division>> getGames(String date, int seasonId,  int divisionId) async {
+  Future<List<Game>> getGames(String date, int seasonId,  int divisionId) async {
     // https://us-central1-wlt3-66c9a.cloudfunctions.net/gametoday/?date=2018-06-23&seasonId=259&divisionId=4052
-    final response = await http.get(baseurl + 
-          'gametoday?date=' + date +
-          'seasonId=' + seasonId.toString() +
-          'divisionId=' + divisionId.toString()
-          );
+    String fullurl = baseurl + 
+          'gametoday/?date=' + date +
+          '&seasonId=' + seasonId.toString() +
+          '&divisionId=' + divisionId.toString();
+    print(fullurl);
+    final response = await http.get(fullurl);
+          
     if (response.statusCode == 200) {
+      print(response.body);
       List<dynamic> djson = json.decode(response.body);
-      List<Division> toret = new List();
-      djson.forEach((json) => toret.add(Division.fromJson(json)));
+      List<Game> toret = new List();
+      djson.forEach((json) => toret.add(Game.fromJson(json)));
       return toret;
     } else {
       throw Exception('Failed to load response.body');
