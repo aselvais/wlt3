@@ -40,7 +40,7 @@ class ListDivisions extends StatelessWidget {
     final seasons = Provider.of<SeasonsModel>(context);
     divisions.selectedId = model.id;
     divisions.selectedModel = model;
-    games.loadData('2018-06-20', seasons.selectedModel.id, divisions.selectedModel.id);
+    games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     bottomModel.idx = 0;
      Navigator.popUntil(context, ModalRoute.withName('/home'));
   }

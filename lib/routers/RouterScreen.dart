@@ -5,6 +5,7 @@ import 'package:wlt3/components/screens/FeedbackScreen.dart';
 import 'package:wlt3/components/screens/GamedetailScreen.dart';
 import 'package:wlt3/components/screens/HomeScreen.dart';
 import 'package:wlt3/components/screens/LoginScreen.dart';
+import 'package:wlt3/components/screens/PickDateScreen.dart';
 import 'package:wlt3/components/screens/ProfileScreen.dart';
 import 'package:wlt3/components/screens/SeasonsScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
@@ -41,6 +42,7 @@ class RouterScreen extends StatelessWidget {
           '/feedback': (context) => new FeedbackScreen(),
           '/profile': (context) => new ProfileScreen(),
           '/gamedetail': (context) => new GamedetailScreen(),
+          '/pickdate': (context) => new PickDateScreen(),
         }
       )
     );

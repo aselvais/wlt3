@@ -10,7 +10,8 @@ class GamesModel extends ChangeNotifier
   bool _loading = false;
   int _selectedId = -1;
   Game _selectedModel;
-
+  String _selectedDate = '2018-06-20';
+   
   get list {
     return _list;
   }
@@ -27,6 +28,16 @@ class GamesModel extends ChangeNotifier
     return _selectedModel;
   }
 
+  get selectedDate {
+    return _selectedDate;
+  }
+
+  set selectedDate(String v)
+  {
+    _selectedDate = v;
+    notifyListeners();
+  }
+  
   set selectedModel(Game v)
   {
     _selectedModel = v;
@@ -57,11 +68,11 @@ class GamesModel extends ChangeNotifier
     this.loading = false;
   }
 
-  loadData(String date, int seasonId, int divisionId)
+  loadData(int seasonId, int divisionId)
   {
     this.loading = true;
     _list = new List();
-    _api.getGames(date, seasonId, divisionId)
+    _api.getGames(this._selectedDate, seasonId, divisionId)
       .then((dt) => _replaceList(dt) )
       .catchError((e) => throw Exception(e))
       .whenComplete(() => notifyListeners() );
