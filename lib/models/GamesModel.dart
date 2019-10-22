@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/Game.dart';
 
@@ -10,7 +11,7 @@ class GamesModel extends ChangeNotifier
   bool _loading = false;
   int _selectedId = -1;
   Game _selectedModel;
-  String _selectedDate = '2018-06-20';
+  DateTime _selectedDate = DateTime.now();
    
   get list {
     return _list;
@@ -32,7 +33,7 @@ class GamesModel extends ChangeNotifier
     return _selectedDate;
   }
 
-  set selectedDate(String v)
+  set selectedDate(DateTime v)
   {
     _selectedDate = v;
     notifyListeners();
@@ -71,11 +72,14 @@ class GamesModel extends ChangeNotifier
   loadData(int seasonId, int divisionId)
   {
     this.loading = true;
+    String date = DateFormat("yyyy-MM-dd").format(this._selectedDate);
     _list = new List();
-    _api.getGames(this._selectedDate, seasonId, divisionId)
+    
+    _api.getGames(date, seasonId, divisionId)
       .then((dt) => _replaceList(dt) )
       .catchError((e) => throw Exception(e))
       .whenComplete(() => notifyListeners() );
+    
   }
 
 }
