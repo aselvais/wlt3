@@ -6,24 +6,63 @@ import 'package:wlt3/models/Standing.dart';
 
 class ListStandings extends StatelessWidget {
 
+  Widget getElement(BuildContext context, Standingdata f, String k)
+  {
+    try {
+      switch(k) {
+        case 'imgurl': { return Image.network(f.imgurl); }
+        break;
+        case 'team': { return Text('team: ' + f.team); }
+        break;
+        case 'gp': { return Text('teamId: ' + f.teamId.toString()); }
+        break;
+        case 'gp': { return Text('GP: ' + f.gp.toString()); }
+        break;
+        case 'w': { return Text('W: ' + f.w.toString()); }
+        break;
+        case 'l': { return Text('L: ' + f.l.toString()); }
+        break;
+        case 't': { return Text('T: ' + f.t.toString()); }
+        break;
+        case 'pts': { return Text('PTS: ' + f.pts.toString()); }
+        break;
+        case 'gf': { return Text('GF: ' + f.gf.toString()); }
+        break;
+        case 'ga': { return Text('GA: ' + f.ga.toString()); }
+        break;
+        case 'gfavg': { return Text('GFAVG: ' + f.gfavg.toString()); }
+        break;
+        case 'strk': { return Text('STRK: ' + f.strk); }
+        break;
+        default: { return Text(k + ' INVALID!'); }
+        break;
+      }
+
+    } catch(ee) { 
+      return Text(k + ' ERROR!'); 
+    }
+  }
+
+
   List<Widget> getRow(BuildContext context, List<Standingdata> f)
   {
     List<Widget> toret = new List();
     f.forEach( (Standingdata f) => toret.add(
       Column(children: <Widget>[
         Text('----------------------------'),
-        Image.network(f.imgurl),
-        Text('team: ' + f.team),
-        Text('teamId: ' + f.teamId.toString()),
-        Text('GP: ' + f.gp.toString()),
-        Text('W: ' + f.w.toString()),
-        Text('L: ' + f.l.toString()),
-        Text('T: ' + f.t.toString()),
-        Text('PTS: ' + f.pts.toString()),
-        Text('GF: ' + f.gf.toString()),
-        Text('GA: ' + f.ga.toString()),
-        Text('GFAVG: ' + f.gfavg.toString()),
-        Text('STRK: ' + f.strk),
+        this.getElement(context, f, 'imgurl'),
+        Text('----------------------------'),
+        this.getElement(context, f, 'team'),
+        this.getElement(context, f, 'teamId'),
+        this.getElement(context, f, 'gp'),
+        this.getElement(context, f, 'w'),
+        this.getElement(context, f, 'l'),
+        this.getElement(context, f, 't'),
+        this.getElement(context, f, 'pts'),
+        this.getElement(context, f, 'gf'),
+        this.getElement(context, f, 'ga'),
+        this.getElement(context, f, 'gfavg'),
+        this.getElement(context, f, 'strk'),
       ],)
     ));
     //f.forEach( (Standingdata f) => print(f.teamId));

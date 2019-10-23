@@ -97,5 +97,212 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
+  Future<List<Standing>> getFeednews(int teamId) async 
+  {
+    String fullurl = baseurl + 'feednews/?teamId=' + teamId.toString();
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getFeedtwitter(int teamId) async 
+  {
+    String fullurl = baseurl + 'feedtwitter/?teamId=' + teamId.toString();
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getGameall(
+        String datefrom,
+        String dateto,
+        int seasonId,
+        int divisionId,
+        String output
+  ) async 
+  {
+    String fullurl = baseurl + 'gameall/?datefrom=' + datefrom +
+      "&dateto=" + dateto +
+      "&seasonId=" + seasonId.toString() +
+      "&divisionId=" + divisionId.toString() +
+      "&output=" + output;
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getGamedetailAllArrays(String date, int teamId) async 
+  {
+    String fullurl = baseurl + 'gamedetailAllArrays/?date=' + date +
+      "&teamId=" + teamId.toString();
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Game>> getGametoday(String date, int seasonId, int divisionId) async 
+  {
+    return this.getGames(date, seasonId, divisionId);
+  }
+
+  Future<List<Standing>> getTeam(int divisionId) async 
+  {
+    String fullurl = baseurl + "team/?divisionId=" + divisionId.toString();
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getTeamInfo(int teamId) async 
+  {
+    String fullurl = baseurl + "teamInfo/?teamInfo=" + teamId.toString();
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getTeamstandingHeaders(int divisionId) async 
+  {
+    String fullurl = baseurl + "teamstandingHeaders/?divisionId=" + divisionId.toString();
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getTeamstandingLocalTierGroup(int divisionIds, int tierId) async 
+  {
+    String fullurl = baseurl + "teamstandingLocalTierGroup/?divisionIds=" + divisionIds.toString() + "&tierId=" + tierId.toString();
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getTeamstandingLocalTierGroupGeneric(int divisionId, int tierId) async 
+  {
+    String fullurl = baseurl + "teamstandingLocalTierGroupGeneric/?divisionId=" + divisionId.toString() + "&tierId=" + tierId.toString();
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getUserdivision(String userId) async 
+  {
+    String fullurl = baseurl + "userdivision/?userId=" + userId;
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getUsergames(String userId) async 
+  {
+    String fullurl = baseurl + "usergames/?userId=" + userId;
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  Future<List<Standing>> getUserteams(String userId) async 
+  {
+    String fullurl = baseurl + "userteams/?userId=" + userId;
+    print(fullurl);
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      print(response.body);
+      //List<dynamic> djson = json.decode(response.body);
+      //List<Standing> toret = new List();
+      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
 
 }
