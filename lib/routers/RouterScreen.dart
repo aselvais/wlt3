@@ -8,12 +8,15 @@ import 'package:wlt3/components/screens/LoginScreen.dart';
 import 'package:wlt3/components/screens/PickDateScreen.dart';
 import 'package:wlt3/components/screens/ProfileScreen.dart';
 import 'package:wlt3/components/screens/SeasonsScreen.dart';
+import 'package:wlt3/components/screens/TiersScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
+import 'package:wlt3/models/StandingsModel.dart';
+import 'package:wlt3/models/TiersModel.dart';
 
 class RouterScreen extends StatelessWidget {
 
@@ -25,6 +28,8 @@ class RouterScreen extends StatelessWidget {
           ChangeNotifierProvider<SeasonsModel>(builder: (context) => SeasonsModel()),
           ChangeNotifierProvider<DivisionsModel>(builder: (context) => DivisionsModel()),
           ChangeNotifierProvider<GamesModel>(builder: (context) => GamesModel()),
+          ChangeNotifierProvider<TiersModel>(builder: (context) => TiersModel()),
+          ChangeNotifierProvider<StandingsModel>(builder: (context) => StandingsModel()),
           ChangeNotifierProvider<BottombarModel>(builder: (context) => BottombarModel()),
       ],
       child: MaterialApp(
@@ -39,6 +44,7 @@ class RouterScreen extends StatelessWidget {
           '/home': (context) => new HomeScreen(),
           '/seasons': (context) => SeasonsScreen(),
           '/divisions': (context) => DivisionsScreen(),
+          '/tiers': (context) => TiersScreen(),
           '/feedback': (context) => new FeedbackScreen(),
           '/profile': (context) => new ProfileScreen(),
           '/gamedetail': (context) => new GamedetailScreen(),

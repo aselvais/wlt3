@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/BottombarModel.dart';
+import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
+import 'package:wlt3/models/StandingsModel.dart';
+import 'package:wlt3/models/TiersModel.dart';
 
 class Bottomnavigationwlt extends StatelessWidget
 {
@@ -10,10 +13,23 @@ class Bottomnavigationwlt extends StatelessWidget
   void onItemTapped(context, int index) {
     final cart = Provider.of<BottombarModel>(context);
     cart.idx = index;
+    if (index == 1) // Standings
+    {
+      final standing = Provider.of<StandingsModel>(context);
+      final divisions = Provider.of<DivisionsModel>(context);
+      final tiers = Provider.of<TiersModel>(context);
+      int tiersId = 0;
+      try{
+        tiersId = tiers.selectedModel.id;
+      } catch(eee){}
+      try{
+        standing.loadData(divisions.selectedModel.id, tiersId);
+      } catch(eee){}
+    }
     if (index == 2) // Leagues
     {
-      final _list = Provider.of<LeaguesModel>(context);
-      _list.loadData();
+      final leagues = Provider.of<LeaguesModel>(context);
+      leagues.loadData();
     }
   }
 
