@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/components/lists/ListStandings.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
@@ -42,8 +43,8 @@ class StandingsScreen extends StatelessWidget
             Expanded(
               flex: 9,
               child: Container(
-                color: Colors.blue,
-                child: Text('data'),
+                color: Colors.white,
+                child: ListStandings(),
               ),
             )
         ],),
