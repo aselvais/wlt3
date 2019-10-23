@@ -1,10 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/GamesModel.dart';
+import 'package:wlt3/models/Team.dart';
 
 class GamedetailScreen extends StatelessWidget {
   final String _title = 'Game detail';
+
+  onTapTeam(BuildContext context, Team team) 
+  {
+    print(' ----> onTapTeam ' + team.teamId.toString()  + ' <---- ');
+    Navigator.pushNamed(context, '/teamdetail');
+  }
+
+  onTapCalendar(BuildContext context) 
+  {
+    print('onTapCalendar');
+  }
+
+  onTapMap(BuildContext context) 
+  {
+    print('onTapMap');
+  }
+
+  onTapShare(BuildContext context) 
+  {
+    print('onTapShare');
+  }
+
+  onTapFavorite(BuildContext context) 
+  {
+    print('onTapFavorite');
+  }
+
   @override
   Widget build(BuildContext context) {
     final Game game = Provider.of<GamesModel>(context).selectedModel;
@@ -20,23 +49,39 @@ class GamedetailScreen extends StatelessWidget {
               children: <Widget>[
                 Container(
                   //margin: const EdgeInsets.all(5.0),
-                  height: 100,
+                  height: 200,
                   padding: const EdgeInsets.all(10.0),
                   color: Colors.black,
                   width: MediaQuery.of(context).size.width,
                   child: Row(
                     children: <Widget>[
-                   Expanded(
-                     child: Text(
-                       game.info.team1.teamName + "\n" + 
-                       game.info.team1.score.toString(), 
-                     style: TextStyle(color: Colors.white))
-                     ),
-                   Expanded(
-                     child: Text(game.info.team2.teamName + "\n" + 
-                       game.info.team2.score.toString(), 
-                     style: TextStyle(color: Colors.white))
-                     ),
+                        Expanded(
+                          child: InkWell(
+                              onTap: () => onTapTeam(context, game.info.team1),
+                              child: Column(
+                              children: <Widget>[
+                                Image.network(game.info.team1.imageUrl),
+                                Text(
+                                  game.info.team1.teamName + "\n" + 
+                                  game.info.team1.score.toString(), 
+                                style: TextStyle(color: Colors.white)),
+                              ],
+                            ),
+                          )
+                          ),
+                        Expanded(
+                          child: InkWell(
+                              onTap: () => onTapTeam(context, game.info.team2),
+                              child: Column(
+                              children: <Widget>[
+                                Image.network(game.info.team2.imageUrl),
+                                Text(game.info.team2.teamName + "\n" + 
+                                  game.info.team2.score.toString(), 
+                                style: TextStyle(color: Colors.white)),
+                              ],
+                            ),
+                          )
+                          ),
                   ],)
                 ),
                 Container(
@@ -44,7 +89,14 @@ class GamedetailScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   color: Colors.blue,
                   width: MediaQuery.of(context).size.width,
-                  child: Text('MENU ...', style: TextStyle(color: Colors.white))
+                  child: Row(
+                    children: <Widget>[
+                      InkWell(child: Text('ADD TO CALENDAR | ', style: TextStyle(color: Colors.white)), onTap: () => onTapCalendar(context),),
+                      InkWell(child: Text('VIEW ON MAP | ', style: TextStyle(color: Colors.white)), onTap: () => onTapMap(context),),
+                      InkWell(child: Text('SHARE | ', style: TextStyle(color: Colors.white)), onTap: () => onTapShare(context),),
+                      InkWell(child: Text('FAVORITE', style: TextStyle(color: Colors.white)), onTap: () => onTapFavorite(context),),
+                    ],
+                  )
                 ),
                 Container(
                   padding: const EdgeInsets.all(20.0),

@@ -14,18 +14,16 @@ import 'package:intl/intl.dart';
 
 class GamesScreen extends StatelessWidget
 {
-
-  final DateTime selectedDate = DateTime.now();
   
   Future<void> _selectDate(BuildContext context) async {
+    final GamesModel games = Provider.of<GamesModel>(context);
     final DateTime picked = await showDatePicker(
       context: context,
-      initialDate: selectedDate,
+      initialDate: games.selectedDate,
       firstDate: DateTime(2015, 8),
       lastDate: DateTime(2101),
     );
-    if (picked != null && picked != selectedDate) { 
-      final GamesModel games = Provider.of<GamesModel>(context);
+    if (picked != null && picked != games.selectedDate) { 
       final Season season = Provider.of<SeasonsModel>(context).selectedModel;
       final Division division = Provider.of<DivisionsModel>(context).selectedModel;
       games.selectedDate = picked;

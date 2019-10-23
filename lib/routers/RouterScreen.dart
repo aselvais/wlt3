@@ -8,6 +8,7 @@ import 'package:wlt3/components/screens/LoginScreen.dart';
 import 'package:wlt3/components/screens/PickDateScreen.dart';
 import 'package:wlt3/components/screens/ProfileScreen.dart';
 import 'package:wlt3/components/screens/SeasonsScreen.dart';
+import 'package:wlt3/components/screens/TeamdetailScreen.dart';
 import 'package:wlt3/components/screens/TiersScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/BottombarModel.dart';
@@ -49,6 +50,7 @@ class RouterScreen extends StatelessWidget {
           '/profile': (context) => new ProfileScreen(),
           '/gamedetail': (context) => new GamedetailScreen(),
           '/pickdate': (context) => new PickDateScreen(),
+          '/teamdetail': (context) => new TeamdetailScreen(),
         }
       )
     );
