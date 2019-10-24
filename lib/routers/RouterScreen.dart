@@ -17,6 +17,7 @@ import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
 import 'package:wlt3/models/StandingsModel.dart';
+import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
 class RouterScreen extends StatelessWidget {
@@ -31,6 +32,7 @@ class RouterScreen extends StatelessWidget {
           ChangeNotifierProvider<GamesModel>(builder: (context) => GamesModel()),
           ChangeNotifierProvider<TiersModel>(builder: (context) => TiersModel()),
           ChangeNotifierProvider<StandingsModel>(builder: (context) => StandingsModel()),
+          ChangeNotifierProvider<TeamModel>(builder: (context) => TeamModel()),
           ChangeNotifierProvider<BottombarModel>(builder: (context) => BottombarModel()),
       ],
       child: MaterialApp(

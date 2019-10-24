@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/models/Game.dart';
+import 'package:wlt3/models/Gameinfo.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/Team.dart';
+import 'package:wlt3/models/TeamModel.dart';
 
 class GamedetailScreen extends StatelessWidget {
   final String _title = 'Game detail';
 
   onTapTeam(BuildContext context, Team team) 
   {
-    print(' ----> onTapTeam ' + team.teamId.toString()  + ' <---- ');
+    final TeamModel teammodel = Provider.of<TeamModel>(context);
+    teammodel.loadData(team.teamId);
     Navigator.pushNamed(context, '/teamdetail');
   }
 
@@ -60,7 +62,7 @@ class GamedetailScreen extends StatelessWidget {
                               onTap: () => onTapTeam(context, game.info.team1),
                               child: Column(
                               children: <Widget>[
-                                Image.network(game.info.team1.imageUrl),
+                                Image.network(game.info.team1.imageUrl, width: 100, height: 100),
                                 Text(
                                   game.info.team1.teamName + "\n" + 
                                   game.info.team1.score.toString(), 
@@ -74,7 +76,7 @@ class GamedetailScreen extends StatelessWidget {
                               onTap: () => onTapTeam(context, game.info.team2),
                               child: Column(
                               children: <Widget>[
-                                Image.network(game.info.team2.imageUrl),
+                                Image.network(game.info.team2.imageUrl, width: 100, height: 100),
                                 Text(game.info.team2.teamName + "\n" + 
                                   game.info.team2.score.toString(), 
                                 style: TextStyle(color: Colors.white)),

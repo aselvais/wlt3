@@ -7,6 +7,7 @@ import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/League.dart';
 import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/Standing.dart';
+import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/models/Tiers.dart';
 
 class ApiaccessWlt extends ApiaccessAbstract {
@@ -193,16 +194,16 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
-  Future<List<Standing>> getTeamInfo(int teamId) async 
+  Future<List<Team>> getTeamInfo(int teamId) async 
   {
-    String fullurl = baseurl + "teamInfo/?teamInfo=" + teamId.toString();
+    String fullurl = baseurl + "teamInfo/?teamId=" + teamId.toString();
     print(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       print(response.body);
       //List<dynamic> djson = json.decode(response.body);
-      //List<Standing> toret = new List();
-      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      //List<Team> toret = new List();
+      //djson.forEach((json) => toret.add(Team.fromJson(json)));
       //return toret;
     } else {
       throw Exception('Failed to load response.body');
