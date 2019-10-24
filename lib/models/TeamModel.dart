@@ -57,12 +57,17 @@ class TeamModel extends ChangeNotifier
     this.loading = false;
   }
 
+  _replaceSelectedModel(Team m)
+  {
+    this._selectedModel = m;
+    this.loading = false;
+  }
+
   loadData(int teamId)
   {
       this.loading = true;
-      _list = new List();
       _api.getTeamInfo(teamId)
-        .then((dt) => _replaceList(dt) )
+        .then((dt) => _replaceSelectedModel(dt) )
         .catchError((e) => throw Exception(e))
         .whenComplete(() => notifyListeners() );
   }

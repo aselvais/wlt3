@@ -194,17 +194,12 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
-  Future<List<Team>> getTeamInfo(int teamId) async 
+  Future<Team> getTeamInfo(int teamId) async 
   {
     String fullurl = baseurl + "teamInfo/?teamId=" + teamId.toString();
-    print(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
-      print(response.body);
-      //List<dynamic> djson = json.decode(response.body);
-      //List<Team> toret = new List();
-      //djson.forEach((json) => toret.add(Team.fromJson(json)));
-      //return toret;
+      return Team.fromJson(json.decode(response.body));      
     } else {
       throw Exception('Failed to load response.body');
     }
