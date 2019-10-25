@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/models/TeamModel.dart';
-import 'package:wlt3/models/Teamdata.dart';
 
 class TeamdetailScreen extends StatelessWidget {
   final String _title = 'Teamdetail Screen';
