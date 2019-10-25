@@ -1,21 +1,1901 @@
 {
-  "id": 40837,
-  "name": "TIMBITS PURPLE",
-  "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=LcR_Colour Purple.png",
-  "divisionId": 4852,
-  "divisionName": "TIMBITS B",
-  "tierId": 1638,
-  "tierName": "Regular Season",
-  "groupId": 0,
-  "groupName": null,
-  "hasNews": false,
-  "hasTweets": false,
-  "playOff": false,
-  "win": 0,
-  "lose": 0,
-  "draw": 0,
-  "streak": null,
-  "positionElementInStandings": null,
-  "enableSol": false,
-  "shootoutLoss": 0
+  "teaminfo": {
+    "id": 38274,
+    "name": "Leaside Flames",
+    "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=Tmo_Leaside.png",
+    "divisionId": 4517,
+    "divisionName": "Tyke White",
+    "tierId": 0,
+    "tierName": null,
+    "groupId": 0,
+    "groupName": null,
+    "hasNews": true,
+    "hasTweets": true,
+    "playOff": false,
+    "win": 0,
+    "lose": 6,
+    "draw": 0,
+    "streak": "L6",
+    "positionElementInStandings": "4th",
+    "enableSol": false,
+    "shootoutLoss": 0
+  },
+  "games": {
+    "today": [],
+    "past": [
+      {
+        "id": 742996,
+        "date": "Feb 3",
+        "time": "7:00 AM",
+        "home": false,
+        "team": "Avenue Road Ducks",
+        "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=FTQ_Avenue Road.png",
+        "standing": "L 1 - 15",
+        "teamId": 38277,
+        "leagueTimezone": "+0500",
+        "divisionId": 4517,
+        "divisionName": "Tyke White",
+        "dateTime": "2019-02-03 07:00:00",
+        "news": true,
+        "tweets": true,
+        "seasonPlayOff": false,
+        "shareUrl": "http://www.winloseortie.com",
+        "status": "Game 2",
+        "linkStreamVideo": null,
+        "arena": {
+          "name": "Leaside - B",
+          "longitude": -79.36098299999999,
+          "latitude": 43.7018897,
+          "address": "1073 Millwood Rd.  East York, ON M4G1X6"
+        }
+      },
+      {
+        "id": 742116,
+        "date": "Feb 3",
+        "time": "7:00 AM",
+        "home": false,
+        "team": "Avenue Road Ducks",
+        "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=FTQ_Avenue Road.png",
+        "standing": "L 3 - 19",
+        "teamId": 38277,
+        "leagueTimezone": "+0500",
+        "divisionId": 4517,
+        "divisionName": "Tyke White",
+        "dateTime": "2019-02-03 07:00:00",
+        "news": true,
+        "tweets": true,
+        "seasonPlayOff": false,
+        "shareUrl": "http://www.winloseortie.com",
+        "status": "Game 1",
+        "linkStreamVideo": null,
+        "arena": {
+          "name": "Leaside - B",
+          "longitude": -79.36098299999999,
+          "latitude": 43.7018897,
+          "address": "1073 Millwood Rd.  East York, ON M4G1X6"
+        }
+      },
+      {
+        "id": 742976,
+        "date": "Feb 1",
+        "time": "2:00 PM",
+        "home": true,
+        "team": "West Mall Lightning",
+        "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=WXk_West Mall.png",
+        "standing": "L 2 - 7",
+        "teamId": 38276,
+        "leagueTimezone": "+0500",
+        "divisionId": 4517,
+        "divisionName": "Tyke White",
+        "dateTime": "2019-02-01 14:00:00",
+        "news": true,
+        "tweets": true,
+        "seasonPlayOff": false,
+        "shareUrl": "http://www.winloseortie.com",
+        "status": "Game 2",
+        "linkStreamVideo": null,
+        "arena": {
+          "name": "Angela James",
+          "longitude": -79.32795159999999,
+          "latitude": 43.7129011,
+          "address": "165 Grenoble Dr.  North York, ON M3C3E7"
+        }
+      },
+      {
+        "id": 742006,
+        "date": "Feb 1",
+        "time": "2:00 PM",
+        "home": true,
+        "team": "West Mall Lightning",
+        "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=WXk_West Mall.png",
+        "standing": "L 2 - 19",
+        "teamId": 38276,
+        "leagueTimezone": "+0500",
+        "divisionId": 4517,
+        "divisionName": "Tyke White",
+        "dateTime": "2019-02-01 14:00:00",
+        "news": true,
+        "tweets": true,
+        "seasonPlayOff": false,
+        "shareUrl": "http://www.winloseortie.com",
+        "status": "Game 1",
+        "linkStreamVideo": null,
+        "arena": {
+          "name": "Angela James",
+          "longitude": -79.32795159999999,
+          "latitude": 43.7129011,
+          "address": "165 Grenoble Dr.  North York, ON M3C3E7"
+        }
+      },
+      {
+        "id": 742967,
+        "date": "Feb 1",
+        "time": "9:00 AM",
+        "home": true,
+        "team": "North Toronto White",
+        "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=KjA_North Toronto.png",
+        "standing": "L 5 - 19",
+        "teamId": 38275,
+        "leagueTimezone": "+0500",
+        "divisionId": 4517,
+        "divisionName": "Tyke White",
+        "dateTime": "2019-02-01 09:00:00",
+        "news": true,
+        "tweets": true,
+        "seasonPlayOff": false,
+        "shareUrl": "http://www.winloseortie.com",
+        "status": "Game 2",
+        "linkStreamVideo": null,
+        "arena": {
+          "name": "Angela James",
+          "longitude": -79.32795159999999,
+          "latitude": 43.7129011,
+          "address": "165 Grenoble Dr.  North York, ON M3C3E7"
+        }
+      },
+      {
+        "id": 741973,
+        "date": "Feb 1",
+        "time": "9:00 AM",
+        "home": true,
+        "team": "North Toronto White",
+        "imageUrl": "http://admin.winloseortie.com/files/image?directory=team_images&filename=KjA_North Toronto.png",
+        "standing": "L 3 - 24",
+        "teamId": 38275,
+        "leagueTimezone": "+0500",
+        "divisionId": 4517,
+        "divisionName": "Tyke White",
+        "dateTime": "2019-02-01 09:00:00",
+        "news": true,
+        "tweets": true,
+        "seasonPlayOff": false,
+        "shareUrl": "http://www.winloseortie.com",
+        "status": "Game 1",
+        "linkStreamVideo": null,
+        "arena": {
+          "name": "Angela James",
+          "longitude": -79.32795159999999,
+          "latitude": 43.7129011,
+          "address": "165 Grenoble Dr.  North York, ON M3C3E7"
+        }
+      }
+    ],
+    "upcoming": []
+  },
+  "news": [
+    {
+      "date": "Oct 21",
+      "title": "GTHL: Congrats PeeWee A Flames!",
+      "description": "The PeeWee A Flames won the MyHockey Fall Classic in Rochester NY over the Thanksgiving Weekend! Excellent effort by the entire team. Congrats!",
+      "url": "https://www.leasidehockey.com/2019/10/21/gthl-congrats-peewee-a-flames/"
+    },
+    {
+      "date": "Sep 17",
+      "title": "Select: Minor Atom Red Take Gold at Vic Village",
+      "description": "We are very proud of our Minor Atom Red team, who took home the gold at the Vic Village Tourney, this past weekend. Great start to the season!",
+      "url": "https://www.leasidehockey.com/2019/09/17/select-minor-atom-red-take-gold-at-vic-village/"
+    },
+    {
+      "date": "Sep 17",
+      "title": "GTHL: Bantam A Win Hillcrest Tournament",
+      "description": "The Leaside Bantam A team won the Hillcrest Canadians Brian Steele Early Bird Tournament over the weekend. Congratulations Team! Go Flames! GO!!",
+      "url": "https://www.leasidehockey.com/2019/09/17/gthl-bantam-a-win-hillcrest-tournament/"
+    },
+    {
+      "date": "Aug 12",
+      "title": "2019 Season Starting Soon!",
+      "description": "Hockey Season is just around the corner, so please mark your calendars! The season will start the weekend of September 21/22 and will run through March 28/29. We look forward to seeing you at the arena soon!",
+      "url": "https://www.leasidehockey.com/2019/08/12/2019-season-starting-soon/"
+    },
+    {
+      "date": "Jul 19",
+      "title": "House League: Preliminary Schedule",
+      "description": "Note: &#160; DIVISION DAY TIME ARENA EVENT NOVICE (September – December Half Ice Games) Sunday 9:55AM Leaside A Game Sunday 10:45 AM Leaside A Game Friday 5:00 PM Victoria Village Practice Friday 6:00 PM Victoria Village Practice NOVICE (January – March Full Ice Games) Sunday 7:15AM York Mills Game Sunday 8:15 AM York Mills Game&#8230;",
+      "url": "https://www.leasidehockey.com/2019/07/19/house-league-preliminary-schedule/"
+    },
+    {
+      "date": "Jun 5",
+      "title": "Select: Players Wanted for 2019/20",
+      "description": "The Leaside Flames are looking for players for the following teams: Minor Midget Red &#8211; 2 players wanted! Please reach out to Joel at joel_alden@yahoo.ca Minor Bantam Gold &#8211; 2 players wanted! Please contact Paul at Paul.Joliat@sunlife.com Bantam Gold &#8211; one player wanted! Please reach out to Stephen at stephen.peirce@outlook.com Join us for our 2019/2020&#8230;",
+      "url": "https://www.leasidehockey.com/2019/06/05/select-players-wanted-for-2019-20/"
+    },
+    {
+      "date": "May 28",
+      "title": "Select Tournament 2020: Get Your Invitation!",
+      "description": "Want to be a part of this year&#8217;s Select Invitational Tournament but haven&#8217;t yet received an invitation? Here is the list of people who can make your Leaside Invitational dreams come true. IP6 Red: Mark Crane &#8211;  markwilliamcrane@hotmail.com IP6 Gold: Eric Matthews &#8211;  hockeycoacheric@gmail.com IP6 White: John Medland &#8211;  jsmedland@gmail.com IP6 Black: Brian Callanan &#8211;  bmcallanan@hotmail.com Minor Novice Red: Brandon Crombeen &#8211;  bcrom19@hotmail.com Minor&#8230;",
+      "url": "https://www.leasidehockey.com/2019/05/28/select-tournament-2020-get-your-invitation/"
+    },
+    {
+      "date": "May 14",
+      "title": "Inaugural Jeff Munn Volunteer of the Year Award",
+      "description": "The 2018/19 Recipient: Andrew Kennedy Andrew is smart, energetic, tireless, detail oriented and unflinchingly positive. As the GM of the Select program Andrew has been responsible for overseeing the program’s younger teams. Over the past year Andrew has helped to bring the CDS concept to life, which was no mean feat. Among other things this&#8230;",
+      "url": "https://www.leasidehockey.com/2019/05/14/inaugural-jeff-munn-volunteer-of-the-year-award/"
+    },
+    {
+      "date": "May 1",
+      "title": "Select: Way to go Bantam Gold!",
+      "description": "Congratulations to our Bantam Gold team for winning the NYHL Tier 4 Division! Nicely done!",
+      "url": "https://www.leasidehockey.com/2019/05/01/select-way-to-go-bantam-gold/"
+    },
+    {
+      "date": "Apr 18",
+      "title": "Hockey School Registration Now Open!",
+      "description": "Ready to play? House League registration isnow open! Visit the Hockey School page and scroll to the &#8216;Registration&#8217; section. Please make sure you understand the Code of Conduct and Media Release information (both found in the Registration section) before you proceed to register. Thanks for signing up! We&#8217;re looking forward to the 2019/2020 season!",
+      "url": "https://www.leasidehockey.com/2019/04/18/hockey-school-registration-now-open/"
+    }
+  ],
+  "tweets": [
+    {
+      "date": "Mon, 04 Feb 2019 09:55 AM",
+      "text": "What a weekend! So many amazing games, and newly crowned champions. Congratulations to all our winners. These medal… https://t.co/6hEl4H16Vb",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1092436413037998080"
+    },
+    {
+      "date": "Sun, 03 Feb 2019 11:09 AM",
+      "text": "Thank you @gthlcanada for coming to our Leaside Select Invitational Tournament and making our medal ceremony a succ… https://t.co/KUMbzEusJI",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1092092817717977097"
+    },
+    {
+      "date": "Fri, 01 Feb 2019 03:03 PM",
+      "text": "Great competition and importantly... we’re on schedule! Great job to our tourney volunteers! Thank you!!! PS&gt; Stay… https://t.co/R91r9ZvHnc",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1091426926567145472"
+    },
+    {
+      "date": "Fri, 01 Feb 2019 01:41 PM",
+      "text": "We couldn’t do this without such great sponsors! Thanks so much to @allardycehomes! Looking good onsite!!! https://t.co/FSTnMFwSzu",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/DyV0QiSUUAAH69f.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1091406321138716672"
+    },
+    {
+      "date": "Fri, 01 Feb 2019 01:23 PM",
+      "text": "The tight games are so much fun!!! Go Flames!!\n##LHA #LSI #Leaside https://t.co/rBJ3LEjEGG",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/DyVvvRMV4AAxrkf.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1091401593789075456"
+    },
+    {
+      "date": "Fri, 01 Feb 2019 01:01 PM",
+      "text": "Looking good Lexus! Thank you @LexusOnThePark for all your support. #LHA #LSI #Leaside https://t.co/mmLuVK46Zn",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/DyVrAxMVAAAUs3V.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1091396161171275779"
+    },
+    {
+      "date": "Fri, 01 Feb 2019 08:18 AM",
+      "text": "Tournament is underway and a big thank you to our lead Platinum sponsor @scotiabank. They’ve been with us every ste… https://t.co/0VlOdwi9CQ",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1091324828735467520"
+    },
+    {
+      "date": "Fri, 01 Feb 2019 07:35 AM",
+      "text": "It’s game time!!! Now all we need are some players! Go Flames! #LHA #LSI #Leaside https://t.co/U1uk6Zr66V",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/DyUgWJOWwAARz1L.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1091314056567377921"
+    },
+    {
+      "date": "Thu, 31 Jan 2019 01:49 PM",
+      "text": "A shout out to our repeat Bronze level sponsor @PatrickRocca ! Thanks for your continued support! Check him out at… https://t.co/RoJnEGEghl",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1091045806671577088"
+    },
+    {
+      "date": "Thu, 31 Jan 2019 01:42 PM",
+      "text": "Make sure to prebook with Digital Dave for great weekend action shots! \n\nhttps://t.co/KjdfFjPImg… https://t.co/2hNrazEzVJ",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1091044156959584259"
+    },
+    {
+      "date": "Thu, 31 Jan 2019 12:38 PM",
+      "text": "Silent Auction Alert!!! Who doesn't love a Silent Auction? We have a great one over our tournament weekend. Check o… https://t.co/LUdRrX7NbU",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1091028082981564417"
+    },
+    {
+      "date": "Thu, 31 Jan 2019 09:53 AM",
+      "text": "It's Tournament Time! It's Tournament Time! We're finally here, and ready to go! We can't wait to watch games, give… https://t.co/relKDvFEKp",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1090986474022060033"
+    },
+    {
+      "date": "Wed, 30 Jan 2019 02:12 PM",
+      "text": "Thank you @LongosMarkets Leaside for all your support for this year's tournament!  A special shout out to Longo’s A… https://t.co/os1AJSG0mO",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1090689196308672512"
+    },
+    {
+      "date": "Wed, 30 Jan 2019 10:55 AM",
+      "text": "A huge thank you to Omnilumen, our Gold Level Sponsor, for supporting this year's tournament. Omnilumen manages you… https://t.co/1ETl4xvRG4",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1090639559136661505"
+    },
+    {
+      "date": "Wed, 30 Jan 2019 10:14 AM",
+      "text": "Cushman &amp; Wakefield is a leading global real estate services firm that delivers exceptional value by putting ideas… https://t.co/TvhdSQfio6",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1090629373911126016"
+    },
+    {
+      "date": "Wed, 30 Jan 2019 10:13 AM",
+      "text": "The Tourney starts TOMORROW!!! TOMORROW PEOPLE!!! Woohoo... Can't wait for a great weekend on the ice.… https://t.co/GmNvqEJNLl",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1090628969760604160"
+    },
+    {
+      "date": "Tue, 29 Jan 2019 12:41 PM",
+      "text": "Many athletes keep their bodies in optimal condition in order to perform at their best. Modus Health and Performanc… https://t.co/J7LafFi16y",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1090303878065664001"
+    },
+    {
+      "date": "Mon, 28 Jan 2019 10:36 PM",
+      "text": "@AccessstorageCA is not only a platinum level sponsor but is also donating $1,000 worth of storage to our Silent Au… https://t.co/VIOJiXnIJA",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1090091231923789824"
+    },
+    {
+      "date": "Mon, 28 Jan 2019 01:22 PM",
+      "text": "Check out @LexusOnThePark, a 2019 repeat tourney platinum sponsor. Lexus’ amazing ongoing support for the Leaside a… https://t.co/uALxlVdBKA",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1089951874281660416"
+    },
+    {
+      "date": "Fri, 25 Jan 2019 05:08 PM",
+      "text": "Thank you to @Bell. They are a repeat platinum sponsorship who is also donating devices to support tourney operatio… https://t.co/c0s0ocWUGC",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1088921571618639872"
+    },
+    {
+      "date": "Fri, 25 Jan 2019 02:12 PM",
+      "text": "T-6!!! T-6!!! We are inside a week people. The organizers met for the final time last night and we're ready to go.… https://t.co/TjrwFFyKS3",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1088877368222121987"
+    },
+    {
+      "date": "Fri, 25 Jan 2019 11:24 AM",
+      "text": "Big thanks to Grill Time - Our amazing vendor providing yummy food for the 2019 Leaside Tourney. Check them out at… https://t.co/bGWqldlOs5",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1088834941972959232"
+    },
+    {
+      "date": "Thu, 24 Jan 2019 04:32 PM",
+      "text": "Another big thank you to our bronze sponsor, @charlenekalia . She's a devoted and driven real estate expert serving… https://t.co/Ef8kp86URQ",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1088550017588125696"
+    },
+    {
+      "date": "Thu, 24 Jan 2019 10:34 AM",
+      "text": "Tourney is T minus 7 days away!!! Check out our amazing presenting Platinum Sponsor - @scotiabank or… https://t.co/HEnxMG2Amq",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1088460096605024256"
+    },
+    {
+      "date": "Wed, 23 Jan 2019 07:10 PM",
+      "text": "Another BIG thank you shout-out to one of our bronze sponsors, @rinx_toronto. Want to plan an epic birthday party??… https://t.co/X5dVgzPUMQ",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1088227493511757824"
+    },
+    {
+      "date": "Wed, 23 Jan 2019 03:46 PM",
+      "text": "T-8!!! We're almost inside a week. The puck drops at the 29th Annual Leaside Invitational next Thursday! Let's go!… https://t.co/Fpdj6JuDct",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1088176081402847241"
+    },
+    {
+      "date": "Wed, 23 Jan 2019 01:55 PM",
+      "text": "Compete with Pride! BEAST Athletics offers elite level lacrosse and hockey training for Toronto area players who wa… https://t.co/HnmxtJH8eL",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1088148325281484802"
+    },
+    {
+      "date": "Tue, 22 Jan 2019 09:07 PM",
+      "text": "Huge thank you to @AccessstorageCA, 2019 Leaside Select Invitational Tournament Platinum Sponsor. Check out the Lea… https://t.co/7TS33CO8tA",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1087894453447098370"
+    },
+    {
+      "date": "Tue, 22 Jan 2019 05:18 PM",
+      "text": "Schedule is now up! Please check it out at: \n\nhttps://t.co/WgIwJTt3gd\n\n#LHA #LSI #Leaside",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1087836911924858880"
+    },
+    {
+      "date": "Tue, 22 Jan 2019 03:42 PM",
+      "text": "T-9 People!!! We're into single digits now!!! We can't wait to see everyone at this year's Leaside Select Invitatio… https://t.co/tNafTz3zbc",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1087812665932767232"
+    },
+    {
+      "date": "Tue, 22 Jan 2019 09:11 AM",
+      "text": "Experience Amazing. Take a Lexus for a drive. Visit our Platinum Sponsor @LexusOnThePark for more details and great… https://t.co/KKPn3bgREg",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1087714352600371201"
+    },
+    {
+      "date": "Mon, 21 Jan 2019 10:36 PM",
+      "text": "Buying or selling a home is a big decision - you need a hard working professional to guide you through the process.… https://t.co/heoQeCcfAw",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1087554495767166976"
+    },
+    {
+      "date": "Mon, 21 Jan 2019 03:24 PM",
+      "text": "T-10 Days until Tourney Time! Can't wait to see everyone, and watch the boys and girls hit the ice! Go Flames!!!… https://t.co/auLvvutsCU",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1087445747274964992"
+    },
+    {
+      "date": "Mon, 21 Jan 2019 02:06 PM",
+      "text": "Discover @Bell, the provider of the world’s very best Internet technology in Toronto and our repeat platinum sponso… https://t.co/Tor3jqxFZ7",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1087426306751352832"
+    },
+    {
+      "date": "Fri, 18 Jan 2019 04:43 PM",
+      "text": "Bank anywhere, anytime with @scotiabank. Leaside Invitational presenting Platinum sponsor visit… https://t.co/hD7uWv6Ejt",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1086378524380778496"
+    },
+    {
+      "date": "Thu, 17 Jan 2019 08:17 PM",
+      "text": "T-2 Weeks Kids!!! 2 Weeks!!! We're crazy excited. Boys and Girls will be hitting the ice for Leaside's 29th edition… https://t.co/LKoqWQ2Q9q",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1086070096513032193"
+    },
+    {
+      "date": "Thu, 17 Jan 2019 10:01 AM",
+      "text": "Another big thank you, this time to our friends David Trombley and the team @Hockey_Extreme. They've stepped up aga… https://t.co/VlkVMHfXRO",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1085915075666309122"
+    },
+    {
+      "date": "Thu, 17 Jan 2019 10:01 AM",
+      "text": "Another big thank you, this time to our friends David Trombley and the team @Hockey_Extreme. They've stepped up aga… https://t.co/h4QKp3IaM3",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1085914948767633408"
+    },
+    {
+      "date": "Wed, 16 Jan 2019 05:08 PM",
+      "text": "T-15! I repeat... T-15!!! The tourney is coming... the tourney is coming!\n\nhttps://t.co/oF1HaVpM2G\n\n#LHA #LSI https://t.co/Jn5YxSIaQ3",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/DxEKJZKVYAEkfs8.png"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1085660159349731328"
+    },
+    {
+      "date": "Wed, 16 Jan 2019 09:40 AM",
+      "text": "Big thank you and shout-out too @LairdandSonHVAC, a Silver level sponsor for the 2019 29th Annual Leaside Select In… https://t.co/sBIYqd5iIJ",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1085547326079299585"
+    },
+    {
+      "date": "Tue, 15 Jan 2019 09:34 PM",
+      "text": "Big thank you and shout out to Omnilumen, https://t.co/ITAfoFsGAh, Gold level sponsor for the 2019 29th Annual Leas… https://t.co/AqTL4AzUeB",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1085364690660745216"
+    },
+    {
+      "date": "Tue, 15 Jan 2019 04:54 PM",
+      "text": "T-16! T-16!!!!! The pucks drops Thu, Jan 31st at the 29th Leaside Select Invitational! Go Flames!!!… https://t.co/2K26oVat0z",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1085294216715137024"
+    },
+    {
+      "date": "Tue, 15 Jan 2019 03:09 PM",
+      "text": "T-17! T-17!!! The pucks drops Fri, Feb 1st at our 29th Leaside Select Invitational! Go Flames!!!… https://t.co/GYJVKCkFjD",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1085267847885017089"
+    },
+    {
+      "date": "Tue, 15 Jan 2019 11:35 AM",
+      "text": "Need some storage options for your upcoming move or reno? Check out @AccessStorageCA - 2019 Leaside Select Invitati… https://t.co/cE4awLOtzj",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1085213937199656960"
+    },
+    {
+      "date": "Mon, 14 Jan 2019 01:24 PM",
+      "text": "T is for Tourney and T is only 18 days away!!! Can you believe it? The Leaside Select Invitational is right around… https://t.co/SmyXtFkyaL",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1084879012982333440"
+    },
+    {
+      "date": "Mon, 14 Jan 2019 11:40 AM",
+      "text": "Arrive to the Tournament in style….Visit @LexusOnThePark - 2019 29th Annual Leaside Select Tournament Platinum Spon… https://t.co/bpp3BBwRyO",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1084852759214604289"
+    },
+    {
+      "date": "Thu, 10 Jan 2019 03:32 PM",
+      "text": "Delivering Integrated solutions to landlords, tenants and investors at each stage of the real estate &amp; commercial p… https://t.co/pBXwpbVUkk",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1083461505247522816"
+    },
+    {
+      "date": "Wed, 09 Jan 2019 02:54 PM",
+      "text": "Leaside Tourney is just 4 weeks away!! Need optimal phone service to send tournament game updates to your family? D… https://t.co/HxJVDVUXYe",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1083089543912288256"
+    },
+    {
+      "date": "Tue, 08 Jan 2019 02:22 PM",
+      "text": "Big thank you and shout out to @scotiabank , Lead Platinum sponsor for the 2019 29th Annual Leaside Select Tourname… https://t.co/HKZCmraDVU",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1082719261863407616"
+    },
+    {
+      "date": "Tue, 27 Nov 2018 10:38 PM",
+      "text": "#LHA #LSI",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1067623837712273408"
+    },
+    {
+      "date": "Tue, 27 Nov 2018 10:37 PM",
+      "text": "We feel lucky to share we have another great sponsor. Thank you, thank you, thank you to @allardycehomes for the su… https://t.co/asLWzzrNH1",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1067623574096142336"
+    },
+    {
+      "date": "Wed, 14 Nov 2018 05:57 PM",
+      "text": "Another big thank you coming!!! Huge shout-out to @CushWakeCanada for their GOLD level sponsorship of our 29th Leas… https://t.co/LimBySmYP8",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1062842074515546112"
+    },
+    {
+      "date": "Wed, 24 Oct 2018 11:24 AM",
+      "text": "Thank you! Thank you! Thank you! A big shout out to another one of our sponsors, @LexusOnThePark. They're back and… https://t.co/WUhW8wAMjl",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1055132923349762049"
+    },
+    {
+      "date": "Tue, 23 Oct 2018 09:55 AM",
+      "text": "Who was first to register for the 29th edition of the Leaside Select Invitational??? Forest Hill's Select Minor Pee… https://t.co/oAWHhaa7Op",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1054748088710168576"
+    },
+    {
+      "date": "Sat, 13 Oct 2018 11:00 AM",
+      "text": "@scotiabank @ScotiabankHelps",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1051140519919644673"
+    },
+    {
+      "date": "Sat, 13 Oct 2018 10:59 AM",
+      "text": "@Bell",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1051140365795782656"
+    },
+    {
+      "date": "Sat, 13 Oct 2018 10:58 AM",
+      "text": "Shout-out to Bell as a Platinum sponsor for our 29th Leaside Select Invitational! Your support is greatly appreciat… https://t.co/9LSxD3zIKY",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1051140010143928320"
+    },
+    {
+      "date": "Tue, 09 Oct 2018 10:48 AM",
+      "text": "Shout-out to Scotiabank as our title sponsor for the 29th Leaside Select Invitational! Your support is greatly appr… https://t.co/GxcIT4sroM",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1049688101063446529"
+    },
+    {
+      "date": "Mon, 01 Oct 2018 06:19 PM",
+      "text": "We're gearing up for the 2019 edition of the Leaside Select Invitational. Check back often for updates! https://t.co/oF1HaVpM2G",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1046902445434003457"
+    },
+    {
+      "date": "Mon, 01 Oct 2018 06:18 PM",
+      "text": "For any questions regarding the Select Invitational Tournament, please contact Anthony Hammill, Select Invitational… https://t.co/Ktp6luOvbQ",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1046902198095892480"
+    },
+    {
+      "date": "Mon, 01 Oct 2018 06:18 PM",
+      "text": "Teams are registering, Sponsors are signing up! We're getting ready to go!!! Check back often as we add lots of con… https://t.co/rxCbiK52zv",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/1046902117896613888"
+    },
+    {
+      "date": "Sat, 23 Sep 2017 08:20 PM",
+      "text": "RT @LeasideGardens: The Leaside Memorial Gardens 65th anniversary celebration is tomorrow! Don't forget to come by tomorrow between... http?",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/911762243183943680"
+    },
+    {
+      "date": "Sat, 23 Sep 2017 01:07 PM",
+      "text": "RT @GTHLHockey: Gear up for the season and earn cash back for your team with Scotiabank Hockey Club. Learn more: https://t.co/geXfe9of4o ht?",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/911653319126536192"
+    },
+    {
+      "date": "Sat, 23 Sep 2017 01:06 PM",
+      "text": "RT @OHFHockey: Please see a statement from the Ontario Hockey Federation related to a special Board of Directors Meeting held earlier today?",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/911653130064089088"
+    },
+    {
+      "date": "Tue, 16 May 2017 10:11 AM",
+      "text": "It's official .... Leaside won the NYHL Grande Championship as the most winningest club for… https://t.co/4XZAliVBHp",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/864498645693083648"
+    },
+    {
+      "date": "Mon, 01 May 2017 02:16 PM",
+      "text": "Novice NYHL Champs. A great way to finish off your years in the NYHL. Congrats and good luck in… https://t.co/3dOwGSC9dm",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/859124430903136256"
+    },
+    {
+      "date": "Mon, 01 May 2017 02:12 PM",
+      "text": "Minor Novice Champs! Congrats to all our teams and All-Stars last weekend at Champions Weekend. https://t.co/k1KIKiOKSy",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/859123419115376641"
+    },
+    {
+      "date": "Thu, 27 Apr 2017 09:15 AM",
+      "text": "Bantam Red champs @ Downsview Arena https://t.co/w9NGoX7B3s",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/857599106528751618"
+    },
+    {
+      "date": "Thu, 27 Apr 2017 08:47 AM",
+      "text": "Wow. A successful Leaside season all round. 2 GTHL champions and 5 NYHL champions. Stay tuned… https://t.co/YCCkqpHq6k",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/857592070587994113"
+    },
+    {
+      "date": "Wed, 26 Apr 2017 01:17 PM",
+      "text": "Don't forget select tryout start this weekend. Check the website for more info",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/857297619852414984"
+    },
+    {
+      "date": "Mon, 10 Apr 2017 07:06 AM",
+      "text": "Registration for the 2017-2018 season is now open! Go to https://t.co/hnDzPz3ckd for more info. @… https://t.co/65h2wQHquT",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/851405939559342080"
+    },
+    {
+      "date": "Sun, 05 Feb 2017 07:09 PM",
+      "text": "These guys know what it means to be a team. After a double overtime loss with only 4.7sec left… https://t.co/S2iZrz4iF7",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/828395065194147840"
+    },
+    {
+      "date": "Sun, 05 Feb 2017 09:15 AM",
+      "text": "RT @Grill_Bill: My morning fuel for the final day of the Leaside Select Invitational. I'm a huge fan of this… https://t.co/XFKH6jSqEc",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/828245626672578560"
+    },
+    {
+      "date": "Sun, 05 Feb 2017 06:46 AM",
+      "text": "It's finals day. Good luck to all the teams who made it to today. #lsi2017 https://t.co/rAlrl9xElh",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/828208154936631297"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 06:41 PM",
+      "text": "suetables's photo https://t.co/MtvxXyO7Q6",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/828025615710318592"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 06:39 PM",
+      "text": "The life of a Leaside #hockeysister ... #lsi2017. Tag your photos for a repost https://t.co/fTnfP3yIrx",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/828025221634523137"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 04:28 PM",
+      "text": "RT @TracyFabri: @leasidehockey tournament today! We are by the dressing rooms. Visit us to WIN prizes including @TorontoMarlies tix!#concus…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827992225850208257"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 04:27 PM",
+      "text": "RT @GTHLHockey: Who are you playing next? Playoff formats for each division are now posted https://t.co/fe2vXsgYQf https://t.co/fBmruDm4xw",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C3yI15dWEAAID_1.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827992046245969922"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 03:48 PM",
+      "text": "Still some amazing deals to be had at the silent auction. One week all inclusive for 2 #nickelodeonexperience #gourmetincludive",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827982152952328197"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 12:46 PM",
+      "text": "Something for everyone - a hockey mom's perfect day. Hot coffee, shopping and a winning team.… https://t.co/nFHxNOQSGx",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827936423898673152"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 11:32 AM",
+      "text": "@skyzone_toronto is here to give away prizes. #lsi2017 is well underway with Tyke team final… https://t.co/RfyoapC4w5",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827917737636790272"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 11:00 AM",
+      "text": "RT @LeasideGardens: https://t.co/U59WXAiPpQ",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827909597662961666"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 07:36 AM",
+      "text": "RT @jon_burnside: Come by Leaside Gardens for some candy floss and hockey. #ward26 https://t.co/jkeZq7Hqik",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C3xitGfW8AE64bY.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827858288377286656"
+    },
+    {
+      "date": "Sat, 04 Feb 2017 07:35 AM",
+      "text": "Novice Night a big success thanks to dylankotyk @peelj47 @summerskates @biosteelsports… https://t.co/fI55Z8a8Rw",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827858067303911424"
+    },
+    {
+      "date": "Fri, 03 Feb 2017 04:42 PM",
+      "text": "Join us tonight as Nathalie Spooner &amp; Erin Ambrose kick off Novice Night and sign autographs. @… https://t.co/hLIYVJtyeb",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827633292107214849"
+    },
+    {
+      "date": "Fri, 03 Feb 2017 04:04 PM",
+      "text": "Stay up to date on what's happening in your division. Download @thescorenow",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827623925861457920"
+    },
+    {
+      "date": "Fri, 03 Feb 2017 11:49 AM",
+      "text": "Stop by the Digital Dave photo kiosk to buy photos of your select superstar. Team photos available as well #lsi2017",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827559667878473729"
+    },
+    {
+      "date": "Fri, 03 Feb 2017 09:02 AM",
+      "text": "Coming out to catch a game? Don't forget to grab your #leasideflames gear 50% off ALL WEEKEND!… https://t.co/4FUcPYu02Q",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827517731029135362"
+    },
+    {
+      "date": "Fri, 03 Feb 2017 07:54 AM",
+      "text": "Silent auction is open and looks amazing tabathabull !! Signed Gretzky jersey, signed Mitch… https://t.co/KRwxHjW4Co",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827500472936263681"
+    },
+    {
+      "date": "Thu, 02 Feb 2017 09:43 PM",
+      "text": "Want good concussion info for your team? Our partner kidsconcussion will be providing concussion… https://t.co/haUWzIZBg0",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827346666214690817"
+    },
+    {
+      "date": "Thu, 02 Feb 2017 08:57 AM",
+      "text": "RT @ParticipACTION: Kids who are tired out from running around sleep better, and those who have slept well have more energy to run around.…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827153870224769024"
+    },
+    {
+      "date": "Thu, 02 Feb 2017 06:39 AM",
+      "text": "Games begin tonight. #lsi2017 Check you scores and standings online or @thescorenow   Good luck… https://t.co/BqFkqrmU21",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/827119179165626368"
+    },
+    {
+      "date": "Wed, 01 Feb 2017 12:07 PM",
+      "text": "The hardware is ready - are you?! #lsi2017 #winloseortie #showyourgame @nothersawards https://t.co/2pgZs3zbOt",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/826839398750695425"
+    },
+    {
+      "date": "Tue, 31 Jan 2017 05:06 PM",
+      "text": "Our sponsors are hooking us up BIG TIME! #showyourgame at the #lsi2017 this weekend and have a… https://t.co/rMQE4vQocF",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/826552230056636416"
+    },
+    {
+      "date": "Tue, 31 Jan 2017 09:28 AM",
+      "text": "@TorontoLeaside hoping you can join us in welcoming our National players! https://t.co/IPOx5bDfCU",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/826436966724071427"
+    },
+    {
+      "date": "Mon, 30 Jan 2017 01:49 PM",
+      "text": "Come out to see what #leasideflames hockey is all about. Meet Canadian Olympic hockey gold… https://t.co/bAXDRlNtbE",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/826140338498654212"
+    },
+    {
+      "date": "Sun, 29 Jan 2017 08:59 PM",
+      "text": "RT @GTHLHockey: Nominations for the 2017 OHF Awards Program are now open! https://t.co/QUT2HZLMDW https://t.co/grpdtNCKRK",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C3X8TByWAAEkjzU.png"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/825886149067599877"
+    },
+    {
+      "date": "Sun, 29 Jan 2017 08:58 PM",
+      "text": "RT @BioSteelSports: #TeamBioSteel’s @cmcdavid97 &amp; @tseguinofficial are playing today at 4PM EST! #DrinkThePink™ https://t.co/htOPzWOZlI",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C3XQ8RSWEAAh1qJ.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/825885749354569728"
+    },
+    {
+      "date": "Sun, 29 Jan 2017 06:34 PM",
+      "text": "Silent auction prizes are heating up (literally)!!! Come bid on this week long vacay courtesy of… https://t.co/Hwe8Iq4YvU",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/825849689509552128"
+    },
+    {
+      "date": "Sat, 28 Jan 2017 08:17 AM",
+      "text": "Playoffs have begun for the #Leaside house league players. Good luck and have fun! ???? @ Leaside… https://t.co/9SqFM6yW3k",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/825331972742356994"
+    },
+    {
+      "date": "Fri, 27 Jan 2017 01:01 PM",
+      "text": "In addition to some action-packed hockey games, come by Leaside arena next weekend for an amazing silent auction #lsi2017 #leasidehockey",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/825041137723437061"
+    },
+    {
+      "date": "Fri, 27 Jan 2017 10:48 AM",
+      "text": "Looking for an off-season escape? Bid on this AMAZING silent auction prize courtesy of @gravitate.travel #lsi2017 https://t.co/hPNudleVyV",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/825007490161078272"
+    },
+    {
+      "date": "Thu, 26 Jan 2017 12:20 PM",
+      "text": "RT @ml_han: My latest for @TheAthleticTO on what young players can pick up from Auston Matthews' game: https://t.co/HDTchly4bs #BellLetsTal…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/824668264336936960"
+    },
+    {
+      "date": "Wed, 25 Jan 2017 11:14 AM",
+      "text": "RT @ReidmitchellTO: #BellLetsTalk @MapleLeafs https://t.co/x23oZmVwIk",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C2_38U_W8AA055q.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/824289339458908160"
+    },
+    {
+      "date": "Wed, 25 Jan 2017 11:13 AM",
+      "text": "RT @HometownHockey: Today is #BellLetsTalk! Every RT this gets will donate another 5 cents to mental health initiatives in Canada.",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/824289176413736960"
+    },
+    {
+      "date": "Tue, 24 Jan 2017 11:28 AM",
+      "text": "We are LIVE!!! Thank you #winloseortie for all your help and expertise with our beast of a… https://t.co/JoqKm332xI",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/823930458144546817"
+    },
+    {
+      "date": "Mon, 23 Jan 2017 09:23 AM",
+      "text": "RT @HockeyCanada: A great initiative promoting fun and safety!\nLeaside Gardens receives $500k gift from Pashby Sports Safety Fund. https://…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/823536681211011072"
+    },
+    {
+      "date": "Mon, 23 Jan 2017 09:23 AM",
+      "text": "RT @HockeyCanada: Only a few kits left! Sign up your Peewee team to receive a free coaches kit, courtesy of @ChevroletCanada. Details: http…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/823536605717794816"
+    },
+    {
+      "date": "Mon, 23 Jan 2017 09:22 AM",
+      "text": "RT @LeasideGardens: Thank you to Dr. Tom Pashby Sports Safety Fund for the generous donation  @leasideskating @TorontoLeaside @leasidehocke…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/823536305703370752"
+    },
+    {
+      "date": "Mon, 23 Jan 2017 09:14 AM",
+      "text": "Busy weekend .... congrats to the Minor Peewee A team for being finalists in Ottawa. You represented Leaside with c… https://t.co/gtFtNKePsq",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/823534411182473217"
+    },
+    {
+      "date": "Mon, 23 Jan 2017 09:09 AM",
+      "text": "A HUGE congrats to the Minor Novice Red select team on bringing home the hardware this weekend!… https://t.co/16GSjJ0kQB",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/823533035047919616"
+    },
+    {
+      "date": "Thu, 19 Jan 2017 04:25 PM",
+      "text": "RT @NHLAlumni: Meet and greet with Stanley Cup Champ and former @MapleLeafs @MKrushelnyski this Sat at Leaside arena from 10:30 - 1:30 @lea…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/822193357636206592"
+    },
+    {
+      "date": "Thu, 19 Jan 2017 04:25 PM",
+      "text": "RT @KidsConcussion: Thanks to all the @leasidehockey parents who attended our concussion education talk last night! For more info: https://…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/822193268289048576"
+    },
+    {
+      "date": "Thu, 19 Jan 2017 03:18 PM",
+      "text": "We are 2 weeks away from puck drop!! https://t.co/RTcAF2KndC",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C2j1EX5W8AAXKq-.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/822176393899474944"
+    },
+    {
+      "date": "Tue, 17 Jan 2017 10:53 AM",
+      "text": "RT @M_Nichol: This is AWESOME! \nForget about Hockey, there's lots of great LIFE advice in this piece. https://t.co/3BIU0JJ466",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/821385038348439553"
+    },
+    {
+      "date": "Sat, 14 Jan 2017 09:44 PM",
+      "text": "RT @HockeyCanada: Look back at @Wick_22's accomplishments and contributions to the game of hockey. #ThankYouWick\n\nPHOTO ALBUM: https://t.co…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/820461541166288896"
+    },
+    {
+      "date": "Sat, 14 Jan 2017 09:43 PM",
+      "text": "RT @wick_22: Dear Canada. It has been the great honour of my life to play for you. Time to hang em up!! Thank you! #grateful #graduationday…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/820461441308360704"
+    },
+    {
+      "date": "Thu, 12 Jan 2017 05:00 PM",
+      "text": "Looking for high school students to volunteer for LSI. Contact if interested https://t.co/LY7HeMGHRb",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C2AJRwiUAAESAO8.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/819665338669338625"
+    },
+    {
+      "date": "Thu, 12 Jan 2017 12:17 PM",
+      "text": "RT @GTHLHockey: New year, same hockey season. Catch up on the latest from around the G https://t.co/lKCcTxkNu8 https://t.co/MaRIyVScvd",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C16EKtIWIAEAWaO.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/819594175796703232"
+    },
+    {
+      "date": "Thu, 12 Jan 2017 12:17 PM",
+      "text": "RT @TheHockeyNews: Want to play in the NHL? Make sure you can move quickly: https://t.co/gFqi3kNFnW https://t.co/xE7U5xbWDD",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C1-zmbRUAAA3-pc.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/819594120150872064"
+    },
+    {
+      "date": "Thu, 12 Jan 2017 12:05 PM",
+      "text": "Novice Night activities being finalized! Schedules will be out soon. @ Leaside https://t.co/eoxV1VfJ6x",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/819591152810590208"
+    },
+    {
+      "date": "Tue, 10 Jan 2017 10:30 AM",
+      "text": "RT @PlayersTribune: From Sweden's ice to New York's Garden, Henrik Lundqvist chronicles his journey to the NHL --&gt; https://t.co/FBZC3g1xx9…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/818842482310057984"
+    },
+    {
+      "date": "Mon, 09 Jan 2017 11:11 PM",
+      "text": "RT @TSNHockey: Subscribe and listen to The #TSNHockey Bobcast with @TSNBobMcKenzie, on @iTunes, @SoundCloud, @GooglePlay &amp; https://t.co/3Mu…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/818671631816097792"
+    },
+    {
+      "date": "Mon, 09 Jan 2017 11:11 PM",
+      "text": "RT @SBayview: Ward 26 Town Hall meeting set for Wednesday, January 25 https://t.co/7ko6yzxqCS",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/818671533266767872"
+    },
+    {
+      "date": "Mon, 09 Jan 2017 10:08 AM",
+      "text": "Less than 1mnth to go! Thank you sponsors and business partners! https://t.co/GyuNrVN1mm",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/C1vONxoXgAI9qt7.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/818474498190114817"
+    },
+    {
+      "date": "Mon, 09 Jan 2017 09:35 AM",
+      "text": "RT @GTHLHockey: Does your child's hockey team qualify for #FordDrillsandSkills with the @MapleLeafs? #TMLTalk https://t.co/KodUU6Zf6x https…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/818466352243544064"
+    },
+    {
+      "date": "Wed, 28 Dec 2016 08:52 PM",
+      "text": "RT @tsnjamesduthie: In case you missed it last night because you were watching hockey (only valid Canadian excuse) https://t.co/hMZtyShDRx",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/814287891232854016"
+    },
+    {
+      "date": "Mon, 26 Dec 2016 05:07 PM",
+      "text": "Enter ProSmart's Contest to win new CCM skates, gloves, stick, and a signed NHL jerseys.\n\nhttps://t.co/iLriAUUpUK https://t.co/QXU3l2GlL5",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/813506642654494721"
+    },
+    {
+      "date": "Mon, 26 Dec 2016 05:06 PM",
+      "text": "RT @ProSmartSports: It's #WJC2017 season! Let's celebrate with Canada Cup, a drill ~99.9% of hockey players have done #ThanksCoach https://…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/813506211492597760"
+    },
+    {
+      "date": "Mon, 19 Dec 2016 11:28 AM",
+      "text": "RT @OHFHockey: Give the gift of hockey this Holiday season with #CTFirstShift ! Find a program near you here: https://t.co/P0cu4j8VyP https…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/810884553124540416"
+    },
+    {
+      "date": "Mon, 19 Dec 2016 11:27 AM",
+      "text": "RT @OHFHockey: Are you going to the World Junior Championship? Every ticket contributes to the legacy fund, which goes directly to Ontario…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/810884366629040128"
+    },
+    {
+      "date": "Mon, 19 Dec 2016 11:27 AM",
+      "text": "RT @GTHLHockey: Your arena board needs you! Find out how to get involved https://t.co/cJ9sMlTZds https://t.co/Hsizgu5CzU",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/Cz-ivCbXEAAiFgu.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/810884219287339008"
+    },
+    {
+      "date": "Mon, 19 Dec 2016 11:26 AM",
+      "text": "RT @NYHLHockey: Words from the great one #NYHL https://t.co/tH9zp6CB7x",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/Cz6X7rKXcAAN3Ud.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/810884116015149056"
+    },
+    {
+      "date": "Mon, 19 Dec 2016 11:26 AM",
+      "text": "RT @GTHLHockey: .@CoachsCornerDC showing his support for the #GTHLTopProspects on Hockey Night in Canada https://t.co/hG0SPUCLMT",
+      "mediaUrls": [
+        "http://pbs.twimg.com/ext_tw_video_thumb/810581624765042688/pu/img/IR_bhP-wy88jn1km.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/810884086332067840"
+    },
+    {
+      "date": "Thu, 15 Dec 2016 03:24 PM",
+      "text": "All NYHL and GTHL games cancelled or postponed.",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/809494272626098176"
+    },
+    {
+      "date": "Thu, 15 Dec 2016 03:23 PM",
+      "text": "RT @GTHLHockey: Five GTHL grads will help Canada go for gold #WJC2017 https://t.co/BftSU5vkqR",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/809494115452850176"
+    },
+    {
+      "date": "Wed, 14 Dec 2016 06:35 PM",
+      "text": "The winter temperatures have arrived. How low does it have to go to keep you off the ice???… https://t.co/iSha76KFK9",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/809180016214876160"
+    },
+    {
+      "date": "Wed, 14 Dec 2016 04:58 PM",
+      "text": "brookslaich's video https://t.co/dD86RoNdpO",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/809155662009790466"
+    },
+    {
+      "date": "Wed, 14 Dec 2016 02:28 PM",
+      "text": "RT @GTHLHockey: Teams are working to get a head start on Kraft Cup contention before Winter break. See the latest from around the G https:/…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/809117950213033984"
+    },
+    {
+      "date": "Wed, 14 Dec 2016 02:27 PM",
+      "text": "RT @OHLHockey: #OHL's Cirelli, McLeod, McNiven, Raddysh, Senyshyn, Speers, Stephens, Strome still competing for a spot on @HC_Men NJT for #…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/809117606846271489"
+    },
+    {
+      "date": "Wed, 14 Dec 2016 02:24 PM",
+      "text": "Breaking news: the LSI is FULL!!!Thanks to all select managers and Amy Joliat for making the NYHL deadline. Schedulers are now hard at work!",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/809116892459892736"
+    },
+    {
+      "date": "Tue, 13 Dec 2016 09:24 PM",
+      "text": "RT @OHFHockey: Give the gift of hockey this Holiday season with #CTFirstShift ! Find a program near you here: https://t.co/P0cu4j8VyP https…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/808860107912126464"
+    },
+    {
+      "date": "Tue, 13 Dec 2016 09:23 PM",
+      "text": "RT @GTHLHockey: We preview tonight's GTHL Top Prospects Game, Powered by @UnderArmour #GTHLTopProspects https://t.co/hLajsFlgFX https://t.c…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/808859988995244033"
+    },
+    {
+      "date": "Tue, 13 Dec 2016 09:23 PM",
+      "text": "Only a few more weeks left until the LSI committee take a well deserved holiday break. Get rosters, sponsors and si… https://t.co/tudhAqTf4S",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/808859815070023680"
+    },
+    {
+      "date": "Tue, 06 Dec 2016 08:53 PM",
+      "text": "RT @bwelltweets: Was a real honor to be inducted into my hometown Sports Hall of Fame @Leaside_Hall this weekend in Toronto! Thank You! htt…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/806315715397644290"
+    },
+    {
+      "date": "Tue, 06 Dec 2016 08:52 PM",
+      "text": "RT @ToLiveInToronto: No need to leave #Davisville &amp; #Leaside to have a good time and do good!!! Check out @TheLeasidePub starting Sat! #SHO…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/806315518214938624"
+    },
+    {
+      "date": "Tue, 06 Dec 2016 08:49 PM",
+      "text": "RT @KateBeirness: If you have kids, remember how impactful your words can be on the ride home ... Love this message! @TrueSportpur https://…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/806314745401839616"
+    },
+    {
+      "date": "Mon, 28 Nov 2016 05:26 PM",
+      "text": "RT @NHL: Next level selfie. #MacysParade #ThanksgivingShowdown https://t.co/Z8njGvSLtm",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/CyCiUuTUkAAMce-.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/803364375813902337"
+    },
+    {
+      "date": "Mon, 28 Nov 2016 05:25 PM",
+      "text": "RT @88EricLindros: Outdoor rinks are starting to open in Toronto. Jolly Jumper converted into a skating aid for my little guys. #homemade #…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/803364240102920192"
+    },
+    {
+      "date": "Tue, 22 Nov 2016 09:38 PM",
+      "text": "RT @GTHLPark_Flames: @leasidehockey did you hear about our atom house league hockey tournament? https://t.co/XX1HVw0dK8",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/CwJLsLeXgAEl4_n.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/801253685993046017"
+    },
+    {
+      "date": "Tue, 22 Nov 2016 09:38 PM",
+      "text": "Still looking for Tyke,MNovice,MPeewee,&amp;Bantam teams. #leasidehockey #selecthockey #nyhl #gta #leaside #omha #hockey https://t.co/qqLCfg5Gux",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/Cx6fzrVXAAAaX5B.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/801253503238750208"
+    },
+    {
+      "date": "Tue, 22 Nov 2016 04:41 PM",
+      "text": "RT @PlayersTribune: Defending Sidney Crosby is a nightmare for opponents.\n\n@LoganCouture explains why --&gt; https://t.co/LqYLCKu9c7 https://t…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/801178768811425792"
+    },
+    {
+      "date": "Tue, 22 Nov 2016 04:40 PM",
+      "text": "RT @PlayersTribune: When did Wayne Gretzky know he'd make it to the NHL?\n\nIt began at the @HC_WJC. #TPTStudioB https://t.co/tCkvZf4gfr",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/CxzGQqHXUAA82i4.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/801178556881481728"
+    },
+    {
+      "date": "Tue, 22 Nov 2016 04:39 PM",
+      "text": "RT @GTHLHockey: Hockey Canada has announced details for World Junior Championship development programs. Register now! https://t.co/EruzOlan…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/801178243663441920"
+    },
+    {
+      "date": "Tue, 22 Nov 2016 04:38 PM",
+      "text": "Go Flames https://t.co/NTpl9xcwTN",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/801177994987442180"
+    },
+    {
+      "date": "Tue, 22 Nov 2016 04:37 PM",
+      "text": "RT @cbcsports: No horsing around: Stamps, Redblacks won't have familiar mascots at Grey Cup\nhttps://t.co/vcPZlknm4O https://t.co/F5qDbtGOoW",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/Cx5K5-jWEAAW5eX.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/801177921998057474"
+    },
+    {
+      "date": "Tue, 22 Nov 2016 04:37 PM",
+      "text": "RT @LongosMarkets: Select your ingredients, sauté with confidence, savour your creation. #TastyTuesdays meet Longo's #KungPao Chicken. #Mea…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/801177823813791744"
+    },
+    {
+      "date": "Tue, 22 Nov 2016 03:20 PM",
+      "text": "Landed some more amazing vendors 4 Flames Foodcourt. Check us out Feb 3-5,'17 Leaside Arena. R U a baker? Want to reach 4000 ppl?contact us",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/801158320853614592"
+    },
+    {
+      "date": "Tue, 15 Nov 2016 09:12 PM",
+      "text": "RT @NYHLHockey: Leaside Atom Red team are victorious in the Bradford tournament.#NYHL https://t.co/ck7brZG9N1",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/CxVR_z8XUAEnVhT.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/798710265151885312"
+    },
+    {
+      "date": "Tue, 15 Nov 2016 09:12 PM",
+      "text": "RT @GTHLHockey: Recharge With Milk after your game this weekend at @ScotiabankPond. Drop by to get a FREE chocolate milk #BeatEverySunrise…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/798710207215992834"
+    },
+    {
+      "date": "Tue, 15 Nov 2016 09:11 PM",
+      "text": "RT @LongosMarkets: If you thought a twice baked potato was good, you've obviously never tried our #SweetPotato #Pizza. Enjoy it all month l…",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/798710174013935616"
+    },
+    {
+      "date": "Tue, 15 Nov 2016 09:11 PM",
+      "text": "RT @Leaside_Hall: See you November 18th for this years induction ceremony. https://t.co/HxQR3DGsvK",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/798710136881709056"
+    },
+    {
+      "date": "Mon, 31 Oct 2016 01:31 PM",
+      "text": "Ghosts of games past! Have a very safe and Happy Halloween everyone. #leasideflames… https://t.co/IOnyhmtwud",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/793158503871373312"
+    },
+    {
+      "date": "Fri, 28 Oct 2016 09:16 PM",
+      "text": "RT @annaope1: Go Leaside Minor Peewee AA!! @leasidehockey https://t.co/orN8g4R5hu",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/792188265378045952"
+    },
+    {
+      "date": "Fri, 28 Oct 2016 04:07 PM",
+      "text": "Still plenty of opportunities left for @SBayview businesses to support local hockey at the 27th annual Leaside SI Feb 3-5 2017.",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/792110537253482496"
+    },
+    {
+      "date": "Thu, 11 Apr 2013 06:34 PM",
+      "text": "Live from GTHL Awards Banquet. Congrats to 2 City Champs, 6 Kraft Cups and all Flames teams for strong season! http://t.co/oPtfB4rQVa",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/BHm5dokCcAA6QcA.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/322492767081230337"
+    },
+    {
+      "date": "Wed, 20 Feb 2013 05:28 PM",
+      "text": "Laugh Out Loud fundraiser Thursday for @LeasideRinkTwo is 96% Sold Out! Get tickets &gt; http://t.co/9tLK9bczu4 @charlenekalia",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/304356792241098752"
+    },
+    {
+      "date": "Tue, 19 Feb 2013 01:17 PM",
+      "text": "Is Leaside worthy? @Kraftcanada Hockey Goes On. Nominate someone who embodies spirit of game, win $100K &gt; http://t.co/2t4RNqL0",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/303931302434992130"
+    },
+    {
+      "date": "Mon, 18 Feb 2013 01:56 PM",
+      "text": "Wow! Flames Mid JrAA capture Kraft Cup in dramatic 3-game streak, with 9-1 victory in final game. Congrats boys! @GTHLHockey #neverindoubt",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/303578806252343296"
+    },
+    {
+      "date": "Sun, 17 Feb 2013 01:40 PM",
+      "text": "Select Tournament story &amp; pic posted on LHA site. Check it out &gt; http://t.co/EntTsb93",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/303212355645476864"
+    },
+    {
+      "date": "Sun, 17 Feb 2013 11:49 AM",
+      "text": "Another down, one more to go. Flames Mid Jr AA blank Isles 5-0, leaving tonight's final game to capture Kraft Cup. #downtothewire",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/303184336163835905"
+    },
+    {
+      "date": "Sat, 16 Feb 2013 12:45 PM",
+      "text": "Bring out the brooms. Flames Atom A sweep aside the Isles 6-0 in @GTHLHockey Qtr Finals #sweep",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/302836205295398914"
+    },
+    {
+      "date": "Fri, 15 Feb 2013 11:57 AM",
+      "text": "@GTHLHockey @hockeydiva4 Congrats. Flames charging hard for same in East! #buckleup",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/302461544057421825"
+    },
+    {
+      "date": "Fri, 15 Feb 2013 11:53 AM",
+      "text": "Kraft Cup dream lives!! Flames Mid JrAA beat Warriors 4-1 to creep within  pts. Two games left.Next: Islanders, Sat night.",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/302460707117625344"
+    },
+    {
+      "date": "Tue, 12 Feb 2013 05:02 PM",
+      "text": "Win out and Midget JrAA win Kraft Cup! Game 1 tonight. Go get 'em Flames! Two more after that. Final game At Mikes, Sunday @GTHLHockey",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/301451225101111296"
+    },
+    {
+      "date": "Mon, 11 Feb 2013 03:31 PM",
+      "text": "Fantastic photo of LHA Select Tournament action. Big shout out to Sunil Ramjit &gt;  http://t.co/YvdTKNRl",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/301065916228202496"
+    },
+    {
+      "date": "Sun, 10 Feb 2013 11:28 PM",
+      "text": "Snowmagddon. Parking. No William Lee Room. Despite challenges Leaside Select Tournament Organizers pull off a great event! Thank u to all!",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/300823672187404289"
+    },
+    {
+      "date": "Sun, 10 Feb 2013 10:47 PM",
+      "text": "Leaside Select Champions, Flames: MinNovB &gt;&gt; NovB Gold &gt;&gt;  MinAtomA Red &gt;&gt; MinPeewee. Way to go boys!!",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/300813168618401793"
+    },
+    {
+      "date": "Thu, 07 Feb 2013 11:25 AM",
+      "text": "MinAtom AA showdown looming in Final Wknd. Flames v Thunder, Sunday, w last Playoff spot on the line! @GTHLHockey",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/299554367453949952"
+    },
+    {
+      "date": "Wed, 06 Feb 2013 07:35 PM",
+      "text": "Shout out to Flames Atom A, who came within 2 pts of possible Kraft Cup w 28-5-3 record, finishing second @GTHLHockey",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/299315386355171328"
+    },
+    {
+      "date": "Wed, 06 Feb 2013 02:16 PM",
+      "text": "Flames Min Bantam A cruising to Kraft Cup Champion, posting 30-1-3 record entering final weekend. @GTHLHockey",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/299235126666227715"
+    },
+    {
+      "date": "Thu, 31 Jan 2013 05:23 PM",
+      "text": "Fundraising for @LeasideRinkTwo tops $3 Mil as girders rise to the sky! Keep those donations coming. #itsforreal",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/297107867658506240"
+    },
+    {
+      "date": "Wed, 30 Jan 2013 04:16 PM",
+      "text": "@GTHLHockey launches survey on player safety &amp; Freedom of Movement. Take the survey here &gt; http://t.co/05tBMBiH",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/296728691726221312"
+    },
+    {
+      "date": "Thu, 24 Jan 2013 02:39 PM",
+      "text": "RT @Grill_Bill: Feb 7th at the Amsterdam Brewery.  Some dam great beer and some dam great food. #grillicious http://t.co/M8USp4SY",
+      "mediaUrls": [
+        "http://pbs.twimg.com/media/BBVDLNWCMAE7c1b.jpg"
+      ],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/294529973799231488"
+    },
+    {
+      "date": "Thu, 24 Jan 2013 02:37 PM",
+      "text": "Next LOL Fundraiser for @LeasideRinkTwo Feb 22 at Fantasy Farm. Details here &gt; https://t.co/Rmw6y4yv",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/294529449796440064"
+    },
+    {
+      "date": "Fri, 21 Dec 2012 05:57 PM",
+      "text": "Hey Flames Fans: looking for gift idea? Reebok extends warranty on select stick to 60 days &gt; http://t.co/tuTxpj1i @reebokhockey",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/282258604004868097"
+    },
+    {
+      "date": "Mon, 10 Dec 2012 12:37 PM",
+      "text": "Shout out to MinNovGold victory in B. Giroux Tourney in Brampton this past weekend. #nailbiter",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/278191691188535296"
+    },
+    {
+      "date": "Sat, 08 Dec 2012 01:01 AM",
+      "text": "Leaside sweeps round robin at Brother Authur Tournament. Next up? Tomorrow 10AM Del LaSalle.",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/277291709552009216"
+    },
+    {
+      "date": "Thu, 06 Dec 2012 08:07 PM",
+      "text": "@GTHLHockey Thanks folks. Appreciate kind words.",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/276855386030608386"
+    },
+    {
+      "date": "Thu, 06 Dec 2012 08:05 PM",
+      "text": "Nothing like an out-of-town tourney to prove how good @GTHLHockey referees really are. #qualityzebras",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/276855027568611328"
+    },
+    {
+      "date": "Thu, 06 Dec 2012 07:06 PM",
+      "text": "Flames Midget Sr AA sweep last weekend's Motown Cup, allowing only 2 goals in 4 games. #domination @GTHLHockey",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/276840191514263552"
+    },
+    {
+      "date": "Wed, 05 Dec 2012 07:36 PM",
+      "text": "RT @GTHLHockey: Check out this \"Hockey Goes On\" promotional spot by Kraft featuring the Markham Majors PW AAA team http://t.co/H2xkCGSE",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/276485284923834368"
+    },
+    {
+      "date": "Wed, 05 Dec 2012 07:33 PM",
+      "text": "Wonder where $$ goes? @HockeyMHL explains their cost breakdown &gt; http://t.co/WAlGeMv0 @GTHLHockey",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/276484362357313537"
+    },
+    {
+      "date": "Wed, 05 Dec 2012 07:25 PM",
+      "text": "@namdoog17 Congrats Ben. You set a great example - on and off ice!  #leadership @GTHLHockey",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/276482536954286080"
+    },
+    {
+      "date": "Sat, 24 Nov 2012 07:26 PM",
+      "text": "Got your Club Card from @HockeyCanada yet? Watch your mailbox. Exclusive discounts, contests &amp; more &gt; http://t.co/3NNhZnxo @ClubHC_en",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/272496483432017920"
+    },
+    {
+      "date": "Sat, 24 Nov 2012 10:33 AM",
+      "text": "It's GTHL Day @ Leaside Gdns. Good luck to all Flames teams! Final game in home rink? @GTHLHockey #homeice",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/272362229117104128"
+    },
+    {
+      "date": "Fri, 26 Oct 2012 03:46 PM",
+      "text": "Dear Parent: Did your player suffer a concussion last game? Not sure? This can help &gt;&gt; @hockeycanada app &gt;  http://t.co/YcaVXUUQ #smartplay",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/261931714773929984"
+    },
+    {
+      "date": "Fri, 26 Oct 2012 03:32 PM",
+      "text": "Great opportunity for hockey-loving teen. Intern @GTHLHockey, assisting with events, planning and execution: http://t.co/mZM0E7x4",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/261928262953996289"
+    },
+    {
+      "date": "Fri, 26 Oct 2012 01:49 PM",
+      "text": "@juliettepowell @CundariGroup",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/261902322916024321"
+    },
+    {
+      "date": "Thu, 18 Oct 2012 07:32 AM",
+      "text": "@namdoog17 Totally, we're with ya. Good luck this season. Let us know when you have big game.",
+      "mediaUrls": [],
+      "profileImageUrl": "http://pbs.twimg.com/profile_images/796016517838057472/yFCuFCU__normal.jpg",
+      "screenName": "leasidehockey",
+      "url": "https://twitter.com/leasidehockey/status/258908385322340352"
+    }
+  ]
 }

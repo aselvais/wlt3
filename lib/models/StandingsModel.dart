@@ -61,7 +61,7 @@ class StandingsModel extends ChangeNotifier
   {
       this.loading = true;
       _list = new List();
-      _api.getStandings(divisionId, tierId)
+      _api.getTeamstandingLocalTierGroupGeneric(divisionId, tierId)
         .then((dt) => _replaceList(dt) )
         .catchError((e) => throw Exception(e))
         .whenComplete(() => notifyListeners() );

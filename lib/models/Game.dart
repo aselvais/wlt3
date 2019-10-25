@@ -45,7 +45,7 @@ class Game {
       type: json['type'],
       arena: Arena.fromJson(json['arena']),
       time: json['time'],
-      info: Gameinfo.fromJson(json['info']),
+      info: json.containsKey('info') ? Gameinfo.fromJson(json['info']) : null,
       divisionId: json['divisionId'],
       divisionName: json['divisionName'],
       dateTime: json['dateTime'],

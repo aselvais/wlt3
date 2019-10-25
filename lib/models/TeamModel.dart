@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/Team.dart';
+import 'package:wlt3/models/Teamdata.dart';
 
 class TeamModel extends ChangeNotifier
 {
@@ -9,7 +10,7 @@ class TeamModel extends ChangeNotifier
   List<Team> _list = new List();
   bool _loading = false;
   int _selectedId = -1;
-  Team _selectedModel;
+  Teamdata _selectedModel;
 
   get list {
     return _list;
@@ -33,7 +34,7 @@ class TeamModel extends ChangeNotifier
     notifyListeners();
   }
   
-  set selectedModel(Team v)
+  set selectedModel(Teamdata v)
   {
     _selectedModel = v;
     notifyListeners();
@@ -57,7 +58,7 @@ class TeamModel extends ChangeNotifier
     this.loading = false;
   }
 
-  _replaceSelectedModel(Team m)
+  _replaceSelectedModel(Teamdata m)
   {
     this._selectedModel = m;
     this.loading = false;
@@ -66,7 +67,7 @@ class TeamModel extends ChangeNotifier
   loadData(int teamId)
   {
       this.loading = true;
-      _api.getTeamInfo(teamId)
+      _api.getTeamInfoFull(teamId)
         .then((dt) => _replaceSelectedModel(dt) )
         .catchError((e) => throw Exception(e))
         .whenComplete(() => notifyListeners() );

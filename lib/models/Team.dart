@@ -12,9 +12,8 @@ class Team {
   final int draw;
   final int shootoutLoss;
   final bool enableSol;
-  final int streak;
-  final int positionElementInStandings;
-
+  final String streak;
+  final String positionElementInStandings;
   final int divisionId;
   final String divisionName;
   final int tierId;
