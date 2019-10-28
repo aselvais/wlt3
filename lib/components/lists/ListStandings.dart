@@ -3,14 +3,26 @@ import 'package:provider/provider.dart';
 import 'package:wlt3/models/Standingdata.dart';
 import 'package:wlt3/models/StandingsModel.dart';
 import 'package:wlt3/models/Standing.dart';
+import 'package:wlt3/models/TeamModel.dart';
 
 class ListStandings extends StatelessWidget {
+
+  onTapTeam(BuildContext context, Standingdata team) {
+    final TeamModel teammodel = Provider.of<TeamModel>(context);
+    teammodel.loadData(team.teamId);
+    Navigator.pushNamed(context, '/teamdetail');
+  }
 
   Widget getElement(BuildContext context, Standingdata f, String k)
   {
     try {
       switch(k) {
-        case 'imgurl': { return Image.network(f.imgurl); }
+        case 'imgurl': { 
+          return InkWell( 
+            child: Image.network(f.imgurl), 
+            onTap: () => this.onTapTeam(context, f), 
+          ); 
+        }
         break;
         case 'team': { return Text('team: ' + f.team); }
         break;
