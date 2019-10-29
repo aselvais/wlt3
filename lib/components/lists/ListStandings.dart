@@ -18,10 +18,7 @@ class ListStandings extends StatelessWidget {
     try {
       switch(k) {
         case 'imgurl': { 
-          return InkWell( 
-            child: Image.network(f.imgurl), 
-            onTap: () => this.onTapTeam(context, f), 
-          ); 
+          return InkWell( child: Image.network(f.imgurl), onTap: () => this.onTapTeam(context, f), ); 
         }
         break;
         case 'team': { return Text('team: ' + f.team); }
