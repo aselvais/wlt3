@@ -5,6 +5,43 @@ import 'package:wlt3/models/TeamModel.dart';
 
 class TeamdetailScreen extends StatelessWidget {
   final String _title = 'Teamdetail Screen';
+
+  Widget getTabsView(BuildContext context) {
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(
+                text: '2018',
+              ),
+              Tab(
+                text: '2019',
+              ),
+              Tab(
+                text: '2020',
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            Container(
+              color: Colors.pink,
+            ),
+            Container(
+              color: Colors.blue,
+            ),
+            Container(
+              color: Colors.deepPurple,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final teams = Provider.of<TeamModel>(context);
@@ -29,13 +66,21 @@ class TeamdetailScreen extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       Image.network(team.imageUrl, width: 70, height: 70),
-                      Text(team.teamName + " | " + team.divisionName , style: TextStyle(color: Colors.white, fontSize: 15,)),
+                      Text(team.teamName + " | " + team.divisionName,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          )),
                       Text(
-                        team.win.toString() + '-' +
-                        team.lose.toString() + '-' +
-                        team.draw.toString()
-                       , style: TextStyle(color: Colors.white, fontSize: 12,)
-                       ),
+                          team.win.toString() +
+                              '-' +
+                              team.lose.toString() +
+                              '-' +
+                              team.draw.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          )),
                     ],
                   ),
                 ),
@@ -46,28 +91,37 @@ class TeamdetailScreen extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 color: Colors.blue,
-                child: Row(children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Icon(Icons.favorite, color: Colors.white),
-                      Text('Past Games', style: TextStyle(color: Colors.white),)
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Icon(Icons.favorite, color: Colors.white),
-                      Text('Standings', style: TextStyle(color: Colors.white),)
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Icon(Icons.favorite, color: Colors.white),
-                      Text('News', style: TextStyle(color: Colors.white),)
-                    ],
-                  ),
-
-
-                ],),
+                child: Row(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Icon(Icons.favorite, color: Colors.white),
+                        Text(
+                          'Past Games',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Icon(Icons.favorite, color: Colors.white),
+                        Text(
+                          'Standings',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Icon(Icons.favorite, color: Colors.white),
+                        Text(
+                          'News',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -77,7 +131,7 @@ class TeamdetailScreen extends StatelessWidget {
                 color: Colors.white,
                 child: Center(
                   child: Text(
-                    team.teamName,  // _title,
+                    team.teamName, // _title,
                     style: TextStyle(fontSize: 30, color: Colors.black),
                   ),
                 ),
