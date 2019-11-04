@@ -13,6 +13,8 @@ import 'package:wlt3/models/Tiers.dart';
 
 class ApiaccessWlt extends ApiaccessAbstract {
   String baseurl = 'https://us-central1-wlt3-66c9a.cloudfunctions.net/';
+  // String baseurl = 'http://localhost:5000/wlt3-66c9a/us-central1/';
+
 
   Future<List<League>> getLeagues() async 
   {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/components/lists/ListGames.dart';
+import 'package:wlt3/components/widgets/Buttonlist.dart';
+import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/Division.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/GamesModel.dart';
@@ -56,14 +58,22 @@ class GamesScreen extends StatelessWidget
     final GamesModel games = Provider.of<GamesModel>(context);
     try {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Themedata.greyBackground,
       body: Column(
         children: <Widget>[
           Container(
             padding: const EdgeInsets.all(10.0),
             child: Row(children: <Widget>[
-              Expanded(child: InkWell(child: Text("Season: " + season.name + " > "), onTap: () => onTapSeasons(context)), ),
-              Expanded(child: InkWell(child: Text("Division: " + division.name + " > "), onTap: () => onTapDivisions(context)),)
+              Expanded(child: InkWell(
+                child: Buttonlist(title: 'Season', subtitle: season.name), // Text("Season: " + season.name + " > "), 
+                onTap: () => onTapSeasons(context),
+                ), 
+              ),
+              Expanded(child: InkWell(
+                child: Buttonlist(title: 'Division', subtitle: division.name), 
+                onTap: () => onTapDivisions(context),
+                ),
+              )
             ],),
           ),
           Expanded(

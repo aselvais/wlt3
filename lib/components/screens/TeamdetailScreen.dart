@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/components/widgets/GameElement.dart';
 import 'package:wlt3/components/widgets/NewsElement.dart';
 import 'package:wlt3/components/widgets/TweetsElement.dart';
+import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/Gamesdata.dart';
 import 'package:wlt3/models/News.dart';
 import 'package:wlt3/models/Team.dart';
@@ -12,28 +14,32 @@ class TeamdetailScreen extends StatelessWidget {
 
   Widget getPreviousGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
-    // List<Widget> wl = new List();
-    // gamesdata.past.forEach((Game f) => wl.add(GameElement(game: f)));
+    List<Widget> wl = new List();
+    gamesdata.past.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
       color: Colors.white,
-      child: // ListView(children: wl,)
-      Text('Number of games: ' + gamesdata.past.length.toString()),
+      child: ListView(children: wl,)
+      // Text('Number of games: ' + gamesdata.past.length.toString()),
     );
   }
 
   Widget getTodaysGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
+    List<Widget> wl = new List();
+    gamesdata.today.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
       color: Colors.white,
-      child: Text('Number of games: ' + gamesdata.today.length.toString()),
+      child: ListView(children: wl,) // Text('Number of games: ' + gamesdata.today.length.toString()),
     );
   }
 
   Widget getFutureGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
+    List<Widget> wl = new List();
+    gamesdata.upcoming.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
       color: Colors.white,
-      child: Text('Number of games: ' + gamesdata.upcoming.length.toString()),
+      child: ListView(children: wl,) // Text('Number of games: ' + gamesdata.upcoming.length.toString()),
     );
   }
 

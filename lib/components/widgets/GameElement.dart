@@ -37,11 +37,11 @@ class GameElement extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 10,
-              child: Text(game.leagueShortName.toUpperCase() +
+              child: Text( ((game.leagueShortName != null) ? game.leagueShortName.toUpperCase() : '') +
                   "\n" +
-                  game.seasonName.toUpperCase() +
+                  ((game.seasonName != null) ? game.seasonName.toUpperCase() : '') +
                   " | " +
-                  game.divisionName.toUpperCase()),
+                  ((game.divisionName != null) ? game.divisionName.toUpperCase() : '') ),
             )
           ],
         )
