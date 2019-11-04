@@ -4,6 +4,8 @@ import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/Division.dart';
 import 'package:wlt3/models/GamesModel.dart';
+import 'package:wlt3/models/Matchdates.dart';
+import 'package:wlt3/models/MatchdatesModel.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
 
 class ListDivisions extends StatelessWidget {
@@ -40,9 +42,14 @@ class ListDivisions extends StatelessWidget {
     final seasons = Provider.of<SeasonsModel>(context);
     divisions.selectedId = model.id;
     divisions.selectedModel = model;
+    // loading game dates
+    
+    final matchdatesModel = Provider.of<MatchdatesModel>(context);
+    matchdatesModel.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
+    // loading games
     games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     bottomModel.idx = 0;
-     Navigator.popUntil(context, ModalRoute.withName('/home'));
+    Navigator.popUntil(context, ModalRoute.withName('/home'));
   }
 
   @override

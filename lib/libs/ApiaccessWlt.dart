@@ -5,6 +5,7 @@ import 'package:wlt3/libs/ApiaccessAbstract.dart';
 import 'package:wlt3/models/Division.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/League.dart';
+import 'package:wlt3/models/Matchdates.dart';
 import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/Standing.dart';
 import 'package:wlt3/models/Team.dart';
@@ -148,27 +149,18 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
-  Future<List<Standing>> getGameall(
-        String datefrom,
-        String dateto,
-        int seasonId,
-        int divisionId,
-        String output
-  ) async 
+  /*
+   * Fetches the list of dates where we can find games
+   */
+  Future<List<Matchdates>> getGameall(int seasonId, int divisionId) async 
   {
-    String fullurl = baseurl + 'gameall/?datefrom=' + datefrom +
-      "&dateto=" + dateto +
-      "&seasonId=" + seasonId.toString() +
-      "&divisionId=" + divisionId.toString() +
-      "&output=" + output;
-    print(fullurl);
+    String fullurl = baseurl + 'gameall/?' + "seasonId=" + seasonId.toString() + "&divisionId=" + divisionId.toString();
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
-      print(response.body);
-      //List<dynamic> djson = json.decode(response.body);
-      //List<Standing> toret = new List();
-      //djson.forEach((json) => toret.add(Standing.fromJson(json)));
-      //return toret;
+      List<dynamic> djson = json.decode(response.body);
+      List<Matchdates> toret = new List();
+      djson.forEach((json) => toret.add(Matchdates.fromJson(json)));
+      return toret;
     } else {
       throw Exception('Failed to load response.body');
     }

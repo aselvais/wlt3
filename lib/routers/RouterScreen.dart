@@ -15,6 +15,7 @@ import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
+import 'package:wlt3/models/MatchdatesModel.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
 import 'package:wlt3/models/StandingsModel.dart';
 import 'package:wlt3/models/TeamModel.dart';
@@ -34,6 +35,7 @@ class RouterScreen extends StatelessWidget {
           ChangeNotifierProvider<StandingsModel>(builder: (context) => StandingsModel()),
           ChangeNotifierProvider<TeamModel>(builder: (context) => TeamModel()),
           ChangeNotifierProvider<BottombarModel>(builder: (context) => BottombarModel()),
+          ChangeNotifierProvider<MatchdatesModel>(builder: (context) => MatchdatesModel()),
       ],
       child: MaterialApp(
         title: 'Win Lose or Tie',
