@@ -2,38 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/components/lists/ListGames.dart';
 import 'package:wlt3/components/widgets/Buttonlist.dart';
+import 'package:wlt3/components/widgets/Calendarbutton.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/Division.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
-import 'package:wlt3/models/GamesModel.dart';
-import 'package:wlt3/models/League.dart';
-import 'package:wlt3/models/LeaguesModel.dart';
 import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
-import 'dart:async';
-import 'package:intl/intl.dart';
 
 
 class GamesScreen extends StatelessWidget
 {
   
-  Future<void> _selectDate(BuildContext context) async {
-    final GamesModel games = Provider.of<GamesModel>(context);
-    final DateTime picked = await showDatePicker(
-      context: context,
-      initialDate: games.selectedDate,
-      firstDate: DateTime(2015, 8),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null && picked != games.selectedDate) { 
-      final Season season = Provider.of<SeasonsModel>(context).selectedModel;
-      final Division division = Provider.of<DivisionsModel>(context).selectedModel;
-      games.selectedDate = picked;
-      games.loadData(season.id, division.id);
-
-    }
-  }
-
   onTapSeasons(BuildContext context)
   {
     Navigator.pushNamed(context, '/seasons');
@@ -44,18 +23,10 @@ class GamesScreen extends StatelessWidget
     Navigator.pushNamed(context, '/divisions');
   }
 
-  onTapDate(BuildContext context)
-  {
-    _selectDate(context);
-    // Navigator.pushNamed(context, '/pickdate');
-  }
-
   @override
   Widget build(BuildContext context) {
-    final League league = Provider.of<LeaguesModel>(context).selectedModel;
     final Season season = Provider.of<SeasonsModel>(context).selectedModel;
     final Division division = Provider.of<DivisionsModel>(context).selectedModel;
-    final GamesModel games = Provider.of<GamesModel>(context);
     try {
     return Scaffold(
       backgroundColor: Themedata.greyBackground,
@@ -76,16 +47,7 @@ class GamesScreen extends StatelessWidget
               )
             ],),
           ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              child: InkWell(child: Text(
-                DateFormat.yMMMd().format(games.selectedDate),
-                style: TextStyle(color: Colors.white)
-              ),
-              onTap: () => onTapDate(context),),
-            ),
-          ),
+          Calendarbutton(),
           Expanded(
             flex: 9,
             child: ListGames(),
