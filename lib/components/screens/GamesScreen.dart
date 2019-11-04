@@ -79,13 +79,8 @@ class GamesScreen extends StatelessWidget
           Expanded(
             flex: 1,
             child: Container(
-              color: Colors.blue,
-              child: InkWell(child:  Text(
-                "Calendar Choice Widget:\n" +
-                DateFormat.yMMMd().format(games.selectedDate) + "\n" +
-                league.id.toString() + " - " +
-                season.id.toString() + " - " +
-                division.id.toString(),
+              child: InkWell(child: Text(
+                DateFormat.yMMMd().format(games.selectedDate),
                 style: TextStyle(color: Colors.white)
               ),
               onTap: () => onTapDate(context),),

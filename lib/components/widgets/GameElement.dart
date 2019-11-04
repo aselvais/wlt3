@@ -29,7 +29,8 @@ class GameElement extends StatelessWidget {
             ),
             Expanded(
                 flex: 4,
-                child: Text(game.dateTime + "\n" + game.arena.name + "\n" + game.status,
+                child: Text(
+                    game.dateTime + "\n" + game.arena.name + "\n" + game.status,
                     style: TextStyle(color: Colors.black, fontSize: 13.0))),
           ],
         ),
@@ -37,11 +38,17 @@ class GameElement extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 10,
-              child: Text( ((game.leagueShortName != null) ? game.leagueShortName.toUpperCase() : '') +
+              child: Text(((game.leagueShortName != null)
+                      ? game.leagueShortName.toUpperCase()
+                      : '') +
                   "\n" +
-                  ((game.seasonName != null) ? game.seasonName.toUpperCase() : '') +
+                  ((game.seasonName != null)
+                      ? game.seasonName.toUpperCase()
+                      : '') +
                   " | " +
-                  ((game.divisionName != null) ? game.divisionName.toUpperCase() : '') ),
+                  ((game.divisionName != null)
+                      ? game.divisionName.toUpperCase()
+                      : '')),
             )
           ],
         )
@@ -60,10 +67,13 @@ class GameElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          color: Colors.white,
+        ),      
         margin: const EdgeInsets.all(5.0),
         padding: const EdgeInsets.all(10.0),
         // height: 100,
-        color: Colors.amber[600],
         child: getButton(context),
       ),
       onTap: () => onTapElement(context),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/components/lists/ListStandings.dart';
+import 'package:wlt3/components/widgets/Buttonlist.dart';
+import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
@@ -23,7 +25,8 @@ class StandingsScreen extends StatelessWidget
       tiersName = tiers.selectedModel.name;
     } catch(ee) {}
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Themedata.greyBackground,
+
       body: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -31,12 +34,8 @@ class StandingsScreen extends StatelessWidget
             Expanded(
                 flex: 1,
                 child: InkWell(
-                  child: Column(
-                    children: <Widget>[
-                      Text('Tiers >', style: TextStyle( fontSize: 20, color: Colors.black ),),
-                      Text(tiersName, style: TextStyle( fontSize: 15, color: Colors.black ),),
-                    ],
-                  ),
+                  child: 
+                  Buttonlist(title: 'Tiers', subtitle: tiersName,),
                   onTap: () => onTapTiers(context),
                 ),
             ),
