@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wlt3/components/widgets/GameElement.dart';
 import 'package:wlt3/components/widgets/NewsElement.dart';
 import 'package:wlt3/components/widgets/TweetsElement.dart';
+import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/Gamesdata.dart';
 import 'package:wlt3/models/News.dart';
@@ -10,16 +11,18 @@ import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/Tweet.dart';
 
-class TeamdetailScreen extends StatelessWidget {
+class TeamdetailScreen extends StatelessWidget 
+{
 
-  Widget getPreviousGames(BuildContext context, TeamModel teams) {
+  Widget getPreviousGames(BuildContext context, TeamModel teams) 
+  {
     final Gamesdata gamesdata = teams.selectedModel.games;
     List<Widget> wl = new List();
     gamesdata.past.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
-      color: Colors.white,
+      padding: const EdgeInsets.all(10.0),
+      color: Themedata.greyBackground,
       child: ListView(children: wl,)
-      // Text('Number of games: ' + gamesdata.past.length.toString()),
     );
   }
 
@@ -28,97 +31,120 @@ class TeamdetailScreen extends StatelessWidget {
     List<Widget> wl = new List();
     gamesdata.today.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
-      color: Colors.white,
-      child: ListView(children: wl,) // Text('Number of games: ' + gamesdata.today.length.toString()),
+      padding: const EdgeInsets.all(10.0),
+      color: Themedata.greyBackground,
+      child: ListView(children: wl,) 
     );
   }
 
-  Widget getFutureGames(BuildContext context, TeamModel teams) {
+  Widget getFutureGames(BuildContext context, TeamModel teams) 
+  {
     final Gamesdata gamesdata = teams.selectedModel.games;
     List<Widget> wl = new List();
     gamesdata.upcoming.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
-      color: Colors.white,
-      child: ListView(children: wl,) // Text('Number of games: ' + gamesdata.upcoming.length.toString()),
+      padding: const EdgeInsets.all(10.0),
+      color: Themedata.greyBackground,
+      child: ListView(children: wl,) 
     );
   }
 
-  Widget getStandings(BuildContext context, TeamModel teams) {
-    return Container(color: Colors.white,);
+  Widget getStandings(BuildContext context, TeamModel teams) 
+  {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      color: Themedata.greyBackground,
+    );
   }
 
-  Widget getNews(BuildContext context, TeamModel teams) {
+  Widget getNews(BuildContext context, TeamModel teams) 
+  {
     final List<News> news = teams.selectedModel.news;
     List<Widget> wl = new List();
     wl.add(Text('Number of new: ' + news.length.toString()));
     news.forEach((News f) => wl.add(NewsElement(news: f)));
     return Container(
-      color: Colors.white,
+      padding: const EdgeInsets.all(10.0),
+      color: Themedata.greyBackground,
       child: ListView(children: wl,)
     );
   }
 
-  Widget getTweets(BuildContext context, TeamModel teams) {
+  Widget getTweets(BuildContext context, TeamModel teams) 
+  {
     final List<Tweet> tweets = teams.selectedModel.tweets;
     List<Widget> wl = new List();
     wl.add(Text('Number of tweets: ' + tweets.length.toString()));
     tweets.forEach((Tweet f) => wl.add( TweetsElement(tweet: f)));
     return Container(
-      color: Colors.white,
+      padding: const EdgeInsets.all(10.0),
+      color: Themedata.greyBackground,
       child: ListView(children: wl,)
     );
-
-    /*
-    return Container(
-      color: Colors.white,
-      child: Text('Number of tweets: ' + tweets.length.toString()),
-    );
-    */
-
   }
 
-  Widget getTabsView(BuildContext context, TeamModel teams) {
+  Widget getTabsView(BuildContext context, TeamModel teams) 
+  {
+    int gamesPastLength = 0;
+    int gamesTodayLength = 0;
+    int gamesUpcomingLength = 0;
+    int standingsLength = 1;
+    int newsLength = 0;
+    int tweetsLength = 0;
+    List<Widget> headerWidgets = [];
+    List<Widget> contentWidget = [];
+    try {  gamesPastLength = teams.selectedModel.games.past.length;  } catch(ee) {}
+    try {  gamesTodayLength = teams.selectedModel.games.today.length; } catch(ee) {}
+    try {  gamesUpcomingLength = teams.selectedModel.games.past.upcoming; } catch(ee) {}
+    try {  newsLength = teams.selectedModel.news.length; } catch(ee) {}
+    try {  tweetsLength = teams.selectedModel.tweets.length;  } catch(ee) {}
+    /* ------------------------------------------------------- */
+    if (gamesPastLength > 0) {
+      headerWidgets.add(Tab( text: 'Previous Games', ));
+      contentWidget.add(getPreviousGames(context, teams));
+    }
+    if (gamesTodayLength > 0)
+    {
+      headerWidgets.add(Tab( text: 'Today\'s Games', )); 
+      contentWidget.add(getTodaysGames(context, teams));
+    }
+    if (gamesUpcomingLength > 0)
+    {
+      headerWidgets.add(Tab( text: 'Future Games', ));
+      contentWidget.add(getFutureGames(context, teams));
+    }
+    if (newsLength > 0)
+    {
+      headerWidgets.add(Tab( text: 'News', ));
+      contentWidget.add(getNews(context, teams));
+    }
+    if (standingsLength > 0)
+    {
+      headerWidgets.add(Tab( text: 'Standings', ));
+      contentWidget.add(getStandings(context, teams));
+    }
+    if (tweetsLength > 0)
+    {
+      headerWidgets.add(Tab( text: 'Tweets', ));
+      contentWidget.add(getTweets(context, teams));
+    }
+
+    /* ------------------------------------------------------- */
     return Expanded(
       flex: 7,
       child: DefaultTabController(
-        length: 6,
+        length: contentWidget.length,
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
             // backgroundColor: Colors.black,
             bottom: TabBar(
               isScrollable: true,
-              tabs: <Widget>[
-                Tab(
-                  text: 'Previous Games',
-                ),
-                Tab(
-                  text: 'Today\'s Games',
-                ),
-                Tab(
-                  text: 'Future Games',
-                ),
-                Tab(
-                  text: 'Standings',
-                ),
-                Tab(
-                  text: 'News',
-                ),
-                Tab(
-                  text: 'Tweets',
-                ),
-              ],
+              tabs: headerWidgets,
             ),
           ),
           body: TabBarView(
-            children: [
-              getPreviousGames(context, teams),
-              getTodaysGames(context, teams),
-              getFutureGames(context, teams),
-              getStandings(context, teams),
-              getNews(context, teams),
-              getTweets(context, teams),
-            ],
+            children: contentWidget,
           ),
         ),
       ),

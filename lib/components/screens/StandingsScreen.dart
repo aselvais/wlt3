@@ -42,7 +42,6 @@ class StandingsScreen extends StatelessWidget
             Expanded(
               flex: 9,
               child: Container(
-                color: Colors.white,
                 child: ListStandings(),
               ),
             )
