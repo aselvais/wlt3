@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/models/BottombarModel.dart';
@@ -23,6 +21,12 @@ class ActionsComposite
   {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
     teammodel.loadData(teamId);
+    // load standings for this team
+    // @todo Do this only after loading 
+    try {
+      final standing = Provider.of<StandingsModel>(context);
+      standing.loadData(teammodel.selectedModel.teaminfo.divisionId, teammodel.selectedModel.teaminfo.tierId);
+    } catch (ee) {}
     Navigator.pushNamed(context, '/teamdetail');
   }
 
@@ -100,6 +104,7 @@ class ActionsComposite
       final standing = Provider.of<StandingsModel>(context);
       final divisions = Provider.of<DivisionsModel>(context);
       final tiers = Provider.of<TiersModel>(context);
+      tiers.loadData(divisions.selectedModel.id);
       int tiersId = 0;
       try {
         tiersId = tiers.selectedModel.id;

@@ -14,28 +14,36 @@ class StandingsScreen extends StatelessWidget
     ActionsComposite.goToTiersScreen(context);
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget getTiersButton(BuildContext context)
+  {
     final tiers = Provider.of<TiersModel>(context);
     String tiersName = '...';
     try {
       tiersName = tiers.selectedModel.name;
     } catch(ee) {}
+    if (tiers.loading == true || tiers.list.length == 0)
+    {
+      return Container();
+    } else {
+      return Expanded(
+                flex: 1,
+                child: InkWell(
+                  child: Buttonlist(title: 'Tiers', subtitle: tiersName,),
+                  onTap: () => onTapTiers(context),
+                ),
+            );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Themedata.greyBackground,
-
       body: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: <Widget>[
-            Expanded(
-                flex: 1,
-                child: InkWell(
-                  child: 
-                  Buttonlist(title: 'Tiers', subtitle: tiersName,),
-                  onTap: () => onTapTiers(context),
-                ),
-            ),
+            getTiersButton(context),
             Expanded(
               flex: 9,
               child: Container(

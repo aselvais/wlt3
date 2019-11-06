@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/components/lists/ListStandings.dart';
 import 'package:wlt3/components/widgets/GameElement.dart';
 import 'package:wlt3/components/widgets/NewsElement.dart';
 import 'package:wlt3/components/widgets/TweetsElement.dart';
@@ -7,6 +8,7 @@ import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/Gamesdata.dart';
 import 'package:wlt3/models/News.dart';
+import 'package:wlt3/models/StandingsModel.dart';
 import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/Tweet.dart';
@@ -51,11 +53,11 @@ class TeamdetailScreen extends StatelessWidget
 
   Widget getStandings(BuildContext context, TeamModel teams) 
   {
-    final Gamesdata gamesdata = teams.selectedModel.games;
-    
+
     return Container(
       padding: const EdgeInsets.all(10.0),
       color: Themedata.greyBackground,
+      child: ListStandings(),
     );
   }
 
