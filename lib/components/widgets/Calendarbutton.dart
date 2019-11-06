@@ -13,19 +13,30 @@ class Calendarbutton extends StatelessWidget
   Future<void> _selectDate(BuildContext context) async 
   {
     final GamesModel games = Provider.of<GamesModel>(context);
+    final MatchdatesModel matchdates = Provider.of<MatchdatesModel>(context);
+    List<DateTime> availableDates = matchdates.getListOfAvailableDates();
+    DateTime firstDate = DateTime(2016);
+    DateTime lastDate = DateTime(2025);
+    if (availableDates.length > 0)
+    {
+      try { firstDate = availableDates[0]; } catch (ee) {}
+      try { lastDate = availableDates[availableDates.length-1]; } catch (ee) {}
+    }
+
     final DateTime picked = await showDatePicker(
       context: context,
       initialDate: games.selectedDate,
-      firstDate: DateTime(2015, 8),
-      lastDate: DateTime(2101),
+      firstDate: firstDate,
+      lastDate: lastDate,
+      selectableDayPredicate: (s) => (availableDates.indexOf(s) < 0) ? false : true
     );
+
     if (picked != null && picked != games.selectedDate) 
     {
       games.selectedDate = picked;
       ActionsComposite.reloadGamesData(context);
     }
   }
-
 
   onTapDate(BuildContext context) 
   {
@@ -36,7 +47,7 @@ class Calendarbutton extends StatelessWidget
   {
     final GamesModel games = Provider.of<GamesModel>(context);
     final matchdatesModel = Provider.of<MatchdatesModel>(context);
-    games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right);
+    games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right, false);
     ActionsComposite.reloadGamesData(context);
   }
 

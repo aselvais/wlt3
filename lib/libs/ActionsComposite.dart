@@ -91,7 +91,8 @@ class ActionsComposite
     Navigator.pushNamed(context, '/tiers');
   }
 
-  static onBottomNavItemTapped(context, int index) {
+  static onBottomNavItemTapped(context, int index) 
+  {
     final cart = Provider.of<BottombarModel>(context);
     cart.idx = index;
     if (index == 1) // Standings
