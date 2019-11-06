@@ -10,7 +10,8 @@ import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
 import 'dart:async';
 
-class Calendarbutton extends StatelessWidget {
+class Calendarbutton extends StatelessWidget 
+{
 
   Future<void> _selectDate(BuildContext context) async 
   {
@@ -21,68 +22,81 @@ class Calendarbutton extends StatelessWidget {
       firstDate: DateTime(2015, 8),
       lastDate: DateTime(2101),
     );
-    if (picked != null && picked != games.selectedDate) {
-      final Season season = Provider.of<SeasonsModel>(context).selectedModel;
-      final Division division = Provider.of<DivisionsModel>(context).selectedModel;
+    if (picked != null && picked != games.selectedDate) 
+    {
       games.selectedDate = picked;
-      games.loadData(season.id, division.id);
+      reloadData(context);
     }
+  }
+
+  reloadData(BuildContext context)
+  {
+    final GamesModel games = Provider.of<GamesModel>(context);
+    final Season season = Provider.of<SeasonsModel>(context).selectedModel;
+    final Division division = Provider.of<DivisionsModel>(context).selectedModel;
+    games.loadData(season.id, division.id);
   }
 
   onTapDate(BuildContext context) 
   {
-    final matchdatesModel = Provider.of<MatchdatesModel>(context);
-    print('-----------------------------');
-    print(matchdatesModel.list);
-    print('-----------------------------');
     _selectDate(context);
-    // Navigator.pushNamed(context, '/pickdate');
+  }
+
+  onTapNavButton(BuildContext context, bool right) 
+  {
+    final GamesModel games = Provider.of<GamesModel>(context);
+    final matchdatesModel = Provider.of<MatchdatesModel>(context);
+    games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right);
+    reloadData(context);
+  }
+
+  getNavButton(BuildContext context, bool right) 
+  {
+    return Expanded(
+        flex: 1,
+        child: Container(
+            alignment: Alignment(0.0, 0.0),
+            margin: const EdgeInsets.all(2.0),
+            padding: const EdgeInsets.all(5.0),
+            color: Themedata.white,
+            child: InkWell(
+              child: Icon(right ? Icons.chevron_right : Icons.chevron_left),
+              onTap: () => onTapNavButton(context, right),
+            )));
+  }
+
+  getCalendarButton(BuildContext context) 
+  {
+    final GamesModel games = Provider.of<GamesModel>(context);
+    return Expanded(
+        flex: 8,
+        child: Container(
+            margin: const EdgeInsets.all(2.0),
+            padding: const EdgeInsets.all(5.0),
+            color: Themedata.white,
+            alignment: Alignment(0.0, 0.0),
+            child: InkWell(
+              child: Text(DateFormat.yMMMd().format(games.selectedDate),
+                  style: TextStyle(
+                    color: Colors.black,
+                  )),
+              onTap: () => onTapDate(context),
+            )));
   }
 
   @override
   Widget build(BuildContext context) 
   {
-    final GamesModel games = Provider.of<GamesModel>(context);
     return Expanded(
       flex: 1,
       child: Row(
         children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Container(
-            alignment: Alignment(0.0, 0.0),
-            margin: const EdgeInsets.all(2.0),
-            padding: const EdgeInsets.all(5.0),
-            color: Themedata.white,
-            child: Icon(Icons.chevron_left),
-          )),
-          Expanded(
-            flex: 8,
-            child: Container(
-            margin: const EdgeInsets.all(2.0),
-            padding: const EdgeInsets.all(5.0),
-            color: Themedata.white,
-            alignment: Alignment(0.0, 0.0),
-              child: InkWell(
-                child: Text(DateFormat.yMMMd().format(games.selectedDate),
-                    style: TextStyle(
-                      color: Colors.black,                      
-                    )),
-                onTap: () => onTapDate(context),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-            alignment: Alignment(0.0, 0.0),
-            margin: const EdgeInsets.all(2.0),
-            padding: const EdgeInsets.all(5.0),
-            color: Themedata.white,
-            child: Icon(Icons.chevron_right),
-          )),
+          getNavButton(context, false),
+          getCalendarButton(context),
+          getNavButton(context, true),
         ],
       ),
     );
   }
+
 }

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/Matchdates.dart';
 
@@ -68,6 +69,28 @@ class MatchdatesModel extends ChangeNotifier
     this.loading = false;
   }
 
+  DateTime getClosestDate(DateTime fromDate, bool right)
+  {
+    bool isPresent = true;
+    List<String> alldates = new List();
+    String fromDateStr = new DateFormat("yyyy-MM-dd").format(fromDate);
+    for (int i=0; i < this.list.length; i++) {  alldates.add(DateFormat("yyyy-MM-dd").format(this.list[i].dateTimeReal)); } 
+    if (alldates.indexOf(fromDateStr) == -1) { isPresent = false; }
+    alldates.add(fromDateStr);
+    alldates = alldates.toSet().toList();
+    alldates.sort();
+    // isPresent;
+    // print(alldates);
+    // print(right);
+    int dateIdx = alldates.indexOf(fromDateStr);
+    int newIdx = right ? dateIdx+1 : dateIdx-1;
+    if (newIdx == alldates.length) return DateTime.parse(alldates[alldates.length-1]);
+    else if (newIdx < 0) return DateTime.parse(alldates[0]);
+    else {
+      return DateTime.parse(alldates[newIdx]);
+    }
+  }
+
   loadData(int seasonId, int divisionId)
   {
     this.loading = true;
@@ -75,8 +98,7 @@ class MatchdatesModel extends ChangeNotifier
     _api.getGameall(seasonId, divisionId)
       .then((dt) => _replaceList(dt) )
       .catchError((e) => throw Exception(e))
-      .whenComplete(() => notifyListeners() );
-    
+      .whenComplete(() => notifyListeners() );    
   }
 
 }
