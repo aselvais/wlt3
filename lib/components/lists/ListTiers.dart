@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wlt3/models/BottombarModel.dart';
-import 'package:wlt3/models/DivisionsModel.dart';
-import 'package:wlt3/models/StandingsModel.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/Tiers.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
@@ -33,17 +31,7 @@ class ListTiers extends StatelessWidget {
 
   onTapElement(BuildContext context, Tiers model)
   {
-    final tiers = Provider.of<TiersModel>(context);
-    final bottomModel = Provider.of<BottombarModel>(context);
-    tiers.selectedId = model.id;
-    tiers.selectedModel = model;
-    bottomModel.idx = 1;
-    
-    final standing = Provider.of<StandingsModel>(context);
-    final divisions = Provider.of<DivisionsModel>(context);
-    standing.loadData(divisions.selectedModel.id, tiers.selectedModel.id);
-
-    Navigator.popUntil(context, ModalRoute.withName('/home'));
+    ActionsComposite.tiersToStandings(context, model);
   }
 
   @override

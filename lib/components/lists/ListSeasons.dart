@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wlt3/models/DivisionsModel.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
 
@@ -31,12 +31,7 @@ class ListSeasons extends StatelessWidget {
 
   onTapElement(BuildContext context, Season model)
   {
-    final _list = Provider.of<SeasonsModel>(context);
-    final _list2 = Provider.of<DivisionsModel>(context);
-    _list.selectedId = model.id;
-    _list.selectedModel = model;
-    _list2.loadData(model.id);
-    Navigator.pushNamed(context, '/divisions');
+    ActionsComposite.goToDivisionsScreen(context, model);
   }
 
   @override

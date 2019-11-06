@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:wlt3/models/LeaguesModel.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -24,11 +23,7 @@ class LoginScreen extends StatelessWidget {
                 disabledTextColor: Colors.black,
                 padding: EdgeInsets.all(15.0),
                 splashColor: Colors.blueAccent,
-                onPressed: () {
-                  final _list = Provider.of<LeaguesModel>(context);
-                  _list.loadData();
-                  Navigator.pushNamed(context, '/home');
-                },
+                onPressed: () => ActionsComposite.loginToHome(context),
               ),
             ])
             )

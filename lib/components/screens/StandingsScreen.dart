@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/components/lists/ListStandings.dart';
 import 'package:wlt3/components/widgets/Buttonlist.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
-import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
 class StandingsScreen extends StatelessWidget
@@ -11,10 +11,7 @@ class StandingsScreen extends StatelessWidget
 
   onTapTiers(BuildContext context)
   {
-    final tiers = Provider.of<TiersModel>(context);
-    final divisions = Provider.of<DivisionsModel>(context);
-    tiers.loadData(divisions.selectedModel.id);
-    Navigator.pushNamed(context, '/tiers');
+    ActionsComposite.goToTiersScreen(context);
   }
 
   @override

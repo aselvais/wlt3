@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
-import 'package:wlt3/models/Division.dart';
-import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/MatchdatesModel.dart';
-import 'package:wlt3/models/Season.dart';
-import 'package:wlt3/models/SeasonsModel.dart';
 import 'dart:async';
 
 class Calendarbutton extends StatelessWidget 
@@ -25,17 +22,10 @@ class Calendarbutton extends StatelessWidget
     if (picked != null && picked != games.selectedDate) 
     {
       games.selectedDate = picked;
-      reloadData(context);
+      ActionsComposite.reloadGamesData(context);
     }
   }
 
-  reloadData(BuildContext context)
-  {
-    final GamesModel games = Provider.of<GamesModel>(context);
-    final Season season = Provider.of<SeasonsModel>(context).selectedModel;
-    final Division division = Provider.of<DivisionsModel>(context).selectedModel;
-    games.loadData(season.id, division.id);
-  }
 
   onTapDate(BuildContext context) 
   {
@@ -47,7 +37,7 @@ class Calendarbutton extends StatelessWidget
     final GamesModel games = Provider.of<GamesModel>(context);
     final matchdatesModel = Provider.of<MatchdatesModel>(context);
     games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right);
-    reloadData(context);
+    ActionsComposite.reloadGamesData(context);
   }
 
   getNavButton(BuildContext context, bool right) 
