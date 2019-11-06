@@ -17,25 +17,34 @@ class Calendarbutton extends StatelessWidget
     List<DateTime> availableDates = matchdates.getListOfAvailableDates();
     DateTime firstDate = DateTime(2016);
     DateTime lastDate = DateTime(2025);
+    DateTime initialDate = games.selectedDate;
+    Function selectableDayPredicate;
     if (availableDates.length > 0)
     {
       try { firstDate = availableDates[0]; } catch (ee) {}
       try { lastDate = availableDates[availableDates.length-1]; } catch (ee) {}
+      if (initialDate.isBefore(firstDate) || initialDate.isAfter(lastDate) )
+      {
+        initialDate = firstDate;
+      }
+      selectableDayPredicate = (s) => (availableDates.indexOf(s) < 0) ? false : true;
     }
+    try {
+      final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: initialDate,
+        firstDate: firstDate,
+        lastDate: lastDate,
+        selectableDayPredicate: selectableDayPredicate
+      );
 
-    final DateTime picked = await showDatePicker(
-      context: context,
-      initialDate: games.selectedDate,
-      firstDate: firstDate,
-      lastDate: lastDate,
-      selectableDayPredicate: (s) => (availableDates.indexOf(s) < 0) ? false : true
-    );
+      if (picked != null && picked != games.selectedDate) 
+      {
+        games.selectedDate = picked;
+        ActionsComposite.reloadGamesData(context);
+      }
+    } catch (ee) {}
 
-    if (picked != null && picked != games.selectedDate) 
-    {
-      games.selectedDate = picked;
-      ActionsComposite.reloadGamesData(context);
-    }
   }
 
   onTapDate(BuildContext context) 

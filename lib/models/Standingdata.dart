@@ -51,18 +51,18 @@ class Standingdata {
 
   factory Standingdata.fromJson(Map<String, dynamic> json) {
     return Standingdata(
-      imgurl: json['imgurl'],
-      team: json['team'],
-      teamId: json['teamId'],
-      gp: json['gp'],
-      w: json['w'],
-      l: json['l'],
-      t: json['t'],
-      pts: json['pts'],
-      gf: json['gf'],
-      ga: json['ga'],
-      gfavg: json['gfavg'],
-      strk: json['strk'],
+      imgurl: json.containsKey('imgurl') ? json['imgurl'] : null,
+      team:   json.containsKey('team') ? json['team'] : null,
+      teamId: json.containsKey('teamId') ? json['teamId'] : null,
+      gp:     json.containsKey('gp') ? json['gp'] : null,
+      w:      json.containsKey('w') ? json['w'] : null,
+      l:      json.containsKey('l') ? json['l'] : null,
+      t:      json.containsKey('t') ? json['t'] : null,
+      pts:    json.containsKey('pts') ? json['pts'].toInt() : null,
+      gf:     json.containsKey('gf') ? json['gf'] : null,
+      ga:     json.containsKey('ga') ? json['ga'] : null,
+      gfavg:  json.containsKey('gfavg') ? json['gfavg'] : null,
+      strk:   json.containsKey('strk') ? json['strk'] : null,
     );
   }
 }
