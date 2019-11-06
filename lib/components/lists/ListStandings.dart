@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/Standingdata.dart';
 import 'package:wlt3/models/StandingsModel.dart';
 import 'package:wlt3/models/Standing.dart';
-import 'package:wlt3/models/TeamModel.dart';
 
 class ListStandings extends StatelessWidget {
-  onTapTeam(BuildContext context, Standingdata team) {
-    final TeamModel teammodel = Provider.of<TeamModel>(context);
-    teammodel.loadData(team.teamId);
-    Navigator.pushNamed(context, '/teamdetail');
+
+  onTapTeam(BuildContext context, Standingdata team) 
+  {
+    ActionsComposite.goToTeamDetailScreen(context, team.teamId);
   }
 
   Widget getElement(BuildContext context, Standingdata f, String k) {

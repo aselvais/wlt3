@@ -51,6 +51,8 @@ class TeamdetailScreen extends StatelessWidget
 
   Widget getStandings(BuildContext context, TeamModel teams) 
   {
+    final Gamesdata gamesdata = teams.selectedModel.games;
+    
     return Container(
       padding: const EdgeInsets.all(10.0),
       color: Themedata.greyBackground,

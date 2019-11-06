@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/Team.dart';
-import 'package:wlt3/models/TeamModel.dart';
 
 class GamedetailScreen extends StatelessWidget {
   final String _title = 'Game detail';
 
-  onTapTeam(BuildContext context, Team team) {
-    final TeamModel teammodel = Provider.of<TeamModel>(context);
-    teammodel.loadData(team.teamId);
-    Navigator.pushNamed(context, '/teamdetail');
+  onTapTeam(BuildContext context, Team team) 
+  {
+    ActionsComposite.goToTeamDetailScreen(context, team.teamId);    
   }
 
   onTapCalendar(BuildContext context) {
