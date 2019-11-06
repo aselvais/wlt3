@@ -10,10 +10,12 @@ class TweetsElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          color: Colors.white,
+        ),      
         margin: const EdgeInsets.all(5.0),
         padding: const EdgeInsets.all(10.0),
-        // height: 100,
-        color: Colors.yellow,
         child: Text(
           tweet.date + "\n" +
           tweet.text

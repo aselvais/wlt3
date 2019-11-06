@@ -61,7 +61,6 @@ class TeamdetailScreen extends StatelessWidget
   {
     final List<News> news = teams.selectedModel.news;
     List<Widget> wl = new List();
-    wl.add(Text('Number of new: ' + news.length.toString()));
     news.forEach((News f) => wl.add(NewsElement(news: f)));
     return Container(
       padding: const EdgeInsets.all(10.0),
@@ -74,7 +73,6 @@ class TeamdetailScreen extends StatelessWidget
   {
     final List<Tweet> tweets = teams.selectedModel.tweets;
     List<Widget> wl = new List();
-    wl.add(Text('Number of tweets: ' + tweets.length.toString()));
     tweets.forEach((Tweet f) => wl.add( TweetsElement(tweet: f)));
     return Container(
       padding: const EdgeInsets.all(10.0),
@@ -113,15 +111,15 @@ class TeamdetailScreen extends StatelessWidget
       headerWidgets.add(Tab( text: 'Future Games', ));
       contentWidget.add(getFutureGames(context, teams));
     }
-    if (newsLength > 0)
-    {
-      headerWidgets.add(Tab( text: 'News', ));
-      contentWidget.add(getNews(context, teams));
-    }
     if (standingsLength > 0)
     {
       headerWidgets.add(Tab( text: 'Standings', ));
       contentWidget.add(getStandings(context, teams));
+    }
+    if (newsLength > 0)
+    {
+      headerWidgets.add(Tab( text: 'News', ));
+      contentWidget.add(getNews(context, teams));
     }
     if (tweetsLength > 0)
     {
