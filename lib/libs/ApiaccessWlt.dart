@@ -218,10 +218,9 @@ class ApiaccessWlt extends ApiaccessAbstract {
   Future<Teamdata> getTeamInfoFull(int teamId) async 
   {
     String fullurl = baseurl + "teamInfoFull/?teamId=" + teamId.toString();
-    print(fullurl);
     final response = await http.get(fullurl);
-    if (response.statusCode == 200) {
-      print(response.body);
+    if (response.statusCode == 200) 
+    {
       return Teamdata.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load response.body');
@@ -231,10 +230,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
   Future<List<Standing>> getTeamstandingHeaders(int divisionId) async 
   {
     String fullurl = baseurl + "teamstandingHeaders/?divisionId=" + divisionId.toString();
-    print(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
-      print(response.body);
       //List<dynamic> djson = json.decode(response.body);
       //List<Standing> toret = new List();
       //djson.forEach((json) => toret.add(Standing.fromJson(json)));
@@ -247,10 +244,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
   Future<List<Standing>> getTeamstandingLocalTierGroup(int divisionIds, int tierId) async 
   {
     String fullurl = baseurl + "teamstandingLocalTierGroup/?divisionIds=" + divisionIds.toString() + "&tierId=" + tierId.toString();
-    print(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
-      print(response.body);
       //List<dynamic> djson = json.decode(response.body);
       //List<Standing> toret = new List();
       //djson.forEach((json) => toret.add(Standing.fromJson(json)));
@@ -263,10 +258,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
   Future<List<Standing>> getUserdivision(String userId) async 
   {
     String fullurl = baseurl + "userdivision/?userId=" + userId;
-    print(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
-      print(response.body);
       //List<dynamic> djson = json.decode(response.body);
       //List<Standing> toret = new List();
       //djson.forEach((json) => toret.add(Standing.fromJson(json)));
@@ -279,10 +272,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
   Future<List<Standing>> getUsergames(String userId) async 
   {
     String fullurl = baseurl + "usergames/?userId=" + userId;
-    print(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
-      print(response.body);
       //List<dynamic> djson = json.decode(response.body);
       //List<Standing> toret = new List();
       //djson.forEach((json) => toret.add(Standing.fromJson(json)));
@@ -295,10 +286,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
   Future<List<Standing>> getUserteams(String userId) async 
   {
     String fullurl = baseurl + "userteams/?userId=" + userId;
-    print(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
-      print(response.body);
       //List<dynamic> djson = json.decode(response.body);
       //List<Standing> toret = new List();
       //djson.forEach((json) => toret.add(Standing.fromJson(json)));

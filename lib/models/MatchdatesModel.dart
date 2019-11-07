@@ -13,7 +13,7 @@ class MatchdatesModel extends ChangeNotifier
   Matchdates _selectedModel;
   DateTime _selectedDate = DateTime.now();
 
-  get list 
+  List<Matchdates> get list 
   {
     return _list;
   }

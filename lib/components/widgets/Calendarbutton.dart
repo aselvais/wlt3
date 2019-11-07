@@ -78,7 +78,8 @@ class Calendarbutton extends StatelessWidget
   getCalendarButton(BuildContext context) 
   {
     final GamesModel games = Provider.of<GamesModel>(context);
-    return Expanded(
+
+      return Expanded(
         flex: 8,
         child: Container(
             margin: const EdgeInsets.all(2.0),
@@ -92,6 +93,8 @@ class Calendarbutton extends StatelessWidget
                   )),
               onTap: () => onTapDate(context),
             )));
+    
+
   }
 
   @override

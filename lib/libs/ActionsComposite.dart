@@ -17,7 +17,7 @@ import 'package:wlt3/models/TiersModel.dart';
 class ActionsComposite
 {
 
-  static goToTeamDetailScreen(BuildContext context, int teamId) 
+  static goToTeamDetailScreen(BuildContext context, int teamId)
   {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
     teammodel.loadData(teamId);
@@ -25,7 +25,10 @@ class ActionsComposite
     // @todo Do this only after loading 
     try {
       final standing = Provider.of<StandingsModel>(context);
-      standing.loadData(teammodel.selectedModel.teaminfo.divisionId, teammodel.selectedModel.teaminfo.tierId);
+      standing.loadData(
+        teammodel.selectedModel.teaminfo.divisionId, 
+        teammodel.selectedModel.teaminfo.tierId
+      );
     } catch (ee) {}
     Navigator.pushNamed(context, '/teamdetail');
   }
