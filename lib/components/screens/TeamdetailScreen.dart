@@ -8,7 +8,6 @@ import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/Gamesdata.dart';
 import 'package:wlt3/models/News.dart';
-import 'package:wlt3/models/StandingsModel.dart';
 import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/Tweet.dart';
