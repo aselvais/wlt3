@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/GamesModel.dart';
 
@@ -9,6 +10,38 @@ class GameElement extends StatelessWidget {
   GameElement({Key key, @required this.game}) : super(key: key);
 
   Widget getButton(BuildContext context) {
+
+    return (
+      Column(children: <Widget>[
+        Row(children: <Widget>[
+          Expanded(flex: 1, child: Image.network(game.info.team1.imageUrl, width: 20, height: 20),),
+          Expanded(flex: 4, child: Text(game.info.team1.teamName),),
+          Expanded(flex: 2, child: Text(game.info.team1.score.toString(), style: TextStyle(color: Themedata.grey, fontSize: 24.0)),),
+          Expanded(flex: 4, child: Text(game.dateTime),),
+          Expanded(flex: 1, child: Icon(Icons.star),),
+        ],),
+        Row(children: <Widget>[
+          Expanded(flex: 1, child: Image.network(game.info.team2.imageUrl, width: 20, height: 20),),
+          Expanded(flex: 4, child: Text(game.info.team2.teamName),),
+          Expanded(flex: 2, child: Text(game.info.team2.score.toString(), style: TextStyle(color: Themedata.grey, fontSize: 24.0)),),
+          Expanded(flex: 4, child: Text(game.arena.name + "\n" + game.status),),
+          Expanded(flex: 1, child: Icon(Icons.location_on),),
+        ],),
+        Row(children: <Widget>[
+          Expanded(flex: 11, child: Column(
+            children: <Widget>[
+            Text(((game.leagueShortName != null) ? game.leagueShortName.toUpperCase() : ''),
+                  style: TextStyle(color: Themedata.blue, fontSize: 12.0)),
+            Text(((game.seasonName != null) ? game.seasonName.toUpperCase() : '') + ' | ' +
+            ((game.seasonName != null) ? game.divisionName.toUpperCase() : ''),
+                  style: TextStyle(color: Themedata.black, fontSize: 12.0)),
+          ],)
+          ,),
+        ],),
+      ],)
+    );
+
+    /*
     return Column(
       children: <Widget>[
         Row(
@@ -54,6 +87,7 @@ class GameElement extends StatelessWidget {
         )
       ],
     );
+    */
   }
 
   onTapElement(BuildContext context) {
