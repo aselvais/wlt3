@@ -22,8 +22,7 @@ class GameElement extends StatelessWidget {
     List<String> t = txt.toUpperCase().split(" ");
     for (int i=0; i < t.length; i++)
     {
-      if (i < t.length-1) tt += t[i] + " ";
-      else  tt += "\n" + t[i];
+      if (i < t.length-1) tt += t[i] + " "; else tt += "\n" + t[i];
     }
     return Container(padding: EdgeInsets.all(8.0), child: Text(tt, style: stl));
   }
@@ -47,7 +46,9 @@ class GameElement extends StatelessWidget {
   Widget getDateFormated(dtstr) 
   {
     DateTime dt = DateTime.parse(dtstr);
+    String fftoday = new DateFormat("EEE MMM d, yyyy", "en_US").format(DateTime.now());
     String ff = new DateFormat("EEE MMM d, yyyy", "en_US").format(dt);
+    if (ff == fftoday) ff = "Today";
     String ff2 = new DateFormat.jm().format(dt);
     return Text(ff + "\n" + ff2);
   }
@@ -64,29 +65,40 @@ class GameElement extends StatelessWidget {
       i = Icons.location_on;
       return Icon(i, color: Colors.grey,);
     }
-    return null;
+    return Container();
+  }
+
+  Widget getScoreTxt(String txt)
+  {
+    if (txt == 'null') txt = '-';
+    return Text(txt, style: TextStyle(color: Themedata.grey, fontSize: 25.0));
+  }
+
+  Widget getGameRow(Image img0, String teamName, bool g01, String score, String gamedateTime, String gameinfo, String iconShape, bool iconSelected)
+  {
+    return Row(children: <Widget>[
+      Expanded(flex: 1, child: (img0 == null) ? Container() : img0, ),
+      Expanded(flex: 4, child: this.getTeamTitle(teamName, g01),  ),
+      Expanded(flex: 2, child: this.getScoreTxt(score)),
+      (gamedateTime != null) ? 
+              Expanded(flex: 4, child: this.getDateFormated(gamedateTime),) : 
+              Expanded(flex: 4, child: Text(gameinfo),),
+      Expanded(flex: 1, child: this.getTheIcon(iconShape, iconSelected),),
+    ],);
   }
 
   Widget getButton(BuildContext context) {
-    return (
-      Column(children: <Widget>[
-        Row(children: <Widget>[
-          Expanded(flex: 1, child: Image.network(game.info.team1.imageUrl, width: 25, height: 25),),
-          Expanded(flex: 4, child: this.getTeamTitle(game.info.team1.teamName, (game.info.team1.score > game.info.team2.score)),),
-          Expanded(flex: 2, child: Text(game.info.team1.score.toString(), style: TextStyle(color: Themedata.grey, fontSize: 25.0)),),
-          Expanded(flex: 4, child: this.getDateFormated(game.dateTime),),
-          Expanded(flex: 1, child: this.getTheIcon('star', false),),
-        ],),
-        Row(children: <Widget>[
-          Expanded(flex: 1, child: Image.network(game.info.team2.imageUrl, width: 25, height: 25),),
-          Expanded(flex: 4, child: this.getTeamTitle(game.info.team2.teamName, (game.info.team1.score <= game.info.team2.score)),),
-          Expanded(flex: 2, child: Text(game.info.team2.score.toString(), style: TextStyle(color: Themedata.grey, fontSize: 25.0)),),
-          Expanded(flex: 4, child: Text(game.arena.name + "\n" + game.status.toUpperCase()),),
-          Expanded(flex: 1, child: this.getTheIcon('location', false),),
-        ],),
+    bool g01, g02 = false;
+    Image img01, img02;
+    try { g01 = (game.info.team1.score > game.info.team2.score); } catch(eee) {}
+    try { g02 = (game.info.team1.score <= game.info.team2.score); } catch(eee) {}
+    try { img01 = Image.network(game.info.team1.imageUrl, width: 25, height: 25); } catch(eee) {}
+    try { img02 = Image.network(game.info.team2.imageUrl, width: 25, height: 25); } catch(eee) {}
+    return Column(children: <Widget>[
+        this.getGameRow(img01, game.info.team1.teamName, g01, game.info.team1.score.toString(), game.dateTime, null, 'star', false ),
+        this.getGameRow(img02, game.info.team2.teamName, g02, game.info.team2.score.toString(), null, game.arena.name + "\n" + game.status.toUpperCase(), 'location', false ),
         (game.seasonName != null) ? this.getBottomInfo(context) : Container(),
-      ],)
-    );
+    ],);
   }
 
   onTapElement(BuildContext context) {
