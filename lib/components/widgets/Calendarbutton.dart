@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/FormaterElem.dart';

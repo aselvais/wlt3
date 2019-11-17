@@ -51,13 +51,13 @@ class TeamModel extends ChangeNotifier
     _list.add(o);
     notifyListeners();
   }
-
+/*
   _replaceList(List<Team> o)
   {
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }
-
+*/
   _replaceSelectedModel(Teamdata m)
   {
     this._selectedModel = m;

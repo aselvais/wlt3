@@ -116,7 +116,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+/*
   Future<List<Standing>> getFeednews(int teamId) async 
   {
     String fullurl = baseurl + 'feednews/?teamId=' + teamId.toString();
@@ -132,7 +132,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+*/
+/*
   Future<List<Standing>> getFeedtwitter(int teamId) async 
   {
     String fullurl = baseurl + 'feedtwitter/?teamId=' + teamId.toString();
@@ -148,7 +149,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+*/
   /*
    * Fetches the list of dates where we can find games
    */
@@ -165,7 +166,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+/*
   Future<List<Standing>> getGamedetailAllArrays(String date, int teamId) async 
   {
     String fullurl = baseurl + 'gamedetailAllArrays/?date=' + date +
@@ -182,12 +183,12 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+*/
   Future<List<Game>> getGametoday(String date, int seasonId, int divisionId) async 
   {
     return this.getGames(date, seasonId, divisionId);
   }
-
+/*
   Future<List<Standing>> getTeam(int divisionId) async 
   {
     String fullurl = baseurl + "team/?divisionId=" + divisionId.toString();
@@ -203,7 +204,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+*/
   Future<Team> getTeamInfo(int teamId) async 
   {
     String fullurl = baseurl + "teamInfo/?teamId=" + teamId.toString();
@@ -226,7 +227,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+/*
   Future<List<Standing>> getTeamstandingHeaders(int divisionId) async 
   {
     String fullurl = baseurl + "teamstandingHeaders/?divisionId=" + divisionId.toString();
@@ -240,7 +241,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+*/
+/*
   Future<List<Standing>> getTeamstandingLocalTierGroup(int divisionIds, int tierId) async 
   {
     String fullurl = baseurl + "teamstandingLocalTierGroup/?divisionIds=" + divisionIds.toString() + "&tierId=" + tierId.toString();
@@ -254,7 +256,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+*/
+/*
   Future<List<Standing>> getUserdivision(String userId) async 
   {
     String fullurl = baseurl + "userdivision/?userId=" + userId;
@@ -268,7 +271,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+*/
+/*
   Future<List<Standing>> getUsergames(String userId) async 
   {
     String fullurl = baseurl + "usergames/?userId=" + userId;
@@ -282,7 +286,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+*/
+/*
   Future<List<Standing>> getUserteams(String userId) async 
   {
     String fullurl = baseurl + "userteams/?userId=" + userId;
@@ -296,6 +301,6 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-
+*/
 
 }

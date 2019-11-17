@@ -123,12 +123,13 @@ class GamedetailScreen extends StatelessWidget {
   Widget getContent(BuildContext context)
   {
     final Game game = Provider.of<GamesModel>(context).selectedModel;
-    return Container(
-      // width: MediaQuery.of(context).size.width,
+    return //Scaffold(body: 
+    Container(
       // decoration: BoxDecoration( borderRadius: BorderRadius.all(Radius.circular(8.0)), color: Colors.white, ),
       margin: const EdgeInsets.all(5.0),
       padding: const EdgeInsets.all(10.0),
       color: Themedata.white,
+      //width: MediaQuery.of(context).size.width,
       child: Column(
         children: <Widget>[
           this.getTitle('DATE / TIME'),
@@ -145,7 +146,9 @@ class GamedetailScreen extends StatelessWidget {
           Text(game.divisionName),
         ],
       ),
+    //)
     );
+  
   }
 
   @override
