@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/libs/FormaterElem.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/GamesModel.dart';
@@ -43,16 +43,6 @@ class GameElement extends StatelessWidget {
     );
   }
 
-  Widget getDateFormated(dtstr) 
-  {
-    DateTime dt = DateTime.parse(dtstr);
-    String fftoday = new DateFormat("EEE MMM d, yyyy", "en_US").format(DateTime.now());
-    String ff = new DateFormat("EEE MMM d, yyyy", "en_US").format(dt);
-    if (ff == fftoday) ff = "Today";
-    String ff2 = new DateFormat.jm().format(dt);
-    return Text(ff + "\n" + ff2);
-  }
-
   Widget getTheIcon(String iconName, bool isOn)
   {
     IconData i;
@@ -81,7 +71,7 @@ class GameElement extends StatelessWidget {
       Expanded(flex: 4, child: this.getTeamTitle(teamName, g01),  ),
       Expanded(flex: 2, child: this.getScoreTxt(score)),
       (gamedateTime != null) ? 
-              Expanded(flex: 4, child: this.getDateFormated(gamedateTime),) : 
+              Expanded(flex: 4, child: Text( FormaterElem.getDateFormated(gamedateTime, true) ),) : 
               Expanded(flex: 4, child: Text(gameinfo),),
       Expanded(flex: 1, child: this.getTheIcon(iconShape, iconSelected),),
     ],);

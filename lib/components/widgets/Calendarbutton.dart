@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
+import 'package:wlt3/libs/FormaterElem.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/MatchdatesModel.dart';
@@ -87,7 +88,7 @@ class Calendarbutton extends StatelessWidget
             color: Themedata.white,
             alignment: Alignment(0.0, 0.0),
             child: InkWell(
-              child: Text(DateFormat.yMMMd().format(games.selectedDate),
+              child: Text( FormaterElem.getDateFormated(games.selectedDate.toString(), false),
                   style: TextStyle(
                     color: Colors.black,
                   )),
