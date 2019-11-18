@@ -12,83 +12,96 @@ class ListStandings extends StatelessWidget {
     ActionsComposite.goToTeamDetailScreen(context, team.teamId);
   }
 
+  Widget getCell(String txt, bool isHeader) 
+  {
+    return Container(
+      padding: const EdgeInsets.all(5.0),
+      child: Text(txt, style: TextStyle(fontWeight: isHeader ? FontWeight.bold : FontWeight.normal),)
+    );
+  }
+
   Widget getElement(BuildContext context, Standingdata f, String k) {
     try {
       switch (k) {
         case 'imgurl':
           {
             return InkWell(
-              child: Image.network(f.imgurl),
+              child: Image.network(f.imgurl, width: 30, height: 30),
               onTap: () => this.onTapTeam(context, f),
             );
           }
           break;
         case 'team':
           {
-            return Text('team: ' + f.team);
+            return this.getCell(/*'team: ' +*/ f.team.toString(), false);
           }
           break;
         case 'gp':
           {
-            return Text('teamId: ' + f.teamId.toString());
+            return this.getCell(/*'teamId: ' +*/ f.teamId.toString(), false);
           }
           break;
         case 'gp':
           {
-            return Text('GP: ' + f.gp.toString());
+            return this.getCell(/*'GP: ' +*/ f.gp.toString(), false);
           }
           break;
         case 'w':
           {
-            return Text('W: ' + f.w.toString());
+            return this.getCell(/*'W: ' +*/ f.w.toString(), false);
           }
           break;
         case 'l':
           {
-            return Text('L: ' + f.l.toString());
+            return this.getCell(/*'L: ' +*/ f.l.toString(), false);
           }
           break;
         case 't':
           {
-            return Text('T: ' + f.t.toString());
+            return this.getCell(/*'T: ' +*/ f.t.toString(), false);
           }
           break;
         case 'pts':
           {
-            return Text('PTS: ' + f.pts.toString());
+            return this.getCell(/*'PTS: ' +*/ f.pts.toString(), false);
           }
           break;
         case 'gf':
           {
-            return Text('GF: ' + f.gf.toString());
+            return this.getCell(/*'GF: ' +*/ f.gf.toString(), false);
           }
           break;
         case 'ga':
           {
-            return Text('GA: ' + f.ga.toString());
+            return this.getCell(/*'GA: ' +*/ f.ga.toString(), false);
           }
           break;
         case 'gfavg':
           {
-            return Text('GFAVG: ' + f.gfavg.toString());
+            return this.getCell(/*'GFAVG: ' +*/ f.gfavg.toString(), false);
           }
           break;
         case 'strk':
           {
-            return Text('STRK: ' + f.strk);
+            return this.getCell(/*'STRK: ' +*/ f.strk.toString(), false);
           }
           break;
         default:
           {
-            return Text(k + ' INVALID!');
+            print('--- ERROR ---');
+            print(k);
+            return this.getCell('', false);
           }
           break;
       }
     } catch (ee) {
-      return Text(k + ' ERROR!');
+      print('--- ERROR ---');
+      print(k);
+      return this.getCell('', false);
     }
   }
 
+  /*
   List<Widget> getRow(BuildContext context, List<Standingdata> f) {
     List<Widget> toret = new List();
     f.forEach((Standingdata f) => toret.add(Container(
@@ -118,6 +131,48 @@ class ListStandings extends StatelessWidget {
     //f.forEach( (Standingdata f) => print(f.teamId));
     return toret;
   }
+  */
+
+  List<Widget> getRow(BuildContext context, List<Standingdata> f) {
+    List<Widget> toret = new List();
+
+    toret.add(Row(
+        children: <Widget>[
+          this.getCell(''.toUpperCase(), true),
+          this.getCell('team'.toUpperCase(), true),
+          this.getCell('teamId'.toUpperCase(), true),
+          this.getCell('gp'.toUpperCase(), true),
+          this.getCell('w'.toUpperCase(), true),
+          this.getCell('l'.toUpperCase(), true),
+          this.getCell('t'.toUpperCase(), true),
+          this.getCell('pts'.toUpperCase(), true),
+          this.getCell('gf'.toUpperCase(), true),
+          this.getCell('ga'.toUpperCase(), true),
+          this.getCell('gfavg'.toUpperCase(), true),
+          this.getCell('strk'.toUpperCase(), true),
+      ],
+    ));
+
+    f.forEach((Standingdata f) => toret.add(      
+      Row(
+        children: <Widget>[
+          this.getElement(context, f, 'imgurl'),
+          this.getElement(context, f, 'team'),
+          this.getElement(context, f, 'teamId'),
+          this.getElement(context, f, 'gp'),
+          this.getElement(context, f, 'w'),
+          this.getElement(context, f, 'l'),
+          this.getElement(context, f, 't'),
+          this.getElement(context, f, 'pts'),
+          this.getElement(context, f, 'gf'),
+          this.getElement(context, f, 'ga'),
+          this.getElement(context, f, 'gfavg'),
+          this.getElement(context, f, 'strk'),
+        ],
+      )
+    ));
+    return toret;
+  }
 
   Widget getButton(BuildContext context, Standing f) {
     return Column(children: getRow(context, f.data));
@@ -128,20 +183,21 @@ class ListStandings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<StandingsModel>(context);
-
     List<Widget> wl = new List();
-    if (_list.loading == true) {
+    if (_list.loading == true) 
+    {
       return Center(child: CircularProgressIndicator());
-    } else {
+    } 
+    else 
+    {
       _list.list.forEach((Standing f) => wl.add(InkWell(
-            child: Container(
-              child: getButton(context, f),
-            ),
-            onTap: () => onTapElement(context, f),
-          )));
-      return ListView(
-        children: wl,
-      );
+        child: Container( 
+          child: getButton(context, f), ),
+          onTap: () => onTapElement(context, f),
+        )
+      ));
+      return ListView(children: wl,);
     }
   }
+
 }
