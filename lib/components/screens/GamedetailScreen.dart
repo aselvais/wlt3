@@ -104,9 +104,9 @@ class GamedetailScreen extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Expanded(flex: 1, child: this.getButton(context, Icons.calendar_today, 'ADD TO CALENDAR', () => onTapCalendar(context)),),
-            Expanded(flex: 1, child: this.getButton(context, Icons.map, 'VIEW ON MAP', () => onTapMap(context)),),
+            Expanded(flex: 1, child: this.getButton(context, Icons.location_on, 'VIEW ON MAP', () => onTapMap(context)),),
             Expanded(flex: 1, child: this.getButton(context, Icons.share, 'SHARE', () => onTapShare(context)),),
-            Expanded(flex: 1, child: this.getButton(context, Icons.favorite, 'FAVORITE', () => onTapFavorite(context)),),
+            Expanded(flex: 1, child: this.getButton(context, Icons.star_border , 'FAVORITE', () => onTapFavorite(context)),),
           ],
       ),
       ));
