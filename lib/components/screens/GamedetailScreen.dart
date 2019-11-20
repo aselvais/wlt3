@@ -10,9 +10,8 @@ import 'package:wlt3/models/Team.dart';
 class GamedetailScreen extends StatelessWidget {
   final String _title = 'Game detail';
 
-  onTapTeam(BuildContext context, Team team) 
-  {
-    ActionsComposite.goToTeamDetailScreen(context, team.teamId);    
+  onTapTeam(BuildContext context, Team team) {
+    ActionsComposite.goToTeamDetailScreen(context, team.teamId);
   }
 
   onTapCalendar(BuildContext context) {
@@ -31,53 +30,53 @@ class GamedetailScreen extends StatelessWidget {
     print('onTapFavorite');
   }
 
-  Widget getTopBar(BuildContext context)
-  {
+  Widget getTopBar(BuildContext context) {
     final Game game = Provider.of<GamesModel>(context).selectedModel;
     return Container(
-                //margin: const EdgeInsets.all(5.0),
-                height: 200,
-                padding: const EdgeInsets.all(10.0),
-                color: Colors.black,
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: InkWell(
-                      onTap: () => onTapTeam(context, game.info.team1),
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(game.info.team1.imageUrl,
-                              width: 100, height: 100),
-                          Text(
-                              game.info.team1.teamName +
-                                  "\n" +
-                                  game.info.team1.score.toString(),
-                              style: TextStyle(color: Colors.white)),
-                        ],
-                      ),
-                    )),
-                    Expanded(
-                        child: InkWell(
-                      onTap: () => onTapTeam(context, game.info.team2),
-                      child: Column(
-                        children: <Widget>[
-                          Image.network(game.info.team2.imageUrl,
-                              width: 100, height: 100),
-                          Text(
-                              game.info.team2.teamName +
-                                  "\n" +
-                                  game.info.team2.score.toString(),
-                              style: TextStyle(color: Colors.white)),
-                        ],
-                      ),
-                    )),
-                  ],
-                ));
+        //margin: const EdgeInsets.all(5.0),
+        height: 200,
+        width: MediaQuery.of(context).size.width,
+        // padding: const EdgeInsets.all(10.0),
+        color: Colors.black,
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Expanded( flex: 5, child: this.getTeam(context, game.info.team1)),
+                Expanded(
+                    flex: 1,
+                    child: Column(children: <Widget>[
+                      Text( 'vs.', style: TextStyle(color: Colors.white))
+                      ],),
+                    ),
+                Expanded( flex: 5, child: this.getTeam(context, game.info.team2)),
+              ],
+            ),
+            Container(
+              padding: const EdgeInsets.only(top: 18.0),
+              child: Text(
+                game.leagueName.toUpperCase() + " | " + game.divisionName.toUpperCase(), 
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
+            ),
+          ],
+        ));
   }
 
-  Widget getButton(BuildContext context, IconData ico, String label, action)
+  Widget getTeam(BuildContext context, gameinfoteam)
   {
+    return InkWell(
+          onTap: () => onTapTeam(context, gameinfoteam),
+          child: Column(
+            children: <Widget>[
+              Image.network(gameinfoteam.imageUrl, width: 80, height: 80),
+              Text(gameinfoteam.teamName.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+              Text(gameinfoteam.score.toString(), style: TextStyle(color: Colors.white, fontSize: 34)),
+            ],
+          ),
+        );
+  }
+
+  Widget getButton(BuildContext context, IconData ico, String label, action) {
     return Container(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
@@ -91,49 +90,56 @@ class GamedetailScreen extends StatelessWidget {
       ),
     );
   }
-  
-  Widget getMenuBar(BuildContext context)
-  {
+
+  Widget getMenuBar(BuildContext context) {
     // final Game game = Provider.of<GamesModel>(context).selectedModel;
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      color: Colors.blue,
-      width: MediaQuery.of(context).size.width,
-      child: Container(
-        padding: const EdgeInsets.all(5.0),
-        child: Row(
-          children: <Widget>[
-            Expanded(flex: 1, child: this.getButton(context, Icons.calendar_today, 'ADD TO CALENDAR', () => onTapCalendar(context)),),
-            Expanded(flex: 1, child: this.getButton(context, Icons.location_on, 'VIEW ON MAP', () => onTapMap(context)),),
-            Expanded(flex: 1, child: this.getButton(context, Icons.share, 'SHARE', () => onTapShare(context)),),
-            Expanded(flex: 1, child: this.getButton(context, Icons.star_border , 'FAVORITE', () => onTapFavorite(context)),),
-          ],
-      ),
-      ));
+        padding: const EdgeInsets.all(10.0),
+        color: Colors.blue,
+        width: MediaQuery.of(context).size.width,
+        child: Container(
+          padding: const EdgeInsets.all(5.0),
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: this.getButton(context, Icons.calendar_today,
+                    'ADD TO CALENDAR', () => onTapCalendar(context)),
+              ),
+              Expanded(
+                flex: 1,
+                child: this.getButton(context, Icons.location_on, 'VIEW ON MAP',
+                    () => onTapMap(context)),
+              ),
+              Expanded(
+                flex: 1,
+                child: this.getButton(
+                    context, Icons.share, 'SHARE', () => onTapShare(context)),
+              ),
+              Expanded(
+                flex: 1,
+                child: this.getButton(context, Icons.star_border, 'FAVORITE',
+                    () => onTapFavorite(context)),
+              ),
+            ],
+          ),
+        ));
   }
 
-  Widget getTitle(String txt)
-  {
+  Widget getTitle(String txt) {
     return Container(
         padding: const EdgeInsets.all(13.0),
-        child: Text(txt, style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold))
-    );
+        child: Text(txt,
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)));
   }
 
-  Widget getContent(BuildContext context)
+  getContentData(BuildContext context)
   {
     final Game game = Provider.of<GamesModel>(context).selectedModel;
-    return //Scaffold(body: 
-    Container(
-      // decoration: BoxDecoration( borderRadius: BorderRadius.all(Radius.circular(8.0)), color: Colors.white, ),
-      margin: const EdgeInsets.all(5.0),
-      padding: const EdgeInsets.all(10.0),
-      color: Themedata.white,
-      //width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: <Widget>[
+    return <Widget>[
           this.getTitle('DATE / TIME'),
-          Text(FormaterElem.getDateFormated(game.dateTime, true).replaceAll("\n", " ") ),
+          Text(FormaterElem.getDateFormated(game.dateTime, true)
+              .replaceAll("\n", " ")),
           Text(game.status),
           this.getTitle('ARENA'),
           Text(game.arena.name),
@@ -144,11 +150,18 @@ class GamedetailScreen extends StatelessWidget {
           Text(game.seasonName),
           this.getTitle('DIVISION'),
           Text(game.divisionName),
-        ],
-      ),
-    //)
+        ];
+  }
+
+  Widget getContent(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration( 
+        borderRadius: BorderRadius.all( Radius.circular(8.0)), color: Colors.white, ),
+      margin: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.all(30.0),
+      width: MediaQuery.of(context).size.width,
+      child: Column( children: this.getContentData(context) ),
     );
-  
   }
 
   @override
@@ -159,8 +172,8 @@ class GamedetailScreen extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         backgroundColor: Themedata.greyBackground,
-        body: Container(          
-          child: Column(
+        body: Container(
+            child: Column(
           children: <Widget>[
             this.getTopBar(context),
             this.getMenuBar(context),
