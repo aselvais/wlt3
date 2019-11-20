@@ -62,7 +62,7 @@ class GamedetailScreen extends StatelessWidget {
         ));
   }
 
-  Widget getTeam(BuildContext context, gameinfoteam)
+  Widget getTeam(BuildContext context, Team gameinfoteam)
   {
     return InkWell(
           onTap: () => onTapTeam(context, gameinfoteam),
@@ -70,6 +70,14 @@ class GamedetailScreen extends StatelessWidget {
             children: <Widget>[
               Image.network(gameinfoteam.imageUrl, width: 80, height: 80),
               Text(gameinfoteam.teamName.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+              Text(
+                gameinfoteam.win.toString() + '-' +
+                gameinfoteam.lose.toString() + '-' +
+                gameinfoteam.draw.toString() + '(' +
+                gameinfoteam.positionElementInStandings.toString()
+                +') | strk:' +
+                gameinfoteam.streak.toString()
+                , style: TextStyle(color: Colors.white)),
               Text(gameinfoteam.score.toString(), style: TextStyle(color: Colors.white, fontSize: 34)),
             ],
           ),
