@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 
 class LoginScreen extends StatelessWidget {
+
+  String imgUrl = 'http://www.winloseortie.com/wp-content/themes/pogon/images/WLT-Logo.jpg';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,17 +14,25 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Image.network('http://www.winloseortie.com/wp-content/themes/pogon/images/WLT-Logo.jpg'),
+              Container(
+                padding: EdgeInsets.all(80.0),
+                child: Image.network(imgUrl, /*width: 200, height: 200,*/),
+              ),
               FlatButton(
+                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                /* decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  color: Colors.white,
+                ),*/   
                 child: Text(
-                  'Login button',
+                  'Go',
                   style: TextStyle(fontSize: 25.0),
                 ),
                 color: Colors.blue,
                 textColor: Colors.white,
                 disabledColor: Colors.grey,
                 disabledTextColor: Colors.black,
-                padding: EdgeInsets.all(15.0),
+                padding: EdgeInsets.all(15.0),                
                 splashColor: Colors.blueAccent,
                 onPressed: () => ActionsComposite.loginToHome(context),
               ),
