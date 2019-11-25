@@ -6,6 +6,8 @@ import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/Team.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:share/share.dart';
 
 class GamedetailScreen extends StatelessWidget {
   final String _title = 'Game detail';
@@ -16,6 +18,21 @@ class GamedetailScreen extends StatelessWidget {
 
   onTapCalendar(BuildContext context) {
     print('onTapCalendar');
+    final Game game = Provider.of<GamesModel>(context).selectedModel;
+    DateTime dt = DateTime.parse(game.dateTime);
+    DateTime dt2 = dt.add(new Duration(hours: 1));
+    final Event event = Event(
+      title: game.info.team1.teamName + ' vs ' + game.info.team2.teamName,
+      description: 'Hockey match ' + game.info.team1.teamName + ' vs ' + game.info.team2.teamName + ' at ' + game.arena.address,
+      location: game.arena.address,
+      startDate: dt,
+      endDate: dt2,
+    );
+    try{
+      Add2Calendar.addEvent2Cal(event);
+    } catch(eee) {
+      print('Error adding event');
+    }
   }
 
   onTapMap(BuildContext context) {
@@ -24,7 +41,46 @@ class GamedetailScreen extends StatelessWidget {
 
   onTapShare(BuildContext context) {
     print('onTapShare');
+    
+    final Game selectedGame = Provider.of<GamesModel>(context).selectedModel;
+
+    String title = 'Match ' + selectedGame.info.team1.teamName + ' vs. ' + selectedGame.info.team2.teamName;
+    String url = selectedGame.shareUrl;
+    String message = '';
+
+    // Past Game (Teams tied in score) // "Team A" tied"Team B", "Score", on "Date", "Location Name"
+    if ( (selectedGame.info.team1.score != null) 
+      && (selectedGame.info.team2.score != null) 
+      && selectedGame.info.team1.score == selectedGame.info.team2.score)
+    {
+      message = selectedGame.info.team1.teamName + ' tied ' + selectedGame.info.team2.teamName + ' ' 
+      + selectedGame.info.team1.score.toString() + '-' + selectedGame.info.team2.score.toString()
+      + ' at ' + selectedGame.arena.name + ' ' + selectedGame.arena.address +  " on " + 
+      FormaterElem.getDateFormated(selectedGame.dateTime, true).replaceAll("\n", " ");
+    }
+    // Past Game (One team defeats the other team) // "Team B" defeated "Team A", "Score", on "Date", "Location Name"
+    else if (
+      (selectedGame.info.team1.score != null) 
+      && (selectedGame.info.team2.score != null) 
+      && selectedGame.info.team1.score != selectedGame.info.team2.score)
+    {
+      message = selectedGame.info.team1.score > selectedGame.info.team2.score ?
+      selectedGame.info.team1.teamName + ' defeats ' + selectedGame.info.team2.teamName + ' ' + selectedGame.info.team1.score.toString() + '-' + selectedGame.info.team2.score.toString()
+      + ' at ' + selectedGame.arena.name + ' ' + selectedGame.arena.address +  " on " + FormaterElem.getDateFormated(selectedGame.dateTime, true).replaceAll("\n", " ") :
+      selectedGame.info.team2.teamName + ' defeats ' + selectedGame.info.team1.teamName + ' ' + selectedGame.info.team2.score.toString() + '-' + selectedGame.info.team1.score.toString()
+      + ' at ' + selectedGame.arena.name + ' ' + selectedGame.arena.address +  " on " + FormaterElem.getDateFormated(selectedGame.dateTime, true).replaceAll("\n", " ");
+    }
+    // Future Game // "Team A" vs "Team B" @"Time", "Location Name"
+    else
+    {
+      message = selectedGame.info.team1.teamName + ' vs ' + selectedGame.info.team2.teamName + " @" +
+      FormaterElem.getDateFormated(selectedGame.dateTime, true).replaceAll("\n", " ") + ' at ' + selectedGame.arena.name + ' ' + selectedGame.arena.address;
+    }
+    // title, message, url
+    Share.share(message, subject: title);
+    
   }
+
 
   onTapFavorite(BuildContext context) {
     print('onTapFavorite');
