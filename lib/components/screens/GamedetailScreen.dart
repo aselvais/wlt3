@@ -163,8 +163,7 @@ class GamedetailScreen extends StatelessWidget {
 
   Widget getContent(BuildContext context) {
     return Container(
-      decoration: BoxDecoration( 
-        borderRadius: BorderRadius.all( Radius.circular(8.0)), color: Colors.white, ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.all( Radius.circular(8.0)), color: Colors.white, ),
       margin: const EdgeInsets.all(25.0),
       padding: const EdgeInsets.all(30.0),
       width: MediaQuery.of(context).size.width,
@@ -180,13 +179,15 @@ class GamedetailScreen extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         backgroundColor: Themedata.greyBackground,
-        body: Container(
-            child: Column(
+        body: SingleChildScrollView(child: 
+        Column(
           children: <Widget>[
             this.getTopBar(context),
             this.getMenuBar(context),
             this.getContent(context),
           ],
-        )));
+        )
+        )
+        );
   }
 }
