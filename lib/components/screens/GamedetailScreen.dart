@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/FormaterElem.dart';
 import 'package:wlt3/libs/Themedata.dart';
+import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/Team.dart';
@@ -83,7 +84,9 @@ class GamedetailScreen extends StatelessWidget {
 
 
   onTapFavorite(BuildContext context) {
-    print('onTapFavorite');
+    final Game game = Provider.of<GamesModel>(context).selectedModel;
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
+    favorites.addToListGames(game);
   }
 
   Widget getTopBar(BuildContext context) {

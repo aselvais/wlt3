@@ -13,4 +13,11 @@ class Gameinfo {
       team2: Team.fromJson(json['team2'])
     );
   }
+
+  Map<String, dynamic> toJson() => {
+      'team1': team1.toJson(),
+      'team2': team2.toJson()
+  };
+
+  
 }

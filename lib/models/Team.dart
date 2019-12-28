@@ -67,4 +67,34 @@ class Team {
 
     );
   }
+
+  Map<String, dynamic> toJson() => {
+    'teamId': teamId, 
+    'teamName': teamName, 
+    'imageUrl': imageUrl, 
+    'score': score, 
+    'news': news, 
+    'tweets': tweets, 
+    'home': home, 
+    'win': win, 
+    'lose': lose, 
+    'draw': draw, 
+    'shootoutLoss': shootoutLoss,
+    'enableSol': enableSol, 
+    'streak': streak, 
+    'positionElementInStandings': positionElementInStandings,
+    'divisionId': divisionId, 
+    'divisionName': divisionName, 
+    'tierId': tierId, 
+    'tierName': tierName,
+    'groupId': groupId, 
+    'groupName': groupName, 
+    'hasNews': hasNews, 
+    'hasTweets': hasTweets, 
+    'playOff': playOff, 
+  };
+
+
+
+
 }

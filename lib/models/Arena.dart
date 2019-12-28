@@ -15,4 +15,14 @@ class Arena {
       address: json['address'],
     );
   }
+
+  Map<String, dynamic> toJson() => {
+      'name': name,
+      'longitude': longitude,
+      'latitude': latitude,
+      'address': address,
+  };
+
+
+
 }

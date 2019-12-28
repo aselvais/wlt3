@@ -12,6 +12,7 @@ import 'package:wlt3/components/screens/TiersScreen.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
+import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
 import 'package:wlt3/models/MatchdatesModel.dart';
@@ -30,6 +31,7 @@ class RouterScreen extends StatelessWidget {
           ChangeNotifierProvider<SeasonsModel>(builder: (context) => SeasonsModel()),
           ChangeNotifierProvider<DivisionsModel>(builder: (context) => DivisionsModel()),
           ChangeNotifierProvider<GamesModel>(builder: (context) => GamesModel()),
+          ChangeNotifierProvider<FavoritesModel>(builder: (context) => FavoritesModel()),
           ChangeNotifierProvider<TiersModel>(builder: (context) => TiersModel()),
           ChangeNotifierProvider<StandingsModel>(builder: (context) => StandingsModel()),
           ChangeNotifierProvider<TeamModel>(builder: (context) => TeamModel()),
