@@ -5,6 +5,7 @@ import 'package:wlt3/components/widgets/GameElement.dart';
 import 'package:wlt3/components/widgets/NewsElement.dart';
 import 'package:wlt3/components/widgets/TweetsElement.dart';
 import 'package:wlt3/libs/Themedata.dart';
+import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/Gamesdata.dart';
 import 'package:wlt3/models/News.dart';
@@ -210,6 +211,29 @@ class TeamdetailScreen extends StatelessWidget
     );
   }
 
+
+  Widget getButton(BuildContext context, IconData ico, String label, action) {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      child: InkWell(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Icon(ico, color: Colors.white),
+          ],
+        ),
+        onTap: action,
+      ),
+    );
+  }
+
+  onTapFavorite(BuildContext context) {
+    final teams = Provider.of<TeamModel>(context);
+    final Team team = teams.selectedModel.teaminfo;
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
+    favorites.addToListTeams(team);
+  }
+
   Widget getHeaderElement(BuildContext context, TeamModel teams) {
     final Team team = teams.selectedModel.teaminfo;
     return Expanded(
@@ -220,6 +244,9 @@ class TeamdetailScreen extends StatelessWidget
         child: Container(
           child: Column(
             children: <Widget>[
+              
+              this.getButton(context, Icons.star_border, 'FAVORITE', () => onTapFavorite(context)),
+
               Image.network(team.imageUrl, width: 70, height: 70),
               Text(team.teamName + " | " + team.divisionName,
                   style: TextStyle(

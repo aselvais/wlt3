@@ -40,11 +40,15 @@ class Team {
     if (json.containsKey('teamName')) teamName = json['teamName'];
     if (json.containsKey('name')) teamName = json['name'];
 
+    var _score = json.containsKey('score') ? (
+      (json['score'] is String) ? int.tryParse(json['score']) ?? null : json['score']
+    ) : null;
+
     return Team(
         teamId: teamId,
         teamName: teamName,
         imageUrl: json.containsKey('imageUrl') ? json['imageUrl'] : null,
-        score: json.containsKey('score') ? json['score'] : null, //json['score'],
+        score: _score, //json['score'],
         news: json.containsKey('news') ? json['news'] : null, //json['news'],
         tweets: json.containsKey('tweets') ? json['tweets'] : null, //json['tweets'],
         home: json.containsKey('home') ? json['home'] : null, //json['home'],

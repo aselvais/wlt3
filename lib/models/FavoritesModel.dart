@@ -1,6 +1,5 @@
-
-import 'dart:convert';
-
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/Team.dart';
@@ -15,6 +14,7 @@ class FavoritesModel extends ChangeNotifier
   int _selectedIdTeams = -1;
   Game _selectedModelGames;
   Team _selectedModelTeams;
+
   
   get listGames {
     return _listGames;
@@ -94,9 +94,13 @@ class FavoritesModel extends ChangeNotifier
     notifyListeners();
   }
 
-  addToListTeams(o)
+  addToListTeams(Team o)
   {
+    print('-------------------------');
+    print('FavoritesModel.addToListTeams()');
+    print(o.toJson());
     _listTeams.add(o);
+    print('-------------------------');
     notifyListeners();
   }
 
@@ -138,6 +142,25 @@ class FavoritesModel extends ChangeNotifier
       .catchError((e) => throw Exception(e))
       .whenComplete(() => notifyListeners() );
     */
+  }
+
+  _read() async {
+    try {
+      final directory = await getApplicationDocumentsDirectory();
+      final file = File('${directory.path}/wlt3fluter.json');
+      String text = await file.readAsString();
+      print(text);
+    } catch (e) {
+      print("Couldn't read file");
+    }
+  }
+
+  _save(data) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/wlt3fluter.json');
+    final text = 'Hello World!';
+    await file.writeAsString(text);
+    print('saved');
   }
 
 }
