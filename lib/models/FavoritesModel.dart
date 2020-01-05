@@ -17,6 +17,10 @@ class FavoritesModel extends ChangeNotifier
   Team _selectedModelTeams;
   String _filename = 'wlt3fluter';
 
+  FavoritesModel()
+  {
+    this._read();
+  }
   
   get listGames {
     return _listGames;
@@ -112,42 +116,20 @@ class FavoritesModel extends ChangeNotifier
     this.loadingTeams = false;
   }
 
-  loadDataGames(int gameId)
-  {
-    /*
-    this.loading = true;
-    String date = DateFormat("yyyy-MM-dd").format(this._selectedDate);
-    _listGames = new List();
-    
-    _api.getGames(date, seasonId, divisionId)
-      .then((dt) => _replaceList(dt) )
-      .catchError((e) => throw Exception(e))
-      .whenComplete(() => notifyListeners() );
-    */
-  }
-
-  loadDataTeams(int teamId)
-  {
-    /*
-    this.loading = true;
-    String date = DateFormat("yyyy-MM-dd").format(this._selectedDate);
-    _listGames = new List();
-    
-    _api.getGames(date, seasonId, divisionId)
-      .then((dt) => _replaceList(dt) )
-      .catchError((e) => throw Exception(e))
-      .whenComplete(() => notifyListeners() );
-    */
-  }
-
   _read() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/${this._filename}');
-      String text = await file.readAsString();
-      print(text);
+
+      final fileGames = File('${directory.path}/${this._filename}_games.json');
+      final fileTeams = File('${directory.path}/${this._filename}_teams.json');
+      String jsonGames = await fileGames.readAsString();
+      String jsonTeams = await fileTeams.readAsString();
+      List _jsonGames = jsonDecode(jsonGames);
+      List _jsonTeams = jsonDecode(jsonTeams);
+      _listGames = _jsonGames.map((e) => Game.fromJson(e)).toList();
+      _listTeams = _jsonTeams.map((e) => Team.fromJson(e)).toList();
     } catch (e) {
-      print("Couldn't read file");
+      print("Couldn't read file and process file");
     }
   }
 
