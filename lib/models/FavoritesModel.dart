@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class FavoritesModel extends ChangeNotifier
   int _selectedIdTeams = -1;
   Game _selectedModelGames;
   Team _selectedModelTeams;
+  String _filename = 'wlt3fluter';
 
   
   get listGames {
@@ -86,21 +88,15 @@ class FavoritesModel extends ChangeNotifier
 
   addToListGames(Game o)
   {
-    print('-------------------------');
-    print('FavoritesModel.addToListGames()');
-    print(o.toJson());
     _listGames.add(o);
-    print('-------------------------');
+    _saveGames();
     notifyListeners();
   }
 
   addToListTeams(Team o)
   {
-    print('-------------------------');
-    print('FavoritesModel.addToListTeams()');
-    print(o.toJson());
     _listTeams.add(o);
-    print('-------------------------');
+    _saveTeams();
     notifyListeners();
   }
 
@@ -147,7 +143,7 @@ class FavoritesModel extends ChangeNotifier
   _read() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/wlt3fluter.json');
+      final file = File('${directory.path}/${this._filename}');
       String text = await file.readAsString();
       print(text);
     } catch (e) {
@@ -155,12 +151,20 @@ class FavoritesModel extends ChangeNotifier
     }
   }
 
-  _save(data) async {
+  _saveGames() async {
+    var json = jsonEncode(_listGames.map((e) => e.toJson()).toList());
     final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/wlt3fluter.json');
-    final text = 'Hello World!';
-    await file.writeAsString(text);
-    print('saved');
+    final file = File('${directory.path}/${this._filename}_games.json');
+    await file.writeAsString(json);
+    print('Games saved');
+  }
+
+  _saveTeams() async {
+    var json = jsonEncode(_listTeams.map((e) => e.toJson()).toList());
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/${this._filename}_teams.json');
+    await file.writeAsString(json);
+    print('Teams saved');
   }
 
 }

@@ -5,7 +5,7 @@ import 'package:wlt3/models/Tweet.dart';
 
 class Teamdata {
 
-  final Team teaminfo;
+  Team teaminfo;
   final Gamesdata games;
   final List<News> news;
   final List<Tweet> tweets;
@@ -26,4 +26,6 @@ class Teamdata {
       tweets: tweetsList,
     );
   }
+
+
 }
