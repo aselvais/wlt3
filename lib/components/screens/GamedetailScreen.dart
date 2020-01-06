@@ -143,13 +143,13 @@ class GamedetailScreen extends StatelessWidget {
         );
   }
 
-  Widget getButton(BuildContext context, IconData ico, String label, action) {
+  Widget getButton(BuildContext context, IconData ico, String label, action, icocolor) {
     return Container(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
         child: Column(
           children: <Widget>[
-            Icon(ico, color: Colors.white),
+            Icon(ico, color: icocolor),
             Text(label, style: TextStyle(color: Colors.white, fontSize: 8.0)),
           ],
         ),
@@ -159,7 +159,10 @@ class GamedetailScreen extends StatelessWidget {
   }
 
   Widget getMenuBar(BuildContext context) {
-    // final Game game = Provider.of<GamesModel>(context).selectedModel;
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
+    final Game game = Provider.of<GamesModel>(context).selectedModel;
+    bool isInFavorite = favorites.isInGamesFavorite(game.id);
+    
     return Container(
         padding: const EdgeInsets.all(10.0),
         color: Colors.blue,
@@ -171,23 +174,38 @@ class GamedetailScreen extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: this.getButton(context, Icons.calendar_today,
-                    'ADD TO CALENDAR', () => onTapCalendar(context)),
+                    'ADD TO CALENDAR', () => onTapCalendar(context), Colors.white),
               ),
               Expanded(
                 flex: 1,
                 child: this.getButton(context, Icons.location_on, 'VIEW ON MAP',
-                    () => onTapMap(context)),
+                    () => onTapMap(context), Colors.white),
               ),
               Expanded(
                 flex: 1,
                 child: this.getButton(
-                    context, Icons.share, 'SHARE', () => onTapShare(context)),
+                    context, Icons.share, 'SHARE', () => onTapShare(context), Colors.white),
               ),
               Expanded(
                 flex: 1,
-                child: this.getButton(context, Icons.star_border, 'FAVORITE',
-                    () => onTapFavorite(context)),
-              ),
+                child: (isInFavorite ? 
+                      (this.getButton(
+                        context, 
+                        Icons.star, 
+                        'FAVORITE',
+                          () => null, Colors.yellow
+                        )
+                      )
+                      : 
+                      (this.getButton(
+                        context, 
+                        Icons.star_border, 
+                        'FAVORITE',
+                          () => onTapFavorite(context), Colors.white
+                        )
+                      )
+                )
+                ),
             ],
           ),
         ));

@@ -212,14 +212,14 @@ class TeamdetailScreen extends StatelessWidget
   }
 
 
-  Widget getButton(BuildContext context, IconData ico, String label, action) {
+  Widget getButton(BuildContext context, IconData ico, String label, action, icocolor) {
     return Container(
       padding: const EdgeInsets.all(10.0),
       child: InkWell(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            Icon(ico, color: Colors.white),
+            Icon(ico, color: icocolor),
           ],
         ),
         onTap: action,
@@ -236,6 +236,8 @@ class TeamdetailScreen extends StatelessWidget
 
   Widget getHeaderElement(BuildContext context, TeamModel teams) {
     final Team team = teams.selectedModel.teaminfo;
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
+    bool isInFavorite = favorites.isInTeamsFavorite(team.teamId);
     return Expanded(
       flex: 2,
       child: Container(
@@ -244,9 +246,11 @@ class TeamdetailScreen extends StatelessWidget
         child: Container(
           child: Column(
             children: <Widget>[
-              
-              this.getButton(context, Icons.star_border, 'FAVORITE', () => onTapFavorite(context)),
-
+              (
+                isInFavorite ? 
+                this.getButton(context, Icons.star, 'FAVORITE', () => null, Colors.yellow) : 
+                this.getButton(context, Icons.star_border, 'FAVORITE', () => onTapFavorite(context), Colors.white)
+              ),
               Image.network(team.imageUrl, width: 70, height: 70),
               Text(team.teamName + " | " + team.divisionName,
                   style: TextStyle(

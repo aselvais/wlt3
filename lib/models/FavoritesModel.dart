@@ -17,6 +17,24 @@ class FavoritesModel extends ChangeNotifier
   Team _selectedModelTeams;
   String _filename = 'wlt3fluter';
 
+  isInGamesFavorite(gamesId)
+  {
+    for (Game i in _listGames)
+    {
+      if (i.id == gamesId) return true;
+    }
+    return false;
+  }
+
+  isInTeamsFavorite(teamsId)
+  {
+    for (Team i in _listTeams)
+    {
+      if (i.teamId == teamsId) return true;
+    }
+    return false;
+  }
+
   FavoritesModel()
   {
     this._read();

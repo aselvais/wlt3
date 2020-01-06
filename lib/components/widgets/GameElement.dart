@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/libs/FormaterElem.dart';
 import 'package:wlt3/libs/Themedata.dart';
+import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/GamesModel.dart';
 
@@ -43,12 +44,13 @@ class GameElement extends StatelessWidget {
     );
   }
 
-  Widget getTheIcon(String iconName, bool isOn)
-  {
+  Widget getTheIcon(BuildContext context, String iconName, bool isOn)
+  {    
     IconData i;
     if (iconName == 'star') {
-      return (isOn == true) ? 
-              Icon(Icons.star, color: Colors.orange,) :
+      final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
+      return (favorites.isInGamesFavorite(game.id) == true) ? 
+              Icon(Icons.star, color: Colors.yellow,) :
               Icon(Icons.star_border, color: Colors.grey,);
     }
     if (iconName == 'location') {
@@ -64,7 +66,7 @@ class GameElement extends StatelessWidget {
     return Text(txt, style: TextStyle(color: Themedata.grey, fontSize: 25.0));
   }
 
-  Widget getGameRow(Image img0, String teamName, bool g01, String score, String gamedateTime, String gameinfo, String iconShape, bool iconSelected)
+  Widget getGameRow(BuildContext context, Image img0, String teamName, bool g01, String score, String gamedateTime, String gameinfo, String iconShape, bool iconSelected)
   {
     return Row(children: <Widget>[
       Expanded(flex: 1, child: (img0 == null) ? Container() : img0, ),
@@ -73,7 +75,7 @@ class GameElement extends StatelessWidget {
       (gamedateTime != null) ? 
               Expanded(flex: 4, child: Text( FormaterElem.getDateFormated(gamedateTime, true) ),) : 
               Expanded(flex: 4, child: Text(gameinfo),),
-      Expanded(flex: 1, child: this.getTheIcon(iconShape, iconSelected),),
+      Expanded(flex: 1, child: this.getTheIcon(context, iconShape, iconSelected),),
     ],);
   }
 
@@ -85,8 +87,8 @@ class GameElement extends StatelessWidget {
     try { img01 = Image.network(game.info.team1.imageUrl, width: 25, height: 25); } catch(eee) {}
     try { img02 = Image.network(game.info.team2.imageUrl, width: 25, height: 25); } catch(eee) {}
     return Column(children: <Widget>[
-        this.getGameRow(img01, game.info.team1.teamName, g01, game.info.team1.score.toString(), game.dateTime, null, 'star', false ),
-        this.getGameRow(img02, game.info.team2.teamName, g02, game.info.team2.score.toString(), null, game.arena.name + "\n" + game.status.toUpperCase(), 'location', false ),
+        this.getGameRow(context, img01, game.info.team1.teamName, g01, game.info.team1.score.toString(), game.dateTime, null, 'star', false ),
+        this.getGameRow(context, img02, game.info.team2.teamName, g02, game.info.team2.score.toString(), null, game.arena.name + "\n" + game.status.toUpperCase(), 'location', false ),
         (game.seasonName != null) ? this.getBottomInfo(context) : Container(),
     ],);
   }
