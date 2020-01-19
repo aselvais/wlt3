@@ -251,7 +251,7 @@ class TeamdetailScreen extends StatelessWidget
                 this.getButton(context, Icons.star, 'FAVORITE', () => null, Colors.yellow) : 
                 this.getButton(context, Icons.star_border, 'FAVORITE', () => onTapFavorite(context), Colors.white)
               ),
-              Image.network(team.imageUrl, width: 70, height: 70),
+              Image.network(team?.imageUrl ?? "", width: 70, height: 70),
               Text(team.teamName + " | " + team.divisionName,
                   style: TextStyle(
                     color: Colors.white,

@@ -20,7 +20,7 @@ class GameElement extends StatelessWidget {
     else 
       stl = TextStyle(color: Themedata.black, fontSize: 14.0);
     String tt = '';
-    List<String> t = txt.toUpperCase().split(" ");
+    List<String> t = (txt?.toUpperCase() ?? '').split(" ");
     for (int i=0; i < t.length; i++)
     {
       if (i < t.length-1) tt += t[i] + " "; else tt += "\n" + t[i];
@@ -35,9 +35,9 @@ class GameElement extends StatelessWidget {
       child: Row(children: <Widget>[
             Expanded(flex: 11, child: Column(
               children: <Widget>[
-              Text(((game.leagueShortName != null) ? game.leagueShortName.toUpperCase() : ''), style: TextStyle(color: Themedata.blue, fontSize: 12.0, fontWeight: FontWeight.bold)),
-              Text(((game.seasonName != null) ? game.seasonName.toUpperCase() : '') + ' | ' +
-              ((game.seasonName != null) ? game.divisionName.toUpperCase() : ''), style: TextStyle(color: Themedata.black, fontSize: 12.0)),
+              Text(((game.leagueShortName != null) ? game?.leagueShortName?.toUpperCase() ?? '' : ''), style: TextStyle(color: Themedata.blue, fontSize: 12.0, fontWeight: FontWeight.bold)),
+              Text(((game.seasonName != null) ? game?.seasonName?.toUpperCase() ?? '' : '') + ' | ' +
+              ((game.seasonName != null) ? game?.divisionName?.toUpperCase() ?? '' : ''), style: TextStyle(color: Themedata.black, fontSize: 12.0)),
             ],)
           ,),
       ],),
@@ -88,7 +88,9 @@ class GameElement extends StatelessWidget {
     try { img02 = Image.network(game.info.team2.imageUrl, width: 25, height: 25); } catch(eee) {}
     return Column(children: <Widget>[
         this.getGameRow(context, img01, game.info.team1.teamName, g01, game.info.team1.score.toString(), game.dateTime, null, 'star', false ),
-        this.getGameRow(context, img02, game.info.team2.teamName, g02, game.info.team2.score.toString(), null, game.arena.name + "\n" + game.status.toUpperCase(), 'location', false ),
+        this.getGameRow(context, img02, game.info.team2.teamName, g02, game.info.team2.score.toString(), null, 
+        game.arena.name + "\n" + 
+        game?.status?.toUpperCase() ?? '', 'location', false ),
         (game.seasonName != null) ? this.getBottomInfo(context) : Container(),
     ],);
   }

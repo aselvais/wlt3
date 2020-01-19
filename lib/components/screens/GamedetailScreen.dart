@@ -127,17 +127,16 @@ class GamedetailScreen extends StatelessWidget {
           onTap: () => onTapTeam(context, gameinfoteam),
           child: Column(
             children: <Widget>[
-              Image.network(gameinfoteam.imageUrl, width: 80, height: 80),
+              Image.network(gameinfoteam?.imageUrl ?? "", width: 80, height: 80),
               Text(gameinfoteam.teamName.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
               Text(
                 gameinfoteam.win.toString() + '-' +
                 gameinfoteam.lose.toString() + '-' +
                 gameinfoteam.draw.toString() + '(' +
-                gameinfoteam.positionElementInStandings.toString()
-                +') | strk:' +
-                gameinfoteam.streak.toString()
+                (gameinfoteam?.positionElementInStandings ?? '-').toString()
+                +') | strk:' + (gameinfoteam?.streak ?? ' -').toString()
                 , style: TextStyle(color: Colors.white)),
-              Text(gameinfoteam.score.toString(), style: TextStyle(color: Colors.white, fontSize: 34)),
+              Text(gameinfoteam?.score?.toString() ?? "-", style: TextStyle(color: Colors.white, fontSize: 34)),
             ],
           ),
         );
@@ -223,18 +222,17 @@ class GamedetailScreen extends StatelessWidget {
     final Game game = Provider.of<GamesModel>(context).selectedModel;
     return <Widget>[
           this.getTitle('DATE / TIME'),
-          Text(FormaterElem.getDateFormated(game.dateTime, true)
-              .replaceAll("\n", " ")),
-          Text(game.status),
+          Text(FormaterElem.getDateFormated(game.dateTime, true).replaceAll("\n", " ")),
+          Text(game?.status ?? ""),
           this.getTitle('ARENA'),
-          Text(game.arena.name),
-          Text(game.arena.address),
+          Text(game?.arena?.name ?? ""),
+          Text(game?.arena?.address ?? ""),
           this.getTitle('LEAGUE'),
-          Text(game.leagueShortName),
+          Text(game?.leagueShortName ?? ""),
           this.getTitle('SEASON'),
-          Text(game.seasonName),
+          Text(game?.seasonName ?? ""),
           this.getTitle('DIVISION'),
-          Text(game.divisionName),
+          Text(game?.divisionName ?? ""),
         ];
   }
 
