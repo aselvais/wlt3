@@ -46,7 +46,7 @@ class GamedetailScreen extends StatelessWidget {
     final Game selectedGame = Provider.of<GamesModel>(context).selectedModel;
 
     String title = 'Match ' + selectedGame.info.team1.teamName + ' vs. ' + selectedGame.info.team2.teamName;
-    String url = selectedGame.shareUrl;
+    //String url = selectedGame.shareUrl;
     String message = '';
 
     // Past Game (Teams tied in score) // "Team A" tied"Team B", "Score", on "Date", "Location Name"

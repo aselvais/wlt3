@@ -255,12 +255,25 @@ class FavoritesModel extends ChangeNotifier
     try {
       final directory = await getApplicationDocumentsDirectory();
 
+      final fileLeague = File('${directory.path}/${this._filename}_league.json');
+      final fileSeason = File('${directory.path}/${this._filename}_season.json');
+      final fileDivision = File('${directory.path}/${this._filename}_division.json');
       final fileGames = File('${directory.path}/${this._filename}_games.json');
       final fileTeams = File('${directory.path}/${this._filename}_teams.json');
+
+      String jsonLeague = await fileLeague.readAsString();
+      String jsonSeason = await fileSeason.readAsString();
+      String jsonDivision = await fileDivision.readAsString();
       String jsonGames = await fileGames.readAsString();
       String jsonTeams = await fileTeams.readAsString();
+      Object _jsonLeague = jsonDecode(jsonLeague);
+      Object _jsonSeason = jsonDecode(jsonSeason);
+      Object _jsonDivision = jsonDecode(jsonDivision);
       List _jsonGames = jsonDecode(jsonGames);
       List _jsonTeams = jsonDecode(jsonTeams);
+      _lastSelectedLeague = League.fromJson(_jsonLeague);
+      _lastSelectedSeason = Season.fromJson(_jsonSeason);
+      _lastSelectedDivision = Division.fromJson(_jsonDivision);
       _listGames = _jsonGames.map((e) => Game.fromJson(e)).toList();
       _listTeams = _jsonTeams.map((e) => Team.fromJson(e)).toList();
     } catch (e) {
@@ -292,6 +305,7 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   _saveGeneric(String json, String filename) async {
+    print(filename);
     final directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/' + filename );
     await file.writeAsString(json);

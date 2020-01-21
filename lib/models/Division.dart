@@ -15,6 +15,6 @@ class Division {
     {
       'id': id,
       name: name
-    }
+    };
 
 }
