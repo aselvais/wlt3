@@ -2,7 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:wlt3/models/Division.dart';
 import 'package:wlt3/models/Game.dart';
+import 'package:wlt3/models/League.dart';
+import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/Team.dart';
 
 class FavoritesModel extends ChangeNotifier
@@ -17,6 +20,14 @@ class FavoritesModel extends ChangeNotifier
   Team _selectedModelTeams;
   String _filename = 'wlt3fluter';
 
+  /// League / season / division
+  League _lastSelectedLeague;
+  Season _lastSelectedSeason;
+  Division _lastSelectedDivision;  
+
+  ///
+  ///
+  ///
   isInGamesFavorite(gamesId)
   {
     for (Game i in _listGames)
@@ -26,6 +37,9 @@ class FavoritesModel extends ChangeNotifier
     return false;
   }
 
+  ///
+  ///
+  ///
   isInTeamsFavorite(teamsId)
   {
     for (Team i in _listTeams)
@@ -35,79 +49,170 @@ class FavoritesModel extends ChangeNotifier
     return false;
   }
 
+  ///
+  ///
+  ///
   FavoritesModel()
   {
     this._read();
   }
   
+
+  ///
+  ///  League _lastSelectedLeague;
+  ///
+  get lastSelectedLeague
+  {
+    return _lastSelectedLeague;
+  }
+
+  set lastSelectedLeague(League o)
+  {
+    _saveGeneric(o.toJson().toString(), '${this._filename}_league.json');
+    this._lastSelectedLeague = o;
+  }
+
+  ///
+  ///  Season _lastSelectedSeason;
+  ///
+  get lastSelectedSeason
+  {
+    return _lastSelectedSeason;
+  }
+
+  set lastSelectedSeason(Season o)
+  {
+    _saveGeneric(o.toJson().toString(), '${this._filename}_season.json');
+    this._lastSelectedSeason = o;
+  }
+
+  ///
+  ///  Division _lastSelectedDivision;
+  ///
+  get lastSelectedDivision
+  {
+    return _lastSelectedDivision;
+  }
+
+  set lastSelectedDivision(Division o)
+  {
+    _saveGeneric(o.toJson().toString(), '${this._filename}_division.json');
+    this._lastSelectedDivision = o;
+  }
+
+  ///
+  ///
+  ///
   get listGames {
     return _listGames;
   }
 
+  ///
+  ///
+  ///
   get listTeams {
     return _listTeams;
   }
 
+  ///
+  ///
+  ///
   get selectedIdGames {
     return _selectedIdGames;
   }
 
+  ///
+  ///
+  ///
   get selectedIdTeams {
     return _selectedIdTeams;
   }
 
+  ///
+  ///
+  ///
   get loadingGames {
     return _loadingGames;
   }
 
+  ///
+  ///
+  ///
   get loadingTeams {
     return _loadingTeams;
   }
 
+  ///
+  ///
+  ///
   get selectedModelGames {
     return _selectedModelGames;
   }
 
+  ///
+  ///
+  ///
   get selectedModelTeams {
     return _selectedModelTeams;
   }
 
+  ///
+  ///
+  ///
   set selectedModelGames(Game v)
   {
     _selectedModelGames = v;
     notifyListeners();
   }
   
+  ///
+  ///
+  ///
   set selectedModelTeams(Team v)
   {
     _selectedModelTeams = v;
     notifyListeners();
   }
   
+  ///
+  ///
+  ///
   set selectedIdGames(int v)
   {
     _selectedIdGames = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   set selectedIdTeams(int v)
   {
     _selectedIdTeams = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   set loadingGames(bool v)
   {
     _loadingGames = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   set loadingTeams(bool v)
   {
     _loadingTeams = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   addToListGames(Game o)
   {
     _listGames.add(o);
@@ -115,6 +220,9 @@ class FavoritesModel extends ChangeNotifier
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   addToListTeams(Team o)
   {
     _listTeams.add(o);
@@ -122,18 +230,27 @@ class FavoritesModel extends ChangeNotifier
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   _replaceListGames(List<Game> o)
   {
     o.forEach((f) => _listGames.add(f));
     this.loadingGames = false;
   }
 
+  ///
+  ///
+  ///
   _replaceListTeams(List<Team> o)
   {
     o.forEach((f) => _listTeams.add(f));
     this.loadingTeams = false;
   }
 
+  ///
+  ///
+  ///
   _read() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
@@ -151,6 +268,9 @@ class FavoritesModel extends ChangeNotifier
     }
   }
 
+  ///
+  ///
+  ///
   _saveGames() async {
     var json = jsonEncode(_listGames.map((e) => e.toJson()).toList());
     final directory = await getApplicationDocumentsDirectory();
@@ -159,12 +279,24 @@ class FavoritesModel extends ChangeNotifier
     print('Games saved');
   }
 
+  ///
+  ///
+  ///
   _saveTeams() async {
     var json = jsonEncode(_listTeams.map((e) => e.toJson()).toList());
-    final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/${this._filename}_teams.json');
-    await file.writeAsString(json);
+    await this._saveGeneric(json, '${this._filename}_teams.json');
     print('Teams saved');
   }
+
+  ///
+  ///
+  ///
+  _saveGeneric(String json, String filename) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/' + filename );
+    await file.writeAsString(json);
+  }
+
+
 
 }

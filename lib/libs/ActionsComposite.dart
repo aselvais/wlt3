@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/Division.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
+import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/League.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
@@ -35,12 +36,14 @@ class ActionsComposite
 
   static goToGamesHomeScreen(BuildContext context, Division model)
   {
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     final divisions = Provider.of<DivisionsModel>(context);
     final bottomModel = Provider.of<BottombarModel>(context);
     final games = Provider.of<GamesModel>(context);
     final seasons = Provider.of<SeasonsModel>(context);
     divisions.selectedId = model.id;
     divisions.selectedModel = model;
+    favorites.lastSelectedDivision = model;
     // loading game dates
     final matchdatesModel = Provider.of<MatchdatesModel>(context);
     matchdatesModel.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
@@ -54,8 +57,10 @@ class ActionsComposite
   {
     final _list = Provider.of<LeaguesModel>(context);
     final _list2 = Provider.of<SeasonsModel>(context);
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     _list.selectedId = item.id;
     _list.selectedModel = item;
+    favorites.lastSelectedLeague = item;
     _list2.loadData(item.id);
     Navigator.pushNamed(context, '/seasons');
   }
@@ -64,9 +69,12 @@ class ActionsComposite
   {
     final _list = Provider.of<SeasonsModel>(context);
     final _list2 = Provider.of<DivisionsModel>(context);
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
+
     _list.selectedId = model.id;
     _list.selectedModel = model;
     _list2.loadData(model.id);
+    favorites.lastSelectedSeason = model;
     Navigator.pushNamed(context, '/divisions');
   }
 

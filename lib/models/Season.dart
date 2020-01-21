@@ -16,4 +16,15 @@ class Season {
       bracketsVisibleInSeason: json['bracketsVisibleInSeason'],
     );
   }
+
+  Map<String, dynamic> toJson() =>    
+    {
+      'id': id,
+      'name': name,
+      'playOff': playOff,
+      'visible': visible,
+      'bracketsVisibleInSeason': bracketsVisibleInSeason
+    };
+
+
 }

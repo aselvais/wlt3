@@ -60,24 +60,24 @@ class Game {
   }
 
   Map<String, dynamic> toJson() =>    
-    {
-      'id': id,
-      'type': type,
-      'arena': arena.toJson(),
-      'time': time,
-      'info': info.toJson(), //json.containsKey('info') ? Gameinfo.fromJson(json['info']) : null,
-      'divisionId': divisionId,
-      'divisionName': divisionName,
-      'dateTime': dateTime,
-      'leagueName': leagueName,
-      'leagueTimezone': leagueTimezone,
-      'leagueShortName': leagueShortName,
-      'status': status,
-      'seasonName': seasonName,
-      'seasonPlayOff': seasonPlayOff,
-      'shareUrl': shareUrl,
-      'linkStreamVideo': linkStreamVideo,
-    };
+  {
+    'id': id,
+    'type': type,
+    'arena': arena.toJson(),
+    'time': time,
+    'info': info.toJson(), //json.containsKey('info') ? Gameinfo.fromJson(json['info']) : null,
+    'divisionId': divisionId,
+    'divisionName': divisionName,
+    'dateTime': dateTime,
+    'leagueName': leagueName,
+    'leagueTimezone': leagueTimezone,
+    'leagueShortName': leagueShortName,
+    'status': status,
+    'seasonName': seasonName,
+    'seasonPlayOff': seasonPlayOff,
+    'shareUrl': shareUrl,
+    'linkStreamVideo': linkStreamVideo,
+  };
   
 
 
