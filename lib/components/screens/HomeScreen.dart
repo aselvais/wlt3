@@ -8,6 +8,7 @@ import 'package:wlt3/components/widgets/Bottomnavigationwlt.dart';
 import 'package:wlt3/components/widgets/Drawerwlt.dart';
 import 'package:wlt3/components/widgets/Topmenubar.dart';
 import 'package:wlt3/models/BottombarModel.dart';
+import 'package:wlt3/models/FavoritesModel.dart';
 
 class HomeScreen extends StatelessWidget {
 

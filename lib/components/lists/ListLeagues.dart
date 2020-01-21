@@ -3,9 +3,23 @@ import 'package:provider/provider.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/League.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
+import 'package:wlt3/models/FavoritesModel.dart';
 
-class ListLeagues extends StatelessWidget {
+class ListLeagues extends StatelessWidget 
+{
 
+  ListLeagues(context)
+  {
+    final _favorite = Provider.of<FavoritesModel>(context);
+    final _list = Provider.of<LeaguesModel>(context);
+    _list.selectedModel = _favorite.lastSelectedLeague;
+    
+
+  }
+
+  ///
+  ///
+  ///
   Widget getButton(BuildContext context, League f)
   {
     final _list = Provider.of<LeaguesModel>(context);
@@ -36,11 +50,17 @@ class ListLeagues extends StatelessWidget {
     );
   }
 
+  ///
+  ///
+  ///
   onTapElement(BuildContext context, League item)
   {
     ActionsComposite.goToSeasonScreen(context, item);
   }
 
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<LeaguesModel>(context);

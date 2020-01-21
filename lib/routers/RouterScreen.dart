@@ -27,11 +27,11 @@ class RouterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+          ChangeNotifierProvider<FavoritesModel>(builder: (context) => FavoritesModel()),
           ChangeNotifierProvider<LeaguesModel>(builder: (context) => LeaguesModel()),
           ChangeNotifierProvider<SeasonsModel>(builder: (context) => SeasonsModel()),
           ChangeNotifierProvider<DivisionsModel>(builder: (context) => DivisionsModel()),
           ChangeNotifierProvider<GamesModel>(builder: (context) => GamesModel()),
-          ChangeNotifierProvider<FavoritesModel>(builder: (context) => FavoritesModel()),
           ChangeNotifierProvider<TiersModel>(builder: (context) => TiersModel()),
           ChangeNotifierProvider<StandingsModel>(builder: (context) => StandingsModel()),
           ChangeNotifierProvider<TeamModel>(builder: (context) => TeamModel()),

@@ -19,6 +19,7 @@ class FavoritesModel extends ChangeNotifier
   Game _selectedModelGames;
   Team _selectedModelTeams;
   String _filename = 'wlt3fluter';
+  String directory_path = '';
 
   /// League / season / division
   League _lastSelectedLeague;
@@ -68,7 +69,7 @@ class FavoritesModel extends ChangeNotifier
 
   set lastSelectedLeague(League o)
   {
-    _saveGeneric(o.toJson().toString(), '${this._filename}_league.json');
+    _saveGeneric(jsonEncode(o.toJson()), '${this.directory_path}/${this._filename}_league.json');
     this._lastSelectedLeague = o;
   }
 
@@ -82,7 +83,7 @@ class FavoritesModel extends ChangeNotifier
 
   set lastSelectedSeason(Season o)
   {
-    _saveGeneric(o.toJson().toString(), '${this._filename}_season.json');
+    _saveGeneric(jsonEncode(o.toJson()), '${this.directory_path}/${this._filename}_season.json');
     this._lastSelectedSeason = o;
   }
 
@@ -96,7 +97,7 @@ class FavoritesModel extends ChangeNotifier
 
   set lastSelectedDivision(Division o)
   {
-    _saveGeneric(o.toJson().toString(), '${this._filename}_division.json');
+    _saveGeneric(jsonEncode(o.toJson()), '${this.directory_path}/${this._filename}_division.json');
     this._lastSelectedDivision = o;
   }
 
@@ -252,33 +253,43 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   _read() async {
+    final directory = await getApplicationDocumentsDirectory();
+    this.directory_path = directory.path;
+
     try {
-      final directory = await getApplicationDocumentsDirectory();
-
-      final fileLeague = File('${directory.path}/${this._filename}_league.json');
-      final fileSeason = File('${directory.path}/${this._filename}_season.json');
-      final fileDivision = File('${directory.path}/${this._filename}_division.json');
-      final fileGames = File('${directory.path}/${this._filename}_games.json');
-      final fileTeams = File('${directory.path}/${this._filename}_teams.json');
-
+      final fileLeague = File('${this.directory_path}/${this._filename}_league.json');
       String jsonLeague = await fileLeague.readAsString();
-      String jsonSeason = await fileSeason.readAsString();
-      String jsonDivision = await fileDivision.readAsString();
-      String jsonGames = await fileGames.readAsString();
-      String jsonTeams = await fileTeams.readAsString();
       Object _jsonLeague = jsonDecode(jsonLeague);
-      Object _jsonSeason = jsonDecode(jsonSeason);
-      Object _jsonDivision = jsonDecode(jsonDivision);
-      List _jsonGames = jsonDecode(jsonGames);
-      List _jsonTeams = jsonDecode(jsonTeams);
       _lastSelectedLeague = League.fromJson(_jsonLeague);
+    } catch (e) { print("Couldn't read ${this.directory_path}/${this._filename}_league.json file and process file"); }
+
+    try {
+      final fileSeason = File('${this.directory_path}/${this._filename}_season.json');
+      String jsonSeason = await fileSeason.readAsString();
+      Object _jsonSeason = jsonDecode(jsonSeason);
       _lastSelectedSeason = Season.fromJson(_jsonSeason);
+    } catch (e) { print("Couldn't read ${this.directory_path}/${this._filename}_season.json file and process file"); }
+
+    try {
+      final fileDivision = File('${this.directory_path}/${this._filename}_division.json');
+      String jsonDivision = await fileDivision.readAsString();
+      Object _jsonDivision = jsonDecode(jsonDivision);
       _lastSelectedDivision = Division.fromJson(_jsonDivision);
+    } catch (e) { print("Couldn't read ${this.directory_path}/${this._filename}_division.json file and process file"); }
+
+    try {
+      final fileGames = File('${this.directory_path}/${this._filename}_games.json');
+      String jsonGames = await fileGames.readAsString();
+      List _jsonGames = jsonDecode(jsonGames);
       _listGames = _jsonGames.map((e) => Game.fromJson(e)).toList();
+    } catch (e) { print("Couldn't read ${this.directory_path}/${this._filename}_games.json file and process file"); }
+
+    try {
+      final fileTeams = File('${this.directory_path}/${this._filename}_teams.json');
+      String jsonTeams = await fileTeams.readAsString();
+      List _jsonTeams = jsonDecode(jsonTeams);
       _listTeams = _jsonTeams.map((e) => Team.fromJson(e)).toList();
-    } catch (e) {
-      print("Couldn't read file and process file");
-    }
+    } catch (e) { print("Couldn't read ${this.directory_path}/${this._filename}_teams.json file and process file"); }
   }
 
   ///
@@ -286,8 +297,7 @@ class FavoritesModel extends ChangeNotifier
   ///
   _saveGames() async {
     var json = jsonEncode(_listGames.map((e) => e.toJson()).toList());
-    final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/${this._filename}_games.json');
+    final file = File('${this.directory_path}/${this._filename}_games.json');
     await file.writeAsString(json);
     print('Games saved');
   }
@@ -297,7 +307,7 @@ class FavoritesModel extends ChangeNotifier
   ///
   _saveTeams() async {
     var json = jsonEncode(_listTeams.map((e) => e.toJson()).toList());
-    await this._saveGeneric(json, '${this._filename}_teams.json');
+    await this._saveGeneric(json, '${this.directory_path}/${this._filename}_teams.json');
     print('Teams saved');
   }
 
@@ -305,10 +315,12 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   _saveGeneric(String json, String filename) async {
-    print(filename);
-    final directory = await getApplicationDocumentsDirectory();
-    final file = File('${directory.path}/' + filename );
-    await file.writeAsString(json);
+    try {
+      final file = File(filename );
+      await file.writeAsString(json);
+    } catch(eee) {
+      print('Can not write ' + filename );
+    }
   }
 
 

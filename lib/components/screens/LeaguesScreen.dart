@@ -8,7 +8,7 @@ class LeaguesScreen extends StatelessWidget
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListLeagues()
+      body: ListLeagues(context)
     );
   }
   
