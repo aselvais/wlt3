@@ -15,3 +15,39 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 "# wlt3" 
+
+## Running the development version
+
+```
+flutter start
+```
+
+## Deployment
+
+### For Android
+
+
+### For iOS
+
+
+### For the web
+
+If the web version (is beta) is not installed, do the following:
+
+```
+flutter channel beta
+flutter config --enable-web
+```
+
+Then, run a version in the browser:
+
+```
+flutter run -d chrome
+```
+
+Building for the web:
+```
+flutter build web
+```
+
+
