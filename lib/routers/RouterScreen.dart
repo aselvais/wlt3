@@ -41,7 +41,6 @@ class RouterScreen extends StatelessWidget {
     // Division
     _divisionsModel.selectedModel = _favoritesModel?.lastSelectedDivision ?? null;
     _divisionsModel.selectedId = _favoritesModel?.lastSelectedDivision?.id ?? -1;
-
   }
 
   @override

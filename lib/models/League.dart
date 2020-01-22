@@ -20,10 +20,10 @@ class League {
   Map<String, dynamic> toJson() =>    
     {
       'id': id,
-      name: name,
-      imageUrl: imageUrl,
-      androidAppURL: androidAppURL,
-      iosAppURL: iosAppURL
+      'name': name,
+      'imageUrl': imageUrl,
+      'androidAppURL': androidAppURL,
+      'iosAppURL': iosAppURL
     };
 
 

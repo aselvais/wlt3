@@ -27,45 +27,50 @@ class GamesScreen extends StatelessWidget
   Widget build(BuildContext context) {
     final Season season = Provider.of<SeasonsModel>(context).selectedModel;
     final Division division = Provider.of<DivisionsModel>(context).selectedModel;
+     
     try {
-    return Scaffold(
-      backgroundColor: Themedata.greyBackground,
-      body: Column(
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(children: <Widget>[
-              Expanded(child: InkWell(
-                child: Buttonlist(title: 'Season', subtitle: season.name), // Text("Season: " + season.name + " > "), 
-                onTap: () => onTapSeasons(context),
-                ), 
-              ),
-              Expanded(child: InkWell(
-                child: Buttonlist(title: 'Division', subtitle: division.name), 
-                onTap: () => onTapDivisions(context),
-                ),
-              )
-            ],),
-          ),
-          Calendarbutton(),
-          Expanded(
-            flex: 9,
-            child: ListGames(),
-            ),
-      ],)
-    );
-    } catch(e) {
+
       return Scaffold(
-      backgroundColor: Colors.yellow,
-      body: Center(child: Text(
-            'Games',
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.black
+        backgroundColor: Themedata.greyBackground,
+        body: Column(
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(children: <Widget>[
+                Expanded(child: InkWell(
+                  child: Buttonlist(title: 'Season', subtitle: season?.name ?? ''),
+                  onTap: () => onTapSeasons(context),
+                  ), 
+                ),
+                Expanded(child: InkWell(
+                  child: Buttonlist(title: 'Division', subtitle: division?.name ?? ''), 
+                  onTap: () => onTapDivisions(context),
+                  ),
+                )
+              ],),
+            ),
+            Calendarbutton(),
+            Expanded(
+              flex: 9,
+              child: ListGames(),
               ),
+        ],)
+      );
+
+    } catch(e) {
+
+      return Scaffold(
+        backgroundColor: Colors.yellow,
+        body: Center(child: Text(
+              'Games',
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.black
+                ),
+            ),
           ),
-        ),
-    );
+      );
+
     }
 
   }

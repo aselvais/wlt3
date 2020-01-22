@@ -14,7 +14,7 @@ class Division {
   Map<String, dynamic> toJson() =>    
     {
       'id': id,
-      name: name
+      'name': name
     };
 
 }

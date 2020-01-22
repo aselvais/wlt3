@@ -102,49 +102,49 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   ///
-  get listTeams {
+  List<Team> get listTeams {
     return _listTeams;
   }
 
   ///
   ///
   ///
-  get selectedIdGames {
+  int get selectedIdGames {
     return _selectedIdGames;
   }
 
   ///
   ///
   ///
-  get selectedIdTeams {
+  int get selectedIdTeams {
     return _selectedIdTeams;
   }
 
   ///
   ///
   ///
-  get loadingGames {
+  bool get loadingGames {
     return _loadingGames;
   }
 
   ///
   ///
   ///
-  get loadingTeams {
+  bool get loadingTeams {
     return _loadingTeams;
   }
 
   ///
   ///
   ///
-  get selectedModelGames {
+  Game get selectedModelGames {
     return _selectedModelGames;
   }
 
   ///
   ///
   ///
-  get selectedModelTeams {
+  Team get selectedModelTeams {
     return _selectedModelTeams;
   }
 
@@ -242,6 +242,7 @@ class FavoritesModel extends ChangeNotifier
       String jsonSeason = await fileSeason.readAsString();
       Object _jsonSeason = jsonDecode(jsonSeason);
       _lastSelectedSeason = Season.fromJson(_jsonSeason);
+      print("${this.directoryPath}/${this._filename}_season.json saved");
     } catch (e) { print("Couldn't read ${this.directoryPath}/${this._filename}_season.json file and process file"); }
 
     try {
@@ -249,6 +250,7 @@ class FavoritesModel extends ChangeNotifier
       String jsonDivision = await fileDivision.readAsString();
       Object _jsonDivision = jsonDecode(jsonDivision);
       _lastSelectedDivision = Division.fromJson(_jsonDivision);
+      print("${this.directoryPath}/${this._filename}_division.json saved");
     } catch (e) { print("Couldn't read ${this.directoryPath}/${this._filename}_division.json file and process file"); }
 
     try {
@@ -256,6 +258,7 @@ class FavoritesModel extends ChangeNotifier
       String jsonGames = await fileGames.readAsString();
       List _jsonGames = jsonDecode(jsonGames);
       _listGames = _jsonGames.map((e) => Game.fromJson(e)).toList();
+      print("${this.directoryPath}/${this._filename}_games.json saved");
     } catch (e) { print("Couldn't read ${this.directoryPath}/${this._filename}_games.json file and process file"); }
 
     try {
@@ -263,6 +266,7 @@ class FavoritesModel extends ChangeNotifier
       String jsonTeams = await fileTeams.readAsString();
       List _jsonTeams = jsonDecode(jsonTeams);
       _listTeams = _jsonTeams.map((e) => Team.fromJson(e)).toList();
+      print("${this.directoryPath}/${this._filename}_teams.json saved");
     } catch (e) { print("Couldn't read ${this.directoryPath}/${this._filename}_teams.json file and process file"); }
   }
 

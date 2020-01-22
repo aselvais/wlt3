@@ -29,6 +29,19 @@ flutter start
 
 ### For iOS
 
+Open the simulator:
+```
+ open -a Simulator
+```
+Will download the debug tools and run on iOS when the devices is up:
+```
+flutter run --debug --build
+```
+
+Run the app
+```
+
+```
 
 ### For the web
 
