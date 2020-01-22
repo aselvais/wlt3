@@ -3,19 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/League.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
-import 'package:wlt3/models/FavoritesModel.dart';
 
 class ListLeagues extends StatelessWidget 
 {
-
-  ListLeagues(context)
-  {
-    final _favorite = Provider.of<FavoritesModel>(context);
-    final _list = Provider.of<LeaguesModel>(context);
-    _list.selectedModel = _favorite.lastSelectedLeague;
-    
-
-  }
 
   ///
   ///
@@ -31,12 +21,12 @@ class ListLeagues extends StatelessWidget
           flex: 1,
           child: FittedBox(
             fit: BoxFit.contain,
-            child: Image.network(f.imageUrl, width: 100, height: 100),
+            child: Image.network(f?.imageUrl ?? '', width: 100, height: 100),
           ),
         ),
         Expanded(
           flex: 8,
-          child: Text(f.name, textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 18.0)),
+          child: Text(f?.name ?? '', textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 18.0)),
         ),
         Expanded(
           flex: 1,

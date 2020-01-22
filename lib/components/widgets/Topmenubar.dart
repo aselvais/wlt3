@@ -12,7 +12,7 @@ class Topmenubar extends StatelessWidget with PreferredSizeWidget {
     League league = leagues.selectedModel;
     String title = 'Win Lose or Tie';
     try {
-      title = league.name;
+      title = league?.name ?? 'Win Lose or Tie';
     } catch(er) {}
     return new AppBar(
       title : new Text( title ),

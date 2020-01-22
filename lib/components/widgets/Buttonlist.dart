@@ -6,8 +6,7 @@ class Buttonlist extends StatelessWidget {
   String title = '';
   String subtitle = '';
 
-  Buttonlist({Key key, @required this.title, @required this.subtitle})
-      : super(key: key);
+  Buttonlist({Key key, @required this.title, @required this.subtitle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +22,11 @@ class Buttonlist extends StatelessWidget {
               children: <Widget>[
                 Text(
                   this.title,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(this.subtitle.toUpperCase(),
+                overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Themedata.blue,
                       fontSize: 12,

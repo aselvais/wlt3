@@ -3,7 +3,7 @@ import 'package:wlt3/libs/ActionsComposite.dart';
 
 class LoginScreen extends StatelessWidget {
 
-  String imgUrl = 'http://www.winloseortie.com/wp-content/themes/pogon/images/WLT-Logo.jpg';
+  final String imgUrl = 'http://www.winloseortie.com/wp-content/themes/pogon/images/WLT-Logo.jpg';
 
   @override
   Widget build(BuildContext context) {

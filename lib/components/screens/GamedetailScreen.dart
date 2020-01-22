@@ -97,7 +97,7 @@ class GamedetailScreen extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         // padding: const EdgeInsets.all(10.0),
         color: Colors.black,
-        child: Column(
+        child: SingleChildScrollView(child: Column(
           children: <Widget>[
             Row(
               children: <Widget>[
@@ -114,11 +114,11 @@ class GamedetailScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(top: 18.0),
               child: Text(
-                game.leagueName.toUpperCase() + " | " + game.divisionName.toUpperCase(), 
+                (game?.leagueName ?? '').toUpperCase() + " | " + (game?.divisionName ?? '').toUpperCase(), 
                 style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
             ),
           ],
-        ));
+        )));
   }
 
   Widget getTeam(BuildContext context, Team gameinfoteam)
@@ -128,7 +128,11 @@ class GamedetailScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Image.network(gameinfoteam?.imageUrl ?? "", width: 80, height: 80),
-              Text(gameinfoteam.teamName.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+              Text(
+                gameinfoteam.teamName.toUpperCase(),
+                overflow: TextOverflow.ellipsis, 
+                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)
+                ),
               Text(
                 gameinfoteam.win.toString() + '-' +
                 gameinfoteam.lose.toString() + '-' +
@@ -136,7 +140,11 @@ class GamedetailScreen extends StatelessWidget {
                 (gameinfoteam?.positionElementInStandings ?? '-').toString()
                 +') | strk:' + (gameinfoteam?.streak ?? ' -').toString()
                 , style: TextStyle(color: Colors.white)),
-              Text(gameinfoteam?.score?.toString() ?? "-", style: TextStyle(color: Colors.white, fontSize: 34)),
+              Text(
+                gameinfoteam?.score?.toString() ?? "-", 
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(color: Colors.white, fontSize: 34)
+                ),
             ],
           ),
         );

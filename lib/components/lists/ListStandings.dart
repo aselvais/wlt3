@@ -16,7 +16,10 @@ class ListStandings extends StatelessWidget {
   {
     return Container(
       padding: const EdgeInsets.all(5.0),
-      child: Text(txt, style: TextStyle(fontWeight: isHeader ? FontWeight.bold : FontWeight.normal),)
+      child: Text(
+        txt, 
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(fontWeight: isHeader ? FontWeight.bold : FontWeight.normal),)
     );
   }
 
