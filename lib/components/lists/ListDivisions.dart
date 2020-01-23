@@ -6,6 +6,17 @@ import 'package:wlt3/models/Division.dart';
 
 class ListDivisions extends StatelessWidget {
 
+  ///
+  ///
+  ///
+  onTapElement(BuildContext context, Division model)
+  {
+    ActionsComposite.goToGamesHomeScreen(context, model);
+  }
+
+  ///
+  ///
+  ///
   Widget getButton(BuildContext context, Division f)
   {
     final _list = Provider.of<DivisionsModel>(context);
@@ -29,11 +40,9 @@ class ListDivisions extends StatelessWidget {
     );
   }
 
-  onTapElement(BuildContext context, Division model)
-  {
-    ActionsComposite.goToGamesHomeScreen(context, model);
-  }
-
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<DivisionsModel>(context);

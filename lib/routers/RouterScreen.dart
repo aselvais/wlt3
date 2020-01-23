@@ -9,6 +9,7 @@ import 'package:wlt3/components/screens/ProfileScreen.dart';
 import 'package:wlt3/components/screens/SeasonsScreen.dart';
 import 'package:wlt3/components/screens/TeamdetailScreen.dart';
 import 'package:wlt3/components/screens/TiersScreen.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
@@ -28,25 +29,19 @@ class RouterScreen extends StatelessWidget {
   SeasonsModel _seasonsModel = SeasonsModel();
   DivisionsModel _divisionsModel = DivisionsModel();
   TiersModel _tiersModel = TiersModel();
+  GamesModel _gamesModel = GamesModel();
+  StandingsModel _standingsModel = StandingsModel();
+  TeamModel _teamModel = TeamModel();
+  BottombarModel _bottombarModel = BottombarModel();
+  MatchdatesModel _matchdatesModel = MatchdatesModel();
 
-  _preProcessSelection()
-  {
-    _favoritesModel.read();
-    // Leagues pre-selection
-    _leaguesModel.selectedModel = _favoritesModel?.lastSelectedLeague ?? null;
-    _leaguesModel.selectedId = _favoritesModel?.lastSelectedLeague?.id ?? -1;
-    // Season
-    _seasonsModel.selectedModel = _favoritesModel?.lastSelectedSeason ?? null;
-    _seasonsModel.selectedId = _favoritesModel?.lastSelectedSeason?.id ?? -1;
-    // Division
-    _divisionsModel.selectedModel = _favoritesModel?.lastSelectedDivision ?? null;
-    _divisionsModel.selectedId = _favoritesModel?.lastSelectedDivision?.id ?? -1;
-  }
-
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
 
-    this._preProcessSelection();
+    ActionsComposite.setGamesDataOnCachedSelection(_favoritesModel, _leaguesModel, _seasonsModel, _divisionsModel, _tiersModel, _matchdatesModel);
     
     return MultiProvider(
       providers: [
@@ -55,11 +50,11 @@ class RouterScreen extends StatelessWidget {
           ChangeNotifierProvider<SeasonsModel>(create: (context) => _seasonsModel),
           ChangeNotifierProvider<DivisionsModel>(create: (context) => _divisionsModel),
           ChangeNotifierProvider<TiersModel>(create: (context) => _tiersModel),
-          ChangeNotifierProvider<GamesModel>(create: (context) => GamesModel()),
-          ChangeNotifierProvider<StandingsModel>(create: (context) => StandingsModel()),
-          ChangeNotifierProvider<TeamModel>(create: (context) => TeamModel()),
-          ChangeNotifierProvider<BottombarModel>(create: (context) => BottombarModel()),
-          ChangeNotifierProvider<MatchdatesModel>(create: (context) => MatchdatesModel()),
+          ChangeNotifierProvider<GamesModel>(create: (context) => _gamesModel),
+          ChangeNotifierProvider<StandingsModel>(create: (context) => _standingsModel),
+          ChangeNotifierProvider<TeamModel>(create: (context) => _teamModel),
+          ChangeNotifierProvider<BottombarModel>(create: (context) => _bottombarModel),
+          ChangeNotifierProvider<MatchdatesModel>(create: (context) => _matchdatesModel),
       ],
       child: MaterialApp(
         title: 'Win Lose or Tie',

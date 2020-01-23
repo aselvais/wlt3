@@ -10,6 +10,9 @@ import 'dart:async';
 class Calendarbutton extends StatelessWidget 
 {
 
+  ///
+  ///
+  ///
   Future<void> _selectDate(BuildContext context) async 
   {
     final GamesModel games = Provider.of<GamesModel>(context);
@@ -47,19 +50,25 @@ class Calendarbutton extends StatelessWidget
 
   }
 
+  ///
+  ///
+  ///
   onTapDate(BuildContext context) 
   {
     _selectDate(context);
   }
 
+  ///
+  ///
+  ///
   onTapNavButton(BuildContext context, bool right) 
   {
-    final GamesModel games = Provider.of<GamesModel>(context);
-    final matchdatesModel = Provider.of<MatchdatesModel>(context);
-    games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right, false);
-    ActionsComposite.reloadGamesData(context);
+    ActionsComposite.loadClosestGamesToDate(context, right);
   }
 
+  ///
+  ///
+  ///
   getNavButton(BuildContext context, bool right) 
   {
     return Expanded(
@@ -75,6 +84,9 @@ class Calendarbutton extends StatelessWidget
             )));
   }
 
+  ///
+  ///
+  ///
   getCalendarButton(BuildContext context) 
   {
     final GamesModel games = Provider.of<GamesModel>(context);
@@ -92,11 +104,14 @@ class Calendarbutton extends StatelessWidget
                     color: Colors.black,
                   )),
               onTap: () => onTapDate(context),
-            )));
-    
-
+            )
+          )
+        );
   }
 
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) 
   {

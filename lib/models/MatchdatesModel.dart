@@ -107,6 +107,7 @@ class MatchdatesModel extends ChangeNotifier
     bool isPresent = true;
     List<String> alldates = new List();
     String fromDateStr = new DateFormat("yyyy-MM-dd").format(fromDate);
+    DateTime dd = new DateTime.now();
     for (int i = 0; i < this.list.length; i++) 
     {
       alldates.add(DateFormat("yyyy-MM-dd").format(this.list[i].dateTimeReal));
@@ -121,22 +122,16 @@ class MatchdatesModel extends ChangeNotifier
     // isPresent; // print(alldates); // print(right);
     int dateIdx = alldates.indexOf(fromDateStr);
     int newIdx = right ? dateIdx + 1 : dateIdx - 1;
+    
     if (allowCurrent == true && isPresent == true)
-    {
       newIdx =  dateIdx;
-    }
     if (newIdx == alldates.length) 
-    {
-      return DateTime.parse(alldates[alldates.length - 1]);
-    } 
+      dd = DateTime.parse(alldates[alldates.length - 1]);
     else if (newIdx < 0) 
-    {
-      return DateTime.parse(alldates[0]);
-    } 
+      dd = DateTime.parse(alldates[0]);
     else 
-    {
-      return DateTime.parse(alldates[newIdx]);
-    }
+      dd = DateTime.parse(alldates[newIdx]);
+    return dd;
   }
 
 

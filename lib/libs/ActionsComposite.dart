@@ -17,7 +17,10 @@ import 'package:wlt3/models/TiersModel.dart';
 
 class ActionsComposite
 {
-
+  
+  ///
+  ///
+  ///
   static goToTeamDetailScreen(BuildContext context, int teamId)
   {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
@@ -34,6 +37,9 @@ class ActionsComposite
     Navigator.pushNamed(context, '/teamdetail');
   }
 
+  ///
+  ///
+  ///
   static goToGamesHomeScreen(BuildContext context, Division model)
   {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
@@ -48,11 +54,39 @@ class ActionsComposite
     final matchdatesModel = Provider.of<MatchdatesModel>(context);
     matchdatesModel.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     // loading games
-    games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
+    // games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
+    ActionsComposite.loadClosestGamesToDate(context, true);
     bottomModel.idx = 0;
     Navigator.popUntil(context, ModalRoute.withName('/home'));
   }
 
+  ///
+  ///
+  ///
+  static setGamesDataOnCachedSelection(_favoritesModel, _leaguesModel, _seasonsModel, _divisionsModel, _tiersModel, _matchdatesModel)
+  {
+    _favoritesModel.read();
+    _leaguesModel.loadData();
+    // Leagues pre-selection
+    _leaguesModel.selectedModel = _favoritesModel?.lastSelectedLeague ?? null;
+    _leaguesModel.selectedId = _favoritesModel?.lastSelectedLeague?.id ?? -1;
+    // Season
+    _seasonsModel.loadData(_leaguesModel.selectedId);
+    _seasonsModel.selectedModel = _favoritesModel?.lastSelectedSeason ?? null;
+    _seasonsModel.selectedId = _favoritesModel?.lastSelectedSeason?.id ?? -1;
+    // Division
+    _divisionsModel.loadData(_seasonsModel.selectedId);
+    _divisionsModel.selectedModel = _favoritesModel?.lastSelectedDivision ?? null;
+    _divisionsModel.selectedId = _favoritesModel?.lastSelectedDivision?.id ?? -1;
+    // loading game dates
+    _matchdatesModel.loadData(_seasonsModel.selectedModel.id, _divisionsModel.selectedModel.id);
+
+  }
+
+
+  ///
+  ///
+  ///
   static goToSeasonScreen(BuildContext context, League item)
   {
     final _list = Provider.of<LeaguesModel>(context);
@@ -65,6 +99,9 @@ class ActionsComposite
     Navigator.pushNamed(context, '/seasons');
   }
 
+  ///
+  ///
+  ///
   static goToDivisionsScreen(BuildContext context, Season model)
   {
     final _list = Provider.of<SeasonsModel>(context);
@@ -78,6 +115,9 @@ class ActionsComposite
     Navigator.pushNamed(context, '/divisions');
   }
 
+  ///
+  ///
+  ///
   static tiersToStandings(BuildContext context, Tiers model)
   {
     final tiers = Provider.of<TiersModel>(context);
@@ -91,13 +131,30 @@ class ActionsComposite
     Navigator.popUntil(context, ModalRoute.withName('/home'));
   }
 
+  ///
+  ///
+  ///
   static loginToHome(BuildContext context) 
   {
-    final _list = Provider.of<LeaguesModel>(context);
-    _list.loadData();
+    final _leaguesModel = Provider.of<LeaguesModel>(context);
+    final _seasonsModel = Provider.of<SeasonsModel>(context);
+    final _divisionsModel = Provider.of<DivisionsModel>(context);
+    final _bottombarModel = Provider.of<BottombarModel>(context);
+    _leaguesModel.loadData();
+    if (_leaguesModel.selectedId > -1 && _seasonsModel.selectedId > -1 && _divisionsModel.selectedId > -1)
+    {
+      _bottombarModel.idx = 0;
+      // ActionsComposite.reloadGamesData(context);
+      ActionsComposite.loadClosestGamesToDate(context, true);
+    } else {
+      _bottombarModel.idx = 2;
+    }
     Navigator.pushNamed(context, '/home');
   }
 
+  ///
+  ///
+  ///
   static goToTiersScreen(BuildContext context)
   {
     final tiers = Provider.of<TiersModel>(context);
@@ -106,6 +163,9 @@ class ActionsComposite
     Navigator.pushNamed(context, '/tiers');
   }
 
+  ///
+  ///
+  ///
   static onBottomNavItemTapped(context, int index) 
   {
     final cart = Provider.of<BottombarModel>(context);
@@ -131,6 +191,9 @@ class ActionsComposite
     }
   }
 
+  ///
+  ///
+  ///
   static reloadGamesData(BuildContext context)
   {
     final GamesModel games = Provider.of<GamesModel>(context);
@@ -139,6 +202,16 @@ class ActionsComposite
     games.loadData(season.id, division.id);
   }
 
-
+  ///
+  /// Load the games (in games screen) to the closest available date
+  ///
+  static loadClosestGamesToDate(BuildContext context, bool right)
+  {
+    final GamesModel games = Provider.of<GamesModel>(context);
+    final matchdatesModel = Provider.of<MatchdatesModel>(context);
+    games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right, false);
+    ActionsComposite.reloadGamesData(context);
+  }
+  
 
 }

@@ -59,6 +59,7 @@ class SeasonsModel extends ChangeNotifier
 
   loadData(int leagueId)
   {
+    if (leagueId == -1) return false;
     this.loading = true;
     _list = new List();
     _api.getSeasons(leagueId)
