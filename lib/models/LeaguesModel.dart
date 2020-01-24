@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/League.dart';
 
-class LeaguesModel extends ChangeNotifier
-{
-  ApiaccessWlt _api = new ApiaccessWlt();  
+class LeaguesModel extends ChangeNotifier {
+  ApiaccessWlt _api = new ApiaccessWlt();
   List<League> _list = new List();
   bool _loading = false;
   int _selectedId = -1;
@@ -38,21 +36,19 @@ class LeaguesModel extends ChangeNotifier
   get loading {
     return _loading;
   }
-  
+
   ///
   ///
   ///
-  set selectedId(int v)
-  {
+  set selectedId(int v) {
     _selectedId = v;
     notifyListeners();
   }
-  
+
   ///
   ///
   ///
-  set selectedModel(League v)
-  {
+  set selectedModel(League v) {
     _selectedModel = v;
     notifyListeners();
   }
@@ -60,8 +56,7 @@ class LeaguesModel extends ChangeNotifier
   ///
   ///
   ///
-  set loading(bool v)
-  {
+  set loading(bool v) {
     _loading = v;
     notifyListeners();
   }
@@ -69,8 +64,7 @@ class LeaguesModel extends ChangeNotifier
   ///
   ///
   ///
-  addToList(o)
-  {
+  addToList(o) {
     _list.add(o);
     notifyListeners();
   }
@@ -78,8 +72,7 @@ class LeaguesModel extends ChangeNotifier
   ///
   ///
   ///
-  _replaceList(List<League> o)
-  {
+  _replaceList(List<League> o) {
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }
@@ -87,16 +80,14 @@ class LeaguesModel extends ChangeNotifier
   ///
   ///
   ///
-  loadData() async
-  {
-    if (_list.length == 0)
-    {
+  loadData() async {
+    if (_list.length == 0) {
       this.loading = true;
-      await _api.getLeagues()
-        .then((dt) => _replaceList(dt) )
-        .catchError((e) => throw Exception(e))
-        .whenComplete(() => notifyListeners() );
+      await _api
+          .getLeagues()
+          .then((dt) => _replaceList(dt))
+          .catchError((e) => throw Exception(e))
+          .whenComplete(() => notifyListeners());
     }
   }
-
 }

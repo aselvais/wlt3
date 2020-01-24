@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:wlt3/libs/Themedata.dart';
 
 class Buttonlist extends StatelessWidget {
-  
   String title = '';
   String subtitle = '';
 
-  Buttonlist({Key key, @required this.title, @required this.subtitle}) : super(key: key);
+  ///
+  ///
+  ///
+  Buttonlist({Key key, @required this.title, @required this.subtitle})
+      : super(key: key);
 
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +24,7 @@ class Buttonlist extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 9,
-              child: Column(
+            child: Column(
               children: <Widget>[
                 Text(
                   this.title,
@@ -26,7 +32,7 @@ class Buttonlist extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(this.subtitle.toUpperCase(),
-                overflow: TextOverflow.ellipsis,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Themedata.blue,
                       fontSize: 12,

@@ -3,9 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/Matchdates.dart';
 
-class MatchdatesModel extends ChangeNotifier 
-{
-
+class MatchdatesModel extends ChangeNotifier {
   ApiaccessWlt _api = new ApiaccessWlt();
   List<Matchdates> _list = new List();
   bool _loading = false;
@@ -16,48 +14,42 @@ class MatchdatesModel extends ChangeNotifier
   ///
   ///
   ///
-  List<Matchdates> get list 
-  {
+  List<Matchdates> get list {
     return _list;
   }
 
   ///
   ///
   ///
-  get selectedId 
-  {
+  get selectedId {
     return _selectedId;
   }
 
   ///
   ///
   ///
-  get loading 
-  {
+  get loading {
     return _loading;
   }
 
   ///
   ///
   ///
-  get selectedModel 
-  {
+  get selectedModel {
     return _selectedModel;
   }
 
   ///
   ///
   ///
-  get selectedDate 
-  {
+  get selectedDate {
     return _selectedDate;
   }
 
   ///
   ///
   ///
-  set selectedDate(DateTime v) 
-  {
+  set selectedDate(DateTime v) {
     _selectedDate = v;
     notifyListeners();
   }
@@ -65,8 +57,7 @@ class MatchdatesModel extends ChangeNotifier
   ///
   ///
   ///
-  set selectedModel(Matchdates v) 
-  {
+  set selectedModel(Matchdates v) {
     _selectedModel = v;
     notifyListeners();
   }
@@ -74,8 +65,7 @@ class MatchdatesModel extends ChangeNotifier
   ///
   ///
   ///
-  set selectedId(int v) 
-  {
+  set selectedId(int v) {
     _selectedId = v;
     notifyListeners();
   }
@@ -83,8 +73,7 @@ class MatchdatesModel extends ChangeNotifier
   ///
   ///
   ///
-  set loading(bool v) 
-  {
+  set loading(bool v) {
     _loading = v;
     notifyListeners();
   }
@@ -92,8 +81,7 @@ class MatchdatesModel extends ChangeNotifier
   ///
   ///
   ///
-  addToList(o) 
-  {
+  addToList(o) {
     _list.add(o);
     notifyListeners();
   }
@@ -101,8 +89,7 @@ class MatchdatesModel extends ChangeNotifier
   ///
   ///
   ///
-  _replaceList(List<Matchdates> o) 
-  {
+  _replaceList(List<Matchdates> o) {
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }
@@ -110,8 +97,7 @@ class MatchdatesModel extends ChangeNotifier
   ///
   ///
   ///
-  loadData(int seasonId, int divisionId) async
-  {
+  loadData(int seasonId, int divisionId) async {
     if (seasonId < 0 || divisionId < 0) return null;
     this.loading = true;
     _list = new List();
@@ -125,18 +111,15 @@ class MatchdatesModel extends ChangeNotifier
   ///
   ///
   ///
-  List<DateTime> getListOfAvailableDates()
-  {
+  List<DateTime> getListOfAvailableDates() {
     List<String> alldates = new List();
     List<DateTime> alldatestime = new List();
-    for (int i = 0; i < this.list.length; i++) 
-    {
+    for (int i = 0; i < this.list.length; i++) {
       alldates.add(DateFormat("yyyy-MM-dd").format(this.list[i].dateTimeReal));
     }
     alldates = alldates.toSet().toList();
     alldates.sort();
-    for (int i = 0; i < alldates.length; i++) 
-    {
+    for (int i = 0; i < alldates.length; i++) {
       alldatestime.add(DateTime.parse(alldates[i]));
     }
     return alldatestime;
@@ -145,18 +128,15 @@ class MatchdatesModel extends ChangeNotifier
   ///
   ///
   ///
-  DateTime getClosestDate(DateTime fromDate, bool right, bool allowCurrent) 
-  {
+  DateTime getClosestDate(DateTime fromDate, bool right, bool allowCurrent) {
     bool isPresent = true;
     List<String> alldates = new List();
     String fromDateStr = new DateFormat("yyyy-MM-dd").format(fromDate);
     DateTime dd = new DateTime.now();
-    for (int i = 0; i < this.list.length; i++) 
-    {
+    for (int i = 0; i < this.list.length; i++) {
       alldates.add(DateFormat("yyyy-MM-dd").format(this.list[i].dateTimeReal));
     }
-    if (alldates.indexOf(fromDateStr) == -1) 
-    {
+    if (alldates.indexOf(fromDateStr) == -1) {
       isPresent = false;
     }
     alldates.add(fromDateStr);
@@ -165,17 +145,14 @@ class MatchdatesModel extends ChangeNotifier
     // isPresent; // print(alldates); // print(right);
     int dateIdx = alldates.indexOf(fromDateStr);
     int newIdx = right ? dateIdx + 1 : dateIdx - 1;
-    
-    if (allowCurrent == true && isPresent == true)
-      newIdx =  dateIdx;
-    if (newIdx == alldates.length) 
+
+    if (allowCurrent == true && isPresent == true) newIdx = dateIdx;
+    if (newIdx == alldates.length)
       dd = DateTime.parse(alldates[alldates.length - 1]);
-    else if (newIdx < 0) 
+    else if (newIdx < 0)
       dd = DateTime.parse(alldates[0]);
-    else 
+    else
       dd = DateTime.parse(alldates[newIdx]);
     return dd;
   }
-
-
 }

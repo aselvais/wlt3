@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 
 class LoginScreen extends StatelessWidget {
-
-  final String imgUrl = 'http://www.winloseortie.com/wp-content/themes/pogon/images/WLT-Logo.jpg';
+  final String imgUrl =
+      'http://www.winloseortie.com/wp-content/themes/pogon/images/WLT-Logo.jpg';
 
   ///
   ///
@@ -12,21 +12,24 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Center(child: 
-        Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+        body: Center(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
               Container(
                 padding: EdgeInsets.all(80.0),
-                child: Image.network(imgUrl, /*width: 200, height: 200,*/),
+                child: Image.network(
+                  imgUrl, /*width: 200, height: 200,*/
+                ),
               ),
               FlatButton(
-                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(30.0)),
                 /* decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8.0)),
                   color: Colors.white,
-                ),*/   
+                ),*/
                 child: Text(
                   'Go',
                   style: TextStyle(fontSize: 25.0),
@@ -35,12 +38,10 @@ class LoginScreen extends StatelessWidget {
                 textColor: Colors.white,
                 disabledColor: Colors.grey,
                 disabledTextColor: Colors.black,
-                padding: EdgeInsets.all(15.0),                
+                padding: EdgeInsets.all(15.0),
                 splashColor: Colors.blueAccent,
                 onPressed: () => ActionsComposite.loginToHome(context),
               ),
-            ])
-            )
-            );
+            ])));
   }
 }

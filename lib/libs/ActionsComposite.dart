@@ -15,24 +15,19 @@ import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/Tiers.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
-class ActionsComposite
-{
-  
+class ActionsComposite {
   ///
   ///
   ///
-  static goToTeamDetailScreen(BuildContext context, int teamId) async 
-  {
+  static goToTeamDetailScreen(BuildContext context, int teamId) async {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
     await teammodel.loadData(teamId);
     // load standings for this team
-    // @todo Do this only after loading 
+    // @todo Do this only after loading
     try {
       final standing = Provider.of<StandingsModel>(context);
-      await standing.loadData(
-        teammodel.selectedModel.teaminfo.divisionId, 
-        teammodel.selectedModel.teaminfo.tierId
-      );
+      await standing.loadData(teammodel.selectedModel.teaminfo.divisionId,
+          teammodel.selectedModel.teaminfo.tierId);
     } catch (ee) {}
     Navigator.pushNamed(context, '/teamdetail');
   }
@@ -40,8 +35,7 @@ class ActionsComposite
   ///
   ///
   ///
-  static goToGamesHomeScreen(BuildContext context, Division model) async
-  {
+  static goToGamesHomeScreen(BuildContext context, Division model) async {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     final divisions = Provider.of<DivisionsModel>(context);
     final bottomModel = Provider.of<BottombarModel>(context);
@@ -51,8 +45,10 @@ class ActionsComposite
     divisions.selectedModel = model;
     favorites.lastSelectedDivision = model;
     // loading game dates
-    final matchdatesModel = Provider.of<MatchdatesModel>(context);
-    await matchdatesModel.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
+    final MatchdatesModel matchdatesModel =
+        Provider.of<MatchdatesModel>(context);
+    await matchdatesModel.loadData(
+        seasons.selectedModel.id, divisions.selectedModel.id);
     // loading games
     // await games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     ActionsComposite.loadClosestGamesToDate(context, true);
@@ -63,8 +59,13 @@ class ActionsComposite
   ///
   ///
   ///
-  static setGamesDataOnCachedSelection(FavoritesModel _favoritesModel, LeaguesModel _leaguesModel, SeasonsModel _seasonsModel, DivisionsModel _divisionsModel, TiersModel _tiersModel, MatchdatesModel _matchdatesModel) async
-  {
+  static setGamesDataOnCachedSelection(
+      FavoritesModel _favoritesModel,
+      LeaguesModel _leaguesModel,
+      SeasonsModel _seasonsModel,
+      DivisionsModel _divisionsModel,
+      TiersModel _tiersModel,
+      MatchdatesModel _matchdatesModel) async {
     await _favoritesModel.read();
     await _leaguesModel.loadData();
     // Leagues pre-selection
@@ -76,25 +77,25 @@ class ActionsComposite
     _seasonsModel.selectedId = _favoritesModel?.lastSelectedSeason?.id ?? -1;
     // Division
     await _divisionsModel.loadData(_seasonsModel.selectedId);
-    _divisionsModel.selectedModel = _favoritesModel?.lastSelectedDivision ?? null;
-    _divisionsModel.selectedId = _favoritesModel?.lastSelectedDivision?.id ?? -1;
+    _divisionsModel.selectedModel =
+        _favoritesModel?.lastSelectedDivision ?? null;
+    _divisionsModel.selectedId =
+        _favoritesModel?.lastSelectedDivision?.id ?? -1;
     // loading game dates
-    if (_seasonsModel.selectedModel != null && _divisionsModel.selectedModel != null)
-    {
-      await _matchdatesModel.loadData(_seasonsModel.selectedModel.id, _divisionsModel.selectedModel.id);
-    }
-    else
-    {
-      print('Error in setGamesDataOnCachedSelection - can not load matches data');
+    if (_seasonsModel.selectedModel != null &&
+        _divisionsModel.selectedModel != null) {
+      await _matchdatesModel.loadData(
+          _seasonsModel.selectedModel.id, _divisionsModel.selectedModel.id);
+    } else {
+      print(
+          'Error in setGamesDataOnCachedSelection - can not load matches data');
     }
   }
 
-
   ///
   ///
   ///
-  static goToSeasonScreen(BuildContext context, League item) async
-  {
+  static goToSeasonScreen(BuildContext context, League item) async {
     final _list = Provider.of<LeaguesModel>(context);
     final _list2 = Provider.of<SeasonsModel>(context);
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
@@ -108,8 +109,7 @@ class ActionsComposite
   ///
   ///
   ///
-  static goToDivisionsScreen(BuildContext context, Season model) async
-  {
+  static goToDivisionsScreen(BuildContext context, Season model) async {
     final _list = Provider.of<SeasonsModel>(context);
     final _list2 = Provider.of<DivisionsModel>(context);
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
@@ -124,8 +124,7 @@ class ActionsComposite
   ///
   ///
   ///
-  static tiersToStandings(BuildContext context, Tiers model) async
-  {
+  static tiersToStandings(BuildContext context, Tiers model) async {
     final tiers = Provider.of<TiersModel>(context);
     final bottomModel = Provider.of<BottombarModel>(context);
     tiers.selectedId = model.id;
@@ -140,15 +139,15 @@ class ActionsComposite
   ///
   ///
   ///
-  static loginToHome(BuildContext context) async
-  {
+  static loginToHome(BuildContext context) async {
     final _leaguesModel = Provider.of<LeaguesModel>(context);
     final _seasonsModel = Provider.of<SeasonsModel>(context);
     final _divisionsModel = Provider.of<DivisionsModel>(context);
     final _bottombarModel = Provider.of<BottombarModel>(context);
     await _leaguesModel.loadData();
-    if (_leaguesModel.selectedId > -1 && _seasonsModel.selectedId > -1 && _divisionsModel.selectedId > -1)
-    {
+    if (_leaguesModel.selectedId > -1 &&
+        _seasonsModel.selectedId > -1 &&
+        _divisionsModel.selectedId > -1) {
       _bottombarModel.idx = 0;
       // await ActionsComposite.reloadGamesData(context);
       await ActionsComposite.loadClosestGamesToDate(context, true);
@@ -161,8 +160,7 @@ class ActionsComposite
   ///
   ///
   ///
-  static goToTiersScreen(BuildContext context) async
-  {
+  static goToTiersScreen(BuildContext context) async {
     final tiers = Provider.of<TiersModel>(context);
     final divisions = Provider.of<DivisionsModel>(context);
     await tiers.loadData(divisions.selectedModel.id);
@@ -172,8 +170,7 @@ class ActionsComposite
   ///
   ///
   ///
-  static onBottomNavItemTapped(context, int index) async
-  {
+  static onBottomNavItemTapped(context, int index) async {
     final cart = Provider.of<BottombarModel>(context);
     cart.idx = index;
     if (index == 1) // Standings
@@ -185,10 +182,10 @@ class ActionsComposite
       int tiersId = 0;
       try {
         tiersId = tiers.selectedModel.id;
-      } catch(eee){}
+      } catch (eee) {}
       try {
         await standing.loadData(divisions.selectedModel.id, tiersId);
-      } catch(eee){}
+      } catch (eee) {}
     }
     if (index == 2) // Leagues
     {
@@ -200,24 +197,23 @@ class ActionsComposite
   ///
   ///
   ///
-  static reloadGamesData(BuildContext context) async
-  {
+  static reloadGamesData(BuildContext context) async {
     final GamesModel games = Provider.of<GamesModel>(context);
     final Season season = Provider.of<SeasonsModel>(context).selectedModel;
-    final Division division = Provider.of<DivisionsModel>(context).selectedModel;
+    final Division division =
+        Provider.of<DivisionsModel>(context).selectedModel;
     await games.loadData(season.id, division.id);
   }
 
   ///
   /// Load the games (in games screen) to the closest available date
   ///
-  static loadClosestGamesToDate(BuildContext context, bool right) async
-  {
+  static loadClosestGamesToDate(BuildContext context, bool right) async {
     final GamesModel games = Provider.of<GamesModel>(context);
-    final matchdatesModel = Provider.of<MatchdatesModel>(context);
-    games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right, false);
+    final MatchdatesModel matchdatesModel =
+        Provider.of<MatchdatesModel>(context);
+    games.selectedDate =
+        matchdatesModel.getClosestDate(games.selectedDate, right, false);
     await ActionsComposite.reloadGamesData(context);
   }
-  
-
 }

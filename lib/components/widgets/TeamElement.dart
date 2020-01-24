@@ -7,9 +7,15 @@ import 'package:wlt3/models/Teamdata.dart';
 class TeamElement extends StatelessWidget {
   final Team team;
 
+  ///
+  ///
+  ///
   TeamElement({Key key, @required this.team}) : super(key: key);
 
-  onTapElement(BuildContext context) {    
+  ///
+  ///
+  ///
+  onTapElement(BuildContext context) {
     final _list = Provider.of<TeamModel>(context);
     _list.selectedId = team.teamId;
     _list.selectedModel = Teamdata();
@@ -17,25 +23,34 @@ class TeamElement extends StatelessWidget {
     Navigator.pushNamed(context, '/teamdetail');
   }
 
-
+  ///
+  ///
+  ///
   Widget getButton(BuildContext context) {
     Image img01;
-    try { img01 = Image.network(team.imageUrl, width: 30, height: 30); } catch(eee) {}
-    return Row(children: <Widget>[
-      Expanded(
+    try {
+      img01 = Image.network(team.imageUrl, width: 30, height: 30);
+    } catch (eee) {}
+    return Row(
+      children: <Widget>[
+        Expanded(
           flex: 2,
           child: img01,
-      ),
-      Expanded(
-        flex: 8,
-        child: Column( children: [
-          Text(team.teamName),
-          Text(team.divisionName ),
-        ] )
-      ,)
-    ],);
+        ),
+        Expanded(
+          flex: 8,
+          child: Column(children: [
+            Text(team.teamName),
+            Text(team.divisionName),
+          ]),
+        )
+      ],
+    );
   }
 
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -43,7 +58,7 @@ class TeamElement extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           color: Colors.white,
-        ),      
+        ),
         margin: const EdgeInsets.all(5.0),
         padding: const EdgeInsets.all(10.0),
         // height: 100,

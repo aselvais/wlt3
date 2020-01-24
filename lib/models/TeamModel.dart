@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/models/Teamdata.dart';
 
-class TeamModel extends ChangeNotifier
-{
-  ApiaccessWlt _api = new ApiaccessWlt();  
+class TeamModel extends ChangeNotifier {
+  ApiaccessWlt _api = new ApiaccessWlt();
   List<Team> _list = new List();
   bool _loading = false;
   int _selectedId = -1;
@@ -39,21 +37,19 @@ class TeamModel extends ChangeNotifier
   get loading {
     return _loading;
   }
-  
+
   ///
   ///
   ///
-  set selectedId(int v)
-  {
+  set selectedId(int v) {
     _selectedId = v;
     notifyListeners();
   }
-  
+
   ///
   ///
   ///
-  set selectedModel(Teamdata v)
-  {
+  set selectedModel(Teamdata v) {
     _selectedModel = v;
     notifyListeners();
   }
@@ -61,8 +57,7 @@ class TeamModel extends ChangeNotifier
   ///
   ///
   ///
-  set loading(bool v)
-  {
+  set loading(bool v) {
     _loading = v;
     notifyListeners();
   }
@@ -70,8 +65,7 @@ class TeamModel extends ChangeNotifier
   ///
   ///
   ///
-  addToList(o)
-  {
+  addToList(o) {
     _list.add(o);
     notifyListeners();
   }
@@ -86,8 +80,7 @@ class TeamModel extends ChangeNotifier
   ///
   ///
   ///
-  _replaceSelectedModel(Teamdata m)
-  {
+  _replaceSelectedModel(Teamdata m) {
     this._selectedModel = m;
     this.loading = false;
   }
@@ -95,14 +88,13 @@ class TeamModel extends ChangeNotifier
   ///
   ///
   ///
-  loadData(int teamId) async
-  {
-      if (teamId < 0) return null;
-      this.loading = true;
-      await _api.getTeamInfoFull(teamId)
-        .then((dt) => _replaceSelectedModel(dt) )
+  loadData(int teamId) async {
+    if (teamId < 0) return null;
+    this.loading = true;
+    await _api
+        .getTeamInfoFull(teamId)
+        .then((dt) => _replaceSelectedModel(dt))
         .catchError((e) => throw Exception(e))
-        .whenComplete(() => notifyListeners() );
+        .whenComplete(() => notifyListeners());
   }
-
 }

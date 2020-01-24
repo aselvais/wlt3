@@ -7,36 +7,41 @@ import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/Team.dart';
 
-class FavoritesScreen extends StatelessWidget
-{
-
-
-  Widget getTeams(BuildContext context) 
-  {
+class FavoritesScreen extends StatelessWidget {
+  ///
+  ///
+  ///
+  Widget getTeams(BuildContext context) {
     final favorites = Provider.of<FavoritesModel>(context);
     List<Widget> wl = new List();
     favorites.listTeams.forEach((Team f) => wl.add(TeamElement(team: f)));
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      color: Themedata.greyBackground,
-      child: ListView(children: wl,)
-    );
+        padding: const EdgeInsets.all(10.0),
+        color: Themedata.greyBackground,
+        child: ListView(
+          children: wl,
+        ));
   }
 
-  Widget getGames(BuildContext context) 
-  {
+  ///
+  ///
+  ///
+  Widget getGames(BuildContext context) {
     final favorites = Provider.of<FavoritesModel>(context);
     List<Widget> wl = new List();
     favorites.listGames.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      color: Themedata.greyBackground,
-      child: ListView(children: wl,)
-    );
+        padding: const EdgeInsets.all(10.0),
+        color: Themedata.greyBackground,
+        child: ListView(
+          children: wl,
+        ));
   }
 
-  Widget getTabsView(BuildContext context) 
-  {
+  ///
+  ///
+  ///
+  Widget getTabsView(BuildContext context) {
     return Expanded(
       flex: 7,
       child: DefaultTabController(
@@ -48,8 +53,12 @@ class FavoritesScreen extends StatelessWidget
             bottom: TabBar(
               isScrollable: true,
               tabs: [
-                Tab( text: 'Teams', ),
-                Tab( text: 'Games', )
+                Tab(
+                  text: 'Teams',
+                ),
+                Tab(
+                  text: 'Games',
+                )
               ],
             ),
           ),
@@ -64,7 +73,9 @@ class FavoritesScreen extends StatelessWidget
     );
   }
 
-
+  ///
+  ///
+  ///
   Widget getAppBarElement(BuildContext context) {
     return AppBar(
       title: new Text('Favorites'),
@@ -72,7 +83,9 @@ class FavoritesScreen extends StatelessWidget
     );
   }
 
-
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     final favorites = Provider.of<FavoritesModel>(context);
@@ -80,10 +93,8 @@ class FavoritesScreen extends StatelessWidget
       return Center(child: CircularProgressIndicator());
     } else {
       return Column(
-          children: <Widget>[
-            getTabsView(context)
-          ],
-        );
+        children: <Widget>[getTabsView(context)],
+      );
       /*
       return Scaffold(
         backgroundColor: Colors.white,
@@ -97,5 +108,4 @@ class FavoritesScreen extends StatelessWidget
       */
     }
   }
-
 }

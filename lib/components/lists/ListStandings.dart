@@ -6,23 +6,30 @@ import 'package:wlt3/models/StandingsModel.dart';
 import 'package:wlt3/models/Standing.dart';
 
 class ListStandings extends StatelessWidget {
-
-  onTapTeam(BuildContext context, Standingdata team) 
-  {
+  ///
+  ///
+  ///
+  onTapTeam(BuildContext context, Standingdata team) {
     ActionsComposite.goToTeamDetailScreen(context, team.teamId);
   }
 
-  Widget getCell(String txt, bool isHeader) 
-  {
+  ///
+  ///
+  ///
+  Widget getCell(String txt, bool isHeader) {
     return Container(
-      padding: const EdgeInsets.all(5.0),
-      child: Text(
-        txt, 
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(fontWeight: isHeader ? FontWeight.bold : FontWeight.normal),)
-    );
+        padding: const EdgeInsets.all(5.0),
+        child: Text(
+          txt,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+              fontWeight: isHeader ? FontWeight.bold : FontWeight.normal),
+        ));
   }
 
+  ///
+  ///
+  ///
   Widget getElement(BuildContext context, Standingdata f, String k) {
     try {
       switch (k) {
@@ -104,6 +111,83 @@ class ListStandings extends StatelessWidget {
     }
   }
 
+  ///
+  ///
+  ///
+  List<Widget> getRow(BuildContext context, List<Standingdata> f) {
+    List<Widget> toret = new List();
+
+    toret.add(Row(
+      children: <Widget>[
+        this.getCell(''.toUpperCase(), true),
+        this.getCell('team'.toUpperCase(), true),
+        this.getCell('teamId'.toUpperCase(), true),
+        this.getCell('gp'.toUpperCase(), true),
+        this.getCell('w'.toUpperCase(), true),
+        this.getCell('l'.toUpperCase(), true),
+        this.getCell('t'.toUpperCase(), true),
+        this.getCell('pts'.toUpperCase(), true),
+        this.getCell('gf'.toUpperCase(), true),
+        this.getCell('ga'.toUpperCase(), true),
+        this.getCell('gfavg'.toUpperCase(), true),
+        this.getCell('strk'.toUpperCase(), true),
+      ],
+    ));
+
+    f.forEach((Standingdata f) => toret.add(Row(
+          children: <Widget>[
+            this.getElement(context, f, 'imgurl'),
+            this.getElement(context, f, 'team'),
+            this.getElement(context, f, 'teamId'),
+            this.getElement(context, f, 'gp'),
+            this.getElement(context, f, 'w'),
+            this.getElement(context, f, 'l'),
+            this.getElement(context, f, 't'),
+            this.getElement(context, f, 'pts'),
+            this.getElement(context, f, 'gf'),
+            this.getElement(context, f, 'ga'),
+            this.getElement(context, f, 'gfavg'),
+            this.getElement(context, f, 'strk'),
+          ],
+        )));
+    return toret;
+  }
+
+  ///
+  ///
+  ///
+  Widget getButton(BuildContext context, Standing f) {
+    return Column(children: getRow(context, f.data));
+  }
+
+  ///
+  ///
+  ///
+  onTapElement(BuildContext context, Standing model) {}
+
+  ///
+  ///
+  ///
+  @override
+  Widget build(BuildContext context) {
+    final _list = Provider.of<StandingsModel>(context);
+    List<Widget> wl = new List();
+    if (_list.loading == true) {
+      return Center(child: CircularProgressIndicator());
+    } else {
+      _list.list.forEach((Standing f) => wl.add(InkWell(
+            child: Container(
+              child: getButton(context, f),
+            ),
+            onTap: () => onTapElement(context, f),
+          )));
+      return ListView(
+        children: wl,
+      );
+    }
+  }
+
+  
   /*
   List<Widget> getRow(BuildContext context, List<Standingdata> f) {
     List<Widget> toret = new List();
@@ -135,72 +219,5 @@ class ListStandings extends StatelessWidget {
     return toret;
   }
   */
-
-  List<Widget> getRow(BuildContext context, List<Standingdata> f) {
-    List<Widget> toret = new List();
-
-    toret.add(Row(
-        children: <Widget>[
-          this.getCell(''.toUpperCase(), true),
-          this.getCell('team'.toUpperCase(), true),
-          this.getCell('teamId'.toUpperCase(), true),
-          this.getCell('gp'.toUpperCase(), true),
-          this.getCell('w'.toUpperCase(), true),
-          this.getCell('l'.toUpperCase(), true),
-          this.getCell('t'.toUpperCase(), true),
-          this.getCell('pts'.toUpperCase(), true),
-          this.getCell('gf'.toUpperCase(), true),
-          this.getCell('ga'.toUpperCase(), true),
-          this.getCell('gfavg'.toUpperCase(), true),
-          this.getCell('strk'.toUpperCase(), true),
-      ],
-    ));
-
-    f.forEach((Standingdata f) => toret.add(      
-      Row(
-        children: <Widget>[
-          this.getElement(context, f, 'imgurl'),
-          this.getElement(context, f, 'team'),
-          this.getElement(context, f, 'teamId'),
-          this.getElement(context, f, 'gp'),
-          this.getElement(context, f, 'w'),
-          this.getElement(context, f, 'l'),
-          this.getElement(context, f, 't'),
-          this.getElement(context, f, 'pts'),
-          this.getElement(context, f, 'gf'),
-          this.getElement(context, f, 'ga'),
-          this.getElement(context, f, 'gfavg'),
-          this.getElement(context, f, 'strk'),
-        ],
-      )
-    ));
-    return toret;
-  }
-
-  Widget getButton(BuildContext context, Standing f) {
-    return Column(children: getRow(context, f.data));
-  }
-
-  onTapElement(BuildContext context, Standing model) {}
-
-  @override
-  Widget build(BuildContext context) {
-    final _list = Provider.of<StandingsModel>(context);
-    List<Widget> wl = new List();
-    if (_list.loading == true) 
-    {
-      return Center(child: CircularProgressIndicator());
-    } 
-    else 
-    {
-      _list.list.forEach((Standing f) => wl.add(InkWell(
-        child: Container( 
-          child: getButton(context, f), ),
-          onTap: () => onTapElement(context, f),
-        )
-      ));
-      return ListView(children: wl,);
-    }
-  }
 
 }

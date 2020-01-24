@@ -1,6 +1,1 @@
-
-
-class ApiaccessAbstract
-{
-
-}
+class ApiaccessAbstract {}

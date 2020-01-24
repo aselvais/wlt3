@@ -4,7 +4,7 @@ import 'package:wlt3/models/Gameinfo.dart';
 class Game {
   final int id;
   final String type;
-  final Arena  arena;
+  final Arena arena;
   final String time;
   final Gameinfo info;
   final int divisionId;
@@ -19,8 +19,8 @@ class Game {
   final String shareUrl;
   final String linkStreamVideo;
 
-  Game({
-      this.id,
+  Game(
+      {this.id,
       this.type,
       this.arena,
       this.time,
@@ -35,10 +35,12 @@ class Game {
       this.seasonName,
       this.seasonPlayOff,
       this.shareUrl,
-      this.linkStreamVideo
-  });
+      this.linkStreamVideo});
 
-  factory Game.fromJson(Map<String, dynamic> json) {    
+  ///
+  ///
+  ///
+  factory Game.fromJson(Map<String, dynamic> json) {
     return Game(
       id: json['id'],
       type: json['type'],
@@ -50,7 +52,7 @@ class Game {
       dateTime: json['dateTime'],
       leagueName: json['leagueName'],
       leagueTimezone: json['leagueTimezone'],
-      leagueShortName : json['leagueShortName'],
+      leagueShortName: json['leagueShortName'],
       status: json['status'],
       seasonName: json['seasonName'],
       seasonPlayOff: json['seasonPlayOff'],
@@ -59,26 +61,26 @@ class Game {
     );
   }
 
-  Map<String, dynamic> toJson() =>    
-  {
-    'id': id,
-    'type': type,
-    'arena': arena.toJson(),
-    'time': time,
-    'info': info.toJson(), //json.containsKey('info') ? Gameinfo.fromJson(json['info']) : null,
-    'divisionId': divisionId,
-    'divisionName': divisionName,
-    'dateTime': dateTime,
-    'leagueName': leagueName,
-    'leagueTimezone': leagueTimezone,
-    'leagueShortName': leagueShortName,
-    'status': status,
-    'seasonName': seasonName,
-    'seasonPlayOff': seasonPlayOff,
-    'shareUrl': shareUrl,
-    'linkStreamVideo': linkStreamVideo,
-  };
-  
-
-
+  ///
+  ///
+  ///
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'type': type,
+        'arena': arena.toJson(),
+        'time': time,
+        'info': info
+            .toJson(), //json.containsKey('info') ? Gameinfo.fromJson(json['info']) : null,
+        'divisionId': divisionId,
+        'divisionName': divisionName,
+        'dateTime': dateTime,
+        'leagueName': leagueName,
+        'leagueTimezone': leagueTimezone,
+        'leagueShortName': leagueShortName,
+        'status': status,
+        'seasonName': seasonName,
+        'seasonPlayOff': seasonPlayOff,
+        'shareUrl': shareUrl,
+        'linkStreamVideo': linkStreamVideo,
+      };
 }

@@ -1,10 +1,15 @@
 class Tiers {
-
   final num id;
   final String name;
 
+  ///
+  ///
+  ///
   Tiers({this.id, this.name});
 
+  ///
+  ///
+  ///
   factory Tiers.fromJson(Map<String, dynamic> json) {
     return Tiers(
       id: json['id'],

@@ -23,7 +23,6 @@ import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
 class RouterScreen extends StatelessWidget {
-
   FavoritesModel _favoritesModel = FavoritesModel();
   LeaguesModel _leaguesModel = LeaguesModel();
   SeasonsModel _seasonsModel = SeasonsModel();
@@ -40,44 +39,51 @@ class RouterScreen extends StatelessWidget {
   ///
   @override
   Widget build(BuildContext context) {
+    ActionsComposite.setGamesDataOnCachedSelection(
+        _favoritesModel,
+        _leaguesModel,
+        _seasonsModel,
+        _divisionsModel,
+        _tiersModel,
+        _matchdatesModel);
 
-    ActionsComposite.setGamesDataOnCachedSelection(_favoritesModel, _leaguesModel, _seasonsModel, _divisionsModel, _tiersModel, _matchdatesModel);
-    
     return MultiProvider(
-      providers: [
-          ChangeNotifierProvider<FavoritesModel>(create: (context) => _favoritesModel),
-          ChangeNotifierProvider<LeaguesModel>(create: (context) => _leaguesModel),
-          ChangeNotifierProvider<SeasonsModel>(create: (context) => _seasonsModel),
-          ChangeNotifierProvider<DivisionsModel>(create: (context) => _divisionsModel),
+        providers: [
+          ChangeNotifierProvider<FavoritesModel>(
+              create: (context) => _favoritesModel),
+          ChangeNotifierProvider<LeaguesModel>(
+              create: (context) => _leaguesModel),
+          ChangeNotifierProvider<SeasonsModel>(
+              create: (context) => _seasonsModel),
+          ChangeNotifierProvider<DivisionsModel>(
+              create: (context) => _divisionsModel),
           ChangeNotifierProvider<TiersModel>(create: (context) => _tiersModel),
           ChangeNotifierProvider<GamesModel>(create: (context) => _gamesModel),
-          ChangeNotifierProvider<StandingsModel>(create: (context) => _standingsModel),
+          ChangeNotifierProvider<StandingsModel>(
+              create: (context) => _standingsModel),
           ChangeNotifierProvider<TeamModel>(create: (context) => _teamModel),
-          ChangeNotifierProvider<BottombarModel>(create: (context) => _bottombarModel),
-          ChangeNotifierProvider<MatchdatesModel>(create: (context) => _matchdatesModel),
-      ],
-      child: MaterialApp(
-        title: 'Win Lose or Tie',
-        theme: new ThemeData( 
-          brightness: Brightness.light, 
-          backgroundColor: Themedata.white, 
-        ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => new LoginScreen(),
-          '/home': (context) => new HomeScreen(),
-          '/seasons': (context) => SeasonsScreen(),
-          '/divisions': (context) => DivisionsScreen(),
-          '/tiers': (context) => TiersScreen(),
-          '/feedback': (context) => new FeedbackScreen(),
-          '/profile': (context) => new ProfileScreen(),
-          '/gamedetail': (context) => new GamedetailScreen(),
-          '/teamdetail': (context) => new TeamdetailScreen(),
-        }
-      )
-    );
-    
+          ChangeNotifierProvider<BottombarModel>(
+              create: (context) => _bottombarModel),
+          ChangeNotifierProvider<MatchdatesModel>(
+              create: (context) => _matchdatesModel),
+        ],
+        child: MaterialApp(
+            title: 'Win Lose or Tie',
+            theme: new ThemeData(
+              brightness: Brightness.light,
+              backgroundColor: Themedata.white,
+            ),
+            initialRoute: '/',
+            routes: {
+              '/': (context) => new LoginScreen(),
+              '/home': (context) => new HomeScreen(),
+              '/seasons': (context) => SeasonsScreen(),
+              '/divisions': (context) => DivisionsScreen(),
+              '/tiers': (context) => TiersScreen(),
+              '/feedback': (context) => new FeedbackScreen(),
+              '/profile': (context) => new ProfileScreen(),
+              '/gamedetail': (context) => new GamedetailScreen(),
+              '/teamdetail': (context) => new TeamdetailScreen(),
+            }));
   }
-
-
 }

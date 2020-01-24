@@ -13,10 +13,16 @@ import 'package:share/share.dart';
 class GamedetailScreen extends StatelessWidget {
   final String _title = 'Game detail';
 
+  ///
+  ///
+  ///
   onTapTeam(BuildContext context, Team team) {
     ActionsComposite.goToTeamDetailScreen(context, team.teamId);
   }
 
+  ///
+  ///
+  ///
   onTapCalendar(BuildContext context) {
     print('onTapCalendar');
     final Game game = Provider.of<GamesModel>(context).selectedModel;
@@ -24,71 +30,127 @@ class GamedetailScreen extends StatelessWidget {
     DateTime dt2 = dt.add(new Duration(hours: 1));
     final Event event = Event(
       title: game.info.team1.teamName + ' vs ' + game.info.team2.teamName,
-      description: 'Hockey match ' + game.info.team1.teamName + ' vs ' + game.info.team2.teamName + ' at ' + game.arena.address,
+      description: 'Hockey match ' +
+          game.info.team1.teamName +
+          ' vs ' +
+          game.info.team2.teamName +
+          ' at ' +
+          game.arena.address,
       location: game.arena.address,
       startDate: dt,
       endDate: dt2,
     );
-    try{
+    try {
       Add2Calendar.addEvent2Cal(event);
-    } catch(eee) {
+    } catch (eee) {
       print('Error adding event');
     }
   }
 
+  ///
+  ///
+  ///
   onTapMap(BuildContext context) {
     print('onTapMap');
   }
 
+  ///
+  ///
+  ///
   onTapShare(BuildContext context) {
     print('onTapShare');
-    
+
     final Game selectedGame = Provider.of<GamesModel>(context).selectedModel;
 
-    String title = 'Match ' + selectedGame.info.team1.teamName + ' vs. ' + selectedGame.info.team2.teamName;
+    String title = 'Match ' +
+        selectedGame.info.team1.teamName +
+        ' vs. ' +
+        selectedGame.info.team2.teamName;
     //String url = selectedGame.shareUrl;
     String message = '';
 
     // Past Game (Teams tied in score) // "Team A" tied"Team B", "Score", on "Date", "Location Name"
-    if ( (selectedGame.info.team1.score != null) 
-      && (selectedGame.info.team2.score != null) 
-      && selectedGame.info.team1.score == selectedGame.info.team2.score)
-    {
-      message = selectedGame.info.team1.teamName + ' tied ' + selectedGame.info.team2.teamName + ' ' 
-      + selectedGame.info.team1.score.toString() + '-' + selectedGame.info.team2.score.toString()
-      + ' at ' + selectedGame.arena.name + ' ' + selectedGame.arena.address +  " on " + 
-      FormaterElem.getDateFormated(selectedGame.dateTime, true).replaceAll("\n", " ");
+    if ((selectedGame.info.team1.score != null) &&
+        (selectedGame.info.team2.score != null) &&
+        selectedGame.info.team1.score == selectedGame.info.team2.score) {
+      message = selectedGame.info.team1.teamName +
+          ' tied ' +
+          selectedGame.info.team2.teamName +
+          ' ' +
+          selectedGame.info.team1.score.toString() +
+          '-' +
+          selectedGame.info.team2.score.toString() +
+          ' at ' +
+          selectedGame.arena.name +
+          ' ' +
+          selectedGame.arena.address +
+          " on " +
+          FormaterElem.getDateFormated(selectedGame.dateTime, true)
+              .replaceAll("\n", " ");
     }
     // Past Game (One team defeats the other team) // "Team B" defeated "Team A", "Score", on "Date", "Location Name"
-    else if (
-      (selectedGame.info.team1.score != null) 
-      && (selectedGame.info.team2.score != null) 
-      && selectedGame.info.team1.score != selectedGame.info.team2.score)
-    {
-      message = selectedGame.info.team1.score > selectedGame.info.team2.score ?
-      selectedGame.info.team1.teamName + ' defeats ' + selectedGame.info.team2.teamName + ' ' + selectedGame.info.team1.score.toString() + '-' + selectedGame.info.team2.score.toString()
-      + ' at ' + selectedGame.arena.name + ' ' + selectedGame.arena.address +  " on " + FormaterElem.getDateFormated(selectedGame.dateTime, true).replaceAll("\n", " ") :
-      selectedGame.info.team2.teamName + ' defeats ' + selectedGame.info.team1.teamName + ' ' + selectedGame.info.team2.score.toString() + '-' + selectedGame.info.team1.score.toString()
-      + ' at ' + selectedGame.arena.name + ' ' + selectedGame.arena.address +  " on " + FormaterElem.getDateFormated(selectedGame.dateTime, true).replaceAll("\n", " ");
+    else if ((selectedGame.info.team1.score != null) &&
+        (selectedGame.info.team2.score != null) &&
+        selectedGame.info.team1.score != selectedGame.info.team2.score) {
+      message = selectedGame.info.team1.score > selectedGame.info.team2.score
+          ? selectedGame.info.team1.teamName +
+              ' defeats ' +
+              selectedGame.info.team2.teamName +
+              ' ' +
+              selectedGame.info.team1.score.toString() +
+              '-' +
+              selectedGame.info.team2.score.toString() +
+              ' at ' +
+              selectedGame.arena.name +
+              ' ' +
+              selectedGame.arena.address +
+              " on " +
+              FormaterElem.getDateFormated(selectedGame.dateTime, true)
+                  .replaceAll("\n", " ")
+          : selectedGame.info.team2.teamName +
+              ' defeats ' +
+              selectedGame.info.team1.teamName +
+              ' ' +
+              selectedGame.info.team2.score.toString() +
+              '-' +
+              selectedGame.info.team1.score.toString() +
+              ' at ' +
+              selectedGame.arena.name +
+              ' ' +
+              selectedGame.arena.address +
+              " on " +
+              FormaterElem.getDateFormated(selectedGame.dateTime, true)
+                  .replaceAll("\n", " ");
     }
     // Future Game // "Team A" vs "Team B" @"Time", "Location Name"
-    else
-    {
-      message = selectedGame.info.team1.teamName + ' vs ' + selectedGame.info.team2.teamName + " @" +
-      FormaterElem.getDateFormated(selectedGame.dateTime, true).replaceAll("\n", " ") + ' at ' + selectedGame.arena.name + ' ' + selectedGame.arena.address;
+    else {
+      message = selectedGame.info.team1.teamName +
+          ' vs ' +
+          selectedGame.info.team2.teamName +
+          " @" +
+          FormaterElem.getDateFormated(selectedGame.dateTime, true)
+              .replaceAll("\n", " ") +
+          ' at ' +
+          selectedGame.arena.name +
+          ' ' +
+          selectedGame.arena.address;
     }
     // title, message, url
     Share.share(message, subject: title);
-    
   }
 
-
+  ///
+  ///
+  ///
   onTapFavorite(BuildContext context) {
     final Game game = Provider.of<GamesModel>(context).selectedModel;
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     favorites.addToListGames(game);
   }
 
+  ///
+  ///
+  ///
   Widget getTopBar(BuildContext context) {
     final Game game = Provider.of<GamesModel>(context).selectedModel;
     return Container(
@@ -97,60 +159,77 @@ class GamedetailScreen extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         // padding: const EdgeInsets.all(10.0),
         color: Colors.black,
-        child: SingleChildScrollView(child: Column(
+        child: SingleChildScrollView(
+            child: Column(
           children: <Widget>[
             Row(
               children: <Widget>[
-                Expanded( flex: 5, child: this.getTeam(context, game.info.team1)),
                 Expanded(
-                    flex: 1,
-                    child: Column(children: <Widget>[
-                      Text( 'vs.', style: TextStyle(color: Colors.white))
-                      ],),
-                    ),
-                Expanded( flex: 5, child: this.getTeam(context, game.info.team2)),
+                    flex: 5, child: this.getTeam(context, game.info.team1)),
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: <Widget>[
+                      Text('vs.', style: TextStyle(color: Colors.white))
+                    ],
+                  ),
+                ),
+                Expanded(
+                    flex: 5, child: this.getTeam(context, game.info.team2)),
               ],
             ),
             Container(
               padding: const EdgeInsets.only(top: 18.0),
               child: Text(
-                (game?.leagueName ?? '').toUpperCase() + " | " + (game?.divisionName ?? '').toUpperCase(), 
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
+                  (game?.leagueName ?? '').toUpperCase() +
+                      " | " +
+                      (game?.divisionName ?? '').toUpperCase(),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12)),
             ),
           ],
         )));
   }
 
-  Widget getTeam(BuildContext context, Team gameinfoteam)
-  {
+  ///
+  ///
+  ///
+  Widget getTeam(BuildContext context, Team gameinfoteam) {
     return InkWell(
-          onTap: () => onTapTeam(context, gameinfoteam),
-          child: Column(
-            children: <Widget>[
-              Image.network(gameinfoteam?.imageUrl ?? "", width: 80, height: 80),
-              Text(
-                gameinfoteam.teamName.toUpperCase(),
-                overflow: TextOverflow.ellipsis, 
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)
-                ),
-              Text(
-                gameinfoteam.win.toString() + '-' +
-                gameinfoteam.lose.toString() + '-' +
-                gameinfoteam.draw.toString() + '(' +
-                (gameinfoteam?.positionElementInStandings ?? '-').toString()
-                +') | strk:' + (gameinfoteam?.streak ?? ' -').toString()
-                , style: TextStyle(color: Colors.white)),
-              Text(
-                gameinfoteam?.score?.toString() ?? "-", 
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: Colors.white, fontSize: 34)
-                ),
-            ],
-          ),
-        );
+      onTap: () => onTapTeam(context, gameinfoteam),
+      child: Column(
+        children: <Widget>[
+          Image.network(gameinfoteam?.imageUrl ?? "", width: 80, height: 80),
+          Text(gameinfoteam.teamName.toUpperCase(),
+              overflow: TextOverflow.ellipsis,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+          Text(
+              gameinfoteam.win.toString() +
+                  '-' +
+                  gameinfoteam.lose.toString() +
+                  '-' +
+                  gameinfoteam.draw.toString() +
+                  '(' +
+                  (gameinfoteam?.positionElementInStandings ?? '-').toString() +
+                  ') | strk:' +
+                  (gameinfoteam?.streak ?? ' -').toString(),
+              style: TextStyle(color: Colors.white)),
+          Text(gameinfoteam?.score?.toString() ?? "-",
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: Colors.white, fontSize: 34)),
+        ],
+      ),
+    );
   }
 
-  Widget getButton(BuildContext context, IconData ico, String label, action, icocolor) {
+  ///
+  ///
+  ///
+  Widget getButton(
+      BuildContext context, IconData ico, String label, action, icocolor) {
     return Container(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
@@ -165,11 +244,14 @@ class GamedetailScreen extends StatelessWidget {
     );
   }
 
+  ///
+  ///
+  ///
   Widget getMenuBar(BuildContext context) {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     final Game game = Provider.of<GamesModel>(context).selectedModel;
     bool isInFavorite = favorites.isInGamesFavorite(game.id);
-    
+
     return Container(
         padding: const EdgeInsets.all(10.0),
         color: Colors.blue,
@@ -180,8 +262,12 @@ class GamedetailScreen extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 flex: 1,
-                child: this.getButton(context, Icons.calendar_today,
-                    'ADD TO CALENDAR', () => onTapCalendar(context), Colors.white),
+                child: this.getButton(
+                    context,
+                    Icons.calendar_today,
+                    'ADD TO CALENDAR',
+                    () => onTapCalendar(context),
+                    Colors.white),
               ),
               Expanded(
                 flex: 1,
@@ -190,34 +276,24 @@ class GamedetailScreen extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: this.getButton(
-                    context, Icons.share, 'SHARE', () => onTapShare(context), Colors.white),
+                child: this.getButton(context, Icons.share, 'SHARE',
+                    () => onTapShare(context), Colors.white),
               ),
               Expanded(
-                flex: 1,
-                child: (isInFavorite ? 
-                      (this.getButton(
-                        context, 
-                        Icons.star, 
-                        'FAVORITE',
-                          () => null, Colors.yellow
-                        )
-                      )
-                      : 
-                      (this.getButton(
-                        context, 
-                        Icons.star_border, 
-                        'FAVORITE',
-                          () => onTapFavorite(context), Colors.white
-                        )
-                      )
-                )
-                ),
+                  flex: 1,
+                  child: (isInFavorite
+                      ? (this.getButton(context, Icons.star, 'FAVORITE',
+                          () => null, Colors.yellow))
+                      : (this.getButton(context, Icons.star_border, 'FAVORITE',
+                          () => onTapFavorite(context), Colors.white)))),
             ],
           ),
         ));
   }
 
+  ///
+  ///
+  ///
   Widget getTitle(String txt) {
     return Container(
         padding: const EdgeInsets.all(13.0),
@@ -225,35 +301,47 @@ class GamedetailScreen extends StatelessWidget {
             style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)));
   }
 
-  getContentData(BuildContext context)
-  {
+  ///
+  ///
+  ///
+  getContentData(BuildContext context) {
     final Game game = Provider.of<GamesModel>(context).selectedModel;
     return <Widget>[
-          this.getTitle('DATE / TIME'),
-          Text(FormaterElem.getDateFormated(game.dateTime, true).replaceAll("\n", " ")),
-          Text(game?.status ?? ""),
-          this.getTitle('ARENA'),
-          Text(game?.arena?.name ?? ""),
-          Text(game?.arena?.address ?? ""),
-          this.getTitle('LEAGUE'),
-          Text(game?.leagueShortName ?? ""),
-          this.getTitle('SEASON'),
-          Text(game?.seasonName ?? ""),
-          this.getTitle('DIVISION'),
-          Text(game?.divisionName ?? ""),
-        ];
+      this.getTitle('DATE / TIME'),
+      Text(FormaterElem.getDateFormated(game.dateTime, true)
+          .replaceAll("\n", " ")),
+      Text(game?.status ?? ""),
+      this.getTitle('ARENA'),
+      Text(game?.arena?.name ?? ""),
+      Text(game?.arena?.address ?? ""),
+      this.getTitle('LEAGUE'),
+      Text(game?.leagueShortName ?? ""),
+      this.getTitle('SEASON'),
+      Text(game?.seasonName ?? ""),
+      this.getTitle('DIVISION'),
+      Text(game?.divisionName ?? ""),
+    ];
   }
 
+  ///
+  ///
+  ///
   Widget getContent(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.all( Radius.circular(8.0)), color: Colors.white, ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        color: Colors.white,
+      ),
       margin: const EdgeInsets.all(25.0),
       padding: const EdgeInsets.all(30.0),
       width: MediaQuery.of(context).size.width,
-      child: Column( children: this.getContentData(context) ),
+      child: Column(children: this.getContentData(context)),
     );
   }
 
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -262,15 +350,13 @@ class GamedetailScreen extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         backgroundColor: Themedata.greyBackground,
-        body: SingleChildScrollView(child: 
-        Column(
+        body: SingleChildScrollView(
+            child: Column(
           children: <Widget>[
             this.getTopBar(context),
             this.getMenuBar(context),
             this.getContent(context),
           ],
-        )
-        )
-        );
+        )));
   }
 }

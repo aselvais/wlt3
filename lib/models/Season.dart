@@ -5,8 +5,19 @@ class Season {
   final bool visible;
   final bool bracketsVisibleInSeason;
 
-  Season({this.id, this.name, this.playOff, this.visible, this.bracketsVisibleInSeason});
+  ///
+  ///
+  ///
+  Season(
+      {this.id,
+      this.name,
+      this.playOff,
+      this.visible,
+      this.bracketsVisibleInSeason});
 
+  ///
+  ///
+  ///
   factory Season.fromJson(Map<String, dynamic> json) {
     return Season(
       id: json['id'],
@@ -17,14 +28,14 @@ class Season {
     );
   }
 
-  Map<String, dynamic> toJson() =>    
-    {
-      'id': id,
-      'name': name,
-      'playOff': playOff,
-      'visible': visible,
-      'bracketsVisibleInSeason': bracketsVisibleInSeason
-    };
-
-
+  ///
+  ///
+  ///
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'playOff': playOff,
+        'visible': visible,
+        'bracketsVisibleInSeason': bracketsVisibleInSeason
+      };
 }

@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/Tiers.dart';
 
-class TiersModel extends ChangeNotifier
-{
-  ApiaccessWlt _api = new ApiaccessWlt();  
+class TiersModel extends ChangeNotifier {
+  ApiaccessWlt _api = new ApiaccessWlt();
   List<Tiers> _list = new List();
   bool _loading = false;
   int _selectedId = -1;
@@ -38,21 +36,19 @@ class TiersModel extends ChangeNotifier
   get loading {
     return _loading;
   }
-  
+
   ///
   ///
   ///
-  set selectedId(int v)
-  {
+  set selectedId(int v) {
     _selectedId = v;
     notifyListeners();
   }
-  
+
   ///
   ///
   ///
-  set selectedModel(Tiers v)
-  {
+  set selectedModel(Tiers v) {
     _selectedModel = v;
     notifyListeners();
   }
@@ -60,8 +56,7 @@ class TiersModel extends ChangeNotifier
   ///
   ///
   ///
-  set loading(bool v)
-  {
+  set loading(bool v) {
     _loading = v;
     notifyListeners();
   }
@@ -69,8 +64,7 @@ class TiersModel extends ChangeNotifier
   ///
   ///
   ///
-  addToList(o)
-  {
+  addToList(o) {
     _list.add(o);
     notifyListeners();
   }
@@ -78,8 +72,7 @@ class TiersModel extends ChangeNotifier
   ///
   ///
   ///
-  _replaceList(List<Tiers> o)
-  {
+  _replaceList(List<Tiers> o) {
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }
@@ -87,15 +80,14 @@ class TiersModel extends ChangeNotifier
   ///
   ///
   ///
-  loadData(int divisionId) async
-  {
-      if (divisionId < 0) return null;
-      this.loading = true;
-      _list = new List();
-      await _api.getTiers(divisionId)
-        .then((dt) => _replaceList(dt) )
+  loadData(int divisionId) async {
+    if (divisionId < 0) return null;
+    this.loading = true;
+    _list = new List();
+    await _api
+        .getTiers(divisionId)
+        .then((dt) => _replaceList(dt))
         .catchError((e) => throw Exception(e))
-        .whenComplete(() => notifyListeners() );
+        .whenComplete(() => notifyListeners());
   }
-
 }

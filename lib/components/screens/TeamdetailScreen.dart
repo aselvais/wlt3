@@ -13,47 +13,56 @@ import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/Tweet.dart';
 
-class TeamdetailScreen extends StatelessWidget 
-{
-
-  Widget getPreviousGames(BuildContext context, TeamModel teams) 
-  {
+class TeamdetailScreen extends StatelessWidget {
+  ///
+  ///
+  ///
+  Widget getPreviousGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
     List<Widget> wl = new List();
     gamesdata.past.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      color: Themedata.greyBackground,
-      child: ListView(children: wl,)
-    );
+        padding: const EdgeInsets.all(10.0),
+        color: Themedata.greyBackground,
+        child: ListView(
+          children: wl,
+        ));
   }
 
+  ///
+  ///
+  ///
   Widget getTodaysGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
     List<Widget> wl = new List();
     gamesdata.today.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      color: Themedata.greyBackground,
-      child: ListView(children: wl,) 
-    );
+        padding: const EdgeInsets.all(10.0),
+        color: Themedata.greyBackground,
+        child: ListView(
+          children: wl,
+        ));
   }
 
-  Widget getFutureGames(BuildContext context, TeamModel teams) 
-  {
+  ///
+  ///
+  ///
+  Widget getFutureGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
     List<Widget> wl = new List();
     gamesdata.upcoming.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      color: Themedata.greyBackground,
-      child: ListView(children: wl,) 
-    );
+        padding: const EdgeInsets.all(10.0),
+        color: Themedata.greyBackground,
+        child: ListView(
+          children: wl,
+        ));
   }
 
-  Widget getStandings(BuildContext context, TeamModel teams) 
-  {
-
+  ///
+  ///
+  ///
+  Widget getStandings(BuildContext context, TeamModel teams) {
     return Container(
       padding: const EdgeInsets.all(10.0),
       color: Themedata.greyBackground,
@@ -61,32 +70,40 @@ class TeamdetailScreen extends StatelessWidget
     );
   }
 
-  Widget getNews(BuildContext context, TeamModel teams) 
-  {
+  ///
+  ///
+  ///
+  Widget getNews(BuildContext context, TeamModel teams) {
     final List<News> news = teams.selectedModel.news;
     List<Widget> wl = new List();
     news.forEach((News f) => wl.add(NewsElement(news: f)));
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      color: Themedata.greyBackground,
-      child: ListView(children: wl,)
-    );
+        padding: const EdgeInsets.all(10.0),
+        color: Themedata.greyBackground,
+        child: ListView(
+          children: wl,
+        ));
   }
 
-  Widget getTweets(BuildContext context, TeamModel teams) 
-  {
+  ///
+  ///
+  ///
+  Widget getTweets(BuildContext context, TeamModel teams) {
     final List<Tweet> tweets = teams.selectedModel.tweets;
     List<Widget> wl = new List();
-    tweets.forEach((Tweet f) => wl.add( TweetsElement(tweet: f)));
+    tweets.forEach((Tweet f) => wl.add(TweetsElement(tweet: f)));
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      color: Themedata.greyBackground,
-      child: ListView(children: wl,)
-    );
+        padding: const EdgeInsets.all(10.0),
+        color: Themedata.greyBackground,
+        child: ListView(
+          children: wl,
+        ));
   }
 
-  Widget getTabsView(BuildContext context, TeamModel teams) 
-  {
+  ///
+  ///
+  ///
+  Widget getTabsView(BuildContext context, TeamModel teams) {
     int gamesPastLength = 0;
     int gamesTodayLength = 0;
     int gamesUpcomingLength = 0;
@@ -95,39 +112,56 @@ class TeamdetailScreen extends StatelessWidget
     int tweetsLength = 0;
     List<Widget> headerWidgets = [];
     List<Widget> contentWidget = [];
-    try {  gamesPastLength = teams.selectedModel.games.past.length;  } catch(ee) {}
-    try {  gamesTodayLength = teams.selectedModel.games.today.length; } catch(ee) {}
-    try {  gamesUpcomingLength = teams.selectedModel.games.past.upcoming; } catch(ee) {}
-    try {  newsLength = teams.selectedModel.news.length; } catch(ee) {}
-    try {  tweetsLength = teams.selectedModel.tweets.length;  } catch(ee) {}
+    try {
+      gamesPastLength = teams.selectedModel.games.past.length;
+    } catch (ee) {}
+    try {
+      gamesTodayLength = teams.selectedModel.games.today.length;
+    } catch (ee) {}
+    try {
+      gamesUpcomingLength = teams.selectedModel.games.past.upcoming;
+    } catch (ee) {}
+    try {
+      newsLength = teams.selectedModel.news.length;
+    } catch (ee) {}
+    try {
+      tweetsLength = teams.selectedModel.tweets.length;
+    } catch (ee) {}
     /* ------------------------------------------------------- */
     if (gamesPastLength > 0) {
-      headerWidgets.add(Tab( text: 'Previous Games', ));
+      headerWidgets.add(Tab(
+        text: 'Previous Games',
+      ));
       contentWidget.add(getPreviousGames(context, teams));
     }
-    if (gamesTodayLength > 0)
-    {
-      headerWidgets.add(Tab( text: 'Today\'s Games', )); 
+    if (gamesTodayLength > 0) {
+      headerWidgets.add(Tab(
+        text: 'Today\'s Games',
+      ));
       contentWidget.add(getTodaysGames(context, teams));
     }
-    if (gamesUpcomingLength > 0)
-    {
-      headerWidgets.add(Tab( text: 'Future Games', ));
+    if (gamesUpcomingLength > 0) {
+      headerWidgets.add(Tab(
+        text: 'Future Games',
+      ));
       contentWidget.add(getFutureGames(context, teams));
     }
-    if (standingsLength > 0)
-    {
-      headerWidgets.add(Tab( text: 'Standings', ));
+    if (standingsLength > 0) {
+      headerWidgets.add(Tab(
+        text: 'Standings',
+      ));
       contentWidget.add(getStandings(context, teams));
     }
-    if (newsLength > 0)
-    {
-      headerWidgets.add(Tab( text: 'News', ));
+    if (newsLength > 0) {
+      headerWidgets.add(Tab(
+        text: 'News',
+      ));
       contentWidget.add(getNews(context, teams));
     }
-    if (tweetsLength > 0)
-    {
-      headerWidgets.add(Tab( text: 'Tweets', ));
+    if (tweetsLength > 0) {
+      headerWidgets.add(Tab(
+        text: 'Tweets',
+      ));
       contentWidget.add(getTweets(context, teams));
     }
 
@@ -153,6 +187,9 @@ class TeamdetailScreen extends StatelessWidget
     );
   }
 
+  ///
+  ///
+  ///
   Widget getButtons(BuildContext context) {
     return Expanded(
       flex: 1,
@@ -194,6 +231,9 @@ class TeamdetailScreen extends StatelessWidget
     );
   }
 
+  ///
+  ///
+  ///
   Widget getBodyElement(BuildContext context, TeamModel teams) {
     final Team team = teams.selectedModel.teaminfo;
     return Expanded(
@@ -211,8 +251,11 @@ class TeamdetailScreen extends StatelessWidget
     );
   }
 
-
-  Widget getButton(BuildContext context, IconData ico, String label, action, icocolor) {
+  ///
+  ///
+  ///
+  Widget getButton(
+      BuildContext context, IconData ico, String label, action, icocolor) {
     return Container(
       padding: const EdgeInsets.all(10.0),
       child: InkWell(
@@ -227,6 +270,9 @@ class TeamdetailScreen extends StatelessWidget
     );
   }
 
+  ///
+  ///
+  ///
   onTapFavorite(BuildContext context) {
     final teams = Provider.of<TeamModel>(context);
     final Team team = teams.selectedModel.teaminfo;
@@ -234,6 +280,9 @@ class TeamdetailScreen extends StatelessWidget
     favorites.addToListTeams(team);
   }
 
+  ///
+  ///
+  ///
   Widget getHeaderElement(BuildContext context, TeamModel teams) {
     final Team team = teams.selectedModel.teaminfo;
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
@@ -246,11 +295,11 @@ class TeamdetailScreen extends StatelessWidget
         child: Container(
           child: Column(
             children: <Widget>[
-              (
-                isInFavorite ? 
-                this.getButton(context, Icons.star, 'FAVORITE', () => null, Colors.yellow) : 
-                this.getButton(context, Icons.star_border, 'FAVORITE', () => onTapFavorite(context), Colors.white)
-              ),
+              (isInFavorite
+                  ? this.getButton(context, Icons.star, 'FAVORITE', () => null,
+                      Colors.yellow)
+                  : this.getButton(context, Icons.star_border, 'FAVORITE',
+                      () => onTapFavorite(context), Colors.white)),
               Image.network(team?.imageUrl ?? "", width: 70, height: 70),
               Text(team.teamName + " | " + team.divisionName,
                   style: TextStyle(
@@ -274,6 +323,9 @@ class TeamdetailScreen extends StatelessWidget
     );
   }
 
+  ///
+  ///
+  ///
   Widget getAppBarElement(BuildContext context) {
     return AppBar(
       title: new Text('Team detail'),
@@ -281,6 +333,9 @@ class TeamdetailScreen extends StatelessWidget
     );
   }
 
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     final teams = Provider.of<TeamModel>(context);

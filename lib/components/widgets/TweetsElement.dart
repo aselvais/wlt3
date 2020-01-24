@@ -4,8 +4,14 @@ import 'package:wlt3/models/Tweet.dart';
 class TweetsElement extends StatelessWidget {
   final Tweet tweet;
 
+  ///
+  ///
+  ///
   TweetsElement({Key key, @required this.tweet}) : super(key: key);
 
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -13,13 +19,10 @@ class TweetsElement extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           color: Colors.white,
-        ),      
+        ),
         margin: const EdgeInsets.all(5.0),
         padding: const EdgeInsets.all(10.0),
-        child: Text(
-          tweet.date + "\n" +
-          tweet.text
-        ),
+        child: Text(tweet.date + "\n" + tweet.text),
       ),
       onTap: () => print('Clicked'),
     );

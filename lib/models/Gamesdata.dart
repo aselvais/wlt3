@@ -1,12 +1,18 @@
 import 'package:wlt3/models/Game.dart';
 
 class Gamesdata {
-
   final List<Game> today;
   final List<Game> past;
   final List<Game> upcoming;
 
+  ///
+  ///
+  ///
   Gamesdata({this.today, this.past, this.upcoming});
+  
+  ///
+  ///
+  ///
   factory Gamesdata.fromJson(Map<String, dynamic> json) {
     List<Game> todayList = new List();
     json['today'].forEach((json) => todayList.add(Game.fromJson(json)));

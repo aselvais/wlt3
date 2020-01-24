@@ -1,5 +1,4 @@
 class Arena {
-
   final String name;
   final num longitude;
   final num latitude;
@@ -7,6 +6,9 @@ class Arena {
 
   Arena({this.name, this.longitude, this.latitude, this.address});
 
+  ///
+  ///
+  ///
   factory Arena.fromJson(Map<String, dynamic> json) {
     return Arena(
       name: json['name'],
@@ -16,13 +18,13 @@ class Arena {
     );
   }
 
+  ///
+  ///
+  ///
   Map<String, dynamic> toJson() => {
-      'name': name,
-      'longitude': longitude,
-      'latitude': latitude,
-      'address': address,
-  };
-
-
-
+        'name': name,
+        'longitude': longitude,
+        'latitude': latitude,
+        'address': address,
+      };
 }

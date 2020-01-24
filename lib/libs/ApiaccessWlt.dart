@@ -16,9 +16,10 @@ class ApiaccessWlt extends ApiaccessAbstract {
   String baseurl = 'https://us-central1-wlt3-66c9a.cloudfunctions.net/';
   // String baseurl = 'http://localhost:5000/wlt3-66c9a/us-central1/';
 
-
-  Future<List<League>> getLeagues() async 
-  {
+  ///
+  ///
+  ///
+  Future<List<League>> getLeagues() async {
     final response = await http.get(baseurl + 'league');
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
@@ -30,9 +31,12 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
-  Future<List<Season>> getSeasons(int leagueId) async 
-  {
-    final response = await http.get(baseurl + 'season?leagueId=' + leagueId.toString());
+  ///
+  ///
+  ///
+  Future<List<Season>> getSeasons(int leagueId) async {
+    final response =
+        await http.get(baseurl + 'season?leagueId=' + leagueId.toString());
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
       List<Season> toret = new List();
@@ -43,9 +47,12 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
-  Future<List<Division>> getDivisions(int seasonId) async 
-  {
-    final response = await http.get(baseurl + 'division?seasonId=' + seasonId.toString());
+  ///
+  ///
+  ///
+  Future<List<Division>> getDivisions(int seasonId) async {
+    final response =
+        await http.get(baseurl + 'division?seasonId=' + seasonId.toString());
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
       List<Division> toret = new List();
@@ -56,13 +63,18 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
-  Future<List<Game>> getGames(String date, int seasonId,  int divisionId) async 
-  {
-    String fullurl = baseurl + 
-          'gametoday/?date=' + date +
-          '&seasonId=' + seasonId.toString() +
-          '&divisionId=' + divisionId.toString();
-    final response = await http.get(fullurl);          
+  ///
+  ///
+  ///
+  Future<List<Game>> getGames(String date, int seasonId, int divisionId) async {
+    String fullurl = baseurl +
+        'gametoday/?date=' +
+        date +
+        '&seasonId=' +
+        seasonId.toString() +
+        '&divisionId=' +
+        divisionId.toString();
+    final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
       List<Game> toret = new List();
@@ -73,8 +85,10 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
-  Future<List<Tiers>> getTiers(int divisionId) async 
-  {
+  ///
+  ///
+  ///
+  Future<List<Tiers>> getTiers(int divisionId) async {
     // https://us-central1-wlt3-66c9a.cloudfunctions.net/tier/?divisionId=4052
     String fullurl = baseurl + 'tier/?divisionId=' + divisionId.toString();
     final response = await http.get(fullurl);
@@ -88,9 +102,16 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
-  Future<List<Standing>> getTeamstandingLocalTierGroupGeneric(int divisionId, int tierId) async 
-  {
-    String fullurl = baseurl + 'teamstandingLocalTierGroupGeneric/?divisionId=' + divisionId.toString() + '&tierId=' + tierId.toString();
+  ///
+  ///
+  ///
+  Future<List<Standing>> getTeamstandingLocalTierGroupGeneric(
+      int divisionId, int tierId) async {
+    String fullurl = baseurl +
+        'teamstandingLocalTierGroupGeneric/?divisionId=' +
+        divisionId.toString() +
+        '&tierId=' +
+        tierId.toString();
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
@@ -102,9 +123,16 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
-  Future<List<Standing>> getTeamstandingLocalTierGroupGenericHeader(int divisionId, int tierId) async 
-  {
-    String fullurl = baseurl + 'teamstandingLocalTierGroupGenericHeader/?divisionId=' + divisionId.toString() + '&tierId=' + tierId.toString();
+  ///
+  ///
+  ///
+  Future<List<Standing>> getTeamstandingLocalTierGroupGenericHeader(
+      int divisionId, int tierId) async {
+    String fullurl = baseurl +
+        'teamstandingLocalTierGroupGenericHeader/?divisionId=' +
+        divisionId.toString() +
+        '&tierId=' +
+        tierId.toString();
     print(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
@@ -116,6 +144,64 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
+
+
+  ///
+  /// Fetches the list of dates where we can find games
+  ///
+  Future<List<Matchdates>> getGameall(int seasonId, int divisionId) async {
+    String fullurl = baseurl +
+        'gameall/?' +
+        "seasonId=" +
+        seasonId.toString() +
+        "&divisionId=" +
+        divisionId.toString();
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      List<dynamic> djson = json.decode(response.body);
+      List<Matchdates> toret = new List();
+      djson.forEach((json) => toret.add(Matchdates.fromJson(json)));
+      return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  ///
+  ///
+  ///
+  Future<List<Game>> getGametoday(
+      String date, int seasonId, int divisionId) async {
+    return this.getGames(date, seasonId, divisionId);
+  }
+
+  ///
+  ///
+  ///
+  Future<Team> getTeamInfo(int teamId) async {
+    String fullurl = baseurl + "teamInfo/?teamId=" + teamId.toString();
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      return Team.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  ///
+  ///
+  ///
+  Future<Teamdata> getTeamInfoFull(int teamId) async {
+    String fullurl = baseurl + "teamInfoFull/?teamId=" + teamId.toString();
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      return Teamdata.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+
 /*
   Future<List<Standing>> getFeednews(int teamId) async 
   {
@@ -132,8 +218,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-*/
-/*
+
   Future<List<Standing>> getFeedtwitter(int teamId) async 
   {
     String fullurl = baseurl + 'feedtwitter/?teamId=' + teamId.toString();
@@ -149,24 +234,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-*/
-  /*
-   * Fetches the list of dates where we can find games
-   */
-  Future<List<Matchdates>> getGameall(int seasonId, int divisionId) async 
-  {
-    String fullurl = baseurl + 'gameall/?' + "seasonId=" + seasonId.toString() + "&divisionId=" + divisionId.toString();
-    final response = await http.get(fullurl);
-    if (response.statusCode == 200) {
-      List<dynamic> djson = json.decode(response.body);
-      List<Matchdates> toret = new List();
-      djson.forEach((json) => toret.add(Matchdates.fromJson(json)));
-      return toret;
-    } else {
-      throw Exception('Failed to load response.body');
-    }
-  }
-/*
+
   Future<List<Standing>> getGamedetailAllArrays(String date, int teamId) async 
   {
     String fullurl = baseurl + 'gamedetailAllArrays/?date=' + date +
@@ -183,12 +251,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-*/
-  Future<List<Game>> getGametoday(String date, int seasonId, int divisionId) async 
-  {
-    return this.getGames(date, seasonId, divisionId);
-  }
-/*
+
   Future<List<Standing>> getTeam(int divisionId) async 
   {
     String fullurl = baseurl + "team/?divisionId=" + divisionId.toString();
@@ -204,30 +267,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-*/
-  Future<Team> getTeamInfo(int teamId) async 
-  {
-    String fullurl = baseurl + "teamInfo/?teamId=" + teamId.toString();
-    final response = await http.get(fullurl);
-    if (response.statusCode == 200) {
-      return Team.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to load response.body');
-    }
-  }
-  
-  Future<Teamdata> getTeamInfoFull(int teamId) async 
-  {
-    String fullurl = baseurl + "teamInfoFull/?teamId=" + teamId.toString();
-    final response = await http.get(fullurl);
-    if (response.statusCode == 200) 
-    {
-      return Teamdata.fromJson(json.decode(response.body));
-    } else {
-      throw Exception('Failed to load response.body');
-    }
-  }
-/*
+
   Future<List<Standing>> getTeamstandingHeaders(int divisionId) async 
   {
     String fullurl = baseurl + "teamstandingHeaders/?divisionId=" + divisionId.toString();
@@ -241,8 +281,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-*/
-/*
+
   Future<List<Standing>> getTeamstandingLocalTierGroup(int divisionIds, int tierId) async 
   {
     String fullurl = baseurl + "teamstandingLocalTierGroup/?divisionIds=" + divisionIds.toString() + "&tierId=" + tierId.toString();
@@ -256,8 +295,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-*/
-/*
+
   Future<List<Standing>> getUserdivision(String userId) async 
   {
     String fullurl = baseurl + "userdivision/?userId=" + userId;
@@ -271,8 +309,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-*/
-/*
+
   Future<List<Standing>> getUsergames(String userId) async 
   {
     String fullurl = baseurl + "usergames/?userId=" + userId;
@@ -286,8 +323,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
       throw Exception('Failed to load response.body');
     }
   }
-*/
-/*
+
   Future<List<Standing>> getUserteams(String userId) async 
   {
     String fullurl = baseurl + "userteams/?userId=" + userId;

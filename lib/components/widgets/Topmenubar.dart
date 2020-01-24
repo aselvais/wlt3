@@ -5,7 +5,9 @@ import 'package:wlt3/models/League.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
 
 class Topmenubar extends StatelessWidget with PreferredSizeWidget {
-
+  ///
+  ///
+  ///
   @override
   AppBar build(BuildContext context) {
     final leagues = Provider.of<LeaguesModel>(context);
@@ -13,16 +15,13 @@ class Topmenubar extends StatelessWidget with PreferredSizeWidget {
     String title = 'Win Lose or Tie';
     try {
       title = league?.name ?? 'Win Lose or Tie';
-    } catch(er) {}
-    return new AppBar(
-      title : new Text( title ),
-      backgroundColor : Themedata.blue
-    );
-
+    } catch (er) {}
+    return new AppBar(title: new Text(title), backgroundColor: Themedata.blue);
   }
 
+  ///
+  ///
+  ///
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
-
-  
 }

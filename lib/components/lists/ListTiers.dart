@@ -5,9 +5,10 @@ import 'package:wlt3/models/Tiers.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
 class ListTiers extends StatelessWidget {
-
-  Widget getButton(BuildContext context, Tiers f)
-  {
+  ///
+  ///
+  ///
+  Widget getButton(BuildContext context, Tiers f) {
     final _list = Provider.of<TiersModel>(context);
     bool isSelected = false;
     if (_list.selectedId == f.id) isSelected = true;
@@ -15,48 +16,50 @@ class ListTiers extends StatelessWidget {
       children: <Widget>[
         Expanded(
           flex: 8,
-          child: Text(f.name, textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontSize: 18.0)),
+          child: Text(f.name,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black, fontSize: 18.0)),
         ),
         Expanded(
           flex: 1,
           child: Icon(
-              Icons.check,
-              color: (isSelected) ? Colors.black : Colors.white,
-              size: 24.0,
-            ),
+            Icons.check,
+            color: (isSelected) ? Colors.black : Colors.white,
+            size: 24.0,
+          ),
         ),
       ],
     );
   }
 
-  onTapElement(BuildContext context, Tiers model)
-  {
+  ///
+  ///
+  ///
+  onTapElement(BuildContext context, Tiers model) {
     ActionsComposite.tiersToStandings(context, model);
   }
 
+  ///
+  ///
+  ///
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<TiersModel>(context);
 
     List<Widget> wl = new List();
-    if (_list.loading == true)
-    {
-      return Center(child:CircularProgressIndicator());
+    if (_list.loading == true) {
+      return Center(child: CircularProgressIndicator());
     } else {
-      _list.list.forEach(
-        (Tiers f) => wl.add(
-          InkWell(
+      _list.list.forEach((Tiers f) => wl.add(InkWell(
             child: Container(
-              height: 60, 
+              height: 60,
               child: getButton(context, f),
             ),
             onTap: () => onTapElement(context, f),
-          )
-        )
+          )));
+      return ListView(
+        children: wl,
       );
-      return ListView(children: wl,);
     }
-
-
   }
 }

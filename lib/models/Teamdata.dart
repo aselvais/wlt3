@@ -4,16 +4,20 @@ import 'package:wlt3/models/News.dart';
 import 'package:wlt3/models/Tweet.dart';
 
 class Teamdata {
-
   Team teaminfo;
   final Gamesdata games;
   final List<News> news;
   final List<Tweet> tweets;
 
+  ///
+  ///
+  ///
   Teamdata({this.teaminfo, this.games, this.news, this.tweets});
 
+  ///
+  ///
+  ///
   factory Teamdata.fromJson(Map<String, dynamic> json) {
-
     List<News> newsList = new List();
     json['news'].forEach((json) => newsList.add(News.fromJson(json)));
     List<Tweet> tweetsList = new List();
@@ -26,6 +30,4 @@ class Teamdata {
       tweets: tweetsList,
     );
   }
-
-
 }

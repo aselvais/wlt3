@@ -8,8 +8,7 @@ import 'package:wlt3/models/League.dart';
 import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/Team.dart';
 
-class FavoritesModel extends ChangeNotifier
-{
+class FavoritesModel extends ChangeNotifier {
   List<Game> _listGames = new List();
   List<Team> _listTeams = new List();
   bool _loadingGames = false;
@@ -24,15 +23,13 @@ class FavoritesModel extends ChangeNotifier
   /// League / season / division
   League _lastSelectedLeague;
   Season _lastSelectedSeason;
-  Division _lastSelectedDivision;  
+  Division _lastSelectedDivision;
 
   ///
   ///
   ///
-  isInGamesFavorite(gamesId)
-  {
-    for (Game i in _listGames)
-    {
+  isInGamesFavorite(gamesId) {
+    for (Game i in _listGames) {
       if (i.id == gamesId) return true;
     }
     return false;
@@ -41,10 +38,8 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   ///
-  isInTeamsFavorite(teamsId)
-  {
-    for (Team i in _listTeams)
-    {
+  isInTeamsFavorite(teamsId) {
+    for (Team i in _listTeams) {
       if (i.teamId == teamsId) return true;
     }
     return false;
@@ -53,42 +48,39 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///  League _lastSelectedLeague;
   ///
-  League get lastSelectedLeague
-  {
+  League get lastSelectedLeague {
     return _lastSelectedLeague;
   }
 
-  set lastSelectedLeague(League o)
-  {
-    _saveGeneric(jsonEncode(o.toJson()), '${this.directoryPath}/${this._filename}_league.json');
+  set lastSelectedLeague(League o) {
+    _saveGeneric(jsonEncode(o.toJson()),
+        '${this.directoryPath}/${this._filename}_league.json');
     this._lastSelectedLeague = o;
   }
 
   ///
   ///  Season _lastSelectedSeason;
   ///
-  Season get lastSelectedSeason
-  {
+  Season get lastSelectedSeason {
     return _lastSelectedSeason;
   }
 
-  set lastSelectedSeason(Season o)
-  {
-    _saveGeneric(jsonEncode(o.toJson()), '${this.directoryPath}/${this._filename}_season.json');
+  set lastSelectedSeason(Season o) {
+    _saveGeneric(jsonEncode(o.toJson()),
+        '${this.directoryPath}/${this._filename}_season.json');
     this._lastSelectedSeason = o;
   }
 
   ///
   ///  Division _lastSelectedDivision;
   ///
-  Division get lastSelectedDivision
-  {
+  Division get lastSelectedDivision {
     return _lastSelectedDivision;
   }
 
-  set lastSelectedDivision(Division o)
-  {
-    _saveGeneric(jsonEncode(o.toJson()), '${this.directoryPath}/${this._filename}_division.json');
+  set lastSelectedDivision(Division o) {
+    _saveGeneric(jsonEncode(o.toJson()),
+        '${this.directoryPath}/${this._filename}_division.json');
     this._lastSelectedDivision = o;
   }
 
@@ -151,26 +143,23 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   ///
-  set selectedModelGames(Game v)
-  {
+  set selectedModelGames(Game v) {
     _selectedModelGames = v;
     notifyListeners();
   }
-  
+
   ///
   ///
   ///
-  set selectedModelTeams(Team v)
-  {
+  set selectedModelTeams(Team v) {
     _selectedModelTeams = v;
     notifyListeners();
   }
-  
+
   ///
   ///
   ///
-  set selectedIdGames(int v)
-  {
+  set selectedIdGames(int v) {
     _selectedIdGames = v;
     notifyListeners();
   }
@@ -178,8 +167,7 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   ///
-  set selectedIdTeams(int v)
-  {
+  set selectedIdTeams(int v) {
     _selectedIdTeams = v;
     notifyListeners();
   }
@@ -187,8 +175,7 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   ///
-  set loadingGames(bool v)
-  {
+  set loadingGames(bool v) {
     _loadingGames = v;
     notifyListeners();
   }
@@ -196,8 +183,7 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   ///
-  set loadingTeams(bool v)
-  {
+  set loadingTeams(bool v) {
     _loadingTeams = v;
     notifyListeners();
   }
@@ -205,8 +191,7 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   ///
-  addToListGames(Game o)
-  {
+  addToListGames(Game o) {
     _listGames.add(o);
     _saveGames();
     notifyListeners();
@@ -215,8 +200,7 @@ class FavoritesModel extends ChangeNotifier
   ///
   ///
   ///
-  addToListTeams(Team o)
-  {
+  addToListTeams(Team o) {
     _listTeams.add(o);
     _saveTeams();
     notifyListeners();
@@ -230,44 +214,64 @@ class FavoritesModel extends ChangeNotifier
     this.directoryPath = directory.path;
 
     try {
-      final fileLeague = File('${this.directoryPath}/${this._filename}_league.json');
+      final fileLeague =
+          File('${this.directoryPath}/${this._filename}_league.json');
       String jsonLeague = await fileLeague.readAsString();
       Object _jsonLeague = jsonDecode(jsonLeague);
       _lastSelectedLeague = League.fromJson(_jsonLeague);
       print("${this.directoryPath}/${this._filename}_league.json processed");
-    } catch (e) { print("Couldn't read ${this.directoryPath}/${this._filename}_league.json file and process file"); }
+    } catch (e) {
+      print(
+          "Couldn't read ${this.directoryPath}/${this._filename}_league.json file and process file");
+    }
 
     try {
-      final fileSeason = File('${this.directoryPath}/${this._filename}_season.json');
+      final fileSeason =
+          File('${this.directoryPath}/${this._filename}_season.json');
       String jsonSeason = await fileSeason.readAsString();
       Object _jsonSeason = jsonDecode(jsonSeason);
       _lastSelectedSeason = Season.fromJson(_jsonSeason);
       print("${this.directoryPath}/${this._filename}_season.json saved");
-    } catch (e) { print("Couldn't read ${this.directoryPath}/${this._filename}_season.json file and process file"); }
+    } catch (e) {
+      print(
+          "Couldn't read ${this.directoryPath}/${this._filename}_season.json file and process file");
+    }
 
     try {
-      final fileDivision = File('${this.directoryPath}/${this._filename}_division.json');
+      final fileDivision =
+          File('${this.directoryPath}/${this._filename}_division.json');
       String jsonDivision = await fileDivision.readAsString();
       Object _jsonDivision = jsonDecode(jsonDivision);
       _lastSelectedDivision = Division.fromJson(_jsonDivision);
       print("${this.directoryPath}/${this._filename}_division.json saved");
-    } catch (e) { print("Couldn't read ${this.directoryPath}/${this._filename}_division.json file and process file"); }
+    } catch (e) {
+      print(
+          "Couldn't read ${this.directoryPath}/${this._filename}_division.json file and process file");
+    }
 
     try {
-      final fileGames = File('${this.directoryPath}/${this._filename}_games.json');
+      final fileGames =
+          File('${this.directoryPath}/${this._filename}_games.json');
       String jsonGames = await fileGames.readAsString();
       List _jsonGames = jsonDecode(jsonGames);
       _listGames = _jsonGames.map((e) => Game.fromJson(e)).toList();
       print("${this.directoryPath}/${this._filename}_games.json saved");
-    } catch (e) { print("Couldn't read ${this.directoryPath}/${this._filename}_games.json file and process file"); }
+    } catch (e) {
+      print(
+          "Couldn't read ${this.directoryPath}/${this._filename}_games.json file and process file");
+    }
 
     try {
-      final fileTeams = File('${this.directoryPath}/${this._filename}_teams.json');
+      final fileTeams =
+          File('${this.directoryPath}/${this._filename}_teams.json');
       String jsonTeams = await fileTeams.readAsString();
       List _jsonTeams = jsonDecode(jsonTeams);
       _listTeams = _jsonTeams.map((e) => Team.fromJson(e)).toList();
       print("${this.directoryPath}/${this._filename}_teams.json saved");
-    } catch (e) { print("Couldn't read ${this.directoryPath}/${this._filename}_teams.json file and process file"); }
+    } catch (e) {
+      print(
+          "Couldn't read ${this.directoryPath}/${this._filename}_teams.json file and process file");
+    }
   }
 
   ///
@@ -285,7 +289,8 @@ class FavoritesModel extends ChangeNotifier
   ///
   _saveTeams() async {
     var json = jsonEncode(_listTeams.map((e) => e.toJson()).toList());
-    await this._saveGeneric(json, '${this.directoryPath}/${this._filename}_teams.json');
+    await this._saveGeneric(
+        json, '${this.directoryPath}/${this._filename}_teams.json');
     print('Teams saved');
   }
 
@@ -294,13 +299,10 @@ class FavoritesModel extends ChangeNotifier
   ///
   _saveGeneric(String json, String filename) async {
     try {
-      final file = File(filename );
+      final file = File(filename);
       await file.writeAsString(json);
-    } catch(eee) {
-      print('Can not write ' + filename );
+    } catch (eee) {
+      print('Can not write ' + filename);
     }
   }
-
-
-
 }

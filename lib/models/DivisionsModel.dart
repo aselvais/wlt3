@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/Division.dart';
 
-class DivisionsModel extends ChangeNotifier
-{
-  ApiaccessWlt _api = new ApiaccessWlt();  
+class DivisionsModel extends ChangeNotifier {
+  ApiaccessWlt _api = new ApiaccessWlt();
   List<Division> _list = new List();
   bool _loading = false;
   int _selectedId = -1;
@@ -42,17 +40,15 @@ class DivisionsModel extends ChangeNotifier
   ///
   ///
   ///
-  set selectedModel(Division v)
-  {
+  set selectedModel(Division v) {
     _selectedModel = v;
     notifyListeners();
   }
-  
+
   ///
   ///
   ///
-  set selectedId(int v)
-  {
+  set selectedId(int v) {
     _selectedId = v;
     notifyListeners();
   }
@@ -60,8 +56,7 @@ class DivisionsModel extends ChangeNotifier
   ///
   ///
   ///
-  set loading(bool v)
-  {
+  set loading(bool v) {
     _loading = v;
     notifyListeners();
   }
@@ -69,8 +64,7 @@ class DivisionsModel extends ChangeNotifier
   ///
   ///
   ///
-  addToList(o)
-  {
+  addToList(o) {
     _list.add(o);
     notifyListeners();
   }
@@ -78,8 +72,7 @@ class DivisionsModel extends ChangeNotifier
   ///
   ///
   ///
-  _replaceList(List<Division> o)
-  {
+  _replaceList(List<Division> o) {
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }
@@ -87,15 +80,14 @@ class DivisionsModel extends ChangeNotifier
   ///
   ///
   ///
-  loadData(int seasonId) async
-  {
+  loadData(int seasonId) async {
     if (seasonId < 0) return null;
     this.loading = true;
     _list = new List();
-    await _api.getDivisions(seasonId)
-      .then((dt) => _replaceList(dt) )
-      .catchError((e) => throw Exception(e))
-      .whenComplete(() => notifyListeners() );
+    await _api
+        .getDivisions(seasonId)
+        .then((dt) => _replaceList(dt))
+        .catchError((e) => throw Exception(e))
+        .whenComplete(() => notifyListeners());
   }
-
 }
