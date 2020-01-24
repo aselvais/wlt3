@@ -26,10 +26,6 @@ class LoginScreen extends StatelessWidget {
               FlatButton(
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0)),
-                /* decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  color: Colors.white,
-                ),*/
                 child: Text(
                   'Go',
                   style: TextStyle(fontSize: 25.0),

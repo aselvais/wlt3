@@ -171,14 +171,16 @@ class TeamdetailScreen extends StatelessWidget {
       child: DefaultTabController(
         length: contentWidget.length,
         child: Scaffold(
-          appBar: AppBar(
+          appBar: new PreferredSize(
+            preferredSize: Size.fromHeight(kToolbarHeight),
+            child: AppBar(
             automaticallyImplyLeading: false,
             // backgroundColor: Colors.black,
             bottom: TabBar(
               isScrollable: true,
               tabs: headerWidgets,
             ),
-          ),
+          )),
           body: TabBarView(
             children: contentWidget,
           ),

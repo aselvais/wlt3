@@ -74,6 +74,10 @@ class TiersModel extends ChangeNotifier {
   ///
   _replaceList(List<Tiers> o) {
     o.forEach((f) => _list.add(f));
+    try {
+      this.selectedModel = this._list.first;
+      this.selectedId = this._list.first.id;
+    } catch(wew) {}
     this.loading = false;
   }
 
@@ -88,6 +92,6 @@ class TiersModel extends ChangeNotifier {
         .getTiers(divisionId)
         .then((dt) => _replaceList(dt))
         .catchError((e) => throw Exception(e))
-        .whenComplete(() => notifyListeners());
+        .whenComplete(() => notifyListeners() );
   }
 }

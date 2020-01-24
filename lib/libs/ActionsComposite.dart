@@ -15,6 +15,10 @@ import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/Tiers.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
+///
+/// Class gathering commong actions we might use from different parts of the
+/// application
+///
 class ActionsComposite {
   ///
   ///

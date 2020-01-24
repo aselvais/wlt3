@@ -47,19 +47,24 @@ class FavoritesScreen extends StatelessWidget {
       child: DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            // backgroundColor: Colors.black,
-            bottom: TabBar(
-              isScrollable: true,
-              tabs: [
-                Tab(
-                  text: 'Teams',
-                ),
-                Tab(
-                  text: 'Games',
-                )
-              ],
+          appBar: new PreferredSize(
+            preferredSize: Size.fromHeight(kToolbarHeight),
+            child: AppBar(
+              automaticallyImplyLeading: false,
+              centerTitle: true,
+              bottom: TabBar(
+                indicatorColor: Colors.white,
+                indicatorSize: TabBarIndicatorSize.label,
+                isScrollable: true,
+                tabs: [
+                  Tab(
+                    text: 'Teams',
+                  ),
+                  Tab(
+                    text: 'Games',
+                  )
+                ],
+              ),
             ),
           ),
           body: TabBarView(
