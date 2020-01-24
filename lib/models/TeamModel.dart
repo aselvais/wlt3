@@ -97,6 +97,7 @@ class TeamModel extends ChangeNotifier
   ///
   loadData(int teamId) async
   {
+      if (teamId < 0) return null;
       this.loading = true;
       await _api.getTeamInfoFull(teamId)
         .then((dt) => _replaceSelectedModel(dt) )

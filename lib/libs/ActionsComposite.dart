@@ -45,7 +45,7 @@ class ActionsComposite
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     final divisions = Provider.of<DivisionsModel>(context);
     final bottomModel = Provider.of<BottombarModel>(context);
-    final games = Provider.of<GamesModel>(context);
+    // final games = Provider.of<GamesModel>(context);
     final seasons = Provider.of<SeasonsModel>(context);
     divisions.selectedId = model.id;
     divisions.selectedModel = model;
@@ -79,7 +79,14 @@ class ActionsComposite
     _divisionsModel.selectedModel = _favoritesModel?.lastSelectedDivision ?? null;
     _divisionsModel.selectedId = _favoritesModel?.lastSelectedDivision?.id ?? -1;
     // loading game dates
-    await _matchdatesModel.loadData(_seasonsModel.selectedModel.id, _divisionsModel.selectedModel.id);
+    if (_seasonsModel.selectedModel != null && _divisionsModel.selectedModel != null)
+    {
+      await _matchdatesModel.loadData(_seasonsModel.selectedModel.id, _divisionsModel.selectedModel.id);
+    }
+    else
+    {
+      print('Error in setGamesDataOnCachedSelection - can not load matches data');
+    }
   }
 
 
@@ -171,10 +178,10 @@ class ActionsComposite
     cart.idx = index;
     if (index == 1) // Standings
     {
-      final standing = Provider.of<StandingsModel>(context);
-      final divisions = Provider.of<DivisionsModel>(context);
-      final tiers = Provider.of<TiersModel>(context);
-      await tiers.loadData(divisions.selectedModel.id);
+      final StandingsModel standing = Provider.of<StandingsModel>(context);
+      final DivisionsModel divisions = Provider.of<DivisionsModel>(context);
+      final TiersModel tiers = Provider.of<TiersModel>(context);
+      await tiers.loadData(divisions?.selectedModel?.id ?? -1);
       int tiersId = 0;
       try {
         tiersId = tiers.selectedModel.id;

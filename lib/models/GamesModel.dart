@@ -71,6 +71,7 @@ class GamesModel extends ChangeNotifier
 
   loadData(int seasonId, int divisionId) async
   {
+    if (seasonId < 0 || divisionId < 0) return null;
     this.loading = true;
     String date = DateFormat("yyyy-MM-dd").format(this._selectedDate);
     _list = new List();

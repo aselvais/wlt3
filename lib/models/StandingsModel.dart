@@ -89,6 +89,7 @@ class StandingsModel extends ChangeNotifier
   ///
   loadData(int divisionId, int tierId) async
   {
+      if (divisionId < 0 || tierId < 0) return null;
       this.loading = true;
       _list = new List();
       await _api.getTeamstandingLocalTierGroupGeneric(divisionId, tierId)

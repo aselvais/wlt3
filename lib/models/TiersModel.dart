@@ -89,6 +89,7 @@ class TiersModel extends ChangeNotifier
   ///
   loadData(int divisionId) async
   {
+      if (divisionId < 0) return null;
       this.loading = true;
       _list = new List();
       await _api.getTiers(divisionId)
