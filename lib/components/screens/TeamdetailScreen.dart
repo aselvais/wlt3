@@ -172,15 +172,15 @@ class TeamdetailScreen extends StatelessWidget {
         length: contentWidget.length,
         child: Scaffold(
           appBar: new PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
-            child: AppBar(
-            automaticallyImplyLeading: false,
-            // backgroundColor: Colors.black,
-            bottom: TabBar(
-              isScrollable: true,
-              tabs: headerWidgets,
-            ),
-          )),
+              preferredSize: Size.fromHeight(kToolbarHeight),
+              child: AppBar(
+                automaticallyImplyLeading: false,
+                // backgroundColor: Colors.black,
+                bottom: TabBar(
+                  isScrollable: true,
+                  tabs: headerWidgets,
+                ),
+              )),
           body: TabBarView(
             children: contentWidget,
           ),
@@ -259,6 +259,7 @@ class TeamdetailScreen extends StatelessWidget {
   Widget getButton(
       BuildContext context, IconData ico, String label, action, icocolor) {
     return Container(
+      alignment: Alignment(0.0, -1.0),
       padding: const EdgeInsets.all(10.0),
       child: InkWell(
         child: Row(
@@ -295,29 +296,44 @@ class TeamdetailScreen extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         color: Colors.black,
         child: Container(
-          child: Column(
+          child: Row(
             children: <Widget>[
-              (isInFavorite
-                  ? this.getButton(context, Icons.star, 'FAVORITE', () => null,
-                      Colors.yellow)
-                  : this.getButton(context, Icons.star_border, 'FAVORITE',
-                      () => onTapFavorite(context), Colors.white)),
-              Image.network(team?.imageUrl ?? "", width: 70, height: 70),
-              Text(team.teamName + " | " + team.divisionName,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                  )),
-              Text(
-                  team.win.toString() +
-                      '-' +
-                      team.lose.toString() +
-                      '-' +
-                      team.draw.toString(),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                  )),
+              Expanded(
+                flex: 2,
+                child: Text(''),
+              ),
+              Expanded(
+                flex: 8,
+                child: Column(
+                  children: <Widget>[
+                    Image.network(team?.imageUrl ?? "", width: 70, height: 70),
+                    Text(team.teamName + " | " + team.divisionName,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                        )),
+                    Text(
+                        team.win.toString() +
+                            '-' +
+                            team.lose.toString() +
+                            '-' +
+                            team.draw.toString(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        )),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: (isInFavorite
+                    ? this.getButton(context, Icons.star, 'FAVORITE',
+                        () => null, Colors.yellow)
+                    : this.getButton(context, Icons.star_border, 'FAVORITE',
+                        () => onTapFavorite(context), Colors.white)),
+              ),
             ],
           ),
         ),

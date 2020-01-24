@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/FormaterElem.dart';
@@ -14,17 +15,16 @@ class GamedetailScreen extends StatelessWidget {
   final String _title = 'Game detail';
 
   ///
-  ///
+  /// Triggered when tapping a team in the top bar
   ///
   onTapTeam(BuildContext context, Team team) {
     ActionsComposite.goToTeamDetailScreen(context, team.teamId);
   }
 
   ///
-  ///
+  /// Triggered when tapping the calendar in the "tab bar"
   ///
   onTapCalendar(BuildContext context) {
-    print('onTapCalendar');
     final Game game = Provider.of<GamesModel>(context).selectedModel;
     DateTime dt = DateTime.parse(game.dateTime);
     DateTime dt2 = dt.add(new Duration(hours: 1));
@@ -48,20 +48,34 @@ class GamedetailScreen extends StatelessWidget {
   }
 
   ///
+  /// Triggered when tapping the map icon in the tab bar
   ///
-  ///
-  onTapMap(BuildContext context) {
-    print('onTapMap');
+  onTapMap(BuildContext context) async {
+    final Game game = Provider.of<GamesModel>(context).selectedModel;
+    final availableMaps = await MapLauncher.installedMaps;
+    // @todo choise the right one
+    print(availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+    
+    num lat = game?.arena?.latitude ?? 0.0;
+    num long = game?.arena?.longitude ?? 0;
+
+    if (lat != 0 && long != 0)
+    {
+      await availableMaps.first.showMarker(
+        coords: Coords(lat, long),
+        title: game?.arena?.name ?? '',
+        description: game?.arena?.address ?? '',
+      );
+    }
+
+
   }
 
   ///
-  ///
+  /// Triggered when tapping the share icon in the tab bar
   ///
   onTapShare(BuildContext context) {
-    print('onTapShare');
-
     final Game selectedGame = Provider.of<GamesModel>(context).selectedModel;
-
     String title = 'Match ' +
         selectedGame.info.team1.teamName +
         ' vs. ' +
