@@ -87,12 +87,12 @@ class DivisionsModel extends ChangeNotifier
   ///
   ///
   ///
-  loadData(int seasonId)
+  loadData(int seasonId) async
   {
-    if (seasonId == -1) return false;
+    if (seasonId < 0) return null;
     this.loading = true;
     _list = new List();
-    _api.getDivisions(seasonId)
+    await _api.getDivisions(seasonId)
       .then((dt) => _replaceList(dt) )
       .catchError((e) => throw Exception(e))
       .whenComplete(() => notifyListeners() );

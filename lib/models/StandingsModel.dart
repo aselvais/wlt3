@@ -11,57 +11,87 @@ class StandingsModel extends ChangeNotifier
   int _selectedId = -1;
   Standing _selectedModel;
 
+  ///
+  ///
+  ///
   get list {
     return _list;
   }
 
+  ///
+  ///
+  ///
   get selectedId {
     return _selectedId;
   }
 
+  ///
+  ///
+  ///
   get selectedModel {
     return _selectedModel;
   }
 
+  ///
+  ///
+  ///
   get loading {
     return _loading;
   }
   
+  ///
+  ///
+  ///
   set selectedId(int v)
   {
     _selectedId = v;
     notifyListeners();
   }
   
+  ///
+  ///
+  ///
   set selectedModel(Standing v)
   {
     _selectedModel = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   set loading(bool v)
   {
     _loading = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   addToList(o)
   {
     _list.add(o);
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   _replaceList(List<Standing> o)
   {
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }
 
-  loadData(int divisionId, int tierId)
+  ///
+  ///
+  ///
+  loadData(int divisionId, int tierId) async
   {
       this.loading = true;
       _list = new List();
-      _api.getTeamstandingLocalTierGroupGeneric(divisionId, tierId)
+      await _api.getTeamstandingLocalTierGroupGeneric(divisionId, tierId)
         .then((dt) => _replaceList(dt) )
         .catchError((e) => throw Exception(e))
         .whenComplete(() => notifyListeners() );

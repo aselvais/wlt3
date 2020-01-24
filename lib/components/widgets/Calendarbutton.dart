@@ -44,7 +44,7 @@ class Calendarbutton extends StatelessWidget
       if (picked != null && picked != games.selectedDate) 
       {
         games.selectedDate = picked;
-        ActionsComposite.reloadGamesData(context);
+        await ActionsComposite.reloadGamesData(context);
       }
     } catch (ee) {}
 

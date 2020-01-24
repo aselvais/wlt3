@@ -69,13 +69,13 @@ class GamesModel extends ChangeNotifier
     this.loading = false;
   }
 
-  loadData(int seasonId, int divisionId)
+  loadData(int seasonId, int divisionId) async
   {
     this.loading = true;
     String date = DateFormat("yyyy-MM-dd").format(this._selectedDate);
     _list = new List();
     
-    _api.getGames(date, seasonId, divisionId)
+    await _api.getGames(date, seasonId, divisionId)
       .then((dt) => _replaceList(dt) )
       .catchError((e) => throw Exception(e))
       .whenComplete(() => notifyListeners() );

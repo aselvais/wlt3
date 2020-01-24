@@ -13,78 +13,118 @@ class MatchdatesModel extends ChangeNotifier
   Matchdates _selectedModel;
   DateTime _selectedDate = DateTime.now();
 
+  ///
+  ///
+  ///
   List<Matchdates> get list 
   {
     return _list;
   }
 
+  ///
+  ///
+  ///
   get selectedId 
   {
     return _selectedId;
   }
 
+  ///
+  ///
+  ///
   get loading 
   {
     return _loading;
   }
 
+  ///
+  ///
+  ///
   get selectedModel 
   {
     return _selectedModel;
   }
 
+  ///
+  ///
+  ///
   get selectedDate 
   {
     return _selectedDate;
   }
 
+  ///
+  ///
+  ///
   set selectedDate(DateTime v) 
   {
     _selectedDate = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   set selectedModel(Matchdates v) 
   {
     _selectedModel = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   set selectedId(int v) 
   {
     _selectedId = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   set loading(bool v) 
   {
     _loading = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   addToList(o) 
   {
     _list.add(o);
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   _replaceList(List<Matchdates> o) 
   {
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }
 
-  loadData(int seasonId, int divisionId) 
+  ///
+  ///
+  ///
+  loadData(int seasonId, int divisionId) async
   {
+    if (seasonId < 0 || divisionId < 0) return null;
     this.loading = true;
     _list = new List();
-    _api
+    await _api
         .getGameall(seasonId, divisionId)
         .then((dt) => _replaceList(dt))
         .catchError((e) => throw Exception(e))
         .whenComplete(() => notifyListeners());
   }
 
+  ///
+  ///
+  ///
   List<DateTime> getListOfAvailableDates()
   {
     List<String> alldates = new List();
@@ -102,6 +142,9 @@ class MatchdatesModel extends ChangeNotifier
     return alldatestime;
   }
 
+  ///
+  ///
+  ///
   DateTime getClosestDate(DateTime fromDate, bool right, bool allowCurrent) 
   {
     bool isPresent = true;

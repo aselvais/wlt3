@@ -12,40 +12,64 @@ class TeamModel extends ChangeNotifier
   int _selectedId = -1;
   Teamdata _selectedModel;
 
+  ///
+  ///
+  ///
   get list {
     return _list;
   }
 
+  ///
+  ///
+  ///
   get selectedId {
     return _selectedId;
   }
 
+  ///
+  ///
+  ///
   get selectedModel {
     return _selectedModel;
   }
 
+  ///
+  ///
+  ///
   get loading {
     return _loading;
   }
   
+  ///
+  ///
+  ///
   set selectedId(int v)
   {
     _selectedId = v;
     notifyListeners();
   }
   
+  ///
+  ///
+  ///
   set selectedModel(Teamdata v)
   {
     _selectedModel = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   set loading(bool v)
   {
     _loading = v;
     notifyListeners();
   }
 
+  ///
+  ///
+  ///
   addToList(o)
   {
     _list.add(o);
@@ -58,16 +82,23 @@ class TeamModel extends ChangeNotifier
     this.loading = false;
   }
 */
+
+  ///
+  ///
+  ///
   _replaceSelectedModel(Teamdata m)
   {
     this._selectedModel = m;
     this.loading = false;
   }
 
-  loadData(int teamId)
+  ///
+  ///
+  ///
+  loadData(int teamId) async
   {
       this.loading = true;
-      _api.getTeamInfoFull(teamId)
+      await _api.getTeamInfoFull(teamId)
         .then((dt) => _replaceSelectedModel(dt) )
         .catchError((e) => throw Exception(e))
         .whenComplete(() => notifyListeners() );
