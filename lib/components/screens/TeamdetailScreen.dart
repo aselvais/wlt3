@@ -12,8 +12,9 @@ import 'package:wlt3/models/News.dart';
 import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/Tweet.dart';
+import 'package:wlt3/components/LoadingStatusWidget.dart';
 
-class TeamdetailScreen extends StatelessWidget {
+class TeamdetailScreen extends LoadingStatusWidget {
   ///
   ///
   ///
@@ -357,8 +358,8 @@ class TeamdetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final teams = Provider.of<TeamModel>(context);
-    if (teams.loading == true) {
-      return Center(child: CircularProgressIndicator());
+    if (this.isLoading(context) == true) {
+      return this.getLoadingWidget(context);
     } else {
       return Scaffold(
         backgroundColor: Colors.white,

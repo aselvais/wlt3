@@ -6,8 +6,9 @@ import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/Team.dart';
+import 'package:wlt3/components/LoadingStatusWidget.dart';
 
-class FavoritesScreen extends StatelessWidget {
+class FavoritesScreen extends LoadingStatusWidget {
   ///
   ///
   ///
@@ -94,8 +95,8 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favorites = Provider.of<FavoritesModel>(context);
-    if (favorites.loadingTeams == true) {
-      return Center(child: CircularProgressIndicator());
+    if (this.isLoading(context) == true) {
+      return this.getLoadingWidget(context);
     } else {
       return Column(
         children: <Widget>[getTabsView(context)],

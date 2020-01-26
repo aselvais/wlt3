@@ -8,8 +8,9 @@ import 'package:wlt3/components/widgets/Bottomnavigationwlt.dart';
 import 'package:wlt3/components/widgets/Drawerwlt.dart';
 import 'package:wlt3/components/widgets/Topmenubar.dart';
 import 'package:wlt3/models/BottombarModel.dart';
+import 'package:wlt3/components/LoadingStatusWidget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends LoadingStatusWidget {
   final List<Widget> _children = [
     GamesScreen(),
     StandingsScreen(),
@@ -23,7 +24,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<BottombarModel>(context);
-    return new Scaffold(
+    if (this.isLoading(context) == true) {
+      return this.getLoadingWidget(context);
+    } else return new Scaffold(
         drawer: new Drawerwlt(),
         appBar: new Topmenubar(),
         body: _children[cart.idx],

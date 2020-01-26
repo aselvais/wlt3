@@ -5,8 +5,9 @@ import 'package:wlt3/components/widgets/Buttonlist.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/TiersModel.dart';
+import 'package:wlt3/components/LoadingStatusWidget.dart';
 
-class StandingsScreen extends StatelessWidget {
+class StandingsScreen extends LoadingStatusWidget {
   ///
   ///
   ///
@@ -44,7 +45,9 @@ class StandingsScreen extends StatelessWidget {
   ///
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    if (this.isLoading(context) == true) {
+      return this.getLoadingWidget(context);
+    } else return Scaffold(
         backgroundColor: Themedata.greyBackground,
         body: Container(
           width: MediaQuery.of(context).size.width,
