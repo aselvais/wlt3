@@ -51,8 +51,7 @@ class ActionsComposite {
     // loading game dates
     final MatchdatesModel matchdatesModel =
         Provider.of<MatchdatesModel>(context);
-    await matchdatesModel.loadData(
-        seasons.selectedModel.id, divisions.selectedModel.id);
+    matchdatesModel.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     // loading games
     // await games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     ActionsComposite.loadClosestGamesToDate(context, true);
@@ -106,7 +105,7 @@ class ActionsComposite {
     _list.selectedId = item.id;
     _list.selectedModel = item;
     favorites.lastSelectedLeague = item;
-    await _list2.loadData(item.id);
+    _list2.loadData(item.id);
     Navigator.pushNamed(context, '/seasons');
   }
 
@@ -120,8 +119,8 @@ class ActionsComposite {
 
     _list.selectedId = model.id;
     _list.selectedModel = model;
-    await _list2.loadData(model.id);
     favorites.lastSelectedSeason = model;
+    _list2.loadData(model.id);
     Navigator.pushNamed(context, '/divisions');
   }
 
@@ -136,7 +135,7 @@ class ActionsComposite {
     bottomModel.idx = 1;
     final standing = Provider.of<StandingsModel>(context);
     final divisions = Provider.of<DivisionsModel>(context);
-    await standing.loadData(divisions.selectedModel.id, tiers.selectedModel.id);
+    standing.loadData(divisions.selectedModel.id, tiers.selectedModel.id);
     Navigator.popUntil(context, ModalRoute.withName('/home'));
   }
 
@@ -167,7 +166,7 @@ class ActionsComposite {
   static goToTiersScreen(BuildContext context) async {
     final tiers = Provider.of<TiersModel>(context);
     final divisions = Provider.of<DivisionsModel>(context);
-    await tiers.loadData(divisions.selectedModel.id);
+    tiers.loadData(divisions.selectedModel.id);
     Navigator.pushNamed(context, '/tiers');
   }
 

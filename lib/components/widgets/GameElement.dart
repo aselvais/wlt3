@@ -51,6 +51,7 @@ class GameElement extends StatelessWidget {
                     ((game.leagueShortName != null)
                         ? game?.leagueShortName?.toUpperCase() ?? ''
                         : ''),
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         color: Themedata.blue,
                         fontSize: 12.0,
@@ -63,6 +64,7 @@ class GameElement extends StatelessWidget {
                         ((game.seasonName != null)
                             ? game?.divisionName?.toUpperCase() ?? ''
                             : ''),
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Themedata.black, fontSize: 12.0)),
               ],
             ),
