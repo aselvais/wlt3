@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/components/lists/ListStandings.dart';
+import 'package:wlt3/components/lists/ListStandingsTables.dart';
 import 'package:wlt3/components/widgets/GameElement.dart';
 import 'package:wlt3/components/widgets/NewsElement.dart';
 import 'package:wlt3/components/widgets/TweetsElement.dart';
@@ -67,7 +68,7 @@ class TeamdetailScreen extends LoadingStatusWidget {
     return Container(
       padding: const EdgeInsets.all(10.0),
       color: Themedata.greyBackground,
-      child: ListStandings(),
+      child: ListStandingsTables(),
     );
   }
 

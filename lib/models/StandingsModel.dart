@@ -12,7 +12,7 @@ class StandingsModel extends ChangeNotifier {
   ///
   ///
   ///
-  get list {
+  List<Standing> get list {
     return _list;
   }
 

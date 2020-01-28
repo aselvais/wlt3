@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/components/lists/ListStandings.dart';
+import 'package:wlt3/components/lists/ListStandingsTables.dart';
 import 'package:wlt3/components/widgets/Buttonlist.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
@@ -56,8 +57,8 @@ class StandingsScreen extends LoadingStatusWidget {
               getTiersButton(context),
               Expanded(
                 flex: 9,
-                child: Container(
-                  child: ListStandings(),
+                child: SingleChildScrollView(
+                  child: ListStandingsTables(),
                 ),
               )
             ],

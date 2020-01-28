@@ -1,25 +1,4 @@
 class Standingdata {
-/*
-      //imgurl : {showP: false, showL: true },
-      team : { showP: true, showL: true, width: 6 },
-      gp : { showP: true, showL: true, width: 1 },
-      w : { showP: true, showL: true, width: 1 },
-      so : { showP: true, showL: true, width: 1 },
-      l : { showP: true, showL: true, width: 1 },
-      t : { showP: true, showL: true, width: 1 },
-      pts : { showP: true, showL: true, width: 2 },
-
-      ga: { showP: false, showL: true, width: 1 },
-      gf : { showP: false, showL: true, width: 1 },
-      gfavg : { showP: false, showL: true, width: 3 },
-      strk : { showP: false, showL: true, width: 2 },
-
-      'pim': { showP: false, showL: true, width: 1 },
-      '+|-': { showP: false, showL: true, width: 1 },
-      ra: { showP: false, showL: true, width: 1 },
-      rf: { showP: false, showL: true, width: 1 },
- */
-
   final String imgurl;
   final String team;
   final int teamId;
@@ -33,7 +12,7 @@ class Standingdata {
   final int pim;        // variable
   final num gfavg;
   final num plusminus;  // variable
-  final num rfavg;  // variable
+  final num rfavg;      // variable
   final String strk;
 
   ///
@@ -53,7 +32,7 @@ class Standingdata {
     this.pim,           // variable
     this.gfavg,
     this.plusminus,     // variable
-    this.rfavg,     // variable
+    this.rfavg,         // variable
     this.strk,
   });
 
@@ -61,7 +40,6 @@ class Standingdata {
   ///
   ///
   factory Standingdata.fromJson(Map<String, dynamic> json) {
-
     return Standingdata(
       imgurl: json.containsKey('imgurl') ? json['imgurl'] : null,
       team: json.containsKey('team') ? json['team'] : null,
@@ -79,7 +57,6 @@ class Standingdata {
       rfavg: json.containsKey('rfavg') ? json['rfavg'] : null,  // variable
       strk: json.containsKey('strk') ? json['strk'] : null,
     );
-    
   }
 
 
