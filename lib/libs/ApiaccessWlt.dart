@@ -123,6 +123,28 @@ class ApiaccessWlt extends ApiaccessAbstract {
     }
   }
 
+
+  ///
+  ///
+  ///
+  Future<List<Standing>> getTeamstandingLocalTierGroupGenericNormalized(
+      int divisionId, int tierId) async {
+    String fullurl = baseurl +
+        'teamstandingLocalTierGroupGenericNormalized/?divisionId=' +
+        divisionId.toString() +
+        '&tierId=' +
+        tierId.toString();
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      List<dynamic> djson = json.decode(response.body);
+      List<Standing> toret = new List();
+      djson.forEach((json) => toret.add(Standing.fromJson(json)));
+      return toret;
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
   ///
   ///
   ///

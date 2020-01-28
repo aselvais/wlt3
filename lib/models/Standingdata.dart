@@ -30,7 +30,10 @@ class Standingdata {
   final int pts;
   final int gf;
   final int ga;
+  final int pim;        // variable
   final num gfavg;
+  final num plusminus;  // variable
+  final num rfavg;  // variable
   final String strk;
 
   ///
@@ -47,7 +50,10 @@ class Standingdata {
     this.pts,
     this.gf,
     this.ga,
+    this.pim,           // variable
     this.gfavg,
+    this.plusminus,     // variable
+    this.rfavg,     // variable
     this.strk,
   });
 
@@ -55,6 +61,7 @@ class Standingdata {
   ///
   ///
   factory Standingdata.fromJson(Map<String, dynamic> json) {
+
     return Standingdata(
       imgurl: json.containsKey('imgurl') ? json['imgurl'] : null,
       team: json.containsKey('team') ? json['team'] : null,
@@ -66,8 +73,14 @@ class Standingdata {
       pts: json.containsKey('pts') ? json['pts'].toInt() : null,
       gf: json.containsKey('gf') ? json['gf'] : null,
       ga: json.containsKey('ga') ? json['ga'] : null,
+      pim: json.containsKey('pim') ? json['pim'] : null,                    // variable
       gfavg: json.containsKey('gfavg') ? json['gfavg'] : null,
+      plusminus: json.containsKey('plusminus') ? json['plusminus'] : null,  // variable
+      rfavg: json.containsKey('rfavg') ? json['rfavg'] : null,  // variable
       strk: json.containsKey('strk') ? json['strk'] : null,
     );
+    
   }
+
+
 }

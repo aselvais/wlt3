@@ -86,9 +86,24 @@ class ListStandings extends StatelessWidget {
             return this.getCell(/*'GA: ' +*/ f.ga.toString(), false);
           }
           break;
+        case 'pim':
+          {
+            return this.getCell(/*'pim: ' +*/ f.pim.toString(), false);
+          }
+          break;
         case 'gfavg':
           {
             return this.getCell(/*'GFAVG: ' +*/ f.gfavg.toString(), false);
+          }
+          break;
+        case 'plusminus':
+          {
+            return this.getCell(/*'plusminus: ' +*/ f.plusminus.toString(), false);
+          }
+          break;
+        case 'rfavg':
+          {
+            return this.getCell(/*'rfavg: ' +*/ f.rfavg.toString(), false);
           }
           break;
         case 'strk':
@@ -129,7 +144,10 @@ class ListStandings extends StatelessWidget {
         this.getCell('pts'.toUpperCase(), true),
         this.getCell('gf'.toUpperCase(), true),
         this.getCell('ga'.toUpperCase(), true),
+        this.getCell('pim'.toUpperCase(), true),
         this.getCell('gfavg'.toUpperCase(), true),
+        this.getCell('+|-'.toUpperCase(), true),
+        this.getCell('rfavg'.toUpperCase(), true),
         this.getCell('strk'.toUpperCase(), true),
       ],
     ));
@@ -146,7 +164,10 @@ class ListStandings extends StatelessWidget {
             this.getElement(context, f, 'pts'),
             this.getElement(context, f, 'gf'),
             this.getElement(context, f, 'ga'),
+            this.getElement(context, f, 'pim'),
             this.getElement(context, f, 'gfavg'),
+            this.getElement(context, f, 'plusminus'),
+            this.getElement(context, f, 'rfavg'),
             this.getElement(context, f, 'strk'),
           ],
         )));
@@ -186,38 +207,6 @@ class ListStandings extends StatelessWidget {
       );
     }
   }
-
   
-  /*
-  List<Widget> getRow(BuildContext context, List<Standingdata> f) {
-    List<Widget> toret = new List();
-    f.forEach((Standingdata f) => toret.add(Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          color: Colors.white,
-        ),
-        margin: const EdgeInsets.all(5.0),
-        padding: const EdgeInsets.all(10.0),
-        // height: 100,
-        child: Column(
-          children: <Widget>[
-            this.getElement(context, f, 'imgurl'),
-            this.getElement(context, f, 'team'),
-            this.getElement(context, f, 'teamId'),
-            this.getElement(context, f, 'gp'),
-            this.getElement(context, f, 'w'),
-            this.getElement(context, f, 'l'),
-            this.getElement(context, f, 't'),
-            this.getElement(context, f, 'pts'),
-            this.getElement(context, f, 'gf'),
-            this.getElement(context, f, 'ga'),
-            this.getElement(context, f, 'gfavg'),
-            this.getElement(context, f, 'strk'),
-          ],
-        ))));
-    //f.forEach( (Standingdata f) => print(f.teamId));
-    return toret;
-  }
-  */
 
 }
