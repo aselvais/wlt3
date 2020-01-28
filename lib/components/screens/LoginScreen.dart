@@ -16,7 +16,8 @@ class LoginScreen extends LoadingStatusWidget {
     } else {
       return Scaffold(
         backgroundColor: Colors.white,
-        body: Center(
+        body: SingleChildScrollView(
+            child: Center(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,7 +43,7 @@ class LoginScreen extends LoadingStatusWidget {
                 splashColor: Colors.blueAccent,
                 onPressed: () => ActionsComposite.loginToHome(context),
               ),
-            ])));
+            ]))));
     }
 
   }
