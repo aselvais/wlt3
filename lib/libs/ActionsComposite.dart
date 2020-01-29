@@ -25,13 +25,12 @@ class ActionsComposite {
   ///
   static goToTeamDetailScreen(BuildContext context, int teamId) async {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
-    await teammodel.loadData(teamId);
+    teammodel.loadData(teamId);
     // load standings for this team
     // @todo Do this only after loading
     try {
       final standing = Provider.of<StandingsModel>(context);
-      await standing.loadData(teammodel.selectedModel.teaminfo.divisionId,
-          teammodel.selectedModel.teaminfo.tierId);
+      standing.loadData(teammodel.selectedModel.teaminfo.divisionId, teammodel.selectedModel.teaminfo.tierId);
     } catch (ee) {}
     Navigator.pushNamed(context, '/teamdetail');
   }

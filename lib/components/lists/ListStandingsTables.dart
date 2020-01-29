@@ -11,21 +11,26 @@ class ListStandingsTables extends StatelessWidget {
   ///
   ///
   ///
-  List<DataColumn> getHeaderColumns(Standingdata h)
+  List<DataColumn> getHeaderColumns(BuildContext context, Standingdata h)
   {
+    bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+
     List<DataColumn> toret = [];
     if (h.imgurl != null && h.imgurl != '') toret.add(DataColumn( label: Text(''.toUpperCase()), ));
     toret.add(DataColumn( label: Text('team'.toUpperCase()), ));
     toret.add(DataColumn( label: Text('gp'.toUpperCase()), ));
     toret.add(DataColumn( label: Text('w-l-t'.toUpperCase()), ));
     toret.add(DataColumn( label: Text('pts'.toUpperCase()), ));
-    toret.add(DataColumn( label: Text('gf'.toUpperCase()), ));
-    toret.add(DataColumn( label: Text('ga'.toUpperCase()), ));
-    if (h.pim != null) toret.add(DataColumn( label: Text('pim'.toUpperCase()), ));        // variable
-    if (h.gfavg != null) toret.add(DataColumn( label: Text('gfavg'.toUpperCase()), ));
-    if (h.plusminus != null) toret.add(DataColumn( label: Text('plusminus'.toUpperCase()), ));  // variable
-    if (h.rfavg != null) toret.add(DataColumn( label: Text('rfavg'.toUpperCase()), ));      // variable
-    if (h.strk != null) toret.add(DataColumn( label: Text('strk'.toUpperCase()), ));
+    if (isLandscape == true)
+    {
+      toret.add(DataColumn( label: Text('gf'.toUpperCase()), ));
+      toret.add(DataColumn( label: Text('ga'.toUpperCase()), ));
+      if (h.pim != null) toret.add(DataColumn( label: Text('pim'.toUpperCase()), ));        // variable
+      if (h.gfavg != null) toret.add(DataColumn( label: Text('gfavg'.toUpperCase()), ));
+      if (h.plusminus != null) toret.add(DataColumn( label: Text('plusminus'.toUpperCase()), ));  // variable
+      if (h.rfavg != null) toret.add(DataColumn( label: Text('rfavg'.toUpperCase()), ));      // variable
+      if (h.strk != null) toret.add(DataColumn( label: Text('strk'.toUpperCase()), ));
+    }
     return toret;
   }
 
@@ -56,28 +61,22 @@ class ListStandingsTables extends StatelessWidget {
 
         _tables.add(
           Row(children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: DataTable(
-                columnSpacing: 0,
-                dataRowHeight: 25,
-                columns: getHeaderColumns(_standingsModel.list[i].data.first),
-                rows: _standingsDataSource.getAllRows(),
-              )
-            )
-
+              Expanded(
+                flex: 1,
+                child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      color: Colors.white,
+                    ),
+                    child: DataTable(
+                      columnSpacing: 0,
+                      dataRowHeight: 30,
+                      columns: getHeaderColumns(context, _standingsModel.list[i].data.first),
+                      rows: _standingsDataSource.getAllRows(context),
+                  )
+                ))
           ],)
         );
-        /*
-        _tables.add(
-          PaginatedDataTable(
-            header: Text(_standingsModel.list[i].title),
-            rowsPerPage: _standingsModel.list.length,
-            columns: getHeaderColumns(_standingsModel.list[i].data.first),
-            source: _standingsDataSource,
-          )
-        );
-        */
       }
       return Column(children: _tables);
     }
