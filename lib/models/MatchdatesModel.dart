@@ -129,16 +129,14 @@ class MatchdatesModel extends ChangeNotifier {
   ///
   ///
   DateTime getClosestDate(DateTime fromDate, bool right, bool allowCurrent) {
+    
     bool isPresent = true;
     List<String> alldates = new List();
     String fromDateStr = new DateFormat("yyyy-MM-dd").format(fromDate);
     DateTime dd = new DateTime.now();
-    for (int i = 0; i < this.list.length; i++) {
-      alldates.add(DateFormat("yyyy-MM-dd").format(this.list[i].dateTimeReal));
-    }
-    if (alldates.indexOf(fromDateStr) == -1) {
-      isPresent = false;
-    }
+
+    for (int i = 0; i < this.list.length; i++) alldates.add(DateFormat("yyyy-MM-dd").format(this.list[i].dateTimeReal));
+    if (alldates.indexOf(fromDateStr) == -1) isPresent = false;
     alldates.add(fromDateStr);
     alldates = alldates.toSet().toList();
     alldates.sort();
@@ -147,12 +145,11 @@ class MatchdatesModel extends ChangeNotifier {
     int newIdx = right ? dateIdx + 1 : dateIdx - 1;
 
     if (allowCurrent == true && isPresent == true) newIdx = dateIdx;
-    if (newIdx == alldates.length)
-      dd = DateTime.parse(alldates[alldates.length - 1]);
-    else if (newIdx < 0)
-      dd = DateTime.parse(alldates[0]);
-    else
-      dd = DateTime.parse(alldates[newIdx]);
+    if (newIdx == alldates.length) dd = DateTime.parse(alldates[alldates.length - 1]);
+    else if (newIdx < 0) dd = DateTime.parse(alldates[0]);
+    else dd = DateTime.parse(alldates[newIdx]);
     return dd;
+  
   }
+  
 }

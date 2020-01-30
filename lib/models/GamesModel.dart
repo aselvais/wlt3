@@ -42,7 +42,7 @@ class GamesModel extends ChangeNotifier {
   ///
   ///
   ///
-  get selectedDate {
+  DateTime get selectedDate {
     return _selectedDate;
   }
 

@@ -58,7 +58,7 @@ class Calendarbutton extends StatelessWidget {
   ///
   ///
   onTapNavButton(BuildContext context, bool right) {
-    ActionsComposite.loadClosestGamesToDate(context, right);
+    ActionsComposite.loadClosestGamesToDate(context, right, false);
   }
 
   ///
