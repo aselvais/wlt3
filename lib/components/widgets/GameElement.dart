@@ -112,16 +112,8 @@ class GameElement extends StatelessWidget {
   ///
   ///
   ///
-  Widget getGameRow(
-      BuildContext context,
-      Image img0,
-      String teamName,
-      bool g01,
-      String score,
-      String gamedateTime,
-      String gameinfo,
-      String iconShape,
-      bool iconSelected) {
+  Widget getGameRow(BuildContext context, Image img0, String teamName, bool g01,
+      String score, String gamedateTime, String gameinfo) {
     return Row(
       children: <Widget>[
         Expanded(
@@ -142,10 +134,6 @@ class GameElement extends StatelessWidget {
                 flex: 4,
                 child: Text(gameinfo),
               ),
-        Expanded(
-          flex: 1,
-          child: this.getTheIcon(context, iconShape, iconSelected),
-        ),
       ],
     );
   }
@@ -168,29 +156,41 @@ class GameElement extends StatelessWidget {
     try {
       img02 = Image.network(game.info.team2.imageUrl, width: 25, height: 25);
     } catch (eee) {}
-    return Column(
+    return Row(
       children: <Widget>[
-        this.getGameRow(
-            context,
-            img01,
-            game.info.team1.teamName,
-            g01,
-            game.info.team1.score.toString(),
-            game.dateTime,
-            null,
-            'star',
-            false),
-        this.getGameRow(
-            context,
-            img02,
-            game.info.team2.teamName,
-            g02,
-            game.info.team2.score.toString(),
-            null,
-            game.arena.name + "\n" + game?.status?.toUpperCase() ?? '',
-            'location',
-            false),
-        (game.seasonName != null) ? this.getBottomInfo(context) : Container(),
+        Expanded(
+          flex: 11,
+          child: InkWell(
+            child: Column(
+              children: <Widget>[
+                this.getGameRow(context, img01, game.info.team1.teamName, g01,
+                    game.info.team1.score.toString(), game.dateTime, null),
+                this.getGameRow(
+                  context,
+                  img02,
+                  game.info.team2.teamName,
+                  g02,
+                  game.info.team2.score.toString(),
+                  null,
+                  game.arena.name + "\n" + game?.status?.toUpperCase() ?? '',
+                ),
+                (game.seasonName != null)
+                    ? this.getBottomInfo(context)
+                    : Container(),
+              ],
+            ),
+            onTap: () => onTapElement(context),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Column(
+            children: <Widget>[
+              InkWell( child: Container(padding: EdgeInsets.only(bottom: 30.0), child: this.getTheIcon(context, 'star', false)), onTap: () => onTapElement(context), ),
+              InkWell( child: Container(padding: EdgeInsets.only(bottom: 40.0), child: this.getTheIcon(context, 'location', false)), onTap: () => onTapElement(context), ),
+            ],
+          ),
+        )
       ],
     );
   }
@@ -210,18 +210,15 @@ class GameElement extends StatelessWidget {
   ///
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          color: Colors.white,
-        ),
-        margin: const EdgeInsets.all(5.0),
-        padding: const EdgeInsets.all(10.0),
-        // height: 100,
-        child: getButton(context),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        color: Colors.white,
       ),
-      onTap: () => onTapElement(context),
+      margin: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(10.0),
+      // height: 100,
+      child: getButton(context),
     );
   }
 }
