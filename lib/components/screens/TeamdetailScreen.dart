@@ -278,11 +278,14 @@ class TeamdetailScreen extends LoadingStatusWidget {
   ///
   ///
   ///
-  onTapFavorite(BuildContext context) {
+  onTapFavorite(BuildContext context, bool add2fav) {
     final teams = Provider.of<TeamModel>(context);
     final Team team = teams.selectedModel.teaminfo;
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
-    favorites.addToListTeams(team);
+    if (add2fav == true) 
+      favorites.addToListTeams(team);
+    else
+      favorites.removeFromListTeams(team);
   }
 
   ///
@@ -331,10 +334,8 @@ class TeamdetailScreen extends LoadingStatusWidget {
               Expanded(
                 flex: 2,
                 child: (isInFavorite
-                    ? this.getButton(context, Icons.star, 'FAVORITE',
-                        () => null, Colors.yellow)
-                    : this.getButton(context, Icons.star_border, 'FAVORITE',
-                        () => onTapFavorite(context), Colors.white)),
+                    ? this.getButton(context, Icons.star, 'FAVORITE', () => onTapFavorite(context, false), Colors.yellow)
+                    : this.getButton(context, Icons.star_border, 'FAVORITE', () => onTapFavorite(context, true), Colors.white)),
               ),
             ],
           ),

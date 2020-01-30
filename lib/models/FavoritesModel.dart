@@ -200,8 +200,29 @@ class FavoritesModel extends ChangeNotifier {
   ///
   ///
   ///
+  removeFromListGames(Game o) {
+    _listGames.removeWhere((Game i) => i.id == o.id);
+    _saveGames();
+    notifyListeners();
+  }
+
+  ///
+  ///
+  ///
   addToListTeams(Team o) {
     _listTeams.add(o);
+    _saveTeams();
+    notifyListeners();
+  }
+
+  ///
+  ///
+  ///
+  removeFromListTeams(Team o) {
+    print('------------------');
+    print(o);
+
+    _listTeams.removeWhere((Team i) => i.teamId == o.teamId);
     _saveTeams();
     notifyListeners();
   }
