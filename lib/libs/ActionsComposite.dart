@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/models/Arena.dart';
 import 'package:wlt3/models/BottombarModel.dart';
 import 'package:wlt3/models/Division.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/FavoritesModel.dart';
+import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/League.dart';
 import 'package:wlt3/models/LeaguesModel.dart';
@@ -217,4 +220,41 @@ class ActionsComposite {
     games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right, allowCurrent);
     await ActionsComposite.reloadGamesData(context);
   }
+
+
+  ///
+  /// Launch map for an arean (passed as param)
+  ///
+  static goToMaps(BuildContext context, Arena arena) async
+  {
+    final availableMaps = await MapLauncher.installedMaps;
+    // @todo choise the right one
+    // print(availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+    
+    num lat = arena?.latitude ?? 0;
+    num long = arena?.longitude ?? 0;
+
+    if (lat != 0 && long != 0)
+    {
+      await availableMaps.first.showMarker(
+        coords: Coords(lat, long),
+        title: arena?.name ?? '',
+        description: arena?.address ?? '',
+      );
+    }
+  }
+
+
+  ///
+  ///
+  ///
+  static onTapFavorite(BuildContext context, Game game) {
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
+    if (favorites.isInGamesFavorite(game.id) == false)
+      favorites.addToListGames(game);
+    else
+      favorites.removeFromListGames(game);
+  }
+
+
 }

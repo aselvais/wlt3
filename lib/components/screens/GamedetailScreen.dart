@@ -53,23 +53,7 @@ class GamedetailScreen extends LoadingStatusWidget {
   ///
   onTapMap(BuildContext context) async {
     final Game game = Provider.of<GamesModel>(context).selectedModel;
-    final availableMaps = await MapLauncher.installedMaps;
-    // @todo choise the right one
-    print(availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
-    
-    num lat = game?.arena?.latitude ?? 0.0;
-    num long = game?.arena?.longitude ?? 0;
-
-    if (lat != 0 && long != 0)
-    {
-      await availableMaps.first.showMarker(
-        coords: Coords(lat, long),
-        title: game?.arena?.name ?? '',
-        description: game?.arena?.address ?? '',
-      );
-    }
-
-
+    ActionsComposite.goToMaps(context, game.arena);
   }
 
   ///
@@ -152,18 +136,6 @@ class GamedetailScreen extends LoadingStatusWidget {
     }
     // title, message, url
     Share.share(message, subject: title);
-  }
-
-  ///
-  ///
-  ///
-  onTapFavorite(BuildContext context, bool add2fav) {
-    final Game game = Provider.of<GamesModel>(context).selectedModel;
-    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
-    if (add2fav == true)
-      favorites.addToListGames(game);
-    else
-      favorites.removeFromListGames(game);
   }
 
   ///
@@ -300,8 +272,8 @@ class GamedetailScreen extends LoadingStatusWidget {
               Expanded(
                   flex: 1,
                   child: (isInFavorite
-                      ? (this.getButton(context, Icons.star, 'FAVORITE', () => onTapFavorite(context, false), Colors.yellow))
-                      : (this.getButton(context, Icons.star_border, 'FAVORITE', () => onTapFavorite(context, true), Colors.white)))
+                      ? (this.getButton(context, Icons.star, 'FAVORITE', () => ActionsComposite.onTapFavorite(context, game), Colors.yellow))
+                      : (this.getButton(context, Icons.star_border, 'FAVORITE', () => ActionsComposite.onTapFavorite(context, game), Colors.white)))
               ),
             ],
           ),

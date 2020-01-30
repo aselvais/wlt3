@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/FormaterElem.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/FavoritesModel.dart';
@@ -186,13 +187,29 @@ class GameElement extends StatelessWidget {
           flex: 1,
           child: Column(
             children: <Widget>[
-              InkWell( child: Container(padding: EdgeInsets.only(bottom: 30.0), child: this.getTheIcon(context, 'star', false)), onTap: () => onTapElement(context), ),
-              InkWell( child: Container(padding: EdgeInsets.only(bottom: 40.0), child: this.getTheIcon(context, 'location', false)), onTap: () => onTapElement(context), ),
+              InkWell( 
+                child: Container(padding: EdgeInsets.only(bottom: 30.0), 
+                child: this.getTheIcon(context, 'star', false)),
+                onTap: () => ActionsComposite.onTapFavorite(context, game), 
+              ),
+              InkWell( 
+                child: Container(padding: EdgeInsets.only(bottom: 40.0), 
+                child: this.getTheIcon(context, 'location', false)),
+                onTap: () => onTapLocation(context), 
+              ),
             ],
           ),
         )
       ],
     );
+  }
+
+  ///
+  ///
+  ///
+  onTapLocation(BuildContext context)
+  {
+    ActionsComposite.goToMaps(context, game.arena);
   }
 
   ///
