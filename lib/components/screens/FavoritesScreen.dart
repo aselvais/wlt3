@@ -8,7 +8,55 @@ import 'package:wlt3/models/Game.dart';
 import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/components/LoadingStatusWidget.dart';
 
+///
+///
+///
 class FavoritesScreen extends LoadingStatusWidget {
+
+  ///
+  /// Generic containing with list of elements inside (passed as param)
+  ///
+  Widget getContent(BuildContext context, Widget wl)
+  {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      color: Themedata.greyBackground,
+      child: wl
+    );
+  }
+
+  ///
+  ///
+  ///
+  Widget getEmptyContent(BuildContext context, String txt)
+  {
+    return getContent(context, Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        color: Colors.white,
+      ),
+      margin: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(30.0),
+      child: Column(
+        children: <Widget>[
+          Icon(
+            Icons.star_border,
+            color: Colors.grey,
+            size: 40,
+          ),
+          Text(
+            txt, 
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.grey, 
+              fontSize: 20.0,
+              ),
+          ),
+        ],
+      ),
+    ));
+  }
+
   ///
   ///
   ///
@@ -16,12 +64,10 @@ class FavoritesScreen extends LoadingStatusWidget {
     final favorites = Provider.of<FavoritesModel>(context);
     List<Widget> wl = new List();
     favorites.listTeams.forEach((Team f) => wl.add(TeamElement(team: f)));
-    return Container(
-        padding: const EdgeInsets.all(10.0),
-        color: Themedata.greyBackground,
-        child: ListView(
-          children: wl,
-        ));
+    if (wl.length == 0)
+      return getEmptyContent(context, '\nNothing here yet ...\n\nUse the star icon to add teams to your favorite.');
+    else 
+      return getContent(context, ListView(children: wl,));
   }
 
   ///
@@ -31,12 +77,10 @@ class FavoritesScreen extends LoadingStatusWidget {
     final favorites = Provider.of<FavoritesModel>(context);
     List<Widget> wl = new List();
     favorites.listGames.forEach((Game f) => wl.add(GameElement(game: f)));
-    return Container(
-        padding: const EdgeInsets.all(10.0),
-        color: Themedata.greyBackground,
-        child: ListView(
-          children: wl,
-        ));
+    if (wl.length == 0)
+      return getEmptyContent(context, '\nNothing here yet ...\n\nUse the star icon to add games to your favorite.');
+    else 
+      return getContent(context, ListView(children: wl,));
   }
 
   ///
@@ -94,24 +138,10 @@ class FavoritesScreen extends LoadingStatusWidget {
   ///
   @override
   Widget build(BuildContext context) {
-    final favorites = Provider.of<FavoritesModel>(context);
     if (this.isLoading(context) == true) {
       return this.getLoadingWidget(context);
     } else {
-      return Column(
-        children: <Widget>[getTabsView(context)],
-      );
-      /*
-      return Scaffold(
-        backgroundColor: Colors.white,
-        //appBar: getAppBarElement(context),
-        body: Column(
-          children: <Widget>[
-            getTabsView(context)
-          ],
-        ),
-      );
-      */
+      return Column(children: <Widget>[getTabsView(context)],);
     }
   }
 }

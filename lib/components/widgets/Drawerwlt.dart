@@ -20,6 +20,7 @@ class Drawerwlt extends StatelessWidget {
                   Border(bottom: BorderSide(color: Themedata.grey, width: 1.0)),
             ),
           ),
+          /*
           ListTile(
             title: Text('Feedback'),
             onTap: () {
@@ -32,6 +33,7 @@ class Drawerwlt extends StatelessWidget {
               Navigator.pushNamed(context, '/profile');
             },
           ),
+          */
           ListTile(
             title: Text('Log out'),
             onTap: () {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/Team.dart';
-import 'package:wlt3/models/TeamModel.dart';
-import 'package:wlt3/models/Teamdata.dart';
 
+///
+///
+///
 class TeamElement extends StatelessWidget {
   final Team team;
 
@@ -16,11 +17,7 @@ class TeamElement extends StatelessWidget {
   ///
   ///
   onTapElement(BuildContext context) {
-    final _list = Provider.of<TeamModel>(context);
-    _list.selectedId = team.teamId;
-    _list.selectedModel = Teamdata();
-    _list.selectedModel.teaminfo = team;
-    Navigator.pushNamed(context, '/teamdetail');
+    ActionsComposite.goToTeamDetailScreen(context, team.teamId);
   }
 
   ///
