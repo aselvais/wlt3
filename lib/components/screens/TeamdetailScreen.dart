@@ -66,10 +66,14 @@ class TeamdetailScreen extends LoadingStatusWidget {
   ///
   ///
   Widget getStandings(BuildContext context, TeamModel teams) {
-    return Container(
+    return 
+    SingleChildScrollView(
+            child:
+    Container(
       padding: const EdgeInsets.all(10.0),
       color: Themedata.greyBackground,
       child: ListStandingsTables(),
+    )
     );
   }
 
