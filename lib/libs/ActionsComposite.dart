@@ -15,6 +15,7 @@ import 'package:wlt3/models/MatchdatesModel.dart';
 import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
 import 'package:wlt3/models/StandingsModel.dart';
+import 'package:wlt3/models/Team.dart';
 import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/Tiers.dart';
 import 'package:wlt3/models/TiersModel.dart';
@@ -249,13 +250,26 @@ class ActionsComposite {
   ///
   ///
   ///
-  static onTapFavorite(BuildContext context, Game game) {
+  static onTapGameFavorite(BuildContext context, Game game) {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     if (favorites.isInGamesFavorite(game.id) == false)
       favorites.addToListGames(game);
     else
       favorites.removeFromListGames(game);
   }
+
+
+  ///
+  ///
+  ///
+  static onTapTeamFavorite(BuildContext context, Team team, bool add2fav) {
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
+    if (add2fav == true) 
+      favorites.addToListTeams(team);
+    else
+      favorites.removeFromListTeams(team);
+  }
+
 
   
   ///

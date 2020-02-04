@@ -272,8 +272,8 @@ class GamedetailScreen extends LoadingStatusWidget {
               Expanded(
                   flex: 1,
                   child: (isInFavorite
-                      ? (this.getButton(context, Icons.star, 'FAVORITE', () => ActionsComposite.onTapFavorite(context, game), Colors.yellow))
-                      : (this.getButton(context, Icons.star_border, 'FAVORITE', () => ActionsComposite.onTapFavorite(context, game), Colors.white)))
+                      ? (this.getButton(context, Icons.star, 'FAVORITE', () => ActionsComposite.onTapGameFavorite(context, game), Colors.yellow))
+                      : (this.getButton(context, Icons.star_border, 'FAVORITE', () => ActionsComposite.onTapGameFavorite(context, game), Colors.white)))
               ),
             ],
           ),

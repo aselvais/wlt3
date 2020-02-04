@@ -190,7 +190,7 @@ class GameElement extends StatelessWidget {
               InkWell( 
                 child: Container(padding: EdgeInsets.only(bottom: 30.0), 
                 child: this.getTheIcon(context, 'star', false)),
-                onTap: () => ActionsComposite.onTapFavorite(context, game), 
+                onTap: () => ActionsComposite.onTapGameFavorite(context, game), 
               ),
               InkWell( 
                 child: Container(padding: EdgeInsets.only(bottom: 40.0), 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
+import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Team.dart';
 
 ///
@@ -20,6 +22,23 @@ class TeamElement extends StatelessWidget {
     ActionsComposite.goToTeamDetailScreen(context, team.teamId);
   }
 
+
+  ///
+  ///
+  ///
+  Widget getTheIcon(BuildContext context) {
+    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
+    return (favorites.isInTeamsFavorite(team.teamId) == true)
+        ? Icon(
+            Icons.star,
+            color: Colors.yellow,
+          )
+        : Icon(
+            Icons.star_border,
+            color: Colors.grey,
+          );
+  }
+
   ///
   ///
   ///
@@ -32,15 +51,22 @@ class TeamElement extends StatelessWidget {
       children: <Widget>[
         Expanded(
           flex: 2,
-          child: img01,
+          child: InkWell(child: img01, onTap: () => onTapElement(context)),
         ),
         Expanded(
           flex: 8,
-          child: Column(children: [
+          child: InkWell(child: Column(children: [
             Text(team.teamName),
             Text(team.divisionName),
-          ]),
-        )
+          ]), onTap: () => onTapElement(context)),
+        ),
+        Expanded(
+          flex: 2,
+          child: InkWell(
+              child: this.getTheIcon(context), 
+              onTap: () => ActionsComposite.onTapTeamFavorite(context, team, false)
+          ),
+        ),
       ],
     );
   }
@@ -50,8 +76,7 @@ class TeamElement extends StatelessWidget {
   ///
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
+    return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           color: Colors.white,
@@ -60,8 +85,6 @@ class TeamElement extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         // height: 100,
         child: getButton(context),
-      ),
-      onTap: () => onTapElement(context),
-    );
+      );
   }
 }

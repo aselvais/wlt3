@@ -5,6 +5,7 @@ import 'package:wlt3/components/lists/ListStandingsTables.dart';
 import 'package:wlt3/components/widgets/GameElement.dart';
 import 'package:wlt3/components/widgets/NewsElement.dart';
 import 'package:wlt3/components/widgets/TweetsElement.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Game.dart';
@@ -275,18 +276,6 @@ class TeamdetailScreen extends LoadingStatusWidget {
     );
   }
 
-  ///
-  ///
-  ///
-  onTapFavorite(BuildContext context, bool add2fav) {
-    final teams = Provider.of<TeamModel>(context);
-    final Team team = teams.selectedModel.teaminfo;
-    final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
-    if (add2fav == true) 
-      favorites.addToListTeams(team);
-    else
-      favorites.removeFromListTeams(team);
-  }
 
   ///
   ///
@@ -334,8 +323,8 @@ class TeamdetailScreen extends LoadingStatusWidget {
               Expanded(
                 flex: 2,
                 child: (isInFavorite
-                    ? this.getButton(context, Icons.star, 'FAVORITE', () => onTapFavorite(context, false), Colors.yellow)
-                    : this.getButton(context, Icons.star_border, 'FAVORITE', () => onTapFavorite(context, true), Colors.white)),
+                    ? this.getButton(context, Icons.star, 'FAVORITE', () => ActionsComposite.onTapTeamFavorite(context, team, false), Colors.yellow)
+                    : this.getButton(context, Icons.star_border, 'FAVORITE', () => ActionsComposite.onTapTeamFavorite(context, team, true), Colors.white)),
               ),
             ],
           ),
