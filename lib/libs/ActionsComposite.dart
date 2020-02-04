@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/models/Arena.dart';
@@ -255,6 +256,47 @@ class ActionsComposite {
     else
       favorites.removeFromListGames(game);
   }
+
+  
+  ///
+  ///
+  ///
+  static Future<void> selectDate(BuildContext context) async {
+    final GamesModel games = Provider.of<GamesModel>(context);
+    final MatchdatesModel matchdates = Provider.of<MatchdatesModel>(context);
+    List<DateTime> availableDates = matchdates.getListOfAvailableDates();
+    DateTime firstDate = DateTime(2016);
+    DateTime lastDate = DateTime(2025);
+    DateTime initialDate = games.selectedDate;
+    Function selectableDayPredicate;
+    if (availableDates.length > 0) {
+      try {
+        firstDate = availableDates[0];
+      } catch (ee) {}
+      try {
+        lastDate = availableDates[availableDates.length - 1];
+      } catch (ee) {}
+      if (initialDate.isBefore(firstDate) || initialDate.isAfter(lastDate)) {
+        initialDate = firstDate;
+      }
+      selectableDayPredicate =
+          (s) => (availableDates.indexOf(s) < 0) ? false : true;
+    }
+    try {
+      final DateTime picked = await showDatePicker(
+          context: context,
+          initialDate: initialDate,
+          firstDate: firstDate,
+          lastDate: lastDate,
+          selectableDayPredicate: selectableDayPredicate);
+
+      if (picked != null && picked != games.selectedDate) {
+        games.selectedDate = picked;
+        await ActionsComposite.reloadGamesData(context);
+      }
+    } catch (ee) {}
+  }
+
 
 
 }

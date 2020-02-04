@@ -14,7 +14,7 @@ class GamesModel extends ChangeNotifier {
   ///
   ///
   ///
-  get list {
+  List<Game> get list {
     return _list;
   }
 
