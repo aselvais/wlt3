@@ -72,6 +72,7 @@ class TeamModel extends ChangeNotifier {
 /*
   _replaceList(List<Team> o)
   {
+    _list = [];
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }

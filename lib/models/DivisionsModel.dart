@@ -73,6 +73,7 @@ class DivisionsModel extends ChangeNotifier {
   ///
   ///
   _replaceList(List<Division> o) {
+    _list = [];
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }

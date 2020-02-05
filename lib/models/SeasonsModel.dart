@@ -73,6 +73,7 @@ class SeasonsModel extends ChangeNotifier {
   ///
   ///
   _replaceList(List<Season> o) {
+    _list = [];
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }

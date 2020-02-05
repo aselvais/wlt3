@@ -73,6 +73,7 @@ class StandingsModel extends ChangeNotifier {
   ///
   ///
   _replaceList(List<Standing> o) {
+    _list = [];
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }

@@ -19,14 +19,8 @@ class Calendarbutton extends StatelessWidget {
   ///
   ///
   ///
-  onTapNavButton(BuildContext context, bool right) {
-    ActionsComposite.loadClosestGamesToDate(context, right, false);
-  }
-
-  ///
-  ///
-  ///
   getNavButton(BuildContext context, bool right) {
+    final GamesModel games = Provider.of<GamesModel>(context);
     return Expanded(
         flex: 1,
         child: Container(
@@ -36,7 +30,7 @@ class Calendarbutton extends StatelessWidget {
             color: Themedata.white,
             child: InkWell(
               child: Icon(right ? Icons.chevron_right : Icons.chevron_left),
-              onTap: () => onTapNavButton(context, right),
+              onTap: () async => await ActionsComposite.loadClosestGamesToDate(context, right, false, games.selectedDate),
             )));
   }
 

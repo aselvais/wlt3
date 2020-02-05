@@ -90,6 +90,7 @@ class GamesModel extends ChangeNotifier {
   ///
   ///
   _replaceList(List<Game> o) {
+    _list = [];
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }

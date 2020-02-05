@@ -73,6 +73,7 @@ class LeaguesModel extends ChangeNotifier {
   ///
   ///
   _replaceList(List<League> o) {
+    _list = [];
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }

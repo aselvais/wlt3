@@ -90,6 +90,7 @@ class MatchdatesModel extends ChangeNotifier {
   ///
   ///
   _replaceList(List<Matchdates> o) {
+    _list = [];
     o.forEach((f) => _list.add(f));
     this.loading = false;
   }

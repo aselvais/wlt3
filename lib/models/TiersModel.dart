@@ -73,6 +73,7 @@ class TiersModel extends ChangeNotifier {
   ///
   ///
   _replaceList(List<Tiers> o) {
+    _list = [];
     o.forEach((f) => _list.add(f));
     try {
       this.selectedModel = this._list.first;
