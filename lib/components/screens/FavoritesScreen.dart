@@ -99,15 +99,9 @@ class FavoritesScreen extends LoadingStatusWidget {
               centerTitle: true,
               bottom: TabBar(
                 indicatorColor: Colors.white,
-                indicatorSize: TabBarIndicatorSize.label,
-                isScrollable: true,
                 tabs: [
-                  Tab(
-                    text: 'Teams',
-                  ),
-                  Tab(
-                    text: 'Games',
-                  )
+                  Tab(text: 'Teams',),
+                  Tab(text: 'Games',)
                 ],
               ),
             ),

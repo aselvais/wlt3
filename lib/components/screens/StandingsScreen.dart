@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wlt3/components/lists/ListStandings.dart';
 import 'package:wlt3/components/lists/ListStandingsTables.dart';
 import 'package:wlt3/components/widgets/Buttonlist.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';

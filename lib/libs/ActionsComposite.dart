@@ -22,12 +22,13 @@ import 'package:wlt3/models/Tiers.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
 ///
-/// Class gathering commong actions we might use from different parts of the
-/// application
+/// Class gathering commong actions we might use
+/// from different parts of the application
 ///
 class ActionsComposite {
+
   ///
-  ///
+  /// go to team detail screen
   ///
   static goToTeamDetailScreen(BuildContext context, int teamId) async {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
@@ -36,14 +37,16 @@ class ActionsComposite {
     // @todo Do this only after loading
     try {
       final standing = Provider.of<StandingsModel>(context);
-      standing.loadData(teammodel.selectedModel.teaminfo.divisionId,
-          teammodel.selectedModel.teaminfo.tierId);
+      standing.loadData(
+          teammodel.selectedModel.teaminfo.divisionId,
+          teammodel.selectedModel.teaminfo.tierId
+      );
     } catch (ee) {}
     Navigator.pushNamed(context, '/teamdetail');
   }
 
   ///
-  ///
+  /// go to games home screen
   ///
   static goToGamesHomeScreen(BuildContext context, Division model) async {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
@@ -68,7 +71,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// set games data on cached selection
   ///
   static setGamesDataOnCachedSelection(
       FavoritesModel _favoritesModel,
@@ -104,7 +107,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// go to season screen
   ///
   static goToSeasonScreen(BuildContext context, League item) async {
     final _list = Provider.of<LeaguesModel>(context);
@@ -118,7 +121,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// go to divisions screen
   ///
   static goToDivisionsScreen(BuildContext context, Season model) async {
     final _list = Provider.of<SeasonsModel>(context);
@@ -133,7 +136,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// tiers to standings
   ///
   static tiersToStandings(BuildContext context, Tiers model) async {
     final tiers = Provider.of<TiersModel>(context);
@@ -148,7 +151,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// login to home
   ///
   static loginToHome(BuildContext context) async {
     final _leaguesModel = Provider.of<LeaguesModel>(context);
@@ -169,7 +172,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// go to tiers screen
   ///
   static goToTiersScreen(BuildContext context) async {
     final tiers = Provider.of<TiersModel>(context);
@@ -179,7 +182,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// on bottom nav item tapped
   ///
   static onBottomNavItemTapped(context, int index) async {
     final cart = Provider.of<BottombarModel>(context);
@@ -206,7 +209,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// reload games data
   ///
   static reloadGamesData(BuildContext context) async {
     final GamesModel games = Provider.of<GamesModel>(context);
@@ -251,7 +254,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// on tap game favorite
   ///
   static onTapGameFavorite(BuildContext context, Game game) {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
@@ -262,7 +265,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// on tap team favorite
   ///
   static onTapTeamFavorite(BuildContext context, Team team, bool add2fav) {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
@@ -273,7 +276,7 @@ class ActionsComposite {
   }
 
   ///
-  ///
+  /// select date
   ///
   static Future<void> selectDate(BuildContext context) async {
     final GamesModel games = Provider.of<GamesModel>(context);

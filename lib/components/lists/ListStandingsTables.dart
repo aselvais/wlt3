@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wlt3/models/Standing.dart';
 import 'package:wlt3/models/Standingdata.dart';
 import 'package:wlt3/models/StandingsDataSource.dart';
 import 'package:wlt3/models/StandingsModel.dart';

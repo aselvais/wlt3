@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wlt3/components/lists/ListStandings.dart';
 import 'package:wlt3/components/lists/ListStandingsTables.dart';
 import 'package:wlt3/components/widgets/GameElement.dart';
 import 'package:wlt3/components/widgets/NewsElement.dart';
@@ -181,7 +180,9 @@ class TeamdetailScreen extends LoadingStatusWidget {
                 automaticallyImplyLeading: false,
                 // backgroundColor: Colors.black,
                 bottom: TabBar(
+                  indicatorColor: Colors.white,
                   isScrollable: true,
+                  indicatorSize: TabBarIndicatorSize.label,
                   tabs: headerWidgets,
                 ),
               )),

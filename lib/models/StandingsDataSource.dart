@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
-import 'package:wlt3/models/Standing.dart';
 import 'package:wlt3/models/Standingdata.dart';
 
 class StandingsDataSource extends DataTableSource {
