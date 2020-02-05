@@ -30,17 +30,15 @@ class ActionsComposite {
   ///
   /// go to team detail screen
   ///
-  static goToTeamDetailScreen(BuildContext context, int teamId) async {
+  static goToTeamDetailScreen(BuildContext context, int teamId) async 
+  {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
     teammodel.loadData(teamId);
     // load standings for this team
     // @todo Do this only after loading
     try {
       final standing = Provider.of<StandingsModel>(context);
-      standing.loadData(
-          teammodel.selectedModel.teaminfo.divisionId,
-          teammodel.selectedModel.teaminfo.tierId
-      );
+      standing.loadData(teammodel.selectedModel.teaminfo.divisionId,teammodel.selectedModel.teaminfo.tierId);
     } catch (ee) {}
     Navigator.pushNamed(context, '/teamdetail');
   }
@@ -48,7 +46,8 @@ class ActionsComposite {
   ///
   /// go to games home screen
   ///
-  static goToGamesHomeScreen(BuildContext context, Division model) async {
+  static goToGamesHomeScreen(BuildContext context, Division model) async 
+  {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     final divisions = Provider.of<DivisionsModel>(context);
     final bottomModel = Provider.of<BottombarModel>(context);
@@ -57,11 +56,21 @@ class ActionsComposite {
     divisions.selectedId = model.id;
     divisions.selectedModel = model;
     favorites.lastSelectedDivision = model;
+    // loading standings
+    try {
+      final TiersModel tiers = Provider.of<TiersModel>(context);
+      await tiers.loadData(divisions?.selectedModel?.id ?? -1);
+      int tiersId = 0;
+      try {
+        tiersId = tiers.selectedModel.id;
+      } catch (eee) {}
+      final standing = Provider.of<StandingsModel>(context);
+      standing.loadData(model.id, tiersId);
+    } catch (ee) {}
+
     // loading game dates
-    final MatchdatesModel matchdatesModel =
-        Provider.of<MatchdatesModel>(context);
-    matchdatesModel.loadData(
-        seasons.selectedModel.id, divisions.selectedModel.id);
+    final MatchdatesModel matchdatesModel = Provider.of<MatchdatesModel>(context);
+    matchdatesModel.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     // loading games
     // await games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     matchdatesModel.selectedDate = DateTime.now();
@@ -79,7 +88,8 @@ class ActionsComposite {
       SeasonsModel _seasonsModel,
       DivisionsModel _divisionsModel,
       TiersModel _tiersModel,
-      MatchdatesModel _matchdatesModel) async {
+      MatchdatesModel _matchdatesModel) async 
+  {
     await _favoritesModel.read();
     await _leaguesModel.loadData();
     // Leagues pre-selection
@@ -91,25 +101,22 @@ class ActionsComposite {
     _seasonsModel.selectedId = _favoritesModel?.lastSelectedSeason?.id ?? -1;
     // Division
     await _divisionsModel.loadData(_seasonsModel.selectedId);
-    _divisionsModel.selectedModel =
-        _favoritesModel?.lastSelectedDivision ?? null;
-    _divisionsModel.selectedId =
-        _favoritesModel?.lastSelectedDivision?.id ?? -1;
+    _divisionsModel.selectedModel = _favoritesModel?.lastSelectedDivision ?? null;
+    _divisionsModel.selectedId = _favoritesModel?.lastSelectedDivision?.id ?? -1;
     // loading game dates
     if (_seasonsModel.selectedModel != null &&
         _divisionsModel.selectedModel != null) {
-      await _matchdatesModel.loadData(
-          _seasonsModel.selectedModel.id, _divisionsModel.selectedModel.id);
+      await _matchdatesModel.loadData(_seasonsModel.selectedModel.id, _divisionsModel.selectedModel.id);
     } else {
-      print(
-          'Error in setGamesDataOnCachedSelection - can not load matches data');
+      print('Error in setGamesDataOnCachedSelection - can not load matches data');
     }
   }
 
   ///
   /// go to season screen
   ///
-  static goToSeasonScreen(BuildContext context, League item) async {
+  static goToSeasonScreen(BuildContext context, League item) async 
+  {
     final _list = Provider.of<LeaguesModel>(context);
     final _list2 = Provider.of<SeasonsModel>(context);
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
@@ -138,7 +145,8 @@ class ActionsComposite {
   ///
   /// tiers to standings
   ///
-  static tiersToStandings(BuildContext context, Tiers model) async {
+  static tiersToStandings(BuildContext context, Tiers model) async 
+  {
     final tiers = Provider.of<TiersModel>(context);
     final bottomModel = Provider.of<BottombarModel>(context);
     tiers.selectedId = model.id;
@@ -153,7 +161,8 @@ class ActionsComposite {
   ///
   /// login to home
   ///
-  static loginToHome(BuildContext context) async {
+  static loginToHome(BuildContext context) async 
+  {
     final _leaguesModel = Provider.of<LeaguesModel>(context);
     final _seasonsModel = Provider.of<SeasonsModel>(context);
     final _divisionsModel = Provider.of<DivisionsModel>(context);
@@ -163,6 +172,20 @@ class ActionsComposite {
         _seasonsModel.selectedId > -1 &&
         _divisionsModel.selectedId > -1) {
       _bottombarModel.idx = 0;
+
+    // loading standings
+    try {
+      final TiersModel tiers = Provider.of<TiersModel>(context);
+      await tiers.loadData(_divisionsModel?.selectedModel?.id ?? -1);
+      int tiersId = 0;
+      try {
+        tiersId = tiers.selectedModel.id;
+      } catch (eee) {}
+      final standing = Provider.of<StandingsModel>(context);
+      standing.loadData(_divisionsModel?.selectedModel?.id, tiersId);
+    } catch (ee) {}
+
+
       // await ActionsComposite.reloadGamesData(context);
       await ActionsComposite.loadClosestGamesToDate(context, true, true);
     } else {
@@ -174,7 +197,8 @@ class ActionsComposite {
   ///
   /// go to tiers screen
   ///
-  static goToTiersScreen(BuildContext context) async {
+  static goToTiersScreen(BuildContext context) async 
+  {
     final tiers = Provider.of<TiersModel>(context);
     final divisions = Provider.of<DivisionsModel>(context);
     tiers.loadData(divisions.selectedModel.id);
@@ -184,7 +208,8 @@ class ActionsComposite {
   ///
   /// on bottom nav item tapped
   ///
-  static onBottomNavItemTapped(context, int index) async {
+  static onBottomNavItemTapped(context, int index) async 
+  {
     final cart = Provider.of<BottombarModel>(context);
     cart.idx = index;
     if (index == 1) // Standings
@@ -211,32 +236,31 @@ class ActionsComposite {
   ///
   /// reload games data
   ///
-  static reloadGamesData(BuildContext context) async {
+  static reloadGamesData(BuildContext context) async 
+  {
     final GamesModel games = Provider.of<GamesModel>(context);
     final Season season = Provider.of<SeasonsModel>(context).selectedModel;
-    final Division division =
-        Provider.of<DivisionsModel>(context).selectedModel;
+    final Division division = Provider.of<DivisionsModel>(context).selectedModel;
     await games.loadData(season.id, division.id);
   }
 
   ///
   /// Load the games (in games screen) to the closest available date
   ///
-  static loadClosestGamesToDate(
-      BuildContext context, bool right, bool allowCurrent) async {
+  static loadClosestGamesToDate(BuildContext context, bool right, bool allowCurrent) async 
+  {
     final GamesModel games = Provider.of<GamesModel>(context);
-    final MatchdatesModel matchdatesModel =
-        Provider.of<MatchdatesModel>(context);
+    final MatchdatesModel matchdatesModel = Provider.of<MatchdatesModel>(context);
     games.selectedDate.subtract(new Duration(days: 1));
-    games.selectedDate =
-        matchdatesModel.getClosestDate(games.selectedDate, right, allowCurrent);
+    games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right, allowCurrent);
     await ActionsComposite.reloadGamesData(context);
   }
 
   ///
   /// Launch map for an arean (passed as param)
   ///
-  static goToMaps(BuildContext context, Arena arena) async {
+  static goToMaps(BuildContext context, Arena arena) async 
+  {
     final availableMaps = await MapLauncher.installedMaps;
     // @todo choise the right one
     // print(availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
@@ -256,7 +280,8 @@ class ActionsComposite {
   ///
   /// on tap game favorite
   ///
-  static onTapGameFavorite(BuildContext context, Game game) {
+  static onTapGameFavorite(BuildContext context, Game game) 
+  {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     if (favorites.isInGamesFavorite(game.id) == false)
       favorites.addToListGames(game);
@@ -267,7 +292,8 @@ class ActionsComposite {
   ///
   /// on tap team favorite
   ///
-  static onTapTeamFavorite(BuildContext context, Team team, bool add2fav) {
+  static onTapTeamFavorite(BuildContext context, Team team, bool add2fav) 
+  {
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     if (add2fav == true)
       favorites.addToListTeams(team);
@@ -278,7 +304,8 @@ class ActionsComposite {
   ///
   /// select date
   ///
-  static Future<void> selectDate(BuildContext context) async {
+  static Future<void> selectDate(BuildContext context) async 
+  {
     final GamesModel games = Provider.of<GamesModel>(context);
     final MatchdatesModel matchdates = Provider.of<MatchdatesModel>(context);
     List<DateTime> availableDates = matchdates.getListOfAvailableDates();
@@ -296,8 +323,7 @@ class ActionsComposite {
       if (initialDate.isBefore(firstDate) || initialDate.isAfter(lastDate)) {
         initialDate = firstDate;
       }
-      selectableDayPredicate =
-          (s) => (availableDates.indexOf(s) < 0) ? false : true;
+      selectableDayPredicate = (s) => (availableDates.indexOf(s) < 0) ? false : true;
     }
     try {
       final DateTime picked = await showDatePicker(
@@ -317,7 +343,8 @@ class ActionsComposite {
   ///
   /// Launch an URL
   ///
-  static launchURL(String url) async {
+  static launchURL(String url) async 
+  {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
