@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/News.dart';
 
 class NewsElement extends StatelessWidget {
@@ -8,6 +9,26 @@ class NewsElement extends StatelessWidget {
   ///
   ///
   NewsElement({Key key, @required this.news}) : super(key: key);
+
+  ///
+  ///
+  ///
+  List<Widget> getText(BuildContext context)
+  {
+    return [
+      Text(news.title, 
+          textAlign: TextAlign.right,
+          style: TextStyle(color: Colors.black, fontSize: 14.0, fontWeight: FontWeight.bold)
+      ),
+      SizedBox(height: 15),
+      Text(news.description),
+      SizedBox(height: 15),
+      Text(news.date, 
+          textAlign: TextAlign.right,
+          style: TextStyle(color: Colors.grey, fontSize: 14.0)
+      ),
+    ];
+  }
 
   ///
   ///
@@ -22,15 +43,13 @@ class NewsElement extends StatelessWidget {
         ),
         margin: const EdgeInsets.all(5.0),
         padding: const EdgeInsets.all(10.0),
-        child: Text(news.title +
-            "\n" +
-            news.date +
-            "\n" +
-            news.description +
-            "\n" +
-            news.url),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.min,
+          children: getText(context),
+        ),
       ),
-      onTap: () => print('Clicked'),
+      onTap: () => ActionsComposite.launchURL(news.url),
     );
   }
 }

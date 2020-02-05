@@ -66,15 +66,12 @@ class TeamdetailScreen extends LoadingStatusWidget {
   ///
   ///
   Widget getStandings(BuildContext context, TeamModel teams) {
-    return 
-    SingleChildScrollView(
-            child:
-    Container(
+    return SingleChildScrollView(
+        child: Container(
       padding: const EdgeInsets.all(10.0),
       color: Themedata.greyBackground,
       child: ListStandingsTables(),
-    )
-    );
+    ));
   }
 
   ///
@@ -280,7 +277,6 @@ class TeamdetailScreen extends LoadingStatusWidget {
     );
   }
 
-
   ///
   ///
   ///
@@ -327,8 +323,20 @@ class TeamdetailScreen extends LoadingStatusWidget {
               Expanded(
                 flex: 2,
                 child: (isInFavorite
-                    ? this.getButton(context, Icons.star, 'FAVORITE', () => ActionsComposite.onTapTeamFavorite(context, team, false), Colors.yellow)
-                    : this.getButton(context, Icons.star_border, 'FAVORITE', () => ActionsComposite.onTapTeamFavorite(context, team, true), Colors.white)),
+                    ? this.getButton(
+                        context,
+                        Icons.star,
+                        'FAVORITE',
+                        () => ActionsComposite.onTapTeamFavorite(
+                            context, team, false),
+                        Colors.yellow)
+                    : this.getButton(
+                        context,
+                        Icons.star_border,
+                        'FAVORITE',
+                        () => ActionsComposite.onTapTeamFavorite(
+                            context, team, true),
+                        Colors.white)),
               ),
             ],
           ),
