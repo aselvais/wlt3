@@ -45,20 +45,17 @@ class ListTiers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<TiersModel>(context);
-
-    List<Widget> wl = new List();
     if (_list.loading == true) {
       return Center(child: CircularProgressIndicator());
     } else {
-      _list.list.forEach((Tiers f) => wl.add(InkWell(
+      return ListView(
+        children: _list.list.map<Widget>((Tiers f) => (InkWell(
             child: Container(
               height: 60,
               child: getButton(context, f),
             ),
             onTap: () => onTapElement(context, f),
-          )));
-      return ListView(
-        children: wl,
+          ))).toList(),
       );
     }
   }

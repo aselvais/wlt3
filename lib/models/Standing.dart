@@ -14,12 +14,10 @@ class Standing {
   ///
   ///
   factory Standing.fromJson(Map<String, dynamic> json) {
-    List<Standingdata> toret = new List();
-    json['data'].forEach((json) => toret.add(Standingdata.fromJson(json)));
     return Standing(
       title: json['title'],
       metaLeagueid: json['meta_leagueid'],
-      data: toret,
+      data: json['data'].map<Standingdata>((json) => (Standingdata.fromJson(json))).toList(),
     );
   }
 }

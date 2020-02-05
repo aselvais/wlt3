@@ -21,13 +21,11 @@ class TeamdetailScreen extends LoadingStatusWidget {
   ///
   Widget getPreviousGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
-    List<Widget> wl = new List();
-    gamesdata.past.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
         padding: const EdgeInsets.all(10.0),
         color: Themedata.greyBackground,
         child: ListView(
-          children: wl,
+          children: gamesdata.past.map<Widget>((Game f) => (GameElement(game: f))).toList(),
         ));
   }
 
@@ -36,13 +34,11 @@ class TeamdetailScreen extends LoadingStatusWidget {
   ///
   Widget getTodaysGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
-    List<Widget> wl = new List();
-    gamesdata.today.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
         padding: const EdgeInsets.all(10.0),
         color: Themedata.greyBackground,
         child: ListView(
-          children: wl,
+          children: gamesdata.today.map<Widget>((Game f) => (GameElement(game: f))).toList(),
         ));
   }
 
@@ -51,13 +47,11 @@ class TeamdetailScreen extends LoadingStatusWidget {
   ///
   Widget getFutureGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
-    List<Widget> wl = new List();
-    gamesdata.upcoming.forEach((Game f) => wl.add(GameElement(game: f)));
     return Container(
         padding: const EdgeInsets.all(10.0),
         color: Themedata.greyBackground,
         child: ListView(
-          children: wl,
+          children: gamesdata.upcoming.map<Widget>((Game f) => (GameElement(game: f))).toList(),
         ));
   }
 
@@ -78,13 +72,11 @@ class TeamdetailScreen extends LoadingStatusWidget {
   ///
   Widget getNews(BuildContext context, TeamModel teams) {
     final List<News> news = teams.selectedModel.news;
-    List<Widget> wl = new List();
-    news.forEach((News f) => wl.add(NewsElement(news: f)));
     return Container(
         padding: const EdgeInsets.all(10.0),
         color: Themedata.greyBackground,
         child: ListView(
-          children: wl,
+          children: news.map<Widget>((News f) => (NewsElement(news: f))).toList(),
         ));
   }
 
@@ -93,13 +85,11 @@ class TeamdetailScreen extends LoadingStatusWidget {
   ///
   Widget getTweets(BuildContext context, TeamModel teams) {
     final List<Tweet> tweets = teams.selectedModel.tweets;
-    List<Widget> wl = new List();
-    tweets.forEach((Tweet f) => wl.add(TweetsElement(tweet: f)));
     return Container(
         padding: const EdgeInsets.all(10.0),
         color: Themedata.greyBackground,
         child: ListView(
-          children: wl,
+          children: tweets.map<Widget>((Tweet f) => (TweetsElement(tweet: f))).toList(),
         ));
   }
 

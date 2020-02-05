@@ -45,20 +45,14 @@ class ListDivisions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<DivisionsModel>(context);
-
-    List<Widget> wl = new List();
     if (_list.loading == true) {
       return Center(child: CircularProgressIndicator());
     } else {
-      _list.list.forEach((Division f) => wl.add(InkWell(
-            child: Container(
-              height: 60,
-              child: getButton(context, f),
-            ),
-            onTap: () => onTapElement(context, f),
-          )));
       return ListView(
-        children: wl,
+        children: _list.list.map<Widget>((Division f) => InkWell(
+            child: Container(height: 60, child: getButton(context, f),),
+            onTap: () => onTapElement(context, f),
+        )).toList(),
       );
     }
   }

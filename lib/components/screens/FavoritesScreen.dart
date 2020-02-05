@@ -62,12 +62,10 @@ class FavoritesScreen extends LoadingStatusWidget {
   ///
   Widget getTeams(BuildContext context) {
     final favorites = Provider.of<FavoritesModel>(context);
-    List<Widget> wl = new List();
-    favorites.listTeams.forEach((Team f) => wl.add(TeamElement(team: f)));
-    if (wl.length == 0)
+    if (favorites.listTeams.length == 0)
       return getEmptyContent(context, '\nNothing here yet ...\n\nUse the star icon to add teams to your favorite.');
     else 
-      return getContent(context, ListView(children: wl,));
+      return getContent(context, ListView(children: favorites.listTeams.map<Widget>((Team f) => (TeamElement(team: f))).toList(),));
   }
 
   ///
@@ -75,12 +73,10 @@ class FavoritesScreen extends LoadingStatusWidget {
   ///
   Widget getGames(BuildContext context) {
     final favorites = Provider.of<FavoritesModel>(context);
-    List<Widget> wl = new List();
-    favorites.listGames.forEach((Game f) => wl.add(GameElement(game: f)));
-    if (wl.length == 0)
+    if (favorites.listGames.length == 0)
       return getEmptyContent(context, '\nNothing here yet ...\n\nUse the star icon to add games to your favorite.');
     else 
-      return getContent(context, ListView(children: wl,));
+      return getContent(context, ListView(children: favorites.listGames.map<Widget>((Game f) => (GameElement(game: f))).toList(),));
   }
 
   ///

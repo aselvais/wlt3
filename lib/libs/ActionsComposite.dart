@@ -38,7 +38,7 @@ class ActionsComposite {
     // @todo Do this only after loading
     try {
       final standing = Provider.of<StandingsModel>(context);
-      standing.loadData(teammodel.selectedModel.teaminfo.divisionId,teammodel.selectedModel.teaminfo.tierId);
+      standing.loadData(teammodel.selectedModel.teaminfo.divisionId, teammodel.selectedModel.teaminfo.tierId);
     } catch (ee) {}
     Navigator.pushNamed(context, '/teamdetail');
   }
@@ -53,28 +53,25 @@ class ActionsComposite {
     final bottomModel = Provider.of<BottombarModel>(context);
     // final games = Provider.of<GamesModel>(context);
     final seasons = Provider.of<SeasonsModel>(context);
+    final MatchdatesModel matchdatesModel = Provider.of<MatchdatesModel>(context);
+    final TiersModel tiers = Provider.of<TiersModel>(context);
+    final standing = Provider.of<StandingsModel>(context);
+
     divisions.selectedId = model.id;
     divisions.selectedModel = model;
     favorites.lastSelectedDivision = model;
-    // loading standings
-    try {
-      final TiersModel tiers = Provider.of<TiersModel>(context);
-      await tiers.loadData(divisions?.selectedModel?.id ?? -1);
-      int tiersId = 0;
-      try {
-        tiersId = tiers.selectedModel.id;
-      } catch (eee) {}
-      final standing = Provider.of<StandingsModel>(context);
-      standing.loadData(model.id, tiersId);
-    } catch (ee) {}
 
     // loading game dates
-    final MatchdatesModel matchdatesModel = Provider.of<MatchdatesModel>(context);
-    matchdatesModel.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
+    await matchdatesModel.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
+
+    // loading standings
+    await tiers.loadData(divisions?.selectedModel?.id ?? -1);
+    await standing.loadData(model.id, tiers?.selectedModel?.id ?? -1);
+
     // loading games
     // await games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     matchdatesModel.selectedDate = DateTime.now();
-    ActionsComposite.loadClosestGamesToDate(context, true, true);
+    await ActionsComposite.loadClosestGamesToDate(context, true, true);
     bottomModel.idx = 0;
     Navigator.popUntil(context, ModalRoute.withName('/home'));
   }
@@ -251,8 +248,9 @@ class ActionsComposite {
   {
     final GamesModel games = Provider.of<GamesModel>(context);
     final MatchdatesModel matchdatesModel = Provider.of<MatchdatesModel>(context);
+
     games.selectedDate.subtract(new Duration(days: 1));
-    games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right, allowCurrent);
+    games.selectedDate = await matchdatesModel.getClosestDate(games.selectedDate, right, allowCurrent);
     await ActionsComposite.reloadGamesData(context);
   }
 

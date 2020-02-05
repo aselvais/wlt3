@@ -18,16 +18,11 @@ class Teamdata {
   ///
   ///
   factory Teamdata.fromJson(Map<String, dynamic> json) {
-    List<News> newsList = new List();
-    json['news'].forEach((json) => newsList.add(News.fromJson(json)));
-    List<Tweet> tweetsList = new List();
-    json['tweets'].forEach((json) => tweetsList.add(Tweet.fromJson(json)));
-
     return Teamdata(
       teaminfo: Team.fromJson(json['teaminfo']),
       games: Gamesdata.fromJson(json['games']),
-      news: newsList,
-      tweets: tweetsList,
+      news: json['news'].map<News>((json) => (News.fromJson(json))).toList(),
+      tweets: json['tweets'].map<Tweet>((json) => (Tweet.fromJson(json))).toList(),
     );
   }
 }

@@ -59,18 +59,13 @@ class ListGames extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<GamesModel>(context);
-    List<Widget> wl = new List();
     if (_list.loading == true) {
       return Center(child: CircularProgressIndicator());
     } else {
       if (_list.list.length == 0) {
-        return getEmptyContent(context,
-            '\nNo matches...\n\nClick on the calendar to chose another date.');
+        return getEmptyContent(context, '\nNo matches...\n\nClick on the calendar to chose another date.');
       } else {
-        _list.list.forEach((Game f) => wl.add(GameElement(game: f)));
-        return ListView(
-          children: wl,
-        );
+        return ListView(children: _list.list.map<Widget>((Game f) => GameElement(game: f)).toList(),);
       }
     }
   }

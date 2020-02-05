@@ -31,8 +31,7 @@ class GamesScreen extends LoadingStatusWidget {
   @override
   Widget build(BuildContext context) {
     final Season season = Provider.of<SeasonsModel>(context).selectedModel;
-    final Division division =
-        Provider.of<DivisionsModel>(context).selectedModel;
+    final Division division = Provider.of<DivisionsModel>(context).selectedModel;
 
     try {
     if (this.isLoading(context) == true) {
@@ -49,14 +48,14 @@ class GamesScreen extends LoadingStatusWidget {
                       child: InkWell(
                         child: Buttonlist(
                             title: 'Season', subtitle: season?.name ?? ''),
-                        onTap: () => onTapSeasons(context),
+                            onTap: () => onTapSeasons(context),
                       ),
                     ),
                     Expanded(
                       child: InkWell(
                         child: Buttonlist(
                             title: 'Division', subtitle: division?.name ?? ''),
-                        onTap: () => onTapDivisions(context),
+                            onTap: () => onTapDivisions(context),
                       ),
                     )
                   ],
@@ -73,10 +72,7 @@ class GamesScreen extends LoadingStatusWidget {
       return Scaffold(
         backgroundColor: Colors.yellow,
         body: Center(
-          child: Text(
-            'Games',
-            style: TextStyle(fontSize: 30, color: Colors.black),
-          ),
+          child: Text('Games', style: TextStyle(fontSize: 30, color: Colors.black), ),
         ),
       );
     }

@@ -22,7 +22,9 @@ import 'package:wlt3/models/StandingsModel.dart';
 import 'package:wlt3/models/TeamModel.dart';
 import 'package:wlt3/models/TiersModel.dart';
 
-class RouterScreen extends StatelessWidget {
+class RouterScreen extends StatelessWidget 
+{
+
   FavoritesModel _favoritesModel = FavoritesModel();
   LeaguesModel _leaguesModel = LeaguesModel();
   SeasonsModel _seasonsModel = SeasonsModel();
@@ -49,23 +51,16 @@ class RouterScreen extends StatelessWidget {
 
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<FavoritesModel>(
-              create: (context) => _favoritesModel),
-          ChangeNotifierProvider<LeaguesModel>(
-              create: (context) => _leaguesModel),
-          ChangeNotifierProvider<SeasonsModel>(
-              create: (context) => _seasonsModel),
-          ChangeNotifierProvider<DivisionsModel>(
-              create: (context) => _divisionsModel),
-          ChangeNotifierProvider<TiersModel>(create: (context) => _tiersModel),
-          ChangeNotifierProvider<GamesModel>(create: (context) => _gamesModel),
-          ChangeNotifierProvider<StandingsModel>(
-              create: (context) => _standingsModel),
-          ChangeNotifierProvider<TeamModel>(create: (context) => _teamModel),
-          ChangeNotifierProvider<BottombarModel>(
-              create: (context) => _bottombarModel),
-          ChangeNotifierProvider<MatchdatesModel>(
-              create: (context) => _matchdatesModel),
+          ChangeNotifierProvider<FavoritesModel>( create: (context) => _favoritesModel),
+          ChangeNotifierProvider<LeaguesModel>( create: (context) => _leaguesModel),
+          ChangeNotifierProvider<SeasonsModel>( create: (context) => _seasonsModel),
+          ChangeNotifierProvider<DivisionsModel>( create: (context) => _divisionsModel),
+          ChangeNotifierProvider<TiersModel>( create: (context) => _tiersModel),
+          ChangeNotifierProvider<GamesModel>( create: (context) => _gamesModel),
+          ChangeNotifierProvider<StandingsModel>( create: (context) => _standingsModel),
+          ChangeNotifierProvider<TeamModel>( create: (context) => _teamModel),
+          ChangeNotifierProvider<BottombarModel>( create: (context) => _bottombarModel),
+          ChangeNotifierProvider<MatchdatesModel>( create: (context) => _matchdatesModel),
         ],
         child: MaterialApp(
             title: 'Win Lose or Tie',
