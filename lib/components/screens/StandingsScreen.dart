@@ -53,9 +53,11 @@ class StandingsScreen extends StatelessWidget {
               getTiersButton(context),
               Expanded(
                 flex: 9,
-                child: SingleChildScrollView(
-                  child: ListStandingsTables(),
-                ),
+                child: (ActionsComposite.isLoading(context) == true)
+                    ? Center(child: CircularProgressIndicator())
+                    : SingleChildScrollView(
+                        child: ListStandingsTables(),
+                      ),
               )
             ],
           ),

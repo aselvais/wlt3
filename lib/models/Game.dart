@@ -1,3 +1,4 @@
+import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/Arena.dart';
 import 'package:wlt3/models/Gameinfo.dart';
 
@@ -69,8 +70,7 @@ class Game {
         'type': type,
         'arena': arena.toJson(),
         'time': time,
-        'info': info
-            .toJson(), //json.containsKey('info') ? Gameinfo.fromJson(json['info']) : null,
+        'info': info.toJson(), //json.containsKey('info') ? Gameinfo.fromJson(json['info']) : null,
         'divisionId': divisionId,
         'divisionName': divisionName,
         'dateTime': dateTime,
@@ -83,4 +83,6 @@ class Game {
         'shareUrl': shareUrl,
         'linkStreamVideo': linkStreamVideo,
       };
+
+
 }

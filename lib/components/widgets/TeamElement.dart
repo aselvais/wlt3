@@ -4,6 +4,7 @@ import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Team.dart';
+import 'package:wlt3/models/TeamModel.dart';
 
 ///
 ///
@@ -77,6 +78,8 @@ class TeamElement extends StatelessWidget {
   ///
   @override
   Widget build(BuildContext context) {
+    final TeamModel teammodel = Provider.of<TeamModel>(context);
+
     return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -85,7 +88,9 @@ class TeamElement extends StatelessWidget {
         margin: const EdgeInsets.all(5.0),
         padding: const EdgeInsets.all(10.0),
         height: 60,
-        child: getButton(context),
+        child: (ActionsComposite.isLoading(context) == true && team.teamId == teammodel.selectedId)
+                ? Center(child: CircularProgressIndicator())
+                : getButton(context),
       );
   }
 }

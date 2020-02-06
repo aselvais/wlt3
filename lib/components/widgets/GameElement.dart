@@ -5,6 +5,7 @@ import 'package:wlt3/libs/FormaterElem.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Game.dart';
+import 'package:wlt3/models/GamesModel.dart';
 
 class GameElement extends StatelessWidget {
   final Game game;
@@ -208,6 +209,7 @@ class GameElement extends StatelessWidget {
   ///
   @override
   Widget build(BuildContext context) {
+    final gamesModel = Provider.of<GamesModel>(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -216,7 +218,9 @@ class GameElement extends StatelessWidget {
       margin: const EdgeInsets.all(5.0),
       padding: const EdgeInsets.all(10.0),
       // height: 100,
-      child: getButton(context),
+      child: (ActionsComposite.isLoading(context) == true && gamesModel.selectedId == game.id)
+                ? Center(child: CircularProgressIndicator())
+                : getButton(context),
     );
   }
 }

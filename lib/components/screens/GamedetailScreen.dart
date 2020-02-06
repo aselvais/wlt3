@@ -322,7 +322,8 @@ class GamedetailScreen extends StatelessWidget {
       margin: const EdgeInsets.all(25.0),
       padding: const EdgeInsets.all(30.0),
       width: MediaQuery.of(context).size.width,
-      child: Column(children: this.getContentData(context)),
+      child: 
+      (ActionsComposite.isLoading(context) == true) ? Center(child: CircularProgressIndicator()) : Column(children: this.getContentData(context) ),
     );
   }
 

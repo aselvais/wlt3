@@ -110,4 +110,30 @@ class GamesModel extends ChangeNotifier {
         .catchError((e) => throw Exception(e))
         .whenComplete(() => notifyListeners());
   }
+
+
+
+
+  ///
+  ///
+  ///
+  _whenGotOneGame(Game game)
+  {
+    this.selectedModel = game;
+    this.loading = false;
+  }
+
+  ///
+  ///
+  ///      
+  loadOneGameData(int gameId) async {
+    if (gameId < 0) return null;
+    this._loading = true;
+    await _api
+        .getGame(gameId)
+        .then((dt) => _whenGotOneGame(dt))
+        .catchError((e) => throw Exception(e))
+        .whenComplete(() => notifyListeners());
+  }
+
 }

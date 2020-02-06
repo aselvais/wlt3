@@ -39,11 +39,17 @@ class StandingsDataSource extends DataTableSource {
     return _selectedCount;
   }
 
+  ///
+  ///
+  ///
   _onTap(teamId)
   {
     ActionsComposite.goToTeamDetailScreen(_context, teamId);
   }
 
+  ///
+  ///
+  ///
   List<DataCell> getDataCells(Standingdata standingdata)
   {
     List<DataCell> toret = [];

@@ -192,9 +192,6 @@ class ListStandings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<StandingsModel>(context);
-    if (ActionsComposite.isLoading(context) == true) {
-      return Center(child: CircularProgressIndicator());
-    } else {
       return ListView(
         children: _list.list.map<Widget>((Standing f) => (InkWell(
             child: Container(
@@ -203,8 +200,6 @@ class ListStandings extends StatelessWidget {
             onTap: () => onTapElement(context, f),
           ))).toList(),
       );
-    }
   }
-  
 
 }

@@ -78,6 +78,21 @@ class ApiaccessWlt extends ApiaccessAbstract {
   }
 
   ///
+  /// Get one game by Id
+  ///
+  Future<Game> getGame(int gameId) async {
+    String fullurl = baseurl +
+        'game/?gameId=' + gameId.toString();
+    final response = await http.get(fullurl);
+    if (response.statusCode == 200) {
+      dynamic djson = json.decode(response.body);
+      return Game.fromJson(djson);
+    } else {
+      throw Exception('Failed to load response.body');
+    }
+  }
+
+  ///
   ///
   ///
   Future<List<Tiers>> getTiers(int divisionId) async {

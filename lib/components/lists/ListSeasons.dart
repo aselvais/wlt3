@@ -35,13 +35,6 @@ class ListSeasons extends StatelessWidget {
   ///
   ///
   ///
-  onTapElement(BuildContext context, Season model) {
-    ActionsComposite.goToDivisionsScreen(context, model);
-  }
-
-  ///
-  ///
-  ///
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<SeasonsModel>(context);
@@ -54,7 +47,7 @@ class ListSeasons extends StatelessWidget {
               height: 60,
               child: getButton(context, f),
             ),
-            onTap: () => onTapElement(context, f),
+            onTap: () => ActionsComposite.goToDivisionsScreen(context, f),
           ))).toList(),
       );
     }

@@ -29,32 +29,27 @@ class ActionsComposite {
 
   ///
   /// go to team detail screen (from different location: favorites, standings, ...)
-  /// @todo make sure we load the right leagues, seasons, divisions, ...
   ///
   static goToTeamDetailScreen(BuildContext context, int teamId) async 
   {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
-    teammodel.loadData(teamId);
-    // load standings for this team
-    // @todo Do this only after loading
-    try {
-      final StandingsModel standing = Provider.of<StandingsModel>(context);
-      standing.loadData(teammodel.selectedModel.teaminfo.divisionId, teammodel.selectedModel.teaminfo.tierId);
-    } catch (ee) {}
+    teammodel.selectedId = teamId;
+    await teammodel.loadData(teamId);
     Navigator.pushNamed(context, '/teamdetail');
   }
 
   ///
   /// Go to game detail screen (from games list used everywhere; favorites, games and so on)
-  /// @todo make sure we load the right leagues, seasons, divisions, ...
+  /// @todo load the latest version of the game data
   ///
   static goToGameDetailScreen(BuildContext context, Game game) async 
   {
-    final _list = Provider.of<GamesModel>(context);
-    _list.selectedId = game.id;
-    _list.selectedModel = game;
+    final gamesModel = Provider.of<GamesModel>(context);
+    gamesModel.selectedId = game.id;
+    gamesModel.selectedModel = game;
+    await gamesModel.loadOneGameData(game.id);
     Navigator.pushNamed(context, '/gamedetail');
-  }  
+  }
 
   ///
   /// go to games home screen
