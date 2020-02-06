@@ -5,7 +5,6 @@ import 'package:wlt3/libs/FormaterElem.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Game.dart';
-import 'package:wlt3/models/GamesModel.dart';
 
 class GameElement extends StatelessWidget {
   final Game game;
@@ -180,7 +179,7 @@ class GameElement extends StatelessWidget {
                     : Container(),
               ],
             ),
-            onTap: () => onTapElement(context),
+            onTap: () => ActionsComposite.goToGameDetailScreen(context, game),
           ),
         ),
         Expanded(
@@ -195,31 +194,13 @@ class GameElement extends StatelessWidget {
               InkWell( 
                 child: Container(padding: EdgeInsets.only(bottom: 40.0), 
                 child: this.getTheIcon(context, 'location', false)),
-                onTap: () => onTapLocation(context), 
+                onTap: () => ActionsComposite.goToMaps(context, game.arena), 
               ),
             ],
           ),
         )
       ],
     );
-  }
-
-  ///
-  ///
-  ///
-  onTapLocation(BuildContext context)
-  {
-    ActionsComposite.goToMaps(context, game.arena);
-  }
-
-  ///
-  ///
-  ///
-  onTapElement(BuildContext context) {
-    final _list = Provider.of<GamesModel>(context);
-    _list.selectedId = game.id;
-    _list.selectedModel = game;
-    Navigator.pushNamed(context, '/gamedetail');
   }
 
   ///

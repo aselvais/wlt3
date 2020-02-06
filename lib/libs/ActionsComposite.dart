@@ -28,7 +28,8 @@ import 'package:wlt3/models/TiersModel.dart';
 class ActionsComposite {
 
   ///
-  /// go to team detail screen
+  /// go to team detail screen (from different location: favorites, standings, ...)
+  /// @todo make sure we load the right leagues, seasons, divisions, ...
   ///
   static goToTeamDetailScreen(BuildContext context, int teamId) async 
   {
@@ -42,6 +43,18 @@ class ActionsComposite {
     } catch (ee) {}
     Navigator.pushNamed(context, '/teamdetail');
   }
+
+  ///
+  /// Go to game detail screen (from games list used everywhere; favorites, games and so on)
+  /// @todo make sure we load the right leagues, seasons, divisions, ...
+  ///
+  static goToGameDetailScreen(BuildContext context, Game game) async 
+  {
+    final _list = Provider.of<GamesModel>(context);
+    _list.selectedId = game.id;
+    _list.selectedModel = game;
+    Navigator.pushNamed(context, '/gamedetail');
+  }  
 
   ///
   /// go to games home screen
