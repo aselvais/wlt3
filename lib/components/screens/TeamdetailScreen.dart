@@ -354,13 +354,20 @@ class TeamdetailScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: getAppBarElement(context),
-        body: Column(
+        body: 
+        
+        ((ActionsComposite.isLoading(context) == false)
+                  ?
+        Column(
           children: <Widget>[
             getHeaderElement(context, teams),
             //getBodyElement(context, team),
             getTabsView(context, teams)
           ],
-        ),
+        )
+        : Center(child:CircularProgressIndicator()))
+        
+        ,
       );
     
   }
