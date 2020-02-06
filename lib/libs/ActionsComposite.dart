@@ -362,6 +362,7 @@ class ActionsComposite {
     final _matchdatesModel = Provider.of<MatchdatesModel>(context);
     final _teamModel = Provider.of<TeamModel>(context);
     final _tiersModel = Provider.of<TiersModel>(context);
+
     if (_leaguesModel.loading == true ||
         _seasonsModel.loading == true ||
         _divisionsModel.loading == true ||
