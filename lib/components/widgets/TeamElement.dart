@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
+import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/FavoritesModel.dart';
 import 'package:wlt3/models/Team.dart';
 
@@ -56,8 +57,8 @@ class TeamElement extends StatelessWidget {
         Expanded(
           flex: 8,
           child: InkWell(child: Column(children: [
-            Text(team.teamName),
-            Text(team.divisionName),
+            Text(team.teamName.toUpperCase(), overflow: TextOverflow.ellipsis, style: TextStyle( color: Themedata.blue, fontSize: 14.0, fontWeight: FontWeight.bold)),
+            Text(team.divisionName, overflow: TextOverflow.ellipsis, style: TextStyle( fontSize: 12.0)),
           ]), onTap: () => onTapElement(context)),
         ),
         Expanded(
@@ -83,7 +84,7 @@ class TeamElement extends StatelessWidget {
         ),
         margin: const EdgeInsets.all(5.0),
         padding: const EdgeInsets.all(10.0),
-        // height: 100,
+        height: 60,
         child: getButton(context),
       );
   }

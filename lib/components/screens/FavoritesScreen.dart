@@ -64,7 +64,9 @@ class FavoritesScreen extends StatelessWidget {
     if (favorites.listTeams.length == 0)
       return getEmptyContent(context, '\nNothing here yet ...\n\nUse the star icon to add teams to your favorite.');
     else 
-      return getContent(context, ListView(children: favorites.listTeams.map<Widget>((Team f) => (TeamElement(team: f))).toList(),));
+      return getContent(context, ListView(
+          children: favorites.listTeams.map<Widget>((Team f) => (TeamElement(team: f))).toList(),
+      ));
   }
 
   ///
