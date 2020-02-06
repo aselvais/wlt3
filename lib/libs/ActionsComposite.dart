@@ -69,7 +69,7 @@ class ActionsComposite {
     // loading games
     await games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
     matchdatesModel.selectedDate = DateTime.now();
-    ActionsComposite.loadClosestGamesToDate(context, true, true, games.selectedDate);
+    ActionsComposite.loadClosestGamesToDate(context, true, true);
     bottomModel.idx = 0;
     Navigator.popUntil(context, ModalRoute.withName('/home'));
   }
@@ -183,7 +183,7 @@ class ActionsComposite {
       standing.loadData(_divisionsModel?.selectedModel?.id, tiersId);
     } catch (ee) {}
       // await ActionsComposite.reloadGamesData(context);
-      await ActionsComposite.loadClosestGamesToDate(context, true, true, games.selectedDate);
+      await ActionsComposite.loadClosestGamesToDate(context, true, true);
     } else {
       _bottombarModel.idx = 2;
     }
@@ -245,11 +245,12 @@ class ActionsComposite {
   ///
   /// Load the games (in games screen) to the closest available date
   ///
-  static loadClosestGamesToDate(BuildContext context, bool right, bool allowCurrent, DateTime selectedDate) async 
+  static loadClosestGamesToDate(BuildContext context, bool right, bool allowCurrent) async 
   {
+    final GamesModel games = Provider.of<GamesModel>(context);
     final MatchdatesModel matchdatesModel = Provider.of<MatchdatesModel>(context);
-    selectedDate.subtract(new Duration(days: 1));
-    selectedDate = matchdatesModel.getClosestDate(selectedDate, right, allowCurrent);
+    games.selectedDate.subtract(new Duration(days: 1));
+    games.selectedDate = matchdatesModel.getClosestDate(games.selectedDate, right, allowCurrent);
     await ActionsComposite.reloadGamesData(context);
   }
 
