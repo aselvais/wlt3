@@ -9,9 +9,8 @@ import 'package:wlt3/models/GamesModel.dart';
 import 'package:wlt3/models/Team.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:share/share.dart';
-import 'package:wlt3/components/LoadingStatusWidget.dart';
 
-class GamedetailScreen extends LoadingStatusWidget {
+class GamedetailScreen extends StatelessWidget {
   final String _title = 'Game detail';
 
   ///
@@ -332,9 +331,7 @@ class GamedetailScreen extends LoadingStatusWidget {
   ///
   @override
   Widget build(BuildContext context) {
-    if (this.isLoading(context) == true) {
-      return this.getLoadingWidget(context);
-    } else return Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: new Text(_title),
           backgroundColor: Colors.black,

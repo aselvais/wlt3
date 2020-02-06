@@ -45,7 +45,7 @@ class ListSeasons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<SeasonsModel>(context);
-    if (_list.loading == true) {
+    if (ActionsComposite.isLoading(context) == true) {
       return Center(child: CircularProgressIndicator());
     } else {
       return ListView(

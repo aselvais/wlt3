@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/Standingdata.dart';
 import 'package:wlt3/models/StandingsDataSource.dart';
 import 'package:wlt3/models/StandingsModel.dart';
@@ -39,7 +40,7 @@ class ListStandingsTables extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     StandingsModel _standingsModel = Provider.of<StandingsModel>(context);
-    if (_standingsModel.loading == true) return Center(child: CircularProgressIndicator());
+    if (ActionsComposite.isLoading(context) == true) return Center(child: CircularProgressIndicator());
     else 
     {
       List<Widget> _tables = <Widget>[];

@@ -52,9 +52,9 @@ class ListLeagues extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<LeaguesModel>(context);
-    if (_list.loading == true) {
+    if (ActionsComposite.isLoading(context) == true) {
       return Center(child: CircularProgressIndicator());
-    } else {
+    } else 
       return ListView(
         children: _list.list.map<Widget>((League f) => (InkWell(
             child: Container(
@@ -64,6 +64,5 @@ class ListLeagues extends StatelessWidget {
             onTap: () => onTapElement(context, f),
           ))).toList(),
       );
-    }
   }
 }

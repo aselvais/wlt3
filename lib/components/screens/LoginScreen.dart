@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wlt3/components/LoadingStatusWidget.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 
-class LoginScreen extends LoadingStatusWidget {
+class LoginScreen extends StatelessWidget {
   final String imgUrl = 'http://www.winloseortie.com/wp-content/themes/pogon/images/WLT-Logo.jpg';
 
   ///
@@ -10,10 +9,6 @@ class LoginScreen extends LoadingStatusWidget {
   ///
   @override
   Widget build(BuildContext context) {
-
-    if (this.isLoading(context) == true) {
-      return this.getLoadingWidget(context);
-    } else {
       return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -44,7 +39,5 @@ class LoginScreen extends LoadingStatusWidget {
                 onPressed: () => ActionsComposite.loginToHome(context),
               ),
             ]))));
-    }
-
   }
 }

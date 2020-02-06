@@ -45,7 +45,7 @@ class ListTiers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<TiersModel>(context);
-    if (_list.loading == true) {
+    if (ActionsComposite.isLoading(context) == true) {
       return Center(child: CircularProgressIndicator());
     } else {
       return ListView(

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:wlt3/components/LoadingStatusWidget.dart';
 
-class ProfileScreen extends LoadingStatusWidget {
+class ProfileScreen extends StatelessWidget {
   final String _title = 'Profile Screen';
   ///
   ///
   ///
   @override
   Widget build(BuildContext context) {
-    if (this.isLoading(context) == true) {
-      return this.getLoadingWidget(context);
-    } else return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: new Text(_title),
         backgroundColor: Colors.black,

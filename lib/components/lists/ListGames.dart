@@ -59,7 +59,7 @@ class ListGames extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _list = Provider.of<GamesModel>(context);
-    if (_list.loading == true) {
+    if (ActionsComposite.isLoading(context) == true) {
       return Center(child: CircularProgressIndicator());
     } else {
       if (_list.list.length == 0) {

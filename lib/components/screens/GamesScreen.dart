@@ -8,9 +8,8 @@ import 'package:wlt3/models/Division.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
 import 'package:wlt3/models/Season.dart';
 import 'package:wlt3/models/SeasonsModel.dart';
-import 'package:wlt3/components/LoadingStatusWidget.dart';
 
-class GamesScreen extends LoadingStatusWidget {
+class GamesScreen extends StatelessWidget {
   ///
   ///
   ///
@@ -33,10 +32,7 @@ class GamesScreen extends LoadingStatusWidget {
     final Season season = Provider.of<SeasonsModel>(context).selectedModel;
     final Division division = Provider.of<DivisionsModel>(context).selectedModel;
 
-    try {
-    if (this.isLoading(context) == true) {
-      return this.getLoadingWidget(context);
-    } else return Scaffold(
+      return Scaffold(
           backgroundColor: Themedata.greyBackground,
           body: Column(
             children: <Widget>[
@@ -68,13 +64,6 @@ class GamesScreen extends LoadingStatusWidget {
               ),
             ],
           ));
-    } catch (e) {
-      return Scaffold(
-        backgroundColor: Colors.yellow,
-        body: Center(
-          child: Text('Games', style: TextStyle(fontSize: 30, color: Colors.black), ),
-        ),
-      );
-    }
+
   }
 }
