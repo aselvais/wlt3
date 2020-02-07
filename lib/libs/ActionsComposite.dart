@@ -35,9 +35,9 @@ class ActionsComposite {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
     final StandingsModel standing = Provider.of<StandingsModel>(context);
     teammodel.selectedId = teamId;
-    await teammodel.loadData(teamId);
-    await standing.loadData(teammodel?.selectedModel?.teaminfo?.divisionId ?? -1, teammodel?.selectedModel?.teaminfo?.tierId ?? -1);
     Navigator.pushNamed(context, '/teamdetail');
+    await teammodel.loadData(teamId);
+    standing.loadData(teammodel?.selectedModel?.teaminfo?.divisionId ?? -1, teammodel?.selectedModel?.teaminfo?.tierId ?? -1);
   }
 
   ///

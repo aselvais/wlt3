@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/models/Standingdata.dart';
 
-class StandingsDataSource extends DataTableSource {
+class StandingsDataSource {
   List<Standingdata> _standingdata;
   int _selectedCount = 0;
   bool isLandscape = false;
@@ -42,55 +42,34 @@ class StandingsDataSource extends DataTableSource {
   ///
   ///
   ///
-  _onTap(teamId)
+  _onTap(teamId) async
   {
-    ActionsComposite.goToTeamDetailScreen(_context, teamId);
+    await ActionsComposite.goToTeamDetailScreen(_context, teamId);
   }
 
   ///
   ///
   ///
-  List<DataCell> getDataCells(Standingdata standingdata)
-  {
-    List<DataCell> toret = [];
-    if (standingdata.imgurl != null && standingdata.imgurl != '') toret.add(DataCell( Image.network(standingdata?.imgurl ?? '', width: 30, height: 30), onTap: () => this._onTap(standingdata.teamId) ));
-    toret.add(DataCell(Text('${standingdata.team}',  overflow: TextOverflow.ellipsis, style: TextStyle( fontWeight: FontWeight.bold, ),), onTap: () => this._onTap(standingdata.teamId) ) );
-    toret.add(DataCell(Text('${standingdata.gp}'), onTap: () => this._onTap(standingdata.teamId) ));
-    toret.add(DataCell(Text('${standingdata.w}-${standingdata.l}-${standingdata.t}'), onTap: () => this._onTap(standingdata.teamId)));
-    toret.add(DataCell(Text('${standingdata.pts}'), onTap: () => this._onTap(standingdata.teamId)));
-
-    if (this.isLandscape == true)
-    {
-      toret.add(DataCell(Text('${standingdata.gf}'), onTap: () => this._onTap(standingdata.teamId)));
-      toret.add(DataCell(Text('${standingdata.ga}'), onTap: () => this._onTap(standingdata.teamId)));
-      if (standingdata.pim != null) toret.add(DataCell(Text('${standingdata.pim}'), onTap: () => this._onTap(standingdata.teamId)));        // variable
-      if (standingdata.gfavg != null) toret.add(DataCell(Text('${standingdata.gfavg.toStringAsPrecision(4)}'), onTap: () => this._onTap(standingdata.teamId)));
-      if (standingdata.plusminus != null) toret.add(DataCell(Text('${standingdata.plusminus}'), onTap: () => this._onTap(standingdata.teamId)));  // variable
-      if (standingdata.rfavg != null) toret.add(DataCell(Text('${standingdata.rfavg}'), onTap: () => this._onTap(standingdata.teamId)));      // variable
-      if (standingdata.strk != null) toret.add(DataCell(Text('${standingdata.strk}'), onTap: () => this._onTap(standingdata.teamId)));
-    }
-
-    return toret;
-  }
-
-  ///
-  ///
-  ///
-  @override
-  DataRow getRow(int index) {
-    assert(index >= 0);
-    if (index >= _standingdata.length) return null;
-    final Standingdata standingdata = _standingdata[index];
+  DataRow getRow(Standingdata standingdata, int index) {
     return DataRow.byIndex(
-      /*
-      onSelectChanged: (bool selected) {
-        if (selected) {
-            print('row-selected: (${standingdata.teamId}) ${standingdata.team}');
-        }
-      },
-      */
       index: index,
-      cells: getDataCells(standingdata),
+      cells: [
+        (standingdata.imgurl != null && standingdata.imgurl != '') ? (DataCell( Image.network(standingdata?.imgurl ?? '', width: 30, height: 30), onTap: () => this._onTap(standingdata.teamId) )) : null,
+        (DataCell(Text('${standingdata.team}',  overflow: TextOverflow.ellipsis, style: TextStyle( fontWeight: FontWeight.bold, ),), onTap: () => this._onTap(standingdata.teamId) ) ),
+        (DataCell(Text('${standingdata.gp}'), onTap: () => this._onTap(standingdata.teamId) )),
+        (DataCell(Text('${standingdata.w}-${standingdata.l}-${standingdata.t}'), onTap: () => this._onTap(standingdata.teamId))),
+        (DataCell(Text('${standingdata.pts}'), onTap: () => this._onTap(standingdata.teamId))),
+
+        (this.isLandscape == true) ? (DataCell(Text('${standingdata.gf}'), onTap: () => this._onTap(standingdata.teamId))) : null,
+        (this.isLandscape == true) ? (DataCell(Text('${standingdata.ga}'), onTap: () => this._onTap(standingdata.teamId))) : null,
+
+        (this.isLandscape == true && standingdata.pim != null) ? (DataCell(Text('${standingdata.pim}'), onTap: () => this._onTap(standingdata.teamId))) : null,
+        (this.isLandscape == true && standingdata.gfavg != null) ? (DataCell(Text('${standingdata.gfavg.toStringAsPrecision(4)}'), onTap: () => this._onTap(standingdata.teamId))) : null,
+        (this.isLandscape == true && standingdata.plusminus != null) ? (DataCell(Text('${standingdata.plusminus}'), onTap: () => this._onTap(standingdata.teamId))) : null,
+        (this.isLandscape == true && standingdata.rfavg != null) ? (DataCell(Text('${standingdata.rfavg}'), onTap: () => this._onTap(standingdata.teamId))) : null,
+        (this.isLandscape == true && standingdata.strk != null) ? (DataCell(Text('${standingdata.strk}'), onTap: () => this._onTap(standingdata.teamId))) : null,
+
+      ].where((t) => t != null).toList(),
     );
   }
 
@@ -101,9 +80,8 @@ class StandingsDataSource extends DataTableSource {
   {
     this.isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
     this._context = context;
-    List<DataRow> toret = [];
-    for (var i = 0; i < _standingdata.length; i++) toret.add(this.getRow(i));
-    return toret;
+    int u = 0;
+    return _standingdata.map((i) => this.getRow(i, u++)).toList();
   }
 
 
