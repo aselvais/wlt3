@@ -36,9 +36,13 @@ class TeamdetailScreen extends StatelessWidget {
     return Container(
         padding: const EdgeInsets.all(10.0),
         color: Themedata.greyBackground,
+        child: RefreshIndicator(
         child: ListView(
           children: gamesdata.today.map<Widget>((Game f) => (GameElement(game: f))).toList(),
-        ));
+        ),
+        onRefresh: () => ActionsComposite.reloadGamesToday(context),        
+        ), 
+        );
   }
 
   ///

@@ -95,6 +95,24 @@ class ActionsComposite {
     await games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
   }
 
+  ///
+  ///
+  ///
+  static reloadGamesFromFavorites(BuildContext context) async 
+  {
+    //@todo To be implemented
+  }
+
+  static reloadCurrentSelectedGame(BuildContext context) async 
+  {
+    //@todo To be implemented
+  }
+
+  static reloadGamesToday(BuildContext context) async 
+  {
+    //@todo To be implemented
+  }
+
 
   ///
   /// set games data on cached selection

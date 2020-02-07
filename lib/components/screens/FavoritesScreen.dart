@@ -13,21 +13,6 @@ import 'package:wlt3/models/Team.dart';
 ///
 class FavoritesScreen extends StatelessWidget {
 
-
-Future<void> _refreshData() async
-  {
-    print('refreshing stocks...');
-    /*
-    _stockList.forEach((s) async {
-      double price = await _stockService.getPrice(s.symbol);
-      setState(() {
-        s.price = price;
-        s.lastUpdated = new DateTime.now();              
-      });
-    });
-    */
-  }
-
   ///
   /// Generic containing with list of elements inside (passed as param)
   ///
@@ -36,11 +21,7 @@ Future<void> _refreshData() async
     return Container(
       padding: const EdgeInsets.all(10.0),
       color: Themedata.greyBackground,
-      child: RefreshIndicator(
-        child: wl,
-        onRefresh: _refreshData,
-
-      ),
+      child: wl,
     );
   }
 
@@ -97,7 +78,12 @@ Future<void> _refreshData() async
     if (favorites.listGames.length == 0)
       return getEmptyContent(context, '\nNothing here yet ...\n\nUse the star icon to add games to your favorite.');
     else 
-      return getContent(context, ListView(children: favorites.listGames.map<Widget>((Game f) => (GameElement(game: f))).toList(),));
+      return getContent(context, 
+        RefreshIndicator(
+          child: ListView(children: favorites.listGames.map<Widget>((Game f) => (GameElement(game: f))).toList(),),
+          onRefresh: () => ActionsComposite.reloadGamesFromFavorites(context),
+        ),
+      );
   }
 
   ///

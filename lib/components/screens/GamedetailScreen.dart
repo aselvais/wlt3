@@ -338,13 +338,16 @@ class GamedetailScreen extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
         backgroundColor: Themedata.greyBackground,
-        body: SingleChildScrollView(
+        body: RefreshIndicator(
+        child: SingleChildScrollView(
             child: Column(
           children: <Widget>[
             this.getTopBar(context),
             this.getMenuBar(context),
             this.getContent(context),
           ],
-        )));
+        )),
+        onRefresh: () => ActionsComposite.reloadCurrentSelectedGame(context),
+    ));
   }
 }
