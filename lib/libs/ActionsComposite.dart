@@ -85,6 +85,18 @@ class ActionsComposite {
   }
 
   ///
+  /// Reload games in the games page
+  ///
+  static reloadGames(BuildContext context) async 
+  {
+    final GamesModel games = Provider.of<GamesModel>(context);
+    final DivisionsModel divisions = Provider.of<DivisionsModel>(context);
+    final SeasonsModel seasons = Provider.of<SeasonsModel>(context);
+    await games.loadData(seasons.selectedModel.id, divisions.selectedModel.id);
+  }
+
+
+  ///
   /// set games data on cached selection
   ///
   static setGamesDataOnCachedSelection(

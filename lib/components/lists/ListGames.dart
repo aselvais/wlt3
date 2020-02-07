@@ -65,7 +65,12 @@ class ListGames extends StatelessWidget {
       if (_list.list.length == 0) {
         return getEmptyContent(context, '\nNo matches...\n\nClick on the calendar to chose another date.');
       } else {
-        return ListView(children: _list.list.map<Widget>((Game f) => GameElement(game: f)).toList(),);
+        return RefreshIndicator(
+          child:ListView(
+            children: _list.list.map<Widget>((Game f) => GameElement(game: f)).toList(),
+          ),
+        onRefresh: () => ActionsComposite.reloadGames(context),
+        );
       }
     }
   }

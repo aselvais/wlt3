@@ -13,6 +13,21 @@ import 'package:wlt3/models/Team.dart';
 ///
 class FavoritesScreen extends StatelessWidget {
 
+
+Future<void> _refreshData() async
+  {
+    print('refreshing stocks...');
+    /*
+    _stockList.forEach((s) async {
+      double price = await _stockService.getPrice(s.symbol);
+      setState(() {
+        s.price = price;
+        s.lastUpdated = new DateTime.now();              
+      });
+    });
+    */
+  }
+
   ///
   /// Generic containing with list of elements inside (passed as param)
   ///
@@ -21,7 +36,11 @@ class FavoritesScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10.0),
       color: Themedata.greyBackground,
-      child: wl
+      child: RefreshIndicator(
+        child: wl,
+        onRefresh: _refreshData,
+
+      ),
     );
   }
 
