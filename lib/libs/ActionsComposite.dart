@@ -33,8 +33,10 @@ class ActionsComposite {
   static goToTeamDetailScreen(BuildContext context, int teamId) async 
   {
     final TeamModel teammodel = Provider.of<TeamModel>(context);
+    final StandingsModel standing = Provider.of<StandingsModel>(context);
     teammodel.selectedId = teamId;
     await teammodel.loadData(teamId);
+    await standing.loadData(teammodel?.selectedModel?.teaminfo?.divisionId ?? -1, teammodel?.selectedModel?.teaminfo?.tierId ?? -1);
     Navigator.pushNamed(context, '/teamdetail');
   }
 
@@ -47,7 +49,7 @@ class ActionsComposite {
     final gamesModel = Provider.of<GamesModel>(context);
     gamesModel.selectedId = game.id;
     gamesModel.selectedModel = game;
-    await gamesModel.loadOneGameData(game.id);
+    gamesModel.loadOneGameData(game.id);
     Navigator.pushNamed(context, '/gamedetail');
   }
 

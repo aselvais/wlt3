@@ -104,21 +104,13 @@ class TeamdetailScreen extends StatelessWidget {
     int tweetsLength = 0;
     List<Widget> headerWidgets = [];
     List<Widget> contentWidget = [];
-    try {
-      gamesPastLength = teams.selectedModel.games.past.length;
-    } catch (ee) {}
-    try {
-      gamesTodayLength = teams.selectedModel.games.today.length;
-    } catch (ee) {}
-    try {
-      gamesUpcomingLength = teams.selectedModel.games.past.upcoming;
-    } catch (ee) {}
-    try {
-      newsLength = teams.selectedModel.news.length;
-    } catch (ee) {}
-    try {
-      tweetsLength = teams.selectedModel.tweets.length;
-    } catch (ee) {}
+
+    gamesPastLength = teams?.selectedModel?.games?.past?.length ?? 0;
+    gamesTodayLength = teams?.selectedModel?.games?.today?.length ?? 0;
+    gamesUpcomingLength = teams?.selectedModel?.games?.upcoming?.length ?? 0;
+    newsLength = teams?.selectedModel?.news?.length ?? 0;
+    tweetsLength = teams?.selectedModel?.tweets?.length ?? 0;
+
     /* ------------------------------------------------------- */
     if (gamesPastLength > 0) {
       headerWidgets.add(Tab(
@@ -355,19 +347,13 @@ class TeamdetailScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: getAppBarElement(context),
         body: 
-        
-        ((ActionsComposite.isLoading(context) == false)
-                  ?
+        ((ActionsComposite.isLoading(context) == false) ?
         Column(
           children: <Widget>[
             getHeaderElement(context, teams),
-            //getBodyElement(context, team),
             getTabsView(context, teams)
           ],
-        )
-        : Center(child:CircularProgressIndicator()))
-        
-        ,
+        ) : Center(child:CircularProgressIndicator())),
       );
     
   }

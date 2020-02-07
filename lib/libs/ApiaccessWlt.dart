@@ -14,13 +14,23 @@ import 'package:wlt3/models/Tiers.dart';
 
 class ApiaccessWlt extends ApiaccessAbstract {
   String baseurl = 'https://us-central1-wlt3-66c9a.cloudfunctions.net/';
-  // String baseurl = 'http://localhost:5000/wlt3-66c9a/us-central1/';
+  //String baseurl = 'http://10.0.2.2:5001/wlt3-66c9a/us-central1/';
+
+  ///
+  ///
+  ///
+  log(String msg)
+  {
+    // print('----------- ${msg} ------------');
+  }
 
   ///
   ///
   ///
   Future<List<League>> getLeagues() async {
-    final response = await http.get(baseurl + 'league');
+    String fullurl = baseurl + 'league';
+    this.log(fullurl);
+    final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
       return djson.map<League>((json) => (League.fromJson(json))).toList();
@@ -33,8 +43,9 @@ class ApiaccessWlt extends ApiaccessAbstract {
   ///
   ///
   Future<List<Season>> getSeasons(int leagueId) async {
-    final response =
-        await http.get(baseurl + 'season?leagueId=' + leagueId.toString());
+    String fullurl = baseurl + 'season?leagueId=' + leagueId.toString();
+    this.log(fullurl);
+    final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
       return djson.map<Season>((json) => (Season.fromJson(json))).toList();
@@ -47,8 +58,9 @@ class ApiaccessWlt extends ApiaccessAbstract {
   ///
   ///
   Future<List<Division>> getDivisions(int seasonId) async {
-    final response =
-        await http.get(baseurl + 'division?seasonId=' + seasonId.toString());
+    String fullurl = baseurl + 'division?seasonId=' + seasonId.toString();
+    this.log(fullurl);
+    final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
       return djson.map<Division>((json) => (Division.fromJson(json))).toList();
@@ -68,6 +80,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
         seasonId.toString() +
         '&divisionId=' +
         divisionId.toString();
+    this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
@@ -81,8 +94,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
   /// Get one game by Id
   ///
   Future<Game> getGame(int gameId) async {
-    String fullurl = baseurl +
-        'game/?gameId=' + gameId.toString();
+    String fullurl = baseurl + 'game/?gameId=' + gameId.toString();
+    this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       dynamic djson = json.decode(response.body);
@@ -96,8 +109,8 @@ class ApiaccessWlt extends ApiaccessAbstract {
   ///
   ///
   Future<List<Tiers>> getTiers(int divisionId) async {
-    // https://us-central1-wlt3-66c9a.cloudfunctions.net/tier/?divisionId=4052
     String fullurl = baseurl + 'tier/?divisionId=' + divisionId.toString();
+    this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
@@ -117,6 +130,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
         divisionId.toString() +
         '&tierId=' +
         tierId.toString();
+    this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
@@ -130,15 +144,13 @@ class ApiaccessWlt extends ApiaccessAbstract {
   ///
   ///
   ///
-  Future<List<Standing>> getTeamstandingLocalTierGroupGenericNormalized(
-      int divisionId, int tierId) async {
-    String fullurl = baseurl +
-        'teamstandingLocalTierGroupGenericNormalized/?divisionId=' +
-        divisionId.toString() +
-        '&tierId=' +
-        tierId.toString();
+  Future<List<Standing>> getTeamstandingLocalTierGroupGenericNormalized(int divisionId, int tierId) async 
+  {
+    String fullurl = baseurl + 'teamstandingLocalTierGroupGenericNormalized/?divisionId=' + divisionId.toString();
+    if (tierId > 0) fullurl += '&tierId=' + tierId.toString();
+    this.log(fullurl);
     final response = await http.get(fullurl);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 && response?.body != '') {
       List<dynamic> djson = json.decode(response.body);
       return djson.map<Standing>((json) => (Standing.fromJson(json))).toList();
     } else {
@@ -149,14 +161,13 @@ class ApiaccessWlt extends ApiaccessAbstract {
   ///
   ///
   ///
-  Future<List<Standing>> getTeamstandingLocalTierGroupGenericHeader(
-      int divisionId, int tierId) async {
+  Future<List<Standing>> getTeamstandingLocalTierGroupGenericHeader(int divisionId, int tierId) async {
     String fullurl = baseurl +
         'teamstandingLocalTierGroupGenericHeader/?divisionId=' +
         divisionId.toString() +
         '&tierId=' +
         tierId.toString();
-    print(fullurl);
+    this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
@@ -177,6 +188,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
         seasonId.toString() +
         "&divisionId=" +
         divisionId.toString();
+    this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       List<dynamic> djson = json.decode(response.body);
@@ -199,6 +211,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
   ///
   Future<Team> getTeamInfo(int teamId) async {
     String fullurl = baseurl + "teamInfo/?teamId=" + teamId.toString();
+    this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
       return Team.fromJson(json.decode(response.body));
@@ -212,8 +225,10 @@ class ApiaccessWlt extends ApiaccessAbstract {
   ///
   Future<Teamdata> getTeamInfoFull(int teamId) async {
     String fullurl = baseurl + "teamInfoFull/?teamId=" + teamId.toString();
+    this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
+      print(response);
       return Teamdata.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load response.body');

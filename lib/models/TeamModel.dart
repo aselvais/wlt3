@@ -13,28 +13,28 @@ class TeamModel extends ChangeNotifier {
   ///
   ///
   ///
-  get list {
+  List<Team> get list {
     return _list;
   }
 
   ///
   ///
   ///
-  get selectedId {
+  int get selectedId {
     return _selectedId;
   }
 
   ///
   ///
   ///
-  get selectedModel {
+  Teamdata get selectedModel {
     return _selectedModel;
   }
 
   ///
   ///
   ///
-  get loading {
+  bool get loading {
     return _loading;
   }
 
@@ -69,14 +69,6 @@ class TeamModel extends ChangeNotifier {
     _list.add(o);
     notifyListeners();
   }
-/*
-  _replaceList(List<Team> o)
-  {
-    _list = [];
-    o.forEach((f) => _list.add(f));
-    this.loading = false;
-  }
-*/
 
   ///
   ///
