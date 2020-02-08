@@ -29,7 +29,7 @@ class TeamdetailScreen extends StatelessWidget {
   }
 
   ///
-  ///
+  /// 
   ///
   Widget getTodaysGames(BuildContext context, TeamModel teams) {
     final Gamesdata gamesdata = teams.selectedModel.games;
@@ -54,8 +54,15 @@ class TeamdetailScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         color: Themedata.greyBackground,
         child: ListView(
-          children: gamesdata.upcoming.map<Widget>((Game f) => (GameElement(game: f))).toList(),
-        ));
+          children: 
+          [
+              (gamesdata.today.length > 0) ? Text('TODAY', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),) : null,
+              (gamesdata.today.length > 0) ? Column(children: gamesdata.today.map<Widget>((Game f) => (GameElement(game: f))).toList(),) : null,
+              (gamesdata.upcoming.length > 0) ? Text('UPCOMING', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),) : null,
+              (gamesdata.upcoming.length > 0) ? Column(children: gamesdata.upcoming.map<Widget>((Game f) => (GameElement(game: f))).toList(),) : null,
+          ].where((t) => t != null).toList()
+      )
+      );
   }
 
   ///
@@ -118,19 +125,19 @@ class TeamdetailScreen extends StatelessWidget {
     /* ------------------------------------------------------- */
     if (gamesPastLength > 0) {
       headerWidgets.add(Tab(
-        text: 'Previous Games',
+        text: 'Past Games',
       ));
       contentWidget.add(getPreviousGames(context, teams));
     }
-    if (gamesTodayLength > 0) {
+    /* if (gamesTodayLength > 0) {
       headerWidgets.add(Tab(
         text: 'Today\'s Games',
       ));
       contentWidget.add(getTodaysGames(context, teams));
-    }
+    } */
     if (gamesUpcomingLength > 0) {
       headerWidgets.add(Tab(
-        text: 'Future Games',
+        text: 'Upcoming Games',
       ));
       contentWidget.add(getFutureGames(context, teams));
     }
