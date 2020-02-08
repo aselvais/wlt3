@@ -1,4 +1,3 @@
-import 'package:wlt3/libs/ApiaccessWlt.dart';
 import 'package:wlt3/models/Arena.dart';
 import 'package:wlt3/models/Gameinfo.dart';
 
@@ -11,6 +10,7 @@ class Game {
   final int divisionId;
   final String divisionName;
   final String dateTime;
+  final DateTime dateTimeReal;
   final String leagueName;
   final String leagueTimezone;
   final String leagueShortName;
@@ -29,6 +29,7 @@ class Game {
       this.divisionId,
       this.divisionName,
       this.dateTime,
+      this.dateTimeReal,
       this.leagueName,
       this.leagueTimezone,
       this.leagueShortName,
@@ -51,6 +52,7 @@ class Game {
       divisionId: json['divisionId'],
       divisionName: json['divisionName'],
       dateTime: json['dateTime'],
+      dateTimeReal: DateTime.parse(json['dateTime']),
       leagueName: json['leagueName'],
       leagueTimezone: json['leagueTimezone'],
       leagueShortName: json['leagueShortName'],

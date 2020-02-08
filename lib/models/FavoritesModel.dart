@@ -88,6 +88,7 @@ class FavoritesModel extends ChangeNotifier {
   ///
   ///
   List<Game> get listGames {
+    _listGames.sort((Game a, Game b) => b.dateTimeReal.millisecondsSinceEpoch.compareTo(a.dateTimeReal.millisecondsSinceEpoch) );
     return _listGames;
   }
 
