@@ -6,6 +6,7 @@ class Standingdata {
   final int w;
   final int l;
   final int t;
+  final int so;
   final int pts;
   final int gf;
   final int ga;
@@ -26,6 +27,7 @@ class Standingdata {
     this.w,
     this.l,
     this.t,
+    this.so,
     this.pts,
     this.gf,
     this.ga,
@@ -48,6 +50,7 @@ class Standingdata {
       w: json.containsKey('w') ? json['w'] : null,
       l: json.containsKey('l') ? json['l'] : null,
       t: json.containsKey('t') ? json['t'] : null,
+      so: json.containsKey('so') ? json['so'] : null,
       pts: json.containsKey('pts') ? json['pts'].toInt() : null,
       gf: json.containsKey('gf') ? json['gf'] : null,
       ga: json.containsKey('ga') ? json['ga'] : null,

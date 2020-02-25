@@ -14,14 +14,14 @@ import 'package:wlt3/models/Tiers.dart';
 
 class ApiaccessWlt extends ApiaccessAbstract {
   String baseurl = 'https://us-central1-wlt3-66c9a.cloudfunctions.net/';
-  // String baseurl = 'http://10.0.2.2:5001/wlt3-66c9a/us-central1/';
+  //String baseurl = 'http://10.0.2.2:5001/wlt3-66c9a/us-central1/';
 
   ///
   ///
   ///
   log(String msg)
   {
-    // print('----------- ${msg} ------------');
+    print('===----------- ${msg} ------------===');
   }
 
   ///
@@ -151,6 +151,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
     this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200 && response?.body != '') {
+      print(response.body);
       List<dynamic> djson = json.decode(response.body);
       return djson.map<Standing>((json) => (Standing.fromJson(json))).toList();
     } else {

@@ -34,12 +34,13 @@ class ListStandingsTables extends StatelessWidget {
                             DataColumn( label: Text('team'.toUpperCase())),
                             DataColumn( label: Text('gp'.toUpperCase())),
                             DataColumn( label: Text('w-l-t'.toUpperCase())),
+                            DataColumn( label: Text('so'.toUpperCase())),
                             DataColumn( label: Text('pts'.toUpperCase())),
                             (isLandscape == true) ? (DataColumn( label: Text('gf'.toUpperCase()), )) : null,
                             (isLandscape == true) ? (DataColumn( label: Text('ga'.toUpperCase()), )) : null, 
                             (isLandscape == true && _standingdataFirstLine.pim != null) ? (DataColumn( label: Text('pim'.toUpperCase()), )) : null, 
                             (isLandscape == true && _standingdataFirstLine.gfavg != null) ? (DataColumn( label: Text('gfavg'.toUpperCase()), )) : null, 
-                            (isLandscape == true && _standingdataFirstLine.plusminus != null) ? (DataColumn( label: Text('plusminus'.toUpperCase()), )) : null, 
+                            (isLandscape == true && _standingdataFirstLine.plusminus != null) ? (DataColumn( label: Text('+|-'), )) : null, 
                             (isLandscape == true && _standingdataFirstLine.rfavg != null) ? (DataColumn( label: Text('rfavg'.toUpperCase()), )) : null, 
                             (isLandscape == true && _standingdataFirstLine.strk != null) ? (DataColumn( label: Text('strk'.toUpperCase()), )) : null, 
                           ].where((t) => t != null).toList(),
@@ -48,7 +49,8 @@ class ListStandingsTables extends StatelessWidget {
                                   (standingdata.imgurl != null && standingdata.imgurl != '') ? (DataCell( Image.network(standingdata?.imgurl ?? '', width: 30, height: 30), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) )) : null,
                                   (DataCell(Text('${standingdata.team}',  overflow: TextOverflow.ellipsis, style: TextStyle( fontWeight: FontWeight.bold, ),), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) ) ),
                                   (DataCell(Text('${standingdata.gp}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) )),
-                                  (DataCell(Text('${standingdata.w}-${standingdata.l}-${standingdata.t}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))),
+                                  (DataCell(Text('${standingdata.w}-${standingdata.l}-${standingdata?.t ?? ''}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))),
+                                  (DataCell(Text('${standingdata.so}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))),
                                   (DataCell(Text('${standingdata.pts}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))),
 
                                   (isLandscape == true) ? (DataCell(Text('${standingdata.gf}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
@@ -81,13 +83,21 @@ class ListStandingsTables extends StatelessWidget {
     {
       bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
       StandingsModel _standingsModel = Provider.of<StandingsModel>(context);
-      return Column(children: _standingsModel.list.map((_standing) => getRow(
-          context, 
-          _standing.data, 
-          _standing.data.first, 
-          isLandscape, 
-          (_standing.title != '' && _standing.title != null) ? _standing.title : '')
-      ).toList());
+
+      try {
+        return Column(children: _standingsModel.list.map((_standing) => getRow(
+            context, 
+            _standing.data, 
+            _standing.data.first, 
+            isLandscape, 
+            (_standing.title != '' && _standing.title != null) ? _standing.title : '')
+        ).toList());
+      } catch(ee)
+      {
+        print(ee);
+        return Center(child: Text('Error...'));
+      }
+
     }
   }
 

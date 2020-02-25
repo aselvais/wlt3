@@ -146,7 +146,7 @@ class ListStandings extends StatelessWidget {
         this.getCell('ga'.toUpperCase(), true),
         this.getCell('pim'.toUpperCase(), true),
         this.getCell('gfavg'.toUpperCase(), true),
-        this.getCell('+|-'.toUpperCase(), true),
+        this.getCell('+|-', true),
         this.getCell('rfavg'.toUpperCase(), true),
         this.getCell('strk'.toUpperCase(), true),
       ],
