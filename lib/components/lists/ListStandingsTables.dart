@@ -31,13 +31,13 @@ class ListStandingsTables extends StatelessWidget {
                           columns: 
                           [
                             (_standingdataFirstLine.imgurl != null && _standingdataFirstLine.imgurl != '') ? (DataColumn( label: Text(''.toUpperCase()), )) : null,
-                            DataColumn( label: Text('team'.toUpperCase())),
-                            DataColumn( label: Text('gp'.toUpperCase())),
-                            DataColumn( label: Text('w-l-t'.toUpperCase())),
-                            DataColumn( label: Text('so'.toUpperCase())),
-                            DataColumn( label: Text('pts'.toUpperCase())),
-                            (isLandscape == true) ? (DataColumn( label: Text('gf'.toUpperCase()), )) : null,
-                            (isLandscape == true) ? (DataColumn( label: Text('ga'.toUpperCase()), )) : null, 
+                            (_standingdataFirstLine.team != null) ? DataColumn( label: Text('team'.toUpperCase())) : null,
+                            (_standingdataFirstLine.gp != null) ? DataColumn( label: Text('gp'.toUpperCase())) : null,
+                            (_standingdataFirstLine.w != null) ? DataColumn( label: Text('w-l-t'.toUpperCase())) : null,
+                            (_standingdataFirstLine.so != null) ? DataColumn( label: Text('so'.toUpperCase())) : null,
+                            (_standingdataFirstLine.pts != null) ? DataColumn( label: Text('pts'.toUpperCase())) : null,
+                            (isLandscape == true && _standingdataFirstLine.gf != null) ? (DataColumn( label: Text('gf'.toUpperCase()), )) : null,
+                            (isLandscape == true && _standingdataFirstLine.ga != null) ? (DataColumn( label: Text('ga'.toUpperCase()), )) : null, 
                             (isLandscape == true && _standingdataFirstLine.pim != null) ? (DataColumn( label: Text('pim'.toUpperCase()), )) : null, 
                             (isLandscape == true && _standingdataFirstLine.gfavg != null) ? (DataColumn( label: Text('gfavg'.toUpperCase()), )) : null, 
                             (isLandscape == true && _standingdataFirstLine.plusminus != null) ? (DataColumn( label: Text('+|-'), )) : null, 
@@ -47,14 +47,14 @@ class ListStandingsTables extends StatelessWidget {
                           rows: _standingdata.map((standingdata) => DataRow(
                                 cells: [
                                   (standingdata.imgurl != null && standingdata.imgurl != '') ? (DataCell( Image.network(standingdata?.imgurl ?? '', width: 30, height: 30), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) )) : null,
-                                  (DataCell(Text('${standingdata.team}',  overflow: TextOverflow.ellipsis, style: TextStyle( fontWeight: FontWeight.bold, ),), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) ) ),
-                                  (DataCell(Text('${standingdata.gp}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) )),
-                                  (DataCell(Text('${standingdata.w}-${standingdata.l}-${standingdata?.t ?? ''}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))),
-                                  (DataCell(Text('${standingdata.so}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))),
-                                  (DataCell(Text('${standingdata.pts}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))),
+                                  (standingdata.team != null && standingdata.team != null) ? (DataCell(Text('${standingdata.team}',  overflow: TextOverflow.ellipsis, style: TextStyle( fontWeight: FontWeight.bold, ),), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) ) ) : null,
+                                  (standingdata.gp != null && standingdata.gp != null) ? (DataCell(Text('${standingdata.gp}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) )) : null,
+                                  (standingdata.w != null && standingdata.w != null) ? (DataCell(Text('${standingdata.w}-${standingdata.l}-${standingdata?.t ?? ''}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
+                                  (standingdata.so != null && standingdata.so != null) ? (DataCell(Text('${standingdata.so}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
+                                  (standingdata.pts != null && standingdata.pts != null) ? (DataCell(Text('${standingdata.pts}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
 
-                                  (isLandscape == true) ? (DataCell(Text('${standingdata.gf}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
-                                  (isLandscape == true) ? (DataCell(Text('${standingdata.ga}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
+                                  (isLandscape == true && standingdata.gf != null) ? (DataCell(Text('${standingdata.gf}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
+                                  (isLandscape == true && standingdata.ga != null) ? (DataCell(Text('${standingdata.ga}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
 
                                   (isLandscape == true && standingdata.pim != null) ? (DataCell(Text('${standingdata.pim}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
                                   (isLandscape == true && standingdata.gfavg != null) ? (DataCell(Text('${standingdata.gfavg.toStringAsPrecision(4)}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
