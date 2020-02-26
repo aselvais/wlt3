@@ -26,6 +26,7 @@ import 'package:wlt3/models/TiersModel.dart';
 /// from different parts of the application
 ///
 class ActionsComposite {
+  static String lastRouteName = Navigator.defaultRouteName;
 
   ///
   /// go to team detail screen (from different location: favorites, standings, ...)
@@ -58,6 +59,7 @@ class ActionsComposite {
   ///
   static goToGamesHomeScreen(BuildContext context, Division model) async 
   {
+    final BottombarModel cart = Provider.of<BottombarModel>(context);
     final FavoritesModel favorites = Provider.of<FavoritesModel>(context);
     final DivisionsModel divisions = Provider.of<DivisionsModel>(context);
     final BottombarModel bottomModel = Provider.of<BottombarModel>(context);
@@ -81,7 +83,12 @@ class ActionsComposite {
     matchdatesModel.selectedDate = DateTime.now();
     ActionsComposite.loadClosestGamesToDate(context, true, true);
     bottomModel.idx = 0;
+
+    cart.idx = cart.previousidx;
+    Navigator.popUntil(context, (route) { ActionsComposite.lastRouteName = route.settings.name; return true; });
+    print(ActionsComposite.lastRouteName);
     Navigator.popUntil(context, ModalRoute.withName('/home'));
+
   }
 
   ///
@@ -191,6 +198,7 @@ class ActionsComposite {
     tiers.selectedModel = model;
     bottomModel.idx = 1;
     standing.loadData(divisions.selectedModel.id, tiers.selectedModel.id);
+    Navigator.popUntil(context, (route) { ActionsComposite.lastRouteName = route.settings.name; return true; });
     Navigator.popUntil(context, ModalRoute.withName('/home'));
   }
 

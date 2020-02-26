@@ -20,6 +20,7 @@ class StandingsScreen extends StatelessWidget {
   ///
   ///
   onTapDivisions(BuildContext context) {
+    Navigator.popUntil(context, (route) { ActionsComposite.lastRouteName = route.settings.name; return true; });
     Navigator.pushNamed(context, '/divisions');
   }
 

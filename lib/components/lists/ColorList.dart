@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
 
 class ColorList extends StatelessWidget {
@@ -21,6 +22,7 @@ class ColorList extends StatelessWidget {
         padding: EdgeInsets.all(8.0),
         splashColor: Colors.blueAccent,
         onPressed: () {
+          Navigator.popUntil(context, (route) { ActionsComposite.lastRouteName = route.settings.name; return true; });
           Navigator.pushNamed(context, '/home');
         },
       )

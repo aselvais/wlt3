@@ -21,7 +21,7 @@ class ApiaccessWlt extends ApiaccessAbstract {
   ///
   log(String msg)
   {
-    print('===----------- ${msg} ------------===');
+    // print('===----------- ${msg} ------------===');
   }
 
   ///
@@ -151,7 +151,6 @@ class ApiaccessWlt extends ApiaccessAbstract {
     this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200 && response?.body != '') {
-      print(response.body);
       List<dynamic> djson = json.decode(response.body);
       return djson.map<Standing>((json) => (Standing.fromJson(json))).toList();
     } else {
@@ -229,7 +228,6 @@ class ApiaccessWlt extends ApiaccessAbstract {
     this.log(fullurl);
     final response = await http.get(fullurl);
     if (response.statusCode == 200) {
-      print(response);
       return Teamdata.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load response.body');

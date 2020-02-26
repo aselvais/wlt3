@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wlt3/components/lists/ListGames.dart';
 import 'package:wlt3/components/widgets/Buttonlist.dart';
 import 'package:wlt3/components/widgets/Calendarbutton.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
 import 'package:wlt3/models/Division.dart';
 import 'package:wlt3/models/DivisionsModel.dart';
@@ -14,6 +15,7 @@ class GamesScreen extends StatelessWidget {
   ///
   ///
   onTapSeasons(BuildContext context) {
+    Navigator.popUntil(context, (route) { ActionsComposite.lastRouteName = route.settings.name; return true; });
     Navigator.pushNamed(context, '/seasons');
   }
 
@@ -21,6 +23,7 @@ class GamesScreen extends StatelessWidget {
   ///
   ///
   onTapDivisions(BuildContext context) {
+    Navigator.popUntil(context, (route) { ActionsComposite.lastRouteName = route.settings.name; return true; });
     Navigator.pushNamed(context, '/divisions');
   }
 

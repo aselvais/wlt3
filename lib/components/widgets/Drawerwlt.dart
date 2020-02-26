@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wlt3/libs/ActionsComposite.dart';
 import 'package:wlt3/libs/Themedata.dart';
 
 class Drawerwlt extends StatelessWidget {
@@ -37,8 +38,8 @@ class Drawerwlt extends StatelessWidget {
           ListTile(
             title: Text('Log out'),
             onTap: () {
-              Navigator.popUntil(
-                  context, ModalRoute.withName(Navigator.defaultRouteName));
+              Navigator.popUntil(context, (route) { ActionsComposite.lastRouteName = route.settings.name; return true; });
+              Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
             },
           ),
         ],
