@@ -30,7 +30,7 @@ class ListStandingsTables extends StatelessWidget {
                           dataRowHeight: 30,
                           columns: 
                           [
-                            (_standingdataFirstLine.imgurl != null && _standingdataFirstLine.imgurl != '') ? (DataColumn( label: Text(''.toUpperCase()), )) : null,
+                            (DataColumn( label: Text(''.toUpperCase()), )),
                             (_standingdataFirstLine.team != null) ? DataColumn( label: Text('team'.toUpperCase())) : null,
                             (_standingdataFirstLine.gp != null) ? DataColumn( label: Text('gp'.toUpperCase())) : null,
                             (_standingdataFirstLine.w != null) ? DataColumn( label: Text('w-l-t'.toUpperCase())) : null,
@@ -46,22 +46,19 @@ class ListStandingsTables extends StatelessWidget {
                           ].where((t) => t != null).toList(),
                           rows: _standingdata.map((standingdata) => DataRow(
                                 cells: [
-                                  (standingdata.imgurl != null && standingdata.imgurl != '') ? (DataCell( Image.network(standingdata?.imgurl ?? '', width: 30, height: 30), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) )) : null,
-                                  (standingdata.team != null && standingdata.team != null) ? (DataCell(Text('${standingdata.team}',  overflow: TextOverflow.ellipsis, style: TextStyle( fontWeight: FontWeight.bold, ),), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) ) ) : null,
-                                  (standingdata.gp != null && standingdata.gp != null) ? (DataCell(Text('${standingdata.gp}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) )) : null,
-                                  (standingdata.w != null && standingdata.w != null) ? (DataCell(Text('${standingdata.w}-${standingdata.l}-${standingdata?.t ?? ''}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
-                                  (standingdata.so != null && standingdata.so != null) ? (DataCell(Text('${standingdata.so}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
-                                  (standingdata.pts != null && standingdata.pts != null) ? (DataCell(Text('${standingdata.pts}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
-
+                                  (DataCell( Image.network(standingdata?.imgurl ?? '', width: 30, height: 30), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) )),
+                                  (standingdata.team != null) ? (DataCell(Text('${standingdata.team}',  overflow: TextOverflow.ellipsis, style: TextStyle( fontWeight: FontWeight.bold, ),), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) ) ) : null,
+                                  (standingdata.gp != null ) ? (DataCell(Text('${standingdata.gp}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId) )) : null,
+                                  (standingdata.w != null ) ? (DataCell(Text('${standingdata.w}-${standingdata.l}-${standingdata?.t ?? ''}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
+                                  (standingdata.so != null) ? (DataCell(Text('${standingdata.so}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
+                                  (standingdata.pts != null ) ? (DataCell(Text('${standingdata.pts}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
                                   (isLandscape == true && standingdata.gf != null) ? (DataCell(Text('${standingdata.gf}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
                                   (isLandscape == true && standingdata.ga != null) ? (DataCell(Text('${standingdata.ga}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
-
                                   (isLandscape == true && standingdata.pim != null) ? (DataCell(Text('${standingdata.pim}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
                                   (isLandscape == true && standingdata.gfavg != null) ? (DataCell(Text('${standingdata.gfavg.toStringAsPrecision(4)}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
                                   (isLandscape == true && standingdata.plusminus != null) ? (DataCell(Text('${standingdata.plusminus}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
                                   (isLandscape == true && standingdata.rfavg != null) ? (DataCell(Text('${standingdata.rfavg}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
                                   (isLandscape == true && standingdata.strk != null) ? (DataCell(Text('${standingdata.strk}'), onTap: () => ActionsComposite.goToTeamDetailScreen(context, standingdata.teamId))) : null,
-
                                 ].where((t) => t != null).toList(),
                           )
                           ).toList(),
@@ -95,7 +92,7 @@ class ListStandingsTables extends StatelessWidget {
       } catch(ee)
       {
         print(ee);
-        return Center(child: Text('Error...'));
+        return Center(child: Text('Error... ' + ee.toString()));
       }
 
     }
